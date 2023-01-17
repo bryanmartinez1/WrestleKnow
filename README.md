@@ -68,3 +68,51 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## WrestleKnow Web App
+This app allows a user to view a variety of pro wrestling wrestlers, tag teams, companies, and championships. This app uses Parse as a backend.
+Product Spec
+## Progress Week 1
+- [x] Figma Designs
+- [x] Navbar
+- [x] Set Up Placeholder Pages
+- [x] Set Up Back4App Parse Backend
+Gif Walk Through of Weeks 1
+
+
+## Progress Weeks 2 - 4
+- [ ] Connect to Backend
+- [ ] User log functions
+   - [ ] Log In
+   - [ ] Log Out
+- [ ] Base Designs for Display Screens
+   - [ ] Wrestler
+   - [ ] Company
+   - [ ] Championship
+Gif Walk Through of Weeks 2 - 4
+
+## Progress Week 5 - 8
+- [ ] User Forgot Screens
+   - [ ] Forgot Username
+   - [ ] Forgot Password
+- [ ] Profile Creation
+- [ ]Base Designs for Display Screens
+   - [ ] Faction
+   - [ ] Brand
+   - [ ] PPV
+Gif Walk Through of Weeks 5 - 8
+
+Here's a walkthrough of implemented user stories
+## Progress Week 8 - 9
+- [ ] Gorilla Position Page
+   - [ ] Posts
+      - [ ] Create Posts
+   - [ ] Other Users
+   - [ ] Message
+   - [ ] Left Sidebar
+   - [ ] Bookmarks
+
+
+## Figma Designs
+https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/Pro-Wresting-App?node-id=0%3A1
+
