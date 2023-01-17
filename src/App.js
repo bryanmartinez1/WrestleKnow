@@ -24,7 +24,37 @@ import OtherUser from "./pages/GorillaPositionPages/OtherUser";
 //Other Imports
 import { Route, Routes } from "react-router-dom";
 
+// Parse Imports
+import { App_ID, JS_Key, Host_Server } from "./KEYS";
+import Parse from "parse/dist/parse.min.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+//Initializing the SDK
+Parse.setAsyncStorage(AsyncStorage);
+
+Parse.initialize(App_ID, JS_Key);
+Parse.serverURL = Host_Server;
+
 function App() {
+  const fetchAllWrestlers = async () => {
+    const query = new Parse.Query("Wrestler");
+    const allWrestlersGet = await query.find();
+
+    allWrestlersGet.forEach((item) => {
+      console.log(item);
+    });
+  };
+  const fetchAllCompanies = async () => {
+    const query = new Parse.Query("Company");
+    const allCompaniesGet = await query.find();
+
+    allCompaniesGet.forEach((item) => {
+      console.log(item);
+    });
+  };
+
+  fetchAllWrestlers();
+  fetchAllCompanies();
   return (
     <>
       <Navbar />
