@@ -8,5 +8,11 @@ Home Page that will display
     - Smaller News Panel displaying the biggest News of wrestling of the month
 */
 export default function Home() {
-  return <h1>Home</h1>;
+  let youtube = "https://www.youtube.com/embed/";
+  let vidID = "FYCCs4cpKqw";
+  return (
+    <div className="page">
+      <iframe width="960" height="540" src={youtube + vidID} />
+    </div>
+  );
 }
