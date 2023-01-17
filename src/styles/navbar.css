@@ -1,0 +1,44 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/font/LexendGiga-VariableFont_wght.ttf);
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.nav {
+    background-color: #EE534F;
+    width: 100%;
+    min-width:fit-content;
+    color: #353739;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: .25rem;
+    font-family: Lexend;
+}
+
+.site-name {
+    font-size: 3rem;
+}
