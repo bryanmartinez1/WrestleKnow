@@ -37,20 +37,37 @@ export default function Navbar() {
       return false;
     }
   };
-  let button;
+
+  // Condtional Rendering Depending if the User is signed in or nop
+  let options;
+
   if (currentUser === null) {
-    button = (
-      <div>
-        <li>
+    options = (
+      <div className="dropdown-content">
+        <a>
           <Link to="/login">Log In</Link>
-        </li>
-        <li>
+        </a>
+        <a>
           <Link to="/signup">Sign Up</Link>
-        </li>
+        </a>
+        <a>
+          <Link to="/settings">Settings</Link>
+        </a>
       </div>
     );
   } else {
-    button = <button onClick={logOut}>Log Out</button>;
+    options = (
+      <div className="dropdown-content">
+        <a>
+          <Link to="/gorillaposition/profile">Gorilla Position</Link>
+        </a>
+        <a>
+          <Link to="/" onClick={() => logOut()}>
+            Log Out
+          </Link>
+        </a>
+      </div>
+    );
   }
 
   return (
@@ -86,9 +103,13 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <img src={profile} className="home-image"></img>
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img src={profile} className="home-image" />
+            </button>
+            <div class="dropdown-content">{options}</div>
+          </div>
         </li>
-        {button}
       </ul>
     </nav>
   );

@@ -14,7 +14,8 @@ body {
     background-color: #EE534F;
     width: 100%;
     min-width:fit-content;
-    color: #353739;
+    max-height: 100px;
+    color: #212427;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,4 +46,45 @@ body {
 
 .home-image {
     height: 3rem;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+  
+.dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: inherit;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    width: 100px;
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    float: none;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+  
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
 }

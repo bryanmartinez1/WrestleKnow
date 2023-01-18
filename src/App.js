@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
+import Settings from "./Settings";
 
 // Selection Pages
 import Wrestler from "./pages/SelectionPages/Wrestler";
@@ -63,6 +64,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/settings" element={<Settings />} />
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />
@@ -81,6 +83,7 @@ function App() {
           <Route path="/company/chosencompany/ppv" element={<ChosenPPV />} />
 
           {/* Gorilla Position Pages */}
+          <Route path="/gorillaposition" element={<Profile />} />
           <Route path="/gorillaposition/profile" element={<Profile />} />
           <Route path="/gorillaposition/messages" element={<Messages />} />
           <Route path="/gorillaposition/bookmarks" element={<Bookmarks />} />
