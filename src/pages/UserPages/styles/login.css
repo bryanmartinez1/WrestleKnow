@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Lexend;
+}
+.title {
+    font-size: 3rem;
+}
+
+.heading {
+    font-size: 2rem;
+}

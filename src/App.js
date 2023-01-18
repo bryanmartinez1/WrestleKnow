@@ -20,7 +20,9 @@ import Bookmarks from "./pages/GorillaPositionPages/Bookmarks";
 import SearchResults from "./pages/GorillaPositionPages/SearchResults";
 import Feed from "./pages/GorillaPositionPages/Feed";
 import OtherUser from "./pages/GorillaPositionPages/OtherUser";
-
+//User Pages
+import LogIn from "./pages/UserPages/LogIn";
+import SignUp from "./pages/UserPages/SignUp";
 //Other Imports
 import { Route, Routes } from "react-router-dom";
 
@@ -88,6 +90,10 @@ function App() {
           />
           <Route path="/gorillaposition/feed" element={<Feed />} />
           <Route path="/gorillaposition/otheruser" element={<OtherUser />} />
+
+          {/* User Function Pages */}
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </>
