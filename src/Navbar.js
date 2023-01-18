@@ -37,20 +37,35 @@ export default function Navbar() {
       return false;
     }
   };
-  let button;
+  let options;
   if (currentUser === null) {
-    button = (
-      <div>
-        <li>
+    options = (
+      <div className="dropdown-content">
+        <a>
           <Link to="/login">Log In</Link>
-        </li>
-        <li>
+        </a>
+        <a>
           <Link to="/signup">Sign Up</Link>
-        </li>
+        </a>
+        <a>
+          <Link to="/login">Log In</Link>
+        </a>
       </div>
     );
   } else {
-    button = <button onClick={logOut}>Log Out</button>;
+    options = (
+      <div className="dropdown-content">
+        <a>
+          <Link to="/" onClick={() => logOut()}>
+            Log Out
+          </Link>
+        </a>
+      </div>
+    );
+  }
+
+  function bruh() {
+    alert("bruh");
   }
 
   return (
@@ -86,9 +101,13 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <img src={profile} className="home-image"></img>
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img src={profile} className="home-image" />
+            </button>
+            <div class="dropdown-content">{options}</div>
+          </div>
         </li>
-        {button}
       </ul>
     </nav>
   );
