@@ -11,16 +11,7 @@ export default function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const [currentUser, setCurrentUser] = useState(null);
-
   const navigate = useNavigate();
-
-  const getCurrentUser = async function () {
-    const currentUser = await Parse.User.current();
-    // Update state variable holding current user
-    setCurrentUser(currentUser);
-    return currentUser;
-  };
 
   function refresh() {
     window.location.reload(false);
@@ -56,8 +47,7 @@ export default function SignUp() {
       setFirstName("");
       setLastName("");
       setPassword("");
-      // Update state variable holding current user
-      getCurrentUser();
+
       //Navigates back to Home after Log In
       navigate("/");
       // Refreshes page to update Navbar
