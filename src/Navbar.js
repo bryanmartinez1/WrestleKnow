@@ -109,6 +109,12 @@ export default function Navbar() {
             </button>
             <div class="dropdown-content">{options}</div>
           </div>
+          <div class="dropdown">
+            <button class="dropbtn">
+              <img src={profile} className="home-image" />
+            </button>
+            <div class="dropdown-content">{options}</div>
+          </div>
         </li>
       </ul>
     </nav>
