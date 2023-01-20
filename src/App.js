@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
 import Settings from "./Settings";
+import Account from "./Account";
 
 // Selection Pages
 import Wrestler from "./pages/SelectionPages/Wrestler";
@@ -65,6 +66,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/account" element={<Account />} />
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />

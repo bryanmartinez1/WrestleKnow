@@ -13,6 +13,7 @@ import profile from "./images/profile_icon.png";
 
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
+
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
     // Update state variable holding current user
@@ -38,34 +39,26 @@ export default function Navbar() {
     }
   };
 
-  // Condtional Rendering Depending if the User is signed in or nop
-  let options;
+  function nightMode() {
+    alert("bruh");
+  }
 
+  let checkLogIn;
   if (currentUser === null) {
-    options = (
-      <div className="dropdown-content">
-        <a>
-          <Link to="/login">Log In</Link>
-        </a>
-        <a>
-          <Link to="/signup">Sign Up</Link>
-        </a>
-        <a>
-          <Link to="/settings">Settings</Link>
-        </a>
+    checkLogIn = (
+      <div class="content-box">
+        <Link to="/login">Log In</Link>
+        <Link to="/signup">Sign Up</Link>
       </div>
     );
   } else {
-    options = (
-      <div className="dropdown-content">
-        <a>
-          <Link to="/gorillaposition/profile">Gorilla Position</Link>
-        </a>
-        <a>
-          <Link to="/" onClick={() => logOut()}>
-            Log Out
-          </Link>
-        </a>
+    checkLogIn = (
+      <div class="content-box">
+        <Link to="/account">Account</Link>
+        <Link to="/gorillaposition">Gorilla Position</Link>
+        <Link to="/" onClick={() => logOut()}>
+          Log Out
+        </Link>
       </div>
     );
   }
@@ -81,33 +74,34 @@ export default function Navbar() {
         <li>
           <Link to="/wrestler">
             <img src={wrestler} className="home-image"></img>
-            Wrestlers
+            <div className="text">Wrestlers</div>
           </Link>
         </li>
         <li>
           <Link to="/title">
             <img src={title} className="home-image"></img>
-            Titles
+            <div className="text">Titles</div>
           </Link>
         </li>
         <li>
           <Link to="/company">
             <img src={company} className="home-image"></img>
-            Companies
+            <div className="text">Companies</div>
           </Link>
         </li>
         <li>
           <Link to="/faction">
             <img src={faction} className="home-image"></img>
-            Factions
+            <div className="text">Factions</div>
           </Link>
         </li>
         <li>
-          <div class="dropdown">
-            <button class="dropbtn">
-              <img src={profile} className="home-image" />
+          <div className="dropdown">
+            <button className="dropdown-button" onClick={() => nightMode()}>
+              <img src={profile} className="dropdown-image"></img>
             </button>
-            <div class="dropdown-content">{options}</div>
+
+            {checkLogIn}
           </div>
         </li>
       </ul>
