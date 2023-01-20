@@ -32,6 +32,7 @@ export default function Navbar() {
       }
       // Update state variable holding current user
       getCurrentUser();
+      closeDrop();
       return true;
     } catch (error) {
       alert(`Error! ${error.message}`);
@@ -39,23 +40,53 @@ export default function Navbar() {
     }
   };
 
+  // Functions to Open and Close Dropdown
+  var dropOpened = false;
+  //Function to Open Dropdown
+  function openDrop() {
+    document.getElementById("drop").style.display = "block";
+    dropOpened = true;
+  }
+  //Function to Close Dropdown
+  function closeDrop() {
+    document.getElementById("drop").style.display = "none";
+    dropOpened = false;
+  }
+  //puts the two together
+  function dropOpenClose() {
+    if (dropOpened === false) {
+      openDrop();
+    } else {
+      closeDrop();
+    }
+  }
+
   function nightMode() {
     alert("bruh");
+    openDrop();
   }
 
   let checkLogIn;
   if (currentUser === null) {
     checkLogIn = (
-      <div class="content-box">
-        <Link to="/login">Log In</Link>
-        <Link to="/signup">Sign Up</Link>
+      <div class="content-box" id="drop">
+        <Link to="/login" onClick={() => closeDrop()}>
+          Log In
+        </Link>
+        <Link to="/signup" onClick={() => closeDrop()}>
+          Sign Up
+        </Link>
       </div>
     );
   } else {
     checkLogIn = (
-      <div class="content-box">
-        <Link to="/account">Account</Link>
-        <Link to="/gorillaposition">Gorilla Position</Link>
+      <div class="content-box" id="drop">
+        <Link to="/account" onClick={() => closeDrop()}>
+          Account
+        </Link>
+        <Link to="/gorillaposition" onClick={() => closeDrop()}>
+          Gorilla Position
+        </Link>
         <Link to="/" onClick={() => logOut()}>
           Log Out
         </Link>
@@ -97,7 +128,7 @@ export default function Navbar() {
         </li>
         <li>
           <div className="dropdown">
-            <button className="dropdown-button" onClick={() => nightMode()}>
+            <button className="dropdown-button" onClick={() => dropOpenClose()}>
               <img src={profile} className="dropdown-image"></img>
             </button>
 
