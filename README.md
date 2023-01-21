@@ -75,44 +75,37 @@ Product Spec
 ## Progress Week 1
 - [x] Figma Designs
 - [x] Navbar
+   - [x] Navbar updates based on whether user is signed in or not
+   - [x] Navbar updates based on window size
 - [x] Set Up Placeholder Pages
 - [x] Set Up Back4App Parse Backend
-Gif Walk Through of Weeks 1
+- [x] Connect to Backend
+- [ ] User log functions
+   - [x] Log In Page
+      - [x] User can Log In
+      - [x] CSS
+   - [ ] Sign Up
+      - [x] User can Sign Up
+      - [ ] CSS
+   - [x] Log Out
+   - [ ] Forgot Username
+      - [ ] If user forgots username an email will be sent displaying the username accredited to that email
+      - [ ] CSS
+   - [ ] Forgot Password
+      - [x] If user forgots password an email will be sent with steps to reset password
+      - [ ] CSS
+## Gif Walk Through of Weeks 1 So Far
+<img src='https://github.com/bryanmartinez1/WrestleKnow/blob/master/src/progress_gifs/progress1.gif' title='Instagram App Demo' width='' alt='Video Walkthrough' />
 
 
 ## Progress Weeks 2 - 4
-- [ ] Connect to Backend
-- [ ] User log functions
-   - [ ] Log In
-   - [ ] Log Out
 - [ ] Base Designs for Display Screens
    - [ ] Wrestler
    - [ ] Company
    - [ ] Championship
-Gif Walk Through of Weeks 2 - 4
-
-## Progress Week 5 - 8
-- [ ] User Forgot Screens
-   - [ ] Forgot Username
-   - [ ] Forgot Password
-- [ ] Profile Creation
-- [ ]Base Designs for Display Screens
-   - [ ] Faction
-   - [ ] Brand
-   - [ ] PPV
-Gif Walk Through of Weeks 5 - 8
-
-Here's a walkthrough of implemented user stories
-## Progress Week 8 - 9
-- [ ] Gorilla Position Page
-   - [ ] Posts
-      - [ ] Create Posts
-   - [ ] Other Users
-   - [ ] Message
-   - [ ] Left Sidebar
-   - [ ] Bookmarks
+## Gif Walk Through of Weeks 2 - 4
 
 
 ## Figma Designs
-https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/Pro-Wresting-App?node-id=0%3A1
+https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/WrestleKnow-Web-App?node-id=275%3A977&t=nq9GArJZ3fyoufAX-0
 
