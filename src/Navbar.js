@@ -96,32 +96,32 @@ export default function Navbar() {
 
   return (
     <nav className="nav">
-      <Link to="/" className="site-name">
+      <Link to="/" className="site-name" onClick={() => dropOpenClose()}>
         WrestleKnow
         <img src={boston_crab} className="home-image"></img>
       </Link>
       <ul>
         {" "}
         <li>
-          <Link to="/wrestler">
+          <Link to="/wrestler" onClick={() => dropOpenClose()}>
             <img src={wrestler} className="home-image"></img>
             <div className="text">Wrestlers</div>
           </Link>
         </li>
         <li>
-          <Link to="/title">
+          <Link to="/title" onClick={() => dropOpenClose()}>
             <img src={title} className="home-image"></img>
             <div className="text">Titles</div>
           </Link>
         </li>
         <li>
-          <Link to="/company">
+          <Link to="/company" onClick={() => dropOpenClose()}>
             <img src={company} className="home-image"></img>
             <div className="text">Companies</div>
           </Link>
         </li>
         <li>
-          <Link to="/faction">
+          <Link to="/faction" onClick={() => dropOpenClose()}>
             <img src={faction} className="home-image"></img>
             <div className="text">Factions</div>
           </Link>
