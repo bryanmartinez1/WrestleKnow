@@ -8,6 +8,7 @@ import Wrestler from "./pages/SelectionPages/Wrestler";
 import Company from "./pages/SelectionPages/Company";
 import Title from "./pages/SelectionPages/Title";
 import Faction from "./pages/SelectionPages/Faction";
+
 // Chosen Pages
 import ChosenWrestler from "./pages/ChosenPages/ChosenWrestler";
 import ChosenCompany from "./pages/ChosenPages/ChosenCompany";
@@ -15,6 +16,7 @@ import ChosenTitle from "./pages/ChosenPages/ChosenTitle";
 import ChosenFaction from "./pages/ChosenPages/ChosenFaction";
 import ChosenBrand from "./pages/ChosenPages/ChosenBrand";
 import ChosenPPV from "./pages/ChosenPages/ChosenPPV";
+
 // Gorilla Position Pages
 import Profile from "./pages/GorillaPositionPages/Profile";
 import Messages from "./pages/GorillaPositionPages/Messages";
@@ -22,9 +24,13 @@ import Bookmarks from "./pages/GorillaPositionPages/Bookmarks";
 import SearchResults from "./pages/GorillaPositionPages/SearchResults";
 import Feed from "./pages/GorillaPositionPages/Feed";
 import OtherUser from "./pages/GorillaPositionPages/OtherUser";
+
 //User Pages
 import LogIn from "./pages/UserPages/LogIn";
 import SignUp from "./pages/UserPages/SignUp";
+import ForgotUserName from "./pages/UserPages/forgotUsername";
+import ForgotPassword from "./pages/UserPages/forgotPassword";
+
 //Other Imports
 import { Route, Routes } from "react-router-dom";
 
@@ -99,6 +105,8 @@ function App() {
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/username" element={<ForgotUserName />} />
+          <Route path="/password" element={<ForgotPassword />} />
         </Routes>
       </div>
     </>

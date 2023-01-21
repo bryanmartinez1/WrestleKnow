@@ -37,8 +37,8 @@ export default function SignUp() {
       user.set("lastName", laststNameValue);
 
       const createdUser = await user.signUp();
-      alert(
-        `Success! User ${createdUser.getUsername()} was successfully created!`
+      console.log(
+        `Sign Up: User, ${createdUser.getUsername()} was successfully created and added to backend`
       );
 
       // Clear input fields
@@ -81,7 +81,7 @@ export default function SignUp() {
           id="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          placeholder="Enter Password"
+          placeholder="Enter Email"
         ></input>
       </div>
       <div className="container">

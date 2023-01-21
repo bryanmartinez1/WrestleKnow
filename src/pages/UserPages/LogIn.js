@@ -16,18 +16,35 @@ export default function LogIn() {
     return currentUser;
   };
 
+  // Refreshes Window
   function refresh() {
     window.location.reload(false);
   }
 
+  // Navigates to Sign Up Page
+  function signUp() {
+    navigate("/signup");
+  }
+
+  // Navigates to Forgot Username Page
+  function forgotUsername() {
+    navigate("/username");
+  }
+
+  // Navigates to Forgot Password Page
+  function forgotPassword() {
+    navigate("/password");
+  }
+
+  // Log In Function
   const logIn = async function () {
     const user = username;
     const pw = password;
     try {
       const loggedInUser = await Parse.User.logIn(user, pw);
       // logIn returns the corresponding ParseUser object
-      alert(
-        `Success! User ${loggedInUser.get(
+      console.log(
+        `Log In: User ${loggedInUser.get(
           "username"
         )} has successfully signed in!`
       );
@@ -53,30 +70,53 @@ export default function LogIn() {
 
   return (
     <div className="body">
-      <div className="title">LogIn</div>
-      <div className="container">
-        <div className="heading">Username</div>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          placeholder="Enter Username"
-          maxLength="20"
-        ></input>
+      <div className="holder">
+        <div className="title">Log In</div>
+
+        <div className="div-holder">
+          <div className="heading">Username</div>
+          <input
+            type="text"
+            id="username"
+            className="inputs"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            placeholder="Enter Username"
+            maxLength="20"
+          ></input>
+        </div>
+
+        <div className="div-holder">
+          <div className="heading">Password</div>
+          <input
+            type="password"
+            id="password"
+            className="inputs"
+            display="block"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Enter Password"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <button className="logInButton" onClick={logIn}>
+            Log In
+          </button>
+        </div>
+        <div className="forgot-holder">
+          <button className="forgot-button" onClick={() => forgotUsername()}>
+            Forgot Username?
+          </button>
+          <button className="forgot-button" onClick={() => forgotPassword()}>
+            Forgot Password?
+          </button>
+        </div>
+        <div className="div-holder">
+          <button className="signUpButton" onClick={() => signUp()}>
+            Sign Up
+          </button>
+        </div>
       </div>
-      <div className="container">
-        <div className="heading">Password</div>
-        <input
-          type="password"
-          id="password"
-          display="block"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Enter Password"
-        ></input>
-      </div>
-      <button onClick={logIn}>Submit</button>
     </div>
   );
 }
