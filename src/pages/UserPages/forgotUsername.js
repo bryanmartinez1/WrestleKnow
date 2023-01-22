@@ -15,9 +15,22 @@ export default function ForgotUserName() {
     return username + email;
   }
 
-  function bruh() {
-    alert("bruh");
-  }
+  const findUsername = async function () {
+    // Note that this value come from state variables linked to your text input
+    const emailValue = email;
+
+    try {
+      await Parse.User.requestPasswordReset(emailValue);
+      alert(
+        `Success! Please check ${email}, to view username, and also have the ability to update password`
+      );
+      return true;
+    } catch (error) {
+      // Error can be caused by lack of Internet connection
+      alert(`Error! ${error}`);
+      return false;
+    }
+  };
   return (
     <div className="body">
       <div className="holder">
@@ -39,10 +52,6 @@ export default function ForgotUserName() {
             Submit
           </button>
         </div>
-      </div>
-      <div className="gap"></div>
-      <div className="revealer" id="revealer">
-        {revealUsername()}
       </div>
     </div>
   );
