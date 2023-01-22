@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
-import "./styles/login.css";
+import "./styles/signup.css";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
@@ -15,6 +15,10 @@ export default function SignUp() {
 
   function refresh() {
     window.location.reload(false);
+  }
+
+  function logIn() {
+    navigate("/login");
   }
   const signUp = async function () {
     if (password !== confirmPassword) {
@@ -62,71 +66,89 @@ export default function SignUp() {
 
   return (
     <div className="body">
-      <div className="title">SignUp</div>
-      <div className="container">
-        <div className="heading">Username</div>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          placeholder="Enter Username"
-          maxLength="20"
-        ></input>
+      <div className="holder">
+        <div className="title">Sign Up</div>
+
+        <div className="div-holder">
+          <div className="heading">Username</div>
+          <input
+            type="text"
+            id="username"
+            className="inputs"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            placeholder="Enter Username"
+            maxLength="20"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <div className="heading">Email</div>
+          <input
+            type="text"
+            id="email"
+            className="inputs"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Enter Email"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <div className="heading">First Name</div>
+          <input
+            type="text"
+            id="firstName"
+            className="inputs"
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+            placeholder="Enter First name"
+            maxLength="20"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <div className="heading">Last Name</div>
+          <input
+            type="text"
+            id="lastName"
+            className="inputs"
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
+            placeholder="Enter Last name"
+            maxLength="20"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <div className="heading">Password</div>
+          <input
+            type="password"
+            id="password"
+            className="inputs"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Enter Password"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <div className="heading">Confirm Password</div>
+          <input
+            type="password"
+            id="confirmPassword"
+            className="inputs"
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            placeholder="Confirm Password"
+          ></input>
+        </div>
+        <div className="div-holder">
+          <button className="signUpButton" onClick={() => signUp()}>
+            Sign Up
+          </button>
+        </div>
+        <div className="already-holder">
+          <button className="already-button" onClick={() => logIn()}>
+            Already Have An Account?
+          </button>
+        </div>
       </div>
-      <div className="container">
-        <div className="heading">Email</div>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Enter Email"
-        ></input>
-      </div>
-      <div className="container">
-        <div className="heading">First Name</div>
-        <input
-          type="text"
-          id="firstName"
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
-          placeholder="Enter First name"
-          maxLength="20"
-        ></input>
-      </div>
-      <div className="container">
-        <div className="heading">Last Name</div>
-        <input
-          type="text"
-          id="lastName"
-          value={lastName}
-          onChange={(event) => setLastName(event.target.value)}
-          placeholder="Enter Last name"
-          maxLength="20"
-        ></input>
-      </div>
-      <div className="container">
-        <div className="heading">Password</div>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Enter Password"
-        ></input>
-      </div>
-      <div className="container">
-        <div className="heading">ConfirmPassword</div>
-        <input
-          type="password"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={(event) => setConfirmPassword(event.target.value)}
-          placeholder="Confirm Password"
-        ></input>
-      </div>
-      <button onClick={() => signUp()}>Sign Up</button>
     </div>
   );
 }

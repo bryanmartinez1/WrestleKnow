@@ -21,14 +21,17 @@ export default function Navbar() {
     return currentUser;
   };
 
+  // Gets Current User
   getCurrentUser();
+
+  // Logs Out Current User
   const logOut = async function () {
     try {
       await Parse.User.logOut();
       // To verify that current user is now empty, currentAsync can be used
       const currentUser = await Parse.User.current();
       if (currentUser === null) {
-        console.log("Success! No user is logged in anymore!");
+        console.log("Log Out: No user is logged in anymore!");
       }
       // Update state variable holding current user
       getCurrentUser();

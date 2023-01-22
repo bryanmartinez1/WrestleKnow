@@ -92,6 +92,3 @@ body {
         display: none;
     }
 }
-.dropdown:hover {
-    display: block;
-}
