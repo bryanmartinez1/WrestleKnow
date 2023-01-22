@@ -80,7 +80,7 @@ Product Spec
 - [x] Set Up Placeholder Pages
 - [x] Set Up Back4App Parse Backend
 - [x] Connect to Backend
-- [ ] User log functions
+- [x] User log functions
    - [x] Log In Page
       - [x] User can Log In
       - [x] CSS
@@ -88,8 +88,8 @@ Product Spec
       - [x] User can Sign Up
       - [x] CSS
    - [x] Log Out
-   - [ ] Forgot Username
-      - [ ] If user forgots username, user can input email associated with account and the username will be displayed
+   - [x] Forgot Username
+      - [x] If user forgots username, user can input email associated with account and the username will be displayed
       - [x] CSS
    - [x] Forgot Password
       - [x] If user forgots password an email will be sent with steps to reset password
