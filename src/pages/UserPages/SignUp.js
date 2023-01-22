@@ -45,6 +45,8 @@ export default function SignUp() {
         `Sign Up: User, ${createdUser.getUsername()} was successfully created and added to backend`
       );
 
+      await Parse.User.logOut();
+
       // Clear input fields
       setUsername("");
       setEmail("");
