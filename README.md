@@ -84,16 +84,16 @@ Product Spec
    - [x] Log In Page
       - [x] User can Log In
       - [x] CSS
-   - [ ] Sign Up
+   - [x] Sign Up
       - [x] User can Sign Up
-      - [ ] CSS
+      - [x] CSS
    - [x] Log Out
    - [ ] Forgot Username
-      - [ ] If user forgots username an email will be sent displaying the username accredited to that email
-      - [ ] CSS
-   - [ ] Forgot Password
+      - [ ] If user forgots username, user can input email associated with account and the username will be displayed
+      - [x] CSS
+   - [x] Forgot Password
       - [x] If user forgots password an email will be sent with steps to reset password
-      - [ ] CSS
+      - [x] CSS
 ## Gif Walk Through of Weeks 1 So Far
 <img src='https://github.com/bryanmartinez1/WrestleKnow/blob/master/src/progress_gifs/progress1.gif' title='Instagram App Demo' width='' alt='Video Walkthrough' />
 
