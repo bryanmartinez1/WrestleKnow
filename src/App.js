@@ -1,13 +1,16 @@
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
-import Settings from "./Settings";
-import Account from "./Account";
+import Settings from "./pages/Settings";
+import Account from "./pages/Account";
 
-// Selection Pages
-import Wrestler from "./pages/SelectionPages/Wrestler";
-import Company from "./pages/SelectionPages/Company";
-import Title from "./pages/SelectionPages/Title";
-import Faction from "./pages/SelectionPages/Faction";
+//Search Pages
+import WrestlerSearch from "./pages/WrestlerSearch";
+
+// Results Pages
+import Wrestler from "./pages/ResultsPages/Wrestler";
+import Company from "./pages/ResultsPages/Company";
+import Title from "./pages/ResultsPages/Title";
+import Faction from "./pages/ResultsPages/Faction";
 
 // Chosen Pages
 import ChosenWrestler from "./pages/ChosenPages/ChosenWrestler";
@@ -46,25 +49,6 @@ Parse.initialize(App_ID, JS_Key);
 Parse.serverURL = Host_Server;
 
 function App() {
-  const fetchAllWrestlers = async () => {
-    const query = new Parse.Query("Wrestler");
-    const allWrestlersGet = await query.find();
-
-    allWrestlersGet.forEach((item) => {
-      console.log(item);
-    });
-  };
-  const fetchAllCompanies = async () => {
-    const query = new Parse.Query("Company");
-    const allCompaniesGet = await query.find();
-
-    allCompaniesGet.forEach((item) => {
-      console.log(item);
-    });
-  };
-
-  fetchAllWrestlers();
-  fetchAllCompanies();
   return (
     <>
       <Navbar />
@@ -73,6 +57,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
+
+          <Route path="/wrestlersearch" element={<WrestlerSearch />}></Route>
+
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />

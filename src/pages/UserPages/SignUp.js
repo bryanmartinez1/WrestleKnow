@@ -16,6 +16,13 @@ export default function SignUp() {
   function refresh() {
     window.location.reload(false);
   }
+  // Checks to see if atleast one number is present in the string
+  function hasNumber(string) {
+    return /\d/.test(string);
+  }
+  function hasSpecialCharacter(string) {
+    return /[!#$%&?]/g.test(string);
+  }
 
   function logIn() {
     navigate("/login");
@@ -23,6 +30,22 @@ export default function SignUp() {
   const signUp = async function () {
     if (password !== confirmPassword) {
       alert("Password do not match");
+      return false;
+    }
+    if (password.length < 8) {
+      alert("Password must be atleast 8 characters long");
+      return false;
+    }
+    if (!hasNumber(password)) {
+      alert("Password must have atleast 1 number");
+      return false;
+    }
+    if (!hasSpecialCharacter(password)) {
+      alert("Password must have atleast 1 of the following !, #, $, %, &, ?");
+      return false;
+    }
+    if (password.length < 8) {
+      alert("Password must be atleast 8 characters long");
       return false;
     }
     // Note that these values come from state variables that we've declared before

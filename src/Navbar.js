@@ -106,7 +106,7 @@ export default function Navbar() {
       <ul>
         {" "}
         <li>
-          <Link to="/wrestler" onClick={() => closeDrop()}>
+          <Link to="/wrestlersearch" onClick={() => closeDrop()}>
             <img src={wrestler} className="home-image"></img>
             <div className="text">Wrestlers</div>
           </Link>
