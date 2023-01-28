@@ -64,11 +64,6 @@ export default function Navbar() {
     }
   }
 
-  function nightMode() {
-    alert("bruh");
-    openDrop();
-  }
-
   let checkLogIn;
   if (currentUser === null) {
     checkLogIn = (

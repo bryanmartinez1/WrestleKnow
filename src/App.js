@@ -2,9 +2,18 @@ import Navbar from "./Navbar";
 import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Account from "./pages/Account";
+import Admin from "./pages/Admin";
 
 //Search Pages
 import WrestlerSearch from "./pages/WrestlerSearch";
+
+// Create Pages
+import CreateWrestler from "./pages/CreatePages/CreateWrestler";
+import CreateTitle from "./pages/CreatePages/CreateTitle";
+import CreateBrand from "./pages/CreatePages/CreateBrand";
+import CreatePPV from "./pages/CreatePages/CreatePPV";
+import CreateCompany from "./pages/CreatePages/CreateCompany";
+import CreateFaction from "./pages/CreatePages/CreateFaction";
 
 // Results Pages
 import Wrestler from "./pages/ResultsPages/Wrestler";
@@ -57,8 +66,17 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin" element={<Admin />} />
 
           <Route path="/wrestlersearch" element={<WrestlerSearch />}></Route>
+
+          {/* Create Pages */}
+          <Route path="/createwrestler" element={<CreateWrestler />}></Route>
+          <Route path="/createtitle" element={<CreateTitle />}></Route>
+          <Route path="/createbrand" element={<CreateBrand />}></Route>
+          <Route path="/createppv" element={<CreatePPV />}></Route>
+          <Route path="/createcompany" element={<CreateCompany />}></Route>
+          <Route path="/createfaction" element={<CreateFaction />}></Route>
 
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
