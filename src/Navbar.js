@@ -77,8 +77,23 @@ export default function Navbar() {
       </div>
     );
   } else {
+    let a = currentUser.id;
+    console.log("ObjectID: " + a);
+
+    // If the Current User is an Admin
+    // User can do to the Admin Page from the Dropdown
+    let isAdmin;
+    if (currentUser.get("admin") === true) {
+      isAdmin = (
+        <Link to="/admin" onClick={() => closeDrop()}>
+          Admin
+        </Link>
+      );
+    }
+
     checkLogIn = (
       <div class="content-box" id="drop">
+        {isAdmin}
         <Link to="/account" onClick={() => closeDrop()}>
           Account
         </Link>
