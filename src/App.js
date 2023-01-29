@@ -4,9 +4,6 @@ import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
 
-//Search Pages
-import WrestlerSearch from "./pages/WrestlerSearch";
-
 // Create Pages
 import CreateWrestler from "./pages/CreatePages/CreateWrestler";
 import CreateTitle from "./pages/CreatePages/CreateTitle";
@@ -63,12 +60,11 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
+          {/* User Features Pages */}
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
           <Route path="/admin" element={<Admin />} />
-
-          <Route path="/wrestlersearch" element={<WrestlerSearch />}></Route>
 
           {/* Create Pages */}
           <Route path="/createwrestler" element={<CreateWrestler />}></Route>
