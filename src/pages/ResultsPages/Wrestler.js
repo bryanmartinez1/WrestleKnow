@@ -37,11 +37,11 @@ export default function Wrestler() {
   const [sort, setSort] = useState(defaultOption);
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
-  const changeSearch = async function (value) {
+  function changeSearch(value) {
     console.log(value);
     setSearch(value);
     startQuery();
-  };
+  }
   // When User changes sort dropdown
   // and query will be updated
   function changeSort(value) {
@@ -55,6 +55,13 @@ export default function Wrestler() {
     console.log("Sort: " + sort);
   }
 
+  let display = (
+    <div>
+      <div>{search}</div>
+      <div>{sort}</div>
+    </div>
+  );
+
   return (
     <div className="body">
       <div className="searchbar">
@@ -62,7 +69,7 @@ export default function Wrestler() {
           <img className="searchIcon" src="/search_icon.png"></img>
           <input
             className="searchInput"
-            onChange={({ search }) => changeSearch(search.target.value)}
+            onChange={({ search }) => changeSearch(search)}
           ></input>
         </div>
         <Dropdown
@@ -72,6 +79,7 @@ export default function Wrestler() {
           menuClassName="myMenuClassName"
         ></Dropdown>
       </div>
+      {display}
     </div>
   );
 }
