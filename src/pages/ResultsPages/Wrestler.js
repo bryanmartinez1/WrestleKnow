@@ -35,9 +35,31 @@ export default function Wrestler() {
 
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(defaultOption);
+  // Dropdown Functions
+  // Proper Implemnation to be Added
+  // Functions to Open and Close Dropdown
+  var dropOpened = false;
+  //Function to Open Dropdown
+  function openDrop() {
+    document.getElementById("drop").style.display = "block";
+    dropOpened = true;
+  }
+  //Function to Close Dropdown
+  function closeDrop() {
+    document.getElementById("drop").style.display = "none";
+    dropOpened = false;
+  }
+  //puts the two together
+  function dropOpenClose() {
+    if (dropOpened === false) {
+      openDrop();
+    } else {
+      closeDrop();
+    }
+  }
+
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
-
   const newSearch = (event) => {
     if (event.key === "Enter") {
       console.log("Enter key pressed");
@@ -66,17 +88,18 @@ export default function Wrestler() {
   function startQuery() {
     console.log("Search: " + search);
     console.log("Sort: " + sort);
+    alert("onload function works");
   }
 
   let display = (
-    <div>
+    <div className="querybody">
       <div>{search}</div>
       <div>{sort}</div>
     </div>
   );
 
   return (
-    <div className="body">
+    <div className="body" onLoad={startQuery()}>
       <div className="searchbar">
         <div className="bar">
           <img className="searchIcon" src="/search_icon.png"></img>
@@ -87,6 +110,7 @@ export default function Wrestler() {
           ></input>
         </div>
         <div className="sort-holder">
+          {/* Dropdown will be updated to that similar of the dropdwon if the navbar */}
           Sort By:
           <Dropdown
             options={sortOptions}
