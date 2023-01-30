@@ -37,15 +37,28 @@ export default function Wrestler() {
   const [sort, setSort] = useState(defaultOption);
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
-  function changeSearch(value) {
-    console.log(value);
-    setSearch(value);
-    startQuery();
-  }
+
+  const newSearch = (event) => {
+    if (event.key === "Enter") {
+      console.log("Enter key pressed");
+      console.log(
+        "User Searched: " + document.getElementById("searchInput").value
+      );
+      setSearch(document.getElementById("searchInput").value);
+      startQuery();
+    }
+  };
+
   // When User changes sort dropdown
   // and query will be updated
   function changeSort(value) {
     setSort(value);
+    startQuery();
+  }
+
+  // Function for when Filters Option is added
+  function updateFilters() {
+    // To be Added
     startQuery();
   }
 
@@ -69,15 +82,19 @@ export default function Wrestler() {
           <img className="searchIcon" src="/search_icon.png"></img>
           <input
             className="searchInput"
-            onChange={({ search }) => changeSearch(search)}
+            onKeyDown={newSearch}
+            id="searchInput"
           ></input>
         </div>
-        <Dropdown
-          options={sortOptions}
-          value={defaultOption}
-          onChange={({ value }) => changeSort(value)}
-          menuClassName="myMenuClassName"
-        ></Dropdown>
+        <div className="sort-holder">
+          Sort By:
+          <Dropdown
+            options={sortOptions}
+            value={defaultOption}
+            onChange={({ value }) => changeSort(value)}
+            menuClassName="myMenuClassName"
+          ></Dropdown>
+        </div>
       </div>
       {display}
     </div>
