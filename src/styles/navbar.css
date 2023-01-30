@@ -73,6 +73,7 @@ body {
 
 #drop {
     display: none;
+    z-index: 1;
 }
 
 /* Hovering the Content inside Dropdown */

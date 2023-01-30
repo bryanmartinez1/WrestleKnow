@@ -15,12 +15,9 @@ Wrestler Page will display
 */
 
 import React, { useState } from "react";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./wrestler.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Select from "react-select";
-import Multiselect from "multiselect-react-dropdown";
 
 export default function Wrestler() {
   // Sort Dropdown Content
@@ -33,7 +30,7 @@ export default function Wrestler() {
   ];
   const defaultOption = sortOptions[0];
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("Default");
   const [sort, setSort] = useState(defaultOption);
   // Dropdown Functions
   // Proper Implemnation to be Added
@@ -41,12 +38,12 @@ export default function Wrestler() {
   var dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
-    document.getElementById("drop").style.display = "block";
+    document.getElementById("wrestlerdrop").style.display = "block";
     dropOpened = true;
   }
   //Function to Close Dropdown
   function closeDrop() {
-    document.getElementById("drop").style.display = "none";
+    document.getElementById("wrestlerdrop").style.display = "none";
     dropOpened = false;
   }
   //puts the two together
@@ -74,7 +71,11 @@ export default function Wrestler() {
   // When User changes sort dropdown
   // and query will be updated
   function changeSort(value) {
-    setSort(value);
+    if (value === 0) setSort("Default");
+    if (value === 1) setSort("A-Z");
+    if (value === 2) setSort("Z-A");
+    if (value === 3) setSort("Age (Rising)");
+    if (value === 4) setSort("Age (Falling)");
     startQuery();
   }
 
@@ -111,13 +112,31 @@ export default function Wrestler() {
         </div>
         <div className="sort-holder">
           {/* Dropdown will be updated to that similar of the dropdwon if the navbar */}
-          Sort By:
-          <Dropdown
-            options={sortOptions}
-            value={defaultOption}
-            onChange={({ value }) => changeSort(value)}
-            menuClassName="myMenuClassName"
-          ></Dropdown>
+          <div className="dropdown">
+            <button
+              className="dropdown-wrestler-sort-button"
+              onClick={() => dropOpenClose()}
+            >
+              {sort}
+            </button>
+            <div class="content-box" id="wrestlerdrop">
+              <div className="option" onClick={() => changeSort(0)}>
+                Default
+              </div>
+              <div className="option" onClick={() => changeSort(1)}>
+                A - Z
+              </div>
+              <div className="option" onClick={() => changeSort(2)}>
+                Z - A
+              </div>
+              <div className="option" onClick={() => changeSort(3)}>
+                Age (Rising)
+              </div>
+              <div className="option" onClick={() => changeSort(4)}>
+                Age (Falling)
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {display}

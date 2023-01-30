@@ -49,6 +49,41 @@
     padding-right: 30px;
 }
 
+/* Dropdown */
+.dropdown {
+    background-color: inherit;
+    position: relative;
+    font-family: Lexend;
+}
+
+.dropdown-wrestler-sort-button {
+    background-color:#EE534F;
+    border: none;
+    cursor:pointer;
+    font-family: Lexend;
+    font-size: 1rem;
+    height:50px;
+    width: 125px;
+}
+
+.content-box {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right:0;
+    /* display: none; */
+}
+
+#drop {
+    display: none;
+}
+
+/* Hovering the Content inside Dropdown */
+.content-box :hover {
+    background-color: #ddd;
+}
+
 .querybody {
     width: 100%;
     background-color: antiquewhite;
