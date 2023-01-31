@@ -98,13 +98,21 @@ Product Spec
 <img src='https://github.com/bryanmartinez1/WrestleKnow/blob/master/src/progress_gifs/progress1.gif' title='Instagram App Demo' width='' alt='Video Walkthrough' />
 
 
-## Progress Weeks 2 - 4
-- [ ] Base Designs for Display Screens
+## Progress Weeks 2 - 3
+- [ ] Wrestler Results/Search Page
    - [ ] Wrestler
-   - [ ] Company
-   - [ ] Championship
-## Gif Walk Through of Weeks 2 - 4
-
+   - [ ] Search Bar
+      - [ ] Wrestler Query updates when user changes search
+      - [ ] Search Hook updates when user changes it
+   - [ ] Sort Dropdown
+      - [ ] Wrestler Query updates when dropdown changes
+      - [ ] Dropdown Display changes when user changes
+   - [ ] CSS
+      - [ ] Search Bar
+      - [ ] Sort Dropdown
+      - [ ] Wrestler Display
+## Gif Walk Through of Weeks 2 - 3
+- To Be Added Later
 
 ## Figma Designs
 https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/WrestleKnow-Web-App?node-id=275%3A977&t=nq9GArJZ3fyoufAX-0
