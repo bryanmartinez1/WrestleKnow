@@ -25,7 +25,7 @@ export default function Wrestler() {
 
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
-  const newSearch = (event) => {
+  async function newSearch(event) {
     if (event.key === "Enter") {
       console.log(
         "User Searched: " + document.getElementById("searchInput").value
@@ -33,7 +33,7 @@ export default function Wrestler() {
       setSearch(document.getElementById("searchInput").value);
       startQuery();
     }
-  };
+  }
 
   // When User changes sort dropdown
   // and query will be updated
@@ -43,6 +43,7 @@ export default function Wrestler() {
     if (value === 2) setSort("Z-A");
     if (value === 3) setSort("Age (Rising)");
     if (value === 4) setSort("Age (Falling)");
+    closeDrop();
     startQuery();
   }
 
@@ -69,22 +70,20 @@ export default function Wrestler() {
     }
   }
 
-  // Function for when Filters Option is added
-  function updateFilters() {
-    // To be Added
-    startQuery();
-  }
-
   // Query is Started
   async function startQuery() {
-    console.log("Search: " + search);
     console.log("Sort: " + sort);
-    let wrestlerObject = new Parse.object.extend("Wrestler");
+    let searchValue = document.getElementById("searchInput").value;
+    console.log("Search: " + search);
+    console.log("Search: " + searchValue);
+    let wrestlerQuery = new Parse.Query("Wrestler");
     try {
-      const wrestlerQuery = new Parse.Query(wrestlerObject);
-      const wrestlerResults = await wrestlerQuery.find();
+      wrestlerQuery.contains("name", searchValue);
+      let wrestlerResults = await wrestlerQuery.find();
       console.log(wrestlerResults);
-      alert("onload function works");
+      for (let wrestler of wrestlerResults) {
+        console.log(wrestler.get("name"));
+      }
     } catch (error) {
       alert(`Error! ${error.message}`);
       return false;
@@ -99,19 +98,21 @@ export default function Wrestler() {
   );
 
   return (
-    <div className="body">
+    <div className="wrestler-body" onLoad={() => startQuery()}>
       <div className="searchbar">
         <div className="bar">
           <img className="searchIcon" src="/search_icon.png"></img>
           <input
             className="searchInput"
-            onKeyDown={newSearch}
+            onKeyDown={(key) => newSearch(key)}
             id="searchInput"
           ></input>
         </div>
         <div className="sort-holder">
           {/* Dropdown will be updated to that similar of the dropdwon if the navbar */}
           <div className="dropdown">
+            {" "}
+            Sort By:
             <button
               className="dropdown-wrestler-sort-button"
               onClick={() => dropOpenClose()}
