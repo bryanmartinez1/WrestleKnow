@@ -14,7 +14,7 @@ Wrestler Page will display
             - Reverse Alphabetical
 */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function Wrestler() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("Default");
+  let bruh;
 
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
@@ -31,20 +32,40 @@ export default function Wrestler() {
         "User Searched: " + document.getElementById("searchInput").value
       );
       setSearch(document.getElementById("searchInput").value);
-      startQuery();
     }
   }
 
+  useEffect(() => {
+    console.log("Searched " + search);
+    console.log("Sort " + sort);
+    startQuery(search, sort);
+  }, [search, sort]);
+
   // When User changes sort dropdown
   // and query will be updated
-  function changeSort(value) {
-    if (value === 0) setSort("Default");
-    if (value === 1) setSort("A-Z");
-    if (value === 2) setSort("Z-A");
-    if (value === 3) setSort("Age (Rising)");
-    if (value === 4) setSort("Age (Falling)");
+  async function changeSort(value) {
+    switch (value) {
+      case 0:
+        setSort("Default");
+        break;
+      case 1:
+        setSort("A-Z");
+        break;
+      case 2:
+        setSort("Z-A");
+        break;
+      case 3:
+        setSort("Age (Rising)");
+        break;
+      case 4:
+        setSort("Age (Falling)");
+        break;
+      case 5:
+        setSort("Popular");
+        break;
+    }
     closeDrop();
-    startQuery();
+    startQuery(search, sort);
   }
 
   // Dropdown Functions
@@ -71,16 +92,22 @@ export default function Wrestler() {
   }
 
   // Query is Started
-  async function startQuery() {
-    console.log("Sort: " + sort);
-    let searchValue = document.getElementById("searchInput").value;
-    console.log("Search: " + search);
-    console.log("Search: " + searchValue);
+  async function startQuery(searchVal, sortVal) {
     let wrestlerQuery = new Parse.Query("Wrestler");
     try {
-      wrestlerQuery.contains("name", searchValue);
+      wrestlerQuery.contains("name", searchVal);
+
+      //Sorts Query
+      if (sortVal === "A-Z") {
+        wrestlerQuery.addAscending("name");
+      } else if (sortVal === "Z-A") {
+        wrestlerQuery.addDescending("name");
+      } else if (sortVal === "Age (Falling)") {
+        wrestlerQuery.addAscending("birth");
+      } else if (sortVal === "Age (Rising)") {
+        wrestlerQuery.addDescending("birth");
+      }
       let wrestlerResults = await wrestlerQuery.find();
-      console.log(wrestlerResults);
       for (let wrestler of wrestlerResults) {
         console.log(wrestler.get("name"));
       }
@@ -98,7 +125,7 @@ export default function Wrestler() {
   );
 
   return (
-    <div className="wrestler-body" onLoad={() => startQuery()}>
+    <div className="wrestler-body">
       <div className="searchbar">
         <div className="bar">
           <img className="searchIcon" src="/search_icon.png"></img>
@@ -134,6 +161,9 @@ export default function Wrestler() {
               </div>
               <div className="option" onClick={() => changeSort(4)}>
                 Age (Falling)
+              </div>
+              <div className="option" onClick={() => changeSort(5)}>
+                Popular
               </div>
             </div>
           </div>
