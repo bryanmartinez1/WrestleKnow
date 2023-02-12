@@ -64,7 +64,7 @@
 }
 
 .dropdown-wrestler-sort-button {
-    background-color:#EE534F;
+    background-color:#EF6460;
     border: none;
     cursor:pointer;
     font-family: Lexend;
@@ -98,4 +98,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.wrestlerHolder {
+    width:inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }

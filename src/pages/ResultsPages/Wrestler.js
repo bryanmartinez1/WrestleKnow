@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import "./wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import ObjectDisplay from "./ObjectDisplay";
 
 export default function Wrestler() {
   const [search, setSearch] = useState("");
@@ -49,16 +50,16 @@ export default function Wrestler() {
         setSort("Default");
         break;
       case 1:
-        setSort("A-Z");
+        setSort("A - Z");
         break;
       case 2:
-        setSort("Z-A");
+        setSort("Z - A");
         break;
       case 3:
-        setSort("Age (Rising)");
+        setSort("Youngest");
         break;
       case 4:
-        setSort("Age (Falling)");
+        setSort("Oldest");
         break;
       case 5:
         setSort("Popular");
@@ -102,9 +103,9 @@ export default function Wrestler() {
         wrestlerQuery.addAscending("name");
       } else if (sortVal === "Z-A") {
         wrestlerQuery.addDescending("name");
-      } else if (sortVal === "Age (Falling)") {
+      } else if (sortVal === "Youngest") {
         wrestlerQuery.addAscending("birth");
-      } else if (sortVal === "Age (Rising)") {
+      } else if (sortVal === "Oldest") {
         wrestlerQuery.addDescending("birth");
       }
       let wrestlerResults = await wrestlerQuery.find();
@@ -157,10 +158,10 @@ export default function Wrestler() {
                 Z - A
               </div>
               <div className="option" onClick={() => changeSort(3)}>
-                Age (Rising)
+                Youngest
               </div>
               <div className="option" onClick={() => changeSort(4)}>
-                Age (Falling)
+                Oldest
               </div>
               <div className="option" onClick={() => changeSort(5)}>
                 Popular
@@ -169,7 +170,19 @@ export default function Wrestler() {
           </div>
         </div>
       </div>
-      {display}
+      <div className="wrestlerHolder">
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+        <ObjectDisplay />
+      </div>
     </div>
   );
 }

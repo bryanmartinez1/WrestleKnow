@@ -1,0 +1,52 @@
+.objectHolder {
+    width: 200px;
+    height: 300px;
+    border-style: solid;
+    border-color: #212427;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor:pointer;
+}
+
+.objectImg {
+    width: 200px;
+    height: 200px;
+    background-color: #353739;
+}
+
+.objectName {
+    width: 200px;
+    height: 50px;
+    background-color: #F8BCBA;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: #212427;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.objectInfo {
+    width: 200px;
+    height: 50px;
+    background-color: #F8BCBA;
+    display: flex;
+    flex-direction: row;
+}
+
+.objectOther {
+    width: 200px;
+    height: 50px;
+    border-color: #212427;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid;
+}
+
+.spacing {
+    margin: 5px;
+}
