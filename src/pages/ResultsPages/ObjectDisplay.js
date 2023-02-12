@@ -11,7 +11,7 @@ export default function ObjectDisplay() {
         <div className="objectInfo">
           <div className="objectOther">Canada</div>
           <div className="objectOther">WWE</div>
-          <div className="objectOther">6 ft 0 in</div>
+          <div className="objectOther">6 feet 0 in</div>
         </div>
       </div>
     </div>

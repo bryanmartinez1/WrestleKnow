@@ -14,7 +14,7 @@ Wrestler Page will display
             - Reverse Alphabetical
 */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -23,7 +23,8 @@ import ObjectDisplay from "./ObjectDisplay";
 export default function Wrestler() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("Default");
-  let bruh;
+  const [query, setQuery] = useState();
+  const [show, setShow] = useState(false);
 
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
@@ -109,21 +110,24 @@ export default function Wrestler() {
         wrestlerQuery.addDescending("birth");
       }
       let wrestlerResults = await wrestlerQuery.find();
-      for (let wrestler of wrestlerResults) {
-        console.log(wrestler.get("name"));
-      }
+      setQuery(wrestlerResults);
+      setShow(true);
     } catch (error) {
       alert(`Error! ${error.message}`);
       return false;
     }
   }
 
-  let display = (
-    <div className="querybody">
-      <div>{search}</div>
-      <div>{sort}</div>
-    </div>
-  );
+  function showResults() {
+    return query.map((wrestler) => {
+      return (
+        <div>
+          <ObjectDisplay></ObjectDisplay>
+          {wrestler.get("name")}
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="wrestler-body">
@@ -170,19 +174,7 @@ export default function Wrestler() {
           </div>
         </div>
       </div>
-      <div className="wrestlerHolder">
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-        <ObjectDisplay />
-      </div>
+      {show && <div className="wrestlerHolder">{showResults()}</div>}
     </div>
   );
 }

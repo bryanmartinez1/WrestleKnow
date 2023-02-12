@@ -77,8 +77,8 @@ export default function Navbar() {
       </div>
     );
   } else {
-    let a = currentUser.id;
-    console.log("ObjectID: " + a);
+    // let a = currentUser.id;
+    // console.log("ObjectID: " + a);
 
     // If the Current User is an Admin
     // User can do to the Admin Page from the Dropdown

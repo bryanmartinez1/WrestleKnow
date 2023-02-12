@@ -45,6 +45,8 @@
     align-items: center;
     justify-content: center;
     border-right: solid;
+    font-size: 14px;
+    text-align: center;
 }
 
 .spacing {

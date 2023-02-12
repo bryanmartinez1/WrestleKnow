@@ -98,14 +98,14 @@ export default function Company() {
       wrestlerQuery.contains("name", searchVal);
 
       //Sorts Query
-      if (sortVal === "A-Z") {
+      if (sortVal === "A - Z") {
         wrestlerQuery.addAscending("name");
-      } else if (sortVal === "Z-A") {
+      } else if (sortVal === "Z - A") {
         wrestlerQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
-        wrestlerQuery.addAscending("birth");
+        wrestlerQuery.addAscending("introduced");
       } else if (sortVal === "Oldest") {
-        wrestlerQuery.addDescending("birth");
+        wrestlerQuery.addDescending("introduced");
       }
       let wrestlerResults = await wrestlerQuery.find();
       for (let wrestler of wrestlerResults) {
