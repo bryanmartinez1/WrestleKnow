@@ -100,17 +100,18 @@ Product Spec
 
 ## Progress Weeks 2 - 3
 - [ ] Wrestler Results/Search Page
-   - [ ] Wrestler
-   - [ ] Search Bar
-      - [ ] Wrestler Query updates when user changes search
-      - [ ] Search Hook updates when user changes it
-   - [ ] Sort Dropdown
-      - [ ] Wrestler Query updates when dropdown changes
-      - [ ] Dropdown Display changes when user changes
-   - [ ] CSS
-      - [ ] Search Bar
-      - [ ] Sort Dropdown
-      - [ ] Wrestler Display
+   - [ ] Query Displays
+      - [ ] Display changes on query update
+   - [x] Search Bar
+      - [x] Wrestler Query updates when user changes search
+      - [x] Search Hook updates when user changes it
+   - [x] Sort Dropdown
+      - [x] Wrestler Query updates when dropdown changes
+      - [x] Dropdown Display changes when user changes
+   - [x] CSS
+      - [x] Search Bar
+      - [x] Sort Dropdown
+      - [x] Wrestler Display
 ## Gif Walk Through of Weeks 2 - 3
 - To Be Added Later
 
