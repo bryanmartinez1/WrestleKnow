@@ -15,7 +15,7 @@ Wrestler Page will display
 */
 
 import React, { useEffect, useState } from "react";
-import "./wrestler.css";
+import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
 

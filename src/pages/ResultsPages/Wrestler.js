@@ -15,7 +15,7 @@ Wrestler Page will display
 */
 
 import React, { useEffect, useState } from "react";
-import "./wrestler.css";
+import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import ObjectDisplay from "./ObjectDisplay";
@@ -99,9 +99,9 @@ export default function Wrestler() {
       wrestlerQuery.contains("name", searchVal);
 
       //Sorts Query
-      if (sortVal === "A-Z") {
+      if (sortVal === "A - Z") {
         wrestlerQuery.addAscending("name");
-      } else if (sortVal === "Z-A") {
+      } else if (sortVal === "Z - A") {
         wrestlerQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
         wrestlerQuery.addAscending("birth");

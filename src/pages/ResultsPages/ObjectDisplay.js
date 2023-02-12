@@ -1,5 +1,5 @@
 import React from "react";
-import "./display.css";
+import "./styles/display.css";
 import zayn from "./zayn.png";
 
 export default function ObjectDisplay() {
