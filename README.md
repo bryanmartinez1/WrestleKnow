@@ -99,9 +99,9 @@ Product Spec
 
 
 ## Progress Weeks 2 - 3
-- [ ] Wrestler Results/Search Page
-   - [ ] Query Displays
-      - [ ] Display changes on query update
+- [x] Wrestler Results/Search Page
+   - [x] Query Displays
+      - [x] Display changes on query update
    - [x] Search Bar
       - [x] Wrestler Query updates when user changes search
       - [x] Search Hook updates when user changes it
@@ -112,6 +112,15 @@ Product Spec
       - [x] Search Bar
       - [x] Sort Dropdown
       - [x] Wrestler Display
+- [ ] Wrestler Choosen Screen
+   - [x] Quick Info
+   - [x] About
+   - [x] YouTube
+   - [x] Moves
+   - [x] Social Medias
+   - [ ] Titles Held
+   - [ ] Reigns Descripitions
+   - [ ] CSS (in-progress)
 ## Gif Walk Through of Weeks 2 - 3
 - To Be Added Later
 
