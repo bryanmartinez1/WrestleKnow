@@ -7,14 +7,14 @@ Wrestler Page will display
             - age
             - country wrestler is from
         - Sorting will consist of
-            - Default
+            - Recommended
             - Age (rising)
             - Age (falling)
             - Alphabetical
             - Reverse Alphabetical
 */
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ import ObjectDisplay from "./ObjectDisplay";
 
 export default function Wrestler() {
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("Default");
+  const [sort, setSort] = useState("Recommended");
   const [query, setQuery] = useState();
   const [show, setShow] = useState(false);
 
@@ -34,6 +34,7 @@ export default function Wrestler() {
         "User Searched: " + document.getElementById("searchInput").value
       );
       setSearch(document.getElementById("searchInput").value);
+      closeDrop();
     }
   }
 
@@ -48,7 +49,7 @@ export default function Wrestler() {
   async function changeSort(value) {
     switch (value) {
       case 0:
-        setSort("Default");
+        setSort("Recommended");
         break;
       case 1:
         setSort("A - Z");
@@ -61,9 +62,6 @@ export default function Wrestler() {
         break;
       case 4:
         setSort("Oldest");
-        break;
-      case 5:
-        setSort("Popular");
         break;
     }
     closeDrop();
@@ -105,11 +103,12 @@ export default function Wrestler() {
       } else if (sortVal === "Z - A") {
         wrestlerQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
-        wrestlerQuery.addAscending("birth");
-      } else if (sortVal === "Oldest") {
         wrestlerQuery.addDescending("birth");
+      } else if (sortVal === "Oldest") {
+        wrestlerQuery.addAscending("birth");
       }
       let wrestlerResults = await wrestlerQuery.find();
+      console.log(wrestlerResults);
       setQuery(wrestlerResults);
       setShow(true);
     } catch (error) {
@@ -122,8 +121,14 @@ export default function Wrestler() {
     return query.map((wrestler) => {
       return (
         <div>
-          <ObjectDisplay></ObjectDisplay>
-          {wrestler.get("name")}
+          <ObjectDisplay
+            name={wrestler.get("name")}
+            infoA={wrestler.get("from")}
+            infoB={JSON.stringify(wrestler.get("company"))}
+            infoC={wrestler.get("birth")}
+            imgSrc={wrestler.get("image")}
+            innerQuery={"Company"}
+          ></ObjectDisplay>
         </div>
       );
     });
@@ -153,7 +158,7 @@ export default function Wrestler() {
             </button>
             <div class="content-box" id="wrestlerdrop">
               <div className="option" onClick={() => changeSort(0)}>
-                Default
+                Recommended
               </div>
               <div className="option" onClick={() => changeSort(1)}>
                 A - Z
@@ -166,9 +171,6 @@ export default function Wrestler() {
               </div>
               <div className="option" onClick={() => changeSort(4)}>
                 Oldest
-              </div>
-              <div className="option" onClick={() => changeSort(5)}>
-                Popular
               </div>
             </div>
           </div>
