@@ -128,6 +128,7 @@ export default function Wrestler() {
             infoC={wrestler.get("birth")}
             imgSrc={wrestler.get("image")}
             innerQuery={"Company"}
+            objectId={wrestler.id}
           ></ObjectDisplay>
         </div>
       );

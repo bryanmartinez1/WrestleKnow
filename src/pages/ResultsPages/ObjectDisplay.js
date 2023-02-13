@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles/display.css";
 import Parse from "parse/dist/parse.min.js";
+import { Link } from "react-router-dom";
 
 export default function ObjectDisplay(props) {
   const [company, setCompany] = useState();
@@ -40,15 +41,21 @@ export default function ObjectDisplay(props) {
 
   return (
     <div className="spacing">
-      <div className="objectHolder">
-        <img src={imgSRC} className="objectImg"></img>
-        <div className="objectName">{props.name}</div>
-        <div className="objectInfo">
-          <div className="objectOther">{props.infoA}</div>
-          <div className="objectOther">{company}</div>
-          <div className="objectOther">{age}</div>
+      <Link
+        className="link"
+        to="/wrestler/chosenwrestler"
+        state={{ id: props.objectId }}
+      >
+        <div className="objectHolder">
+          <img src={imgSRC} className="objectImg"></img>
+          <div className="objectName">{props.name}</div>
+          <div className="objectInfo">
+            <div className="objectOther">{props.infoA}</div>
+            <div className="objectOther">{company}</div>
+            <div className="objectOther">{age}</div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

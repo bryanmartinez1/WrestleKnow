@@ -7,6 +7,11 @@
     font-family: Lexend;
 }
 
+.link {
+    text-decoration: none;
+    color: #212427;
+}
+
 .searchbar {
     display: flex;
     flex-direction: row;
