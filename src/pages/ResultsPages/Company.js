@@ -7,7 +7,7 @@ Wrestler Page will display
             - age
             - country wrestler is from
         - Sorting will consist of
-            - Default
+            - Recommended
             - Age (rising)
             - Age (falling)
             - Alphabetical
@@ -18,26 +18,24 @@ import React, { useEffect, useState } from "react";
 import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import CompanyDisplay from "./CompanyDisplay";
 
 export default function Company() {
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("Default");
-  let bruh;
+  const [sort, setSort] = useState("Recommended");
+  const [query, setQuery] = useState();
+  const [show, setShow] = useState(false);
 
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
   async function newSearch(event) {
     if (event.key === "Enter") {
-      console.log(
-        "User Searched: " + document.getElementById("searchInput").value
-      );
       setSearch(document.getElementById("searchInput").value);
+      closeDrop();
     }
   }
 
   useEffect(() => {
-    console.log("Searched " + search);
-    console.log("Sort " + sort);
     startQuery(search, sort);
   }, [search, sort]);
 
@@ -46,7 +44,7 @@ export default function Company() {
   async function changeSort(value) {
     switch (value) {
       case 0:
-        setSort("Default");
+        setSort("Recommended");
         break;
       case 1:
         setSort("A - Z");
@@ -59,9 +57,6 @@ export default function Company() {
         break;
       case 4:
         setSort("Oldest");
-        break;
-      case 5:
-        setSort("Popular");
         break;
     }
     closeDrop();
@@ -103,26 +98,36 @@ export default function Company() {
       } else if (sortVal === "Z - A") {
         wrestlerQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
-        wrestlerQuery.addAscending("introduced");
-      } else if (sortVal === "Oldest") {
         wrestlerQuery.addDescending("introduced");
+      } else if (sortVal === "Oldest") {
+        wrestlerQuery.addAscending("introduced");
       }
       let wrestlerResults = await wrestlerQuery.find();
-      for (let wrestler of wrestlerResults) {
-        console.log(wrestler.get("name"));
-      }
+      setQuery(wrestlerResults);
+      setShow(true);
     } catch (error) {
       alert(`Error! ${error.message}`);
       return false;
     }
   }
 
-  let display = (
-    <div className="querybody">
-      <div>{search}</div>
-      <div>{sort}</div>
-    </div>
-  );
+  function showResults() {
+    return query.map((company) => {
+      return (
+        <div>
+          <CompanyDisplay
+            link={"/company/chosencompany"}
+            name={company.get("name")}
+            infoA={company.get("from")}
+            infoB={company.get("shortName")}
+            infoC={company.get("introduced")}
+            imgSrc={company.get("image")}
+            objectId={company.id}
+          ></CompanyDisplay>
+        </div>
+      );
+    });
+  }
 
   return (
     <div className="wrestler-body">
@@ -148,7 +153,7 @@ export default function Company() {
             </button>
             <div class="content-box" id="wrestlerdrop">
               <div className="option" onClick={() => changeSort(0)}>
-                Default
+                Recommended
               </div>
               <div className="option" onClick={() => changeSort(1)}>
                 A - Z
@@ -162,14 +167,11 @@ export default function Company() {
               <div className="option" onClick={() => changeSort(4)}>
                 Oldest
               </div>
-              <div className="option" onClick={() => changeSort(5)}>
-                Popular
-              </div>
             </div>
           </div>
         </div>
       </div>
-      {display}
+      {show && <div className="wrestlerHolder">{showResults()}</div>}
     </div>
   );
 }

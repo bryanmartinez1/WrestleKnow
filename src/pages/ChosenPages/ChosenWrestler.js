@@ -123,7 +123,11 @@ export default function ChosenWrestler() {
             >
               <img className="linkImg" src={twitterImg}></img> @{twitter}
             </a>
-            <a className="linkButton" href={instagramURL + instagram}>
+            <a
+              className="linkButton"
+              href={instagramURL + instagram}
+              target="_blank"
+            >
               <img className="linkImg" src={instagramImg}></img>@{instagram}
             </a>
           </div>

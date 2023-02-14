@@ -4,10 +4,10 @@ import Parse from "parse/dist/parse.min.js";
 import { Link } from "react-router-dom";
 
 export default function ObjectDisplay(props) {
-  const [company, setCompany] = useState();
+  const [middleInfo, setMiddleInfo] = useState("Bruh");
 
   //Gets the Age from Date inserted
-  let dob = props.infoC;
+  let dob = props.infoDATE;
   //calculate month difference from current date in time
   var month_diff = Date.now() - dob.getTime();
   //convert the calculated difference in date format
@@ -30,7 +30,7 @@ export default function ObjectDisplay(props) {
     try {
       query.equalTo("objectId", compID);
       let results = await query.find();
-      setCompany(results[0].get("shortName"));
+      setMiddleInfo(results[0].get("shortName"));
       return true;
     } catch (error) {
       alert(`Error! ${error.message}`);
@@ -38,20 +38,15 @@ export default function ObjectDisplay(props) {
     }
   }
   innerQuery();
-
   return (
     <div className="spacing">
-      <Link
-        className="link"
-        to="/wrestler/chosenwrestler"
-        state={{ id: props.objectId }}
-      >
+      <Link className="link" to={props.link} state={{ id: props.objectId }}>
         <div className="objectHolder">
           <img src={imgSRC} className="objectImg"></img>
           <div className="objectName">{props.name}</div>
           <div className="objectInfo">
-            <div className="objectOther">{props.infoA}</div>
-            <div className="objectOther">{company}</div>
+            <div className="objectOther">{props.infoFROM}</div>
+            <div className="objectOther">{middleInfo}</div>
             <div className="objectOther">{age}</div>
           </div>
         </div>

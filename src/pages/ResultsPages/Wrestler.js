@@ -17,8 +17,7 @@ Wrestler Page will display
 import React, { useEffect, useState } from "react";
 import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
-import { useLocation, useNavigate } from "react-router-dom";
-import ObjectDisplay from "./ObjectDisplay";
+import WrestlerDisplay from "./WrestlerDisplay";
 
 export default function Wrestler() {
   const [search, setSearch] = useState("");
@@ -121,15 +120,17 @@ export default function Wrestler() {
     return query.map((wrestler) => {
       return (
         <div>
-          <ObjectDisplay
+          <WrestlerDisplay
+            showing={0}
+            link={"/wrestler/chosenwrestler"}
             name={wrestler.get("name")}
-            infoA={wrestler.get("from")}
+            infoFROM={wrestler.get("from")}
             infoB={JSON.stringify(wrestler.get("company"))}
-            infoC={wrestler.get("birth")}
+            infoDATE={wrestler.get("birth")}
             imgSrc={wrestler.get("image")}
             innerQuery={"Company"}
             objectId={wrestler.id}
-          ></ObjectDisplay>
+          ></WrestlerDisplay>
         </div>
       );
     });

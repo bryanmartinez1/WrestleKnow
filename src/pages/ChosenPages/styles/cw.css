@@ -16,6 +16,7 @@
 
 .quickInfo {
     min-width: 300px;
+    width: 300px;
     height: 450px;
     border-style: solid;
     border-color: #212427;
@@ -92,7 +93,9 @@
 
 .smallBox {
     width: 300px;
-    height: 225px;
+    height: fit-content;
+    padding-bottom: 15px;
+
     border-style: solid;
     border-color: #212427;
     border-radius: 25px;
