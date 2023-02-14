@@ -87,9 +87,9 @@ export default function Title() {
       } else if (sortVal === "Z - A") {
         titleQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
-        titleQuery.addDescending("birth");
+        titleQuery.addAscending("introduced");
       } else if (sortVal === "Oldest") {
-        titleQuery.addAscending("birth");
+        titleQuery.addDescending("introduced");
       }
       let titleResults = await titleQuery.find();
       setQuery(titleResults);
