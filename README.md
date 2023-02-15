@@ -99,15 +99,16 @@ Product Spec
 
 
 ## Progress Weeks 2 - 3
-- [x] Wrestler Results/Search Page
+- [x] Wrestler/Title/Faction/Company Results/Search Page
    - [x] Query Displays
       - [x] Display changes on query update
    - [x] Search Bar
-      - [x] Wrestler Query updates when user changes search
+      - [x] Query updates when user changes search
       - [x] Search Hook updates when user changes it
    - [x] Sort Dropdown
-      - [x] Wrestler Query updates when dropdown changes
+      - [x] Query updates when dropdown changes
       - [x] Dropdown Display changes when user changes
+   - [x] Navigate to respective choosen pages
    - [x] CSS
       - [x] Search Bar
       - [x] Sort Dropdown
