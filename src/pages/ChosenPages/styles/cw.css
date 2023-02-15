@@ -120,6 +120,8 @@
     color: #212427;
     font-size: 13px;
     flex-wrap: wrap;
+    padding-left: 3px;
+    padding-top: 3px;
 }
 .linkImg {
     height: 50px;

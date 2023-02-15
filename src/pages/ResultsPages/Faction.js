@@ -34,7 +34,7 @@ export default function Faction() {
       console.log(
         "User Searched: " + document.getElementById("searchInput").value
       );
-      setSearch(document.getElementById("searchInput").value);
+      setSearch(document.getElementById("searchInput").value.toLowerCase());
       closeDrop();
     }
   }

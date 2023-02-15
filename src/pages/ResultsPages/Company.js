@@ -30,7 +30,7 @@ export default function Company() {
   // and query is also updated
   async function newSearch(event) {
     if (event.key === "Enter") {
-      setSearch(document.getElementById("searchInput").value);
+      setSearch(document.getElementById("searchInput").value.toLowerCase());
       closeDrop();
     }
   }

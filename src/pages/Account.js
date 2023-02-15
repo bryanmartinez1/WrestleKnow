@@ -26,8 +26,21 @@ export default function Acount() {
   };
 
   getCurrentUser();
-// if current user null empty page ig?
-// 
+  // If user is not logged in page will not be displayed,
+  // if user is logged in a proper page is displayed
+  function loggedIn() {
+    if (currentUser === null) {
+      return <div>You are not logged in</div>;
+    }
+    return (
+      <h1>
+        {userId}
+        {firstName}
+        {lastName}
+        <img src={img} />
+      </h1>
+    );
+  }
 
-  return <div><h1>{userId}{firstName}{lastName}</h1><img src={img}/></div>;
+  return <div>{loggedIn()}</div>;
 }

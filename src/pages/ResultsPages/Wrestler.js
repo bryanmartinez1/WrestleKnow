@@ -1,19 +1,3 @@
-/*
-Wrestler Page will display
-    - A catalog of wrestlers for the users to quickly browse through and click on to further view info on the selected wrestler
-    - Ablitiy toe search, filter, and soprt through the catalog of wrestlers
-        - Filtering will consist of
-            - company
-            - age
-            - country wrestler is from
-        - Sorting will consist of
-            - Recommended
-            - Age (rising)
-            - Age (falling)
-            - Alphabetical
-            - Reverse Alphabetical
-*/
-
 import React, { useEffect, useState } from "react";
 import "./styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
@@ -32,7 +16,7 @@ export default function Wrestler() {
       console.log(
         "User Searched: " + document.getElementById("searchInput").value
       );
-      setSearch(document.getElementById("searchInput").value);
+      setSearch(document.getElementById("searchInput").value.toLowerCase());
       closeDrop();
     }
   }
@@ -93,9 +77,17 @@ export default function Wrestler() {
   // Query is Started
   async function startQuery(searchVal, sortVal) {
     let wrestlerQuery = new Parse.Query("Wrestler");
-    try {
-      wrestlerQuery.contains("name", searchVal);
+    let nameQuery = new Parse.Query("Wrestler");
+    let akaQuery = new Parse.Query("Wrestler");
+    let aboutQuery = new Parse.Query("Wrestler");
+    let fromQuery = new Parse.Query("Wrestler");
 
+    try {
+      nameQuery.contains("lower_name", searchVal);
+      akaQuery.contains("lower_aka", searchVal);
+      aboutQuery.contains("lower_about", searchVal);
+      fromQuery.contains("lower_from", searchVal);
+      wrestlerQuery._orQuery([nameQuery, akaQuery, aboutQuery, fromQuery]);
       //Sorts Query
       if (sortVal === "A - Z") {
         wrestlerQuery.addAscending("name");
