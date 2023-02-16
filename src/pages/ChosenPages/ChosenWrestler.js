@@ -18,8 +18,8 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/cw.css";
-import twitterImg from "./images/twitter.png";
-import instagramImg from "./images/instagram.png";
+import InfoDisplay from "./InfoDisplay";
+import MediaDisplay from "./MediaDisplay";
 
 export default function ChosenWrestler() {
   const location = useLocation();
@@ -32,11 +32,10 @@ export default function ChosenWrestler() {
   const [from, setFrom] = useState();
   const [about, setAbout] = useState();
   const [moves, setMoves] = useState();
+  const [aka, setAKA] = useState();
   const [twitter, setTwitter] = useState();
   const [instagram, setInstagram] = useState();
   const [youtube, setYouTube] = useState();
-  let instagramURL = "https://www.instagram.com/";
-  let twitterURL = "https://www.twitter.com/";
   const [companyID, setCompanyID] = useState();
   const [company, setCompany] = useState();
 
@@ -57,6 +56,7 @@ export default function ChosenWrestler() {
       setInstagram(results[0].get("instagram"));
       setMoves(results[0].get("notableMoves"));
       setYouTube(results[0].get("youtube"));
+      setAKA(results[0].get("aka"));
       //The Birthdate & Age Stuff
       let dob = JSON.stringify(results[0].get("birth"));
       //));
@@ -98,39 +98,10 @@ export default function ChosenWrestler() {
         </div>
         <div className="spacing" />
         <div className="anotherHolder">
-          <div className="smallBox">
-            <h1 className="boxHeader">About</h1>
-            {about}
-          </div>
-          <div className="spacing" />
-          <div className="smallBox">
-            <h1 className="boxHeader">Moves</h1>
-            {moves}
-          </div>
-          <div className="spacing" />
-          <div className="vertcalSpacing" />
-          <div className="smallBox">
-            <h1 className="boxHeader">About</h1>
-            {about}
-          </div>
-          <div className="spacing" />
-          <div className="smallBox">
-            <h1 className="boxHeader">Socials</h1>
-            <a
-              className="linkButton"
-              href={twitterURL + twitter}
-              target="_blank"
-            >
-              <img className="linkImg" src={twitterImg}></img> @{twitter}
-            </a>
-            <a
-              className="linkButton"
-              href={instagramURL + instagram}
-              target="_blank"
-            >
-              <img className="linkImg" src={instagramImg}></img>@{instagram}
-            </a>
-          </div>
+          <InfoDisplay title="About" text={about} />
+          <InfoDisplay title="Also Know As" text={aka} />
+          <InfoDisplay title="Moves" text={moves} />
+          <MediaDisplay twitter={twitter} instagram={instagram} />
         </div>
       </div>
 

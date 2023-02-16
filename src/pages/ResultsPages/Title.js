@@ -87,9 +87,9 @@ export default function Title() {
       } else if (sortVal === "Z - A") {
         titleQuery.addDescending("name");
       } else if (sortVal === "Youngest") {
-        titleQuery.addAscending("introduced");
-      } else if (sortVal === "Oldest") {
         titleQuery.addDescending("introduced");
+      } else if (sortVal === "Oldest") {
+        titleQuery.addAscending("introduced");
       }
       let titleResults = await titleQuery.find();
       setQuery(titleResults);
@@ -106,7 +106,7 @@ export default function Title() {
       if (title.get("active") === true) {
         isActive = "Active";
       } else {
-        isActive = "Inactive";
+        isActive = "Retired";
       }
       return (
         <div>
