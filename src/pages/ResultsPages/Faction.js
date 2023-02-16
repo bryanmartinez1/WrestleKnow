@@ -58,12 +58,6 @@ export default function Faction() {
       case 2:
         setSort("Z - A");
         break;
-      case 3:
-        setSort("Youngest");
-        break;
-      case 4:
-        setSort("Oldest");
-        break;
     }
     closeDrop();
     startQuery(search, sort);
@@ -103,10 +97,6 @@ export default function Faction() {
         wrestlerQuery.addAscending("name");
       } else if (sortVal === "Z - A") {
         wrestlerQuery.addDescending("name");
-      } else if (sortVal === "Youngest") {
-        wrestlerQuery.addDescending("birth");
-      } else if (sortVal === "Oldest") {
-        wrestlerQuery.addAscending("birth");
       }
       let wrestlerResults = await wrestlerQuery.find();
       console.log(wrestlerResults);
@@ -175,12 +165,6 @@ export default function Faction() {
               </div>
               <div className="option" onClick={() => changeSort(2)}>
                 Z - A
-              </div>
-              <div className="option" onClick={() => changeSort(3)}>
-                Youngest
-              </div>
-              <div className="option" onClick={() => changeSort(4)}>
-                Oldest
               </div>
             </div>
           </div>

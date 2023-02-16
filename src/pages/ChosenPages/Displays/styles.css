@@ -1,0 +1,68 @@
+.infoBox {
+    height: 50px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid;
+    border-color: #212427;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.about {
+    width: 300px;
+    height: 450px;
+    border-style: solid;
+    border-color: #212427;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.boxHeader {
+    background-color: #F8BCBA;
+    font-size: 2rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.smallBox {
+    width: 300px;
+    height: fit-content;
+    padding-bottom: 15px;
+
+    border-style: solid;
+    border-color: #212427;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.anotherHolder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.linkButton {
+    height:fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: Lexend;
+    text-decoration: none;
+    color: #212427;
+    font-size: 13px;
+    flex-wrap: wrap;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.linkImg {
+    height: 50px;
+    width: 50px;
+}

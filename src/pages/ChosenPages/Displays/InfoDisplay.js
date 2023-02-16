@@ -1,4 +1,4 @@
-import "./styles/cw.css";
+import "./styles.css";
 
 export default function InfoDisplay(props) {
   return (

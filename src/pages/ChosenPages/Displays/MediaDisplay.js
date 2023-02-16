@@ -1,4 +1,4 @@
-import "./styles/cw.css";
+import "./styles.css";
 import twitterImg from "./images/twitter.png";
 import instagramImg from "./images/instagram.png";
 

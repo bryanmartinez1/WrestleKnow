@@ -18,8 +18,8 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/cw.css";
-import InfoDisplay from "./InfoDisplay";
-import MediaDisplay from "./MediaDisplay";
+import InfoDisplay from "./Displays/InfoDisplay";
+import MediaDisplay from "./Displays/MediaDisplay";
 
 export default function ChosenWrestler() {
   const location = useLocation();

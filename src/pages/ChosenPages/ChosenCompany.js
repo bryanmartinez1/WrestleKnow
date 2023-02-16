@@ -13,7 +13,11 @@ Chosen Company Page will display
         - description of title reigns
     - YouTube Frame will be poresent on the bottom left corner in where a video about chosen Company can be played and viewed by user
 */
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ChosenCompany() {
+  const location = useLocation();
+  const id = location.state.id;
   return <h1>ChosenCompany</h1>;
 }
