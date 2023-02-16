@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
+import "./styles/account.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Acount() {
@@ -37,7 +38,7 @@ export default function Acount() {
         {userId}
         {firstName}
         {lastName}
-        <img src={img} />
+        <img className="pfpImage" src={img} />
       </h1>
     );
   }

@@ -1,8 +1,6 @@
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
 import Settings from "./pages/Settings";
-import Account from "./pages/Account";
-import Admin from "./pages/Admin";
 
 // Create Pages
 import CreateWrestler from "./pages/CreatePages/CreateWrestler";
@@ -39,6 +37,8 @@ import LogIn from "./pages/UserPages/LogIn";
 import SignUp from "./pages/UserPages/SignUp";
 import ForgotUserName from "./pages/UserPages/forgotUsername";
 import ForgotPassword from "./pages/UserPages/forgotPassword";
+import Account from "./pages/UserPages/Account";
+import Admin from "./pages/UserPages/Admin";
 
 //Other Imports
 import { Route, Routes } from "react-router-dom";
