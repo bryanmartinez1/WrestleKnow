@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/font/LexendGiga-VariableFont_wght.ttf);
+}
+.quickInfo {
+    margin-left: 10px;
+    width: 300px;
+    border-radius: 25px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    font-family: Lexend;
+    overflow: hidden;
+}
+
+.imageDisplay {
+    width: 100%;
+    height: 300px;
+    border-color: #212427;
+    background-color: #212427;
+    overflow: hidden;
+}
+
+.item {
+    outline: 1px solid #212427;
+}
+
+.singleInfoRow {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid;
+    border-color: #212427;
+}
+
+.doubleInfoRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.hrTag {
+    height: 2px;
+    width: 100%;
+    background-color: #212427;
+}
+.doubleBox {
+    width:50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

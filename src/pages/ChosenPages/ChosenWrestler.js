@@ -15,14 +15,18 @@ Chosen Wrestler Page will display
 */
 
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/cw.css";
 import InfoDisplay from "./Displays/InfoDisplay";
 import MediaDisplay from "./Displays/MediaDisplay";
+import QuickInfo from "./Displays/QuickInfo";
+import { Link } from "react-router-dom";
 
 export default function ChosenWrestler() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const id = location.state.id;
   const [name, setName] = useState();
   const [imgURL, setImgURL] = useState();
@@ -37,7 +41,8 @@ export default function ChosenWrestler() {
   const [instagram, setInstagram] = useState();
   const [youtube, setYouTube] = useState();
   const [companyID, setCompanyID] = useState();
-  const [company, setCompany] = useState();
+  const [companyName, setCompanyName] = useState();
+  const [companyImg, setCompanyImg] = useState();
 
   // new query using objectId
   async function infoQuery() {
@@ -57,6 +62,10 @@ export default function ChosenWrestler() {
       setMoves(results[0].get("notableMoves"));
       setYouTube(results[0].get("youtube"));
       setAKA(results[0].get("aka"));
+
+      let compId = JSON.stringify(results[0].get("company"));
+      setCompanyID(compId.split('":"').pop().slice(0, -2));
+
       //The Birthdate & Age Stuff
       let dob = JSON.stringify(results[0].get("birth"));
       //));
@@ -77,36 +86,59 @@ export default function ChosenWrestler() {
     }
   }
   infoQuery();
+
+  async function companyQuery() {
+    let companyQuery = new Parse.Query("Company");
+    try {
+      companyQuery.equalTo("objectId", companyID);
+      let companyResults = await companyQuery.find();
+      setCompanyName(companyResults[0].get("shortName"));
+      let compSRC = companyResults[0].get("image");
+      let compIMG = JSON.stringify(compSRC).split('url":"').pop().slice(0, -2);
+      setCompanyImg(compIMG);
+
+      return true;
+    } catch (error) {
+      alert(`Error! ${error.message}`);
+      return false;
+    }
+  }
+  companyQuery();
   let youtubeURL = "https://www.youtube.com/embed/";
 
   return (
-    <div className="body">
-      <div className="inner-body">
-        <div className="quickInfo">
-          <img className="main-img " src={imgURL}></img>
-          <div className="nameHolder">{name}</div>
-          <div className="boxHolder">
-            <div className="infoBox">{height}</div>
-            <div className="verticalDiv" />
-            <div className="infoBox">{age} Years Old</div>
-          </div>
-          <div className="boxHolder">
-            <div className="infoBox">{dateOfbirth}</div>
-            <div className="verticalDiv" />
-            <div className="infoBox">{from}</div>
+    <div className="displayBody">
+      <div className="leftBody">
+        <div className="leftInside">
+          <QuickInfo
+            pic={imgURL}
+            name={name}
+            info1={dateOfbirth}
+            info2={age}
+            info3={height}
+            info4={from}
+          ></QuickInfo>
+          <div className="leftInsideRight">
+            <InfoDisplay title="About" text={about} />
+            <div className="companyBox">
+              <h1 className="companyHeader">Currently At</h1>
+              <Link
+                className="linkButton"
+                to={"/company/chosencompany"}
+                state={{ id: companyID }}
+              >
+                <img className="compImg" src={companyImg}></img>
+                {companyName}
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="spacing" />
-        <div className="anotherHolder">
-          <InfoDisplay title="About" text={about} />
-          <InfoDisplay title="Also Know As" text={aka} />
-          <InfoDisplay title="Moves" text={moves} />
-          <MediaDisplay twitter={twitter} instagram={instagram} />
-        </div>
-      </div>
-
-      <div className="inner-body">
         <iframe width="720" height="405" src={youtubeURL + youtube} />
+      </div>
+      <div className="rightBody">
+        <InfoDisplay title="Moves" text={moves} />
+        <InfoDisplay title="Moves" text={moves} />
+        <MediaDisplay twitter={twitter} instagram={instagram} />
       </div>
     </div>
   );
