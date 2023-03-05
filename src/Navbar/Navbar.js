@@ -1,4 +1,4 @@
-import "./styles/navbar.css";
+import "./navbar.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
