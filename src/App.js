@@ -1,44 +1,44 @@
 import Navbar from "./Navbar/Navbar";
-import Home from "./pages/Home";
-import Settings from "./pages/Settings";
+import Home from "./Pages/Home";
+import Settings from "./Pages/User/Settings";
 
 // Create Pages
-import CreateWrestler from "./pages/CreatePages/CreateWrestler";
-import CreateTitle from "./pages/CreatePages/CreateTitle";
-import CreateBrand from "./pages/CreatePages/CreateBrand";
-import CreatePPV from "./pages/CreatePages/CreatePPV";
-import CreateCompany from "./pages/CreatePages/CreateCompany";
-import CreateFaction from "./pages/CreatePages/CreateFaction";
+import CreateWrestler from "./Pages/Create/CreateWrestler";
+import CreateTitle from "./Pages/Create/CreateTitle";
+import CreateBrand from "./Pages/Create/CreateBrand";
+import CreatePPV from "./Pages/Create/CreatePPV";
+import CreateCompany from "./Pages/Create/CreateCompany";
+import CreateFaction from "./Pages/Create/CreateFaction";
 
 // Results Pages
-import Wrestler from "./pages/ResultsPages/Wrestler";
-import Company from "./pages/ResultsPages/Company";
-import Title from "./pages/ResultsPages/Title";
-import Faction from "./pages/ResultsPages/Faction";
+import Wrestler from "./Pages/Search/Wrestler";
+import Company from "./Pages/Search/Company";
+import Title from "./Pages/Search/Title";
+import Faction from "./Pages/Search/Faction";
 
 // Chosen Pages
-import ChosenWrestler from "./pages/ChosenPages/ChosenWrestler";
-import ChosenCompany from "./pages/ChosenPages/ChosenCompany";
-import ChosenTitle from "./pages/ChosenPages/ChosenTitle";
-import ChosenFaction from "./pages/ChosenPages/ChosenFaction";
-import ChosenBrand from "./pages/ChosenPages/ChosenBrand";
-import ChosenPPV from "./pages/ChosenPages/ChosenPPV";
+import ChosenWrestler from "./Pages/Select/ChosenWrestler";
+import ChosenCompany from "./Pages/Select/ChosenCompany";
+import ChosenTitle from "./Pages/Select/ChosenTitle";
+import ChosenFaction from "./Pages/Select/ChosenFaction";
+import ChosenBrand from "./Pages/Select/ChosenBrand";
+import ChosenPPV from "./Pages/Select/ChosenPPV";
 
 // Gorilla Position Pages
-import Profile from "./pages/GorillaPositionPages/Profile";
-import Messages from "./pages/GorillaPositionPages/Messages";
-import Bookmarks from "./pages/GorillaPositionPages/Bookmarks";
-import SearchResults from "./pages/GorillaPositionPages/SearchResults";
-import Feed from "./pages/GorillaPositionPages/Feed";
-import OtherUser from "./pages/GorillaPositionPages/OtherUser";
+import Profile from "./Pages/GorillaPosition/Profile";
+import Messages from "./Pages/GorillaPosition/Messages";
+import Bookmarks from "./Pages/GorillaPosition/Bookmarks";
+import SearchResults from "./Pages/GorillaPosition/SearchResults";
+import Feed from "./Pages/GorillaPosition/Feed";
+import OtherUser from "./Pages/GorillaPosition/OtherUser";
 
 //User Pages
-import LogIn from "./pages/UserPages/LogIn";
-import SignUp from "./pages/UserPages/SignUp";
-import ForgotUserName from "./pages/UserPages/forgotUsername";
-import ForgotPassword from "./pages/UserPages/forgotPassword";
-import Account from "./pages/UserPages/Account";
-import Admin from "./pages/UserPages/Admin";
+import LogIn from "./Pages/User/LogIn";
+import SignUp from "./Pages/User/SignUp";
+import ForgotUserName from "./Pages/User/forgotUsername";
+import ForgotPassword from "./Pages/User/forgotPassword";
+import Account from "./Pages/User/Account";
+import Admin from "./Pages/User/Admin";
 
 //Other Imports
 import { Route, Routes } from "react-router-dom";

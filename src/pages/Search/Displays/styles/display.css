@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
 .objectHolder {
     width: 200px;
     height: 300px;

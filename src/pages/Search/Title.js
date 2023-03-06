@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./styles/wrestler.css";
+import "./Displays/styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
-import TitleDisplay from "./TitleDisplay";
+import TitleDisplay from "./Displays/TitleDisplay";
 
 export default function Title() {
   const [search, setSearch] = useState("");

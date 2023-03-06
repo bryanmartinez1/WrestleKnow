@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 
 // Images for navbar
-import boston_crab from "./images/boston_crab.png";
-import wrestler from "./images/mask_icon.png";
-import title from "./images/title_icon.png";
-import company from "./images/company_icon.png";
-import faction from "./images/faction_icon.png";
-import profile from "./images/profile_icon.png";
+import boston_crab from "./Images/boston_crab.png";
+import wrestler from "./Images/mask_icon.png";
+import title from "./Images/title_icon.png";
+import company from "./Images/company_icon.png";
+import faction from "./Images/faction_icon.png";
+import profile from "./Images/profile_icon.png";
 
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);

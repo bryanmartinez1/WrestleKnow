@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./styles/wrestler.css";
+import "./Displays/styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
-import WrestlerDisplay from "./WrestlerDisplay";
+import WrestlerDisplay from "./Displays/WrestlerDisplay";
 
 export default function Wrestler() {
   const [search, setSearch] = useState("");
