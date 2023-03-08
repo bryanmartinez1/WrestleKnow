@@ -92,16 +92,12 @@ function App() {
           <Route path="/company/chosencompany/ppv" element={<ChosenPPV />} />
 
           {/* Gorilla Position Pages */}
-          <Route path="/gorillaposition" element={<Profile />} />
-          <Route path="/gorillaposition/profile" element={<Profile />} />
-          <Route path="/gorillaposition/messages" element={<Messages />} />
-          <Route path="/gorillaposition/bookmarks" element={<Bookmarks />} />
-          <Route
-            path="/gorillaposition/searchresults"
-            element={<SearchResults />}
-          />
-          <Route path="/gorillaposition/feed" element={<Feed />} />
-          <Route path="/gorillaposition/otheruser" element={<OtherUser />} />
+          <Route path="/gp" element={<Feed />} />
+          <Route path="/gp/profile" element={<Profile />} />
+          <Route path="/gp/messages" element={<Messages />} />
+          <Route path="/gp/bookmarks" element={<Bookmarks />} />
+          <Route path="/gp/searchresults" element={<SearchResults />} />
+          <Route path="/gp/otheruser" element={<OtherUser />} />
 
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />

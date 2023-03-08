@@ -1,3 +1,10 @@
+import Leftbar from "./Components/Leftbar";
+import Rightbar from "./Components/Rightbar";
+
 export default function Messages() {
-  return <h1>Messages</h1>;
+  return (
+    <div>
+      <Leftbar /> <Rightbar />
+    </div>
+  );
 }

@@ -3,6 +3,7 @@ import "./Displays/styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import FactionDisplay from "./Displays/FactionDisplay";
+import search_icon from "./Images/search_icon.png";
 
 export default function Faction() {
   const [search, setSearch] = useState("");
@@ -121,7 +122,7 @@ export default function Faction() {
     <div className="wrestler-body">
       <div className="searchbar">
         <div className="bar">
-          <img className="searchIcon" src="/search_icon.png"></img>
+          <img className="searchIcon" src={search_icon}></img>
           <input
             className="searchInput"
             onKeyDown={(key) => newSearch(key)}

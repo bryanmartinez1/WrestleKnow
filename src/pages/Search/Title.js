@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Displays/styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import search_icon from "./Images/search_icon.png";
 import TitleDisplay from "./Displays/TitleDisplay";
 
 export default function Title() {
@@ -126,7 +127,7 @@ export default function Title() {
     <div className="wrestler-body">
       <div className="searchbar">
         <div className="bar">
-          <img className="searchIcon" src="/search_icon.png"></img>
+          <img className="searchIcon" src={search_icon}></img>
           <input
             className="searchInput"
             onKeyDown={(key) => newSearch(key)}

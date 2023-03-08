@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Displays/styles/wrestler.css";
 import Parse from "parse/dist/parse.min.js";
 import WrestlerDisplay from "./Displays/WrestlerDisplay";
+import search_icon from "./Images/search_icon.png";
 
 export default function Wrestler() {
   const [search, setSearch] = useState("");
@@ -128,11 +129,13 @@ export default function Wrestler() {
     });
   }
 
+  const [data, setData] = useState("");
+
   return (
     <div className="wrestler-body">
       <div className="searchbar">
         <div className="bar">
-          <img className="searchIcon" src="/search_icon.png"></img>
+          <img className="searchIcon" src={search_icon}></img>
           <input
             className="searchInput"
             onKeyDown={(key) => newSearch(key)}

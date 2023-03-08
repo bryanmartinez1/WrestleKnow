@@ -1,3 +1,10 @@
+import Leftbar from "./Components/Leftbar";
+import Rightbar from "./Components/Rightbar";
+
 export default function SearchResults() {
-  return <h1>SearchResults</h1>;
+  return (
+    <div>
+      <Leftbar /> <Rightbar />
+    </div>
+  );
 }

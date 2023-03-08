@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.divider {
+    display: flex;
+    flex-direction: row;
+    font-family: Lexend;
+}

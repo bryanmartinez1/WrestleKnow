@@ -1,3 +1,10 @@
+import Leftbar from "./Components/Leftbar";
+import Rightbar from "./Components/Rightbar";
+
 export default function Profile() {
-  return <h1>Profile</h1>;
+  return (
+    <div>
+      <Leftbar /> <Rightbar />
+    </div>
+  );
 }

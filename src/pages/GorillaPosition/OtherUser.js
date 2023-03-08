@@ -1,3 +1,10 @@
+import Leftbar from "./Components/Leftbar";
+import Rightbar from "./Components/Rightbar";
+
 export default function OtherUser() {
-  return <h1>OtherUser</h1>;
+  return (
+    <div>
+      <Leftbar /> <Rightbar />
+    </div>
+  );
 }
