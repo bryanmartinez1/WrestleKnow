@@ -1,4 +1,9 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
 .leftside {
+    font-family: Lexend;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,23 +16,26 @@
     width: 100%;
     background-color: #EF6460;
     border-style: solid;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 .pfp {
-    width: 300px;
+    width: 100%;
     border-style: solid;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     border-radius: 5px;
     background-color: #353739;
+    cursor: pointer;
 }
 
 .bio {
     width: 100%;
+    min-height: 100px;
     border-style: solid;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     border-radius: 5px;
     text-align: center;
     background-color: #FDF0EF;
@@ -39,7 +47,7 @@
     background-color: #EF6460;
     padding: 5px;
     border-style: solid;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     border-radius: 5px;
     text-align: center;
 }

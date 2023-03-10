@@ -1,22 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles/leftbar.css";
 import pfp from "./profile_icon.png";
 
 export default function Leftbar(props) {
+  const navigate = useNavigate();
+  function to_GP_Profile() {
+    navigate("/gp/profile");
+  }
+
   // Get Current User Function
   return (
     <div className="leftside">
-      <img className="pfp" src={pfp} />
-      <div className="names">Registered Name</div>
-      <div className="names"> User Name</div>
-      <Link className="link">Posts</Link>
-      <Link className="link">Followers Following</Link>
-      <div className="bio">
-        blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-        blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-        blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-        blah blah blah blah blah blah blah blah blah b
+      <img className="pfp" src={pfp} onClick={() => to_GP_Profile()} />
+      <div className="names" onClick={() => to_GP_Profile()}>
+        Bryan Last Name
       </div>
+      <div className="names" onClick={() => to_GP_Profile()}>
+        {" "}
+        am{" "}
+      </div>
+      <Link className="link">10 Promos</Link>
+      <Link className="link">10 Followers 400 Following</Link>
+      <div className="bio">Random stuff, idk man</div>
       <Link className="link" to="/gp">
         Feed
       </Link>
@@ -32,8 +37,8 @@ export default function Leftbar(props) {
       <Link className="link" to="/gp/searchresults">
         Search
       </Link>
-      <Link className="link" to="/gp/profile">
-        Profile
+      <Link className="link" to="/gp/follow">
+        Follow
       </Link>
     </div>
   );

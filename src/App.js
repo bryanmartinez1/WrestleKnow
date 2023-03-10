@@ -47,6 +47,7 @@ import { Route, Routes } from "react-router-dom";
 import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Follow from "./Pages/GorillaPosition/Follow";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -98,6 +99,7 @@ function App() {
           <Route path="/gp/bookmarks" element={<Bookmarks />} />
           <Route path="/gp/searchresults" element={<SearchResults />} />
           <Route path="/gp/otheruser" element={<OtherUser />} />
+          <Route path="/gp/follow" element={<Follow />} />
 
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
