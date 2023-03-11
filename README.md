@@ -65,6 +65,15 @@ Links to the web apps documentation and specifications van be found below
    - [ ] CSS (in-progress)
 ## Gif Walk Through of Weeks 2 - 3
 - To Be Added Later
+## Progress Weeks 4-7
+- [ ] Gorilla Position Pages
+- [ ] Left Bar
+- [ ] Right Bar
+- [ ] Feed
+- [ ] Cheer/Boo/Bookmark
+- [ ]
+## Gif Walk Through of Weeks 4 - 7
+- To Be Added Later
 
 ## Figma Designs
 https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/WrestleKnow-Web-App?node-id=275%3A977&t=nq9GArJZ3fyoufAX-0
