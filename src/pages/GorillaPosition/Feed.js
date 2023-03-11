@@ -14,6 +14,18 @@ export default function Feed() {
         <Promo />
         <Promo />
         <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
+        <Promo />
       </div>
       <Rightbar />
     </div>

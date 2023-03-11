@@ -14,8 +14,10 @@
     background-color: #353739;
 }
 .promo {
-    text-align: right;
+
+    text-align: left;
     margin-bottom: 10px;
+    margin-left: 20px;
     margin-top: 4px;
 }
 .userName {

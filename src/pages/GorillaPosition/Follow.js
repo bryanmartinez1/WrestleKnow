@@ -6,7 +6,8 @@ export default function Follow() {
   return (
     <div className="divider">
       <Leftbar />
-      <div>Following | Followers</div>
+
+      <div className="middle">Following | Followers</div>
       <Rightbar />
     </div>
   );
