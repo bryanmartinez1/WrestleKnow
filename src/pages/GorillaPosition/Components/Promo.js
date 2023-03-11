@@ -1,22 +1,28 @@
 import "./styles/promos.css";
 import pfp from "./images/profile_icon.png";
-import cheer from "./images/cheer.png";
+import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
 import comment from "./images/comments.png";
 import bookmark from "./images/bookmark.png";
+import reply from "./images/reply.png";
 
 export default function Promo() {
+  // Take In Props later
+
   function Cheer() {
-    alert("CHEER");
+    alert("Cheer");
   }
   function Boo() {
-    alert("BOO");
+    alert("Boo");
   }
-  function Comment() {
-    alert("COMMENT");
+  function Reply() {
+    alert("Create Reply");
   }
-  function Save() {
-    alert("SAVE");
+  function Comments() {
+    alert("View Comments");
+  }
+  function Bookmark() {
+    alert("Bookmarking this promo");
   }
   return (
     <div className="whole">
@@ -39,10 +45,13 @@ export default function Promo() {
           <button onClick={() => Boo()}>
             <img className="imgButton" src={boo}></img>
           </button>
-          <button onClick={() => Comment()}>
+          <button onClick={() => Reply()}>
+            <img className="imgButton" src={reply}></img>
+          </button>
+          <button onClick={() => Comments()}>
             <img className="imgButton" src={comment}></img>
           </button>
-          <button onClick={() => Save()}>
+          <button onClick={() => Bookmark()}>
             <img className="imgButton" src={bookmark}></img>
           </button>
         </div>
