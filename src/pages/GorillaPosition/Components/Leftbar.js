@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./styles/leftbar.css";
-import pfp from "./profile_icon.png";
+import pfp from "./images/profile_icon.png";
 
 export default function Leftbar(props) {
   const navigate = useNavigate();

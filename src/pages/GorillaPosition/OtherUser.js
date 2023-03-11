@@ -6,7 +6,7 @@ export default function OtherUser() {
   return (
     <div className="divider">
       <Leftbar />
-      <div>Bookmarks</div>
+      <div>Other User</div>
       <Rightbar />
     </div>
   );

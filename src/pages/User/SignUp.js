@@ -103,7 +103,7 @@ export default function SignUp() {
             value={username}
             onChange={(event) => setUsername(event.target.value)}
             placeholder="Enter Username"
-            maxLength="20"
+            maxLength="24"
           ></input>
         </div>
         <div className="div-holder">
