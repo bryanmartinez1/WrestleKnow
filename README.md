@@ -71,7 +71,6 @@ Links to the web apps documentation and specifications van be found below
 - [ ] Right Bar
 - [ ] Feed
 - [ ] Cheer/Boo/Bookmark
-- [ ]
 ## Gif Walk Through of Weeks 4 - 7
 - To Be Added Later
 
