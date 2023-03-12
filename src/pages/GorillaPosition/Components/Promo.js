@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./styles/promos.css";
 import pfp from "./images/profile_icon.png";
 import cheer from "./images/cheers.png";
@@ -7,7 +8,16 @@ import bookmark from "./images/bookmark.png";
 import reply from "./images/reply.png";
 
 export default function Promo() {
+  // get Current User Function
+  // Query into Bookmarks
+  // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
+  const [isSaved, setIsSaved] = useState(false);
   // Take In Props later
+  function isSavedFunction() {
+    if (isSaved == false) {
+      document.getElementById("saves").style.background = "#EE534F";
+    }
+  }
 
   function Cheer() {
     alert("Cheer");
@@ -40,10 +50,10 @@ export default function Promo() {
         </div>
         <div className="bottomBar">
           <button onClick={() => Cheer()}>
-            <img className="imgButton" src={cheer}></img>
+            <img id="cheers" className="imgButton" src={cheer}></img>
           </button>
           <button onClick={() => Boo()}>
-            <img className="imgButton" src={boo}></img>
+            <img id="boos" className="imgButton" src={boo}></img>
           </button>
           <button onClick={() => Reply()}>
             <img className="imgButton" src={reply}></img>
@@ -52,7 +62,12 @@ export default function Promo() {
             <img className="imgButton" src={comment}></img>
           </button>
           <button onClick={() => Bookmark()}>
-            <img className="imgButton" src={bookmark}></img>
+            <img
+              id="saves"
+              className="imgButton"
+              src={bookmark}
+              onLoad={() => isSavedFunction()}
+            ></img>
           </button>
         </div>
       </div>
