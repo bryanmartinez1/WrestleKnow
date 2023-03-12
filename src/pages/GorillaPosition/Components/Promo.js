@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles/promos.css";
 import pfp from "./images/profile_icon.png";
 import cheer from "./images/cheers.png";
@@ -7,7 +8,8 @@ import comment from "./images/comment.png";
 import bookmark from "./images/bookmark.png";
 import reply from "./images/reply.png";
 
-export default function Promo() {
+export default function Promo(props) {
+  const navigate = useNavigate();
   // get Current User Function
   // Query into Bookmarks
   // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
@@ -17,6 +19,10 @@ export default function Promo() {
     if (isSaved == false) {
       document.getElementById("saves").style.background = "#EE534F";
     }
+  }
+
+  function toOtherUser() {
+    navigate("/gp/otheruser");
   }
 
   function Cheer() {
@@ -34,20 +40,29 @@ export default function Promo() {
   function Bookmark() {
     alert("Bookmarking this promo");
   }
+
+  // UserNameUserNameUserName
+  // SEPTEMBER 31, 2023 12:59 PM
+  /* This is just to show the max amount for characters allowed. User can
+  have a post with up to a max of 256 characters. This post has 256
+  characters. The false date posted is September 31, 2023 at 12:59 PM.
+  206 210 214 218 222 226 230 234 238 242 246 250 254. */
   return (
     <div className="whole">
-      <img className="promoImg" src={pfp}></img>
+      <img
+        className="promoImg"
+        src={props.pfp}
+        onClick={() => toOtherUser()}
+      ></img>
       <div className="content">
         <div className="topBar">
-          <div className="userName"> UserNameUserNameUserName</div>
-          <div className="datePosted">SEPTEMBER 31, 2023 12:59 PM</div>
+          <div className="userName" onClick={() => toOtherUser()}>
+            {" "}
+            {props.username}
+          </div>
+          <div className="datePosted">{props.uploadDate}</div>
         </div>
-        <div className="promo">
-          This is just to show the max amount for characters allowed. User can
-          have a post with up to a max of 256 characters. This post has 256
-          characters. The false date posted is September 31, 2023 at 12:59 PM.
-          206 210 214 218 222 226 230 234 238 242 246 250 254.
-        </div>
+        <div className="promo">{props.promo}</div>
         <div className="bottomBar">
           <button onClick={() => Cheer()}>
             <img id="cheers" className="imgButton" src={cheer}></img>

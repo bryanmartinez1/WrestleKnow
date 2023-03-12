@@ -2,13 +2,23 @@ import Leftbar from "./Components/Leftbar";
 import Rightbar from "./Components/Rightbar";
 import Topbar from "./Components/Topbar";
 import "./styles/gp.css";
+import pfpImage from "./Components/images/profile_icon.png";
 
 export default function OtherUser() {
   return (
     <div className="divider">
-      <Leftbar />
+      <Leftbar
+        pfp={pfpImage}
+        firstName="Other"
+        lastName="User"
+        userName="Other User"
+        bio="Random stuff bio idk man"
+      />
       <div className="middle">
         <Topbar name="Gorilla Position" />
+        <div className="middleBottom">
+          <div className="space"></div>
+        </div>
       </div>
       <Rightbar />
     </div>

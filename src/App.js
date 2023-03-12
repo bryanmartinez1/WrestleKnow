@@ -25,7 +25,6 @@ import ChosenBrand from "./Pages/Select/ChosenBrand";
 import ChosenPPV from "./Pages/Select/ChosenPPV";
 
 // Gorilla Position Pages
-import Profile from "./Pages/GorillaPosition/Profile";
 import Messages from "./Pages/GorillaPosition/Messages";
 import Bookmarks from "./Pages/GorillaPosition/Bookmarks";
 import SearchResults from "./Pages/GorillaPosition/SearchResults";
@@ -94,7 +93,6 @@ function App() {
 
           {/* Gorilla Position Pages */}
           <Route path="/gp" element={<Feed />} />
-          <Route path="/gp/profile" element={<Profile />} />
           <Route path="/gp/messages" element={<Messages />} />
           <Route path="/gp/bookmarks" element={<Bookmarks />} />
           <Route path="/gp/searchresults" element={<SearchResults />} />

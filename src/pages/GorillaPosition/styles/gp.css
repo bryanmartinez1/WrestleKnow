@@ -11,18 +11,26 @@
     overflow-y: hidden;
 }
 .middle {
-    overflow-y: scroll;
     min-width: 550px;
-    overflow-x: wrap;
+}
+
+.middleBottom {
+    height: 100%;
+    overflow-y: scroll;
+    width: 100%;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.middle::-webkit-scrollbar {
+.middleBottom::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.middle {
+.middleBottom {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-  }
+}
+
+.space {
+    height: 80px;
+}

@@ -4,41 +4,36 @@ import pfp from "./images/profile_icon.png";
 
 export default function Leftbar(props) {
   const navigate = useNavigate();
-  function to_GP_Profile() {
-    navigate("/gp/profile");
+  function toFeed() {
+    navigate("/gp");
+  }
+  function toFollow() {
+    navigate("/gp/follow");
   }
 
   // Get Current User Function
   return (
     <div className="leftside">
-      <img className="pfp" src={pfp} onClick={() => to_GP_Profile()} />
-      <div className="names" onClick={() => to_GP_Profile()}>
-        Bryan Last Name
+      <img className="pfp" src={props.pfp} onClick={() => toFeed()} />
+      <div className="names" onClick={() => toFeed()}>
+        {props.firstName} {props.lastName}
       </div>
-      <div className="names" onClick={() => to_GP_Profile()}>
-        {" "}
-        am{" "}
+      <div className="names" onClick={() => toFeed()}>
+        {props.userName}
       </div>
       <Link className="link">10 Promos</Link>
-      <Link className="link">10 Followers 400 Following</Link>
-      <div className="bio">Random stuff, idk man</div>
-      <Link className="link" to="/gp">
-        Feed
+      <Link className="link" to="/gp/follow">
+        10 Followers 400 Following{" "}
       </Link>
+      <div className="bio">{props.bio}</div>
       <Link className="link" to="/gp/bookmarks">
         View Bookmarks
       </Link>
       <Link className="link" to="/gp/messages">
         View Messages
       </Link>
-      <Link className="link" to="/gp/otheruser">
-        View User
-      </Link>
       <Link className="link" to="/gp/searchresults">
         Search
-      </Link>
-      <Link className="link" to="/gp/follow">
-        Follow
       </Link>
     </div>
   );
