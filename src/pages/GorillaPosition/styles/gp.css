@@ -11,8 +11,9 @@
     overflow-y: hidden;
 }
 .middle {
-    overflow-y: scroll; /* Add the ability to scroll */
+    overflow-y: scroll;
     min-width: 550px;
+    overflow-x: wrap;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -2,7 +2,7 @@ import "./styles/promos.css";
 import pfp from "./images/profile_icon.png";
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
-import comment from "./images/comments.png";
+import comment from "./images/comment.png";
 import bookmark from "./images/bookmark.png";
 import reply from "./images/reply.png";
 
