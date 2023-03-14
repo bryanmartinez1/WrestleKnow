@@ -17,8 +17,8 @@ export default function Promo(props) {
   // Query into Bookmarks
   // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
 
-  function toOtherUser() {
-    navigate("/gp/otheruser");
+  function toUser() {
+    navigate("/gp/user");
   }
 
   function Cheer() {
@@ -45,14 +45,10 @@ export default function Promo(props) {
   206 210 214 218 222 226 230 234 238 242 246 250 254. */
   return (
     <div className="whole">
-      <img
-        className="promoImg"
-        src={props.pfp}
-        onClick={() => toOtherUser()}
-      ></img>
+      <img className="promoImg" src={props.pfp} onClick={() => toUser()}></img>
       <div className="content">
         <div className="topBar">
-          <div className="userName" onClick={() => toOtherUser()}>
+          <div className="userName" onClick={() => toUser()}>
             {" "}
             {props.username}
           </div>
