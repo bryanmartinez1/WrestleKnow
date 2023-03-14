@@ -50,3 +50,10 @@
     border-radius: 5px;
     text-align: center;
 }
+
+.followHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 11px;
+}

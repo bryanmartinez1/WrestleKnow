@@ -4,7 +4,7 @@ import Topbar from "./Components/Topbar";
 import "./styles/gp.css";
 import pfpImage from "./Components/images/profile_icon.png";
 
-export default function OtherUser() {
+export default function User() {
   return (
     <div className="divider">
       <Leftbar

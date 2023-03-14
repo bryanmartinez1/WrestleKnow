@@ -29,7 +29,7 @@ import Messages from "./Pages/GorillaPosition/Messages";
 import Bookmarks from "./Pages/GorillaPosition/Bookmarks";
 import SearchResults from "./Pages/GorillaPosition/SearchResults";
 import Feed from "./Pages/GorillaPosition/Feed";
-import OtherUser from "./Pages/GorillaPosition/OtherUser";
+import User from "./Pages/GorillaPosition/User";
 
 //User Pages
 import LogIn from "./Pages/User/LogIn";
@@ -96,7 +96,7 @@ function App() {
           <Route path="/gp/messages" element={<Messages />} />
           <Route path="/gp/bookmarks" element={<Bookmarks />} />
           <Route path="/gp/searchresults" element={<SearchResults />} />
-          <Route path="/gp/otheruser" element={<OtherUser />} />
+          <Route path="/gp/user" element={<User />} />
           <Route path="/gp/follow" element={<Follow />} />
 
           {/* User Function Pages */}

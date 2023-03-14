@@ -4,8 +4,11 @@ import "./styles/promos.css";
 import pfp from "./images/profile_icon.png";
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
+import cheered from "./images/cheered.png";
+import booed from "./images/booed.png";
 import comment from "./images/comment.png";
-import bookmark from "./images/bookmark.png";
+import notSaved from "./images/bookmark.png";
+import saved from "./images/bookmarked.png";
 import reply from "./images/reply.png";
 
 export default function Promo(props) {
@@ -13,13 +16,6 @@ export default function Promo(props) {
   // get Current User Function
   // Query into Bookmarks
   // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
-  const [isSaved, setIsSaved] = useState(false);
-  // Take In Props later
-  function isSavedFunction() {
-    if (isSaved == false) {
-      document.getElementById("saves").style.background = "#EE534F";
-    }
-  }
 
   function toOtherUser() {
     navigate("/gp/otheruser");
@@ -65,10 +61,18 @@ export default function Promo(props) {
         <div className="promo">{props.promo}</div>
         <div className="bottomBar">
           <button onClick={() => Cheer()}>
-            <img id="cheers" className="imgButton" src={cheer}></img>
+            <img
+              id="cheers"
+              className="imgButton"
+              src={props.cheers ? cheered : cheer}
+            ></img>
           </button>
           <button onClick={() => Boo()}>
-            <img id="boos" className="imgButton" src={boo}></img>
+            <img
+              id="boos"
+              className="imgButton"
+              src={props.boos ? booed : boo}
+            ></img>
           </button>
           <button onClick={() => Reply()}>
             <img className="imgButton" src={reply}></img>
@@ -80,8 +84,7 @@ export default function Promo(props) {
             <img
               id="saves"
               className="imgButton"
-              src={bookmark}
-              onLoad={() => isSavedFunction()}
+              src={props.bookmarked ? saved : notSaved}
             ></img>
           </button>
         </div>

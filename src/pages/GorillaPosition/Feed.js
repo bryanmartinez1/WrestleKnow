@@ -30,102 +30,121 @@ export default function Feed() {
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={true}
+            boos={true}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            cheers={true}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={false}
           />
           <Promo
             pfp={pfp}
             username={userName}
             uploadDate={uploadDate}
             promo={promo}
+            bookmarked={true}
           />
           <div className="space"></div>
         </div>
