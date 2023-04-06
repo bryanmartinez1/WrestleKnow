@@ -85,9 +85,9 @@ export default function Search(props) {
     } else if (sortVal === "Z - A") {
       data.descending("lower_name");
     } else if (sortVal === "Youngest") {
-      data.descending("birth");
+      data.descending("date");
     } else if (sortVal === "Oldest") {
-      data.ascending("birth");
+      data.ascending("date");
     }
 
     try {
@@ -102,17 +102,15 @@ export default function Search(props) {
   function showResults() {
     return query.map((object) => {
       return (
-        <div>
-          <ObjectCard
-            name={object.get("name")}
-            imageSRC={object.get("image")}
-            infoA={object.get("from")}
-            date={object.get("birth")}
-            active={object.get("active")}
-            link={props.chosenLink}
-            objectID={object.id}
-          />
-        </div>
+        <ObjectCard
+          name={object.get("name")}
+          imageSRC={object.get("image")}
+          infoA={object.get("from")}
+          date={object.get("date")}
+          active={object.get("active")}
+          link={props.chosenLink}
+          objectID={object.id}
+        />
       );
     });
   }
@@ -129,7 +127,6 @@ export default function Search(props) {
           ></input>
         </div>
         <div className="sort-holder">
-          {/* Dropdown will be updated to that similar of the dropdwon if the navbar */}
           <div className="dropdown">
             {" "}
             Sort By:
