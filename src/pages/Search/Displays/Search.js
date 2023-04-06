@@ -139,45 +139,9 @@ export default function Search(props) {
             >
               {sort}
             </button>
-            {props.queryClass === "Wrestler" && (
-              <div class="content-box" id="wrestlerdrop">
-                <div className="option" onClick={() => changeSort(0)}>
-                  Recommended
-                </div>
-                <div className="option" onClick={() => changeSort(1)}>
-                  A - Z
-                </div>
-                <div className="option" onClick={() => changeSort(2)}>
-                  Z - A
-                </div>
-                <div className="option" onClick={() => changeSort(3)}>
-                  Youngest
-                </div>
-                <div className="option" onClick={() => changeSort(4)}>
-                  Oldest
-                </div>
-              </div>
-            )}
-            {props.queryClass === "Company" && (
-              <div class="content-box" id="wrestlerdrop">
-                <div className="option" onClick={() => changeSort(0)}>
-                  Recommended
-                </div>
-                <div className="option" onClick={() => changeSort(1)}>
-                  A - Z
-                </div>
-                <div className="option" onClick={() => changeSort(2)}>
-                  Z - A
-                </div>
-                <div className="option" onClick={() => changeSort(3)}>
-                  Youngest
-                </div>
-                <div className="option" onClick={() => changeSort(4)}>
-                  Oldest
-                </div>
-              </div>
-            )}
-            {props.queryClass === "Title" && (
+            {(props.queryClass === "Wrestler" ||
+              props.queryClass === "Company" ||
+              props.queryClass === "Title") && (
               <div class="content-box" id="wrestlerdrop">
                 <div className="option" onClick={() => changeSort(0)}>
                   Recommended
