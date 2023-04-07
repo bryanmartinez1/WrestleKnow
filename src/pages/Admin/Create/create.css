@@ -7,14 +7,55 @@
     font-family: Lexend;
     display: flex;
     flex-direction: row;
+    justify-content: left;
 }
 
 .holderPage {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100vw;
+    padding: 5px;
 }
 .imageSize {
-    width:300px
+    height:350px;
+    width: 350px;
+    border: solid;
+    background-color: #353739;
+}
+
+.inputWidth {
+    width: 300px;
+    font-family: Lexend;
+}
+
+.textAreaSize {
+    width: 300px;
+    height: 300px;
+    font-family: Lexend;
+}
+
+.submitButton {
+    margin-top: 10px;
+    font-family: Lexend;
+    height: 40px;
+    background-color:#15D29A;;
+    border:none;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.column-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.createWHolder {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.holderPage:not(:last-child) {
+    margin-right:15px
 }

@@ -59,6 +59,7 @@ export default function CreateWrestler() {
     newWrestler.set("lower_aka", aka.toLowerCase());
     try {
       const wrestler = await newWrestler.save();
+      alert(name + " successfully added to database");
     } catch (error) {
       alert("Error while creating Wrestler" + error);
     }
@@ -66,70 +67,86 @@ export default function CreateWrestler() {
   return (
     <div className="createHolder">
       <Sidebar />
-      <div className="holderPage">
-        <div>
-          <p>Name</p>
-          <input
-            type="text"
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Enter Wrestler Name"
-          />
+      <div className="createWHolder">
+        <div className="holderPage">
+          <div>
+            <p>Name</p>
+            <input
+              className="inputWidth"
+              type="text"
+              onChange={(event) => setName(event.target.value)}
+              placeholder="Enter Wrestler Name"
+            />
+          </div>
+          <div>
+            <p>Activity</p>
+            <input
+              className="inputWidth"
+              type="text"
+              onChange={(event) => setActive(event.target.value)}
+              placeholder="Enter Wrestler Name"
+            />
+          </div>
+          <div>
+            <p>From</p>
+            <input
+              className="inputWidth"
+              type="text"
+              onChange={(event) => setFrom(event.target.value)}
+              placeholder="Enter Wrestler Name"
+            />
+          </div>
+          <div>
+            <p>AKA</p>
+            <input
+              className="inputWidth"
+              type="text"
+              onChange={(event) => setAKA(event.target.value)}
+              placeholder="Enter names wrestler is also known as"
+            />
+          </div>
+          <div>
+            <p>About</p>
+            <textarea
+              className="textAreaSize"
+              type="text"
+              onChange={(event) => setAbout(event.target.value)}
+              placeholder="Where Wrestler is From"
+            />
+          </div>
+          <div>
+            <p>Company Pointer</p>
+            <input
+              className="inputWidth"
+              type="text"
+              onChange={(event) => setCompanyPointer(event.target.value)}
+              placeholder="Enter names wrestler is also known as"
+            />
+          </div>
+          <button className="submitButton" onClick={() => createWrestler()}>
+            Submit
+          </button>
         </div>
-        <div>
-          <p>Activity</p>
-          <input
-            type="text"
-            onChange={(event) => setActive(event.target.value)}
-            placeholder="Enter Wrestler Name"
-          />
+        <div className="holderPage">
+          <div className="column-div">
+            <p>Insert Image</p>
+            <img className="imageSize" src={image} />
+            <input
+              type="file"
+              id="image_input"
+              name=""
+              onChange={(event) => onImageChange(event)}
+            />
+          </div>
+          <div>
+            <p>Pick Birthdate</p>
+            <Calendar
+              onChange={onDateChange}
+              value={date}
+              defaultView="century"
+            />
+          </div>
         </div>
-        <div>
-          <p>From</p>
-          <input
-            type="text"
-            onChange={(event) => setFrom(event.target.value)}
-            placeholder="Enter Wrestler Name"
-          />
-        </div>
-        <div>
-          <p>AKA</p>
-          <input
-            type="text"
-            onChange={(event) => setAKA(event.target.value)}
-            placeholder="Enter names wrestler is also known as"
-          />
-        </div>
-        <div>
-          <p>About</p>
-          <textarea
-            type="text"
-            onChange={(event) => setAbout(event.target.value)}
-            placeholder="Where Wrestler is From"
-          />
-        </div>
-        <div>
-          <p>Image</p>
-          <img className="imageSize" src={image} />
-          <input
-            type="file"
-            id="image_input"
-            name=""
-            onChange={(event) => onImageChange(event)}
-          />
-        </div>
-        <div>
-          <p>Pick Birthdate</p>
-          <Calendar onChange={onDateChange} value={date} />
-        </div>
-        <div>
-          <p>Company Pointer</p>
-          <input
-            type="text"
-            onChange={(event) => setCompanyPointer(event.target.value)}
-            placeholder="Enter names wrestler is also known as"
-          />
-        </div>
-        <button onClick={() => createWrestler()}> Submit</button>
       </div>
     </div>
   );
