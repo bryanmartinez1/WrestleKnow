@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.createHolder {
+    font-family: Lexend;
+    display: flex;
+    flex-direction: row;
+}
+
+.holderPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+.imageSize {
+    width:300px
+}

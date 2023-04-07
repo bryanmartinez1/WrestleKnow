@@ -3,12 +3,12 @@ import Home from "./Pages/Home";
 import Settings from "./Pages/User/Settings";
 
 // Create Pages
-import CreateWrestler from "./Pages/Create/CreateWrestler";
-import CreateTitle from "./Pages/Create/CreateTitle";
-import CreateBrand from "./Pages/Create/CreateBrand";
-import CreatePPV from "./Pages/Create/CreatePPV";
-import CreateCompany from "./Pages/Create/CreateCompany";
-import CreateFaction from "./Pages/Create/CreateFaction";
+import CreateWrestler from "./Pages/Admin/Create/CreateWrestler";
+import CreateTitle from "./Pages/Admin/Create/CreateTitle";
+import CreateBrand from "./Pages/Admin/Create/CreateBrand";
+import CreatePPV from "./Pages/Admin/Create/CreatePPV";
+import CreateCompany from "./Pages/Admin/Create/CreateCompany";
+import CreateFaction from "./Pages/Admin/Create/CreateFaction";
 
 // Results Pages
 import Wrestler from "./Pages/Search/Wrestler";
@@ -37,7 +37,7 @@ import SignUp from "./Pages/User/SignUp";
 import ForgotUserName from "./Pages/User/forgotUsername";
 import ForgotPassword from "./Pages/User/forgotPassword";
 import Account from "./Pages/User/Account";
-import Admin from "./Pages/User/Admin";
+import Admin from "./Pages/Admin/Admin";
 
 //Other Imports
 import { Route, Routes } from "react-router-dom";
@@ -64,15 +64,24 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/admin" element={<Admin />} />
 
-          {/* Create Pages */}
-          <Route path="/createwrestler" element={<CreateWrestler />}></Route>
-          <Route path="/createtitle" element={<CreateTitle />}></Route>
-          <Route path="/createbrand" element={<CreateBrand />}></Route>
-          <Route path="/createppv" element={<CreatePPV />}></Route>
-          <Route path="/createcompany" element={<CreateCompany />}></Route>
-          <Route path="/createfaction" element={<CreateFaction />}></Route>
+          {/* Admin Pages */}
+          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin/createwrestler"
+            element={<CreateWrestler />}
+          ></Route>
+          <Route path="/admin/createtitle" element={<CreateTitle />}></Route>
+          <Route path="/admin/createbrand" element={<CreateBrand />}></Route>
+          <Route path="/admin/createppv" element={<CreatePPV />}></Route>
+          <Route
+            path="/admin/createcompany"
+            element={<CreateCompany />}
+          ></Route>
+          <Route
+            path="/admin/createfaction"
+            element={<CreateFaction />}
+          ></Route>
 
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
