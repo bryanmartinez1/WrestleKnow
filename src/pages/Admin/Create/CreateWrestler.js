@@ -1,6 +1,8 @@
 import { React, useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import Sidebar from "../Components/Sidebar";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import "./create.css";
 
 export default function CreateWrestler() {
@@ -12,8 +14,8 @@ export default function CreateWrestler() {
   const [about, setAbout] = useState("");
   const [aka, setAKA] = useState("");
   const [from, setFrom] = useState("");
-  const [date, setDate] = useState("");
-  let img;
+  const [date, onDateChange] = useState(new Date());
+
   function onImageChange(event) {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
@@ -48,8 +50,7 @@ export default function CreateWrestler() {
       className: "Company",
       objectId: companyPointer,
     });
-    const d = new Date("2015-03-25");
-    newWrestler.set("date", d);
+    newWrestler.set("date", date);
     newWrestler.set("active", active);
     newWrestler.set("about", about);
     newWrestler.set("aka", aka);
@@ -115,6 +116,10 @@ export default function CreateWrestler() {
             name=""
             onChange={(event) => onImageChange(event)}
           />
+        </div>
+        <div>
+          <p>Pick Birthdate</p>
+          <Calendar onChange={onDateChange} value={date} />
         </div>
         <div>
           <p>Company Pointer</p>
