@@ -13,14 +13,14 @@ body {
 .nav {
     background-color: #EE534F;
     width: 100%;
-    min-width:100vh;
-    max-height: 100px;
+    max-width:100vw;
     color: #212427;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     padding: 0 1rem;
+    flex-wrap: wrap;
 }
 
 .nav ul {

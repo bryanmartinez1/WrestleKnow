@@ -139,7 +139,7 @@ export default function Search(props) {
             {(props.queryClass === "Wrestler" ||
               props.queryClass === "Company" ||
               props.queryClass === "Title") && (
-              <div class="content-box" id="wrestlerdrop">
+              <div className="content-box" id="wrestlerdrop">
                 <div className="option" onClick={() => changeSort(0)}>
                   Recommended
                 </div>

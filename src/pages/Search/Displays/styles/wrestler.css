@@ -15,12 +15,11 @@
 .searchbar {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: #EF6460;
-    justify-content: left;
-    align-items: center;
-    width: 100%;
-    height:fit-content;
-    padding-left: 20px;
+    justify-content: space-between;
+    max-width: 100vw;
+    padding: 5px;
 }
 
 .bar {
@@ -45,11 +44,10 @@
     font-family: Lexend;
     font-size: 20px;
     height: 40px;
-    width: 450px;
+    width: 350px;
 }
 
 .sort-holder {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: right;

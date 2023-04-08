@@ -114,7 +114,6 @@ export default function Navbar() {
         <img src={boston_crab} className="home-image"></img>
       </Link>
       <ul>
-        {" "}
         <li>
           <Link to="/wrestler" onClick={() => closeDrop()}>
             <img src={wrestler} className="home-image"></img>

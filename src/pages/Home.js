@@ -12,7 +12,7 @@ export default function Home() {
   let vidID = "FYCCs4cpKqw";
   return (
     <div className="page">
-      <iframe width="960" height="540" src={youtube + vidID} />
+      <iframe width="500" height="300" src={youtube + vidID} />
     </div>
   );
 }
