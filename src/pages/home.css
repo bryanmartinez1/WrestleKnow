@@ -1,0 +1,16 @@
+.ytVid {
+    min-width: 500px;
+    min-height: 300px;
+    width: 50vw;
+    height:30vw;
+}
+
+.page {
+    font-family: Lexend;
+}
+.page h1 {
+    font-size: 1.5rem;
+}
+.page p {
+    font-size: 1rem;
+}

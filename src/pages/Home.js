@@ -7,12 +7,18 @@ Home Page that will display
         - Will be recommened on based on each categories most popular/checked on figures of the last 30 days
     - Smaller News Panel displaying the biggest News of wrestling of the month
 */
+import "./home.css";
 export default function Home() {
   let youtube = "https://www.youtube.com/embed/";
-  let vidID = "FYCCs4cpKqw";
+  let vidID = "b8C5JzzkIU8";
+  const today = new Date();
+  const dateString = today.toISOString().substring(0, 10);
+
   return (
     <div className="page">
-      <iframe width="500" height="300" src={youtube + vidID} />
+      <h1>On This Day: {dateString} </h1>
+      <p>Andrade wins the NXT Championship </p>
+      <iframe className="ytVid" src={youtube + vidID} />
     </div>
   );
 }

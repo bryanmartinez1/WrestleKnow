@@ -21,21 +21,9 @@ export default function LogIn() {
     window.location.reload(false);
   }
 
-  // Navigates to Sign Up Page
-  function signUp() {
-    navigate("/signup");
+  function navigateTo(link) {
+    navigate(link);
   }
-
-  // Navigates to Forgot Username Page
-  function forgotUsername() {
-    navigate("/username");
-  }
-
-  // Navigates to Forgot Password Page
-  function forgotPassword() {
-    navigate("/password");
-  }
-
   // Log In Function
   const logIn = async function () {
     const user = username;
@@ -104,15 +92,24 @@ export default function LogIn() {
           </button>
         </div>
         <div className="forgot-holder">
-          <button className="forgot-button" onClick={() => forgotUsername()}>
+          <button
+            className="forgot-button"
+            onClick={() => navigateTo("/username")}
+          >
             Forgot Username?
           </button>
-          <button className="forgot-button" onClick={() => forgotPassword()}>
+          <button
+            className="forgot-button"
+            onClick={() => navigateTo("/password")}
+          >
             Forgot Password?
           </button>
         </div>
         <div className="div-holder">
-          <button className="signUpButton" onClick={() => signUp()}>
+          <button
+            className="signUpButton"
+            onClick={() => navigateTo("/signup")}
+          >
             Sign Up
           </button>
         </div>

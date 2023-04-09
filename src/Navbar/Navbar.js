@@ -97,7 +97,7 @@ export default function Navbar() {
         <Link to="/account" onClick={() => closeDrop()}>
           Account
         </Link>
-        <Link to="/gorillaposition" onClick={() => closeDrop()}>
+        <Link to="/gp" onClick={() => closeDrop()}>
           Gorilla Position
         </Link>
         <Link to="/" onClick={() => logOut()}>

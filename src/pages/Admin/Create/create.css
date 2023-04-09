@@ -34,27 +34,40 @@
 }
 
 .submitButton {
-    margin-top: 10px;
     font-family: Lexend;
     height: 40px;
+    width: 50%;
     background-color:#15D29A;;
     border:none;
     border-radius: 5px;
     cursor:pointer;
+    bottom: 0;
 }
 
 .column-div {
     display: flex;
     flex-direction: column;
 }
-
+.header {
+    font-size: 1rem;
+}
 .createWHolder {
-    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
+
+.rowDiv {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+/* .space {
+    height: 10px;
+} */
 /* 
 .holderPage:not(:last-child) {
     margin-right:15px

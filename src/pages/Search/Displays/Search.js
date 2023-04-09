@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles/wrestler.css";
+import "./styles/search.css";
 import Parse from "parse/dist/parse.min.js";
 import ObjectCard from "./ObjectCard";
 import search_icon from "./Images/search_icon.png";

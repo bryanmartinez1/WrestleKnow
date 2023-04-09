@@ -1,0 +1,44 @@
+.sort-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    border: none;
+    padding-right: 30px;
+}
+
+/* Dropdown */
+.dropdown {
+    background-color: inherit;
+    position: relative;
+    font-family: Lexend;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.dropdown-wrestler-sort-button {
+    background-color:blue;
+    border: none;
+    cursor:pointer;
+    font-family: Lexend;
+    font-size: 1rem;
+}
+
+.content-box {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right:0;
+    /* display: none; */
+}
+
+#drop {
+    display: none;
+}
+
+/* Hovering the Content inside Dropdown */
+.content-box :hover {
+    background-color: #ddd;
+}
