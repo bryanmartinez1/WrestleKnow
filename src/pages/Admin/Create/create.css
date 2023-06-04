@@ -65,6 +65,13 @@
     align-items: center;
 }
 
+.logoImg {
+    width: 20px;
+}
+
+.calendarHeight {
+    height: 340px;
+}
 /* .space {
     height: 10px;
 } */

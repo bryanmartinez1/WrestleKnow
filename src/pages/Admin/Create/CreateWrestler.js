@@ -6,10 +6,15 @@ import "react-calendar/dist/Calendar.css";
 import "./create.css";
 import Loading from "../Components/Loading";
 import ActivityDrop from "../Components/ActivityDrop";
+import twitterLogo from "../../../images/twitterLogo.png";
+import instagramLogo from "../../../images/instagramLogo.png";
+import youtubeLogo from "../../../images/youtubeLogo.png";
+import tiktokLogo from "../../../images/tiktokLogo.png";
+import placeHolderIMG from "../../../images/placeholder-image.png";
 
 export default function CreateWrestler() {
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(placeHolderIMG);
   const [base64Img, setBase64Img] = useState("");
   const [companyPointer, setCompanyPointer] = useState("");
   const [active, setActive] = useState("Active");
@@ -20,6 +25,7 @@ export default function CreateWrestler() {
   const [twitterLink, setTwitterLink] = useState();
   const [instagramLink, setInstagramLink] = useState();
   const [youtubeLink, setYoutubeLink] = useState();
+  const [tiktokLink, setTiktokLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -42,6 +48,10 @@ export default function CreateWrestler() {
   }
 
   async function createWrestler() {
+    if (image === placeHolderIMG) {
+      alert("Please insert an Image for Wrestler");
+      return;
+    }
     const newWrestler = new Parse.Object("Wrestler");
     newWrestler.set("name", name);
     newWrestler.set(
@@ -71,6 +81,7 @@ export default function CreateWrestler() {
     newWrestler.set("youtube", ytId);
     newWrestler.set("instagram", instagramLink);
     newWrestler.set("twitter", twitterLink);
+    newWrestler.set("tiktok", tiktokLink);
     try {
       setIsLoading(true);
       const wrestler = await newWrestler.save();
@@ -140,6 +151,7 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">Pick Birthdate</h1>
               <Calendar
+                className="calendarHeight"
                 onChange={onDateChange}
                 value={date}
                 defaultView="century"
@@ -156,7 +168,10 @@ export default function CreateWrestler() {
               />
             </div>
             <div>
-              <h1 className="header">Twitter</h1>
+              <h1 className="header">
+                Twitter
+                <img className="logoImg" src={twitterLogo} />
+              </h1>
               <input
                 className="inputWidth"
                 type="text"
@@ -164,7 +179,10 @@ export default function CreateWrestler() {
               />
             </div>
             <div>
-              <h1 className="header">Instagram</h1>
+              <h1 className="header">
+                Instagram
+                <img className="logoImg" src={instagramLogo} />
+              </h1>
               <input
                 className="inputWidth"
                 type="text"
@@ -172,11 +190,25 @@ export default function CreateWrestler() {
               />
             </div>
             <div>
-              <h1 className="header">Youtube Video</h1>
+              <h1 className="header">
+                Youtube Video
+                <img className="logoImg" src={youtubeLogo} />
+              </h1>
               <input
                 className="inputWidth"
                 type="text"
                 onChange={(event) => setYoutubeLink(event.target.value)}
+              />
+            </div>
+            <div>
+              <h1 className="header">
+                Tiktok
+                <img className="logoImg" src={tiktokLogo} />
+              </h1>
+              <input
+                className="inputWidth"
+                type="text"
+                onChange={(event) => setTiktokLink(event.target.value)}
               />
             </div>
           </div>

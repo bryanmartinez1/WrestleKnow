@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/activityDrop.css";
-import dd_open from "./images/dd-open.png";
-import dd_close from "./images/dd-close.png";
+import dd_open from "../../../images/dd-open.png";
+import dd_close from "../../../images/dd-close.png";
 
 export default function ActivityDrop(props) {
   const [drop, setDrop] = useState("Active");
