@@ -1,44 +1,57 @@
-.sort-holder {
+.active-drop-holder {
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     border: none;
     padding-right: 30px;
+    width: 100%;
 }
 
 /* Dropdown */
-.dropdown {
+.active-dropdown {
     background-color: inherit;
     position: relative;
     font-family: Lexend;
     justify-content: center;
     align-items: center;
     height: 50px;
+    width: 100%;
 }
 
-.dropdown-wrestler-sort-button {
-    background-color:blue;
+.dropdown-activity-but {
     border: none;
     cursor:pointer;
     font-family: Lexend;
     font-size: 1rem;
+    background: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,.8);
 }
 
-.content-box {
+.activity-box {
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right:0;
+    left:0;
+    cursor: pointer;
+    width: 100%;
     /* display: none; */
 }
 
-#drop {
-    display: none;
+.activity-option {
+    display: flex;
+    justify-content: left;
+    width: 100%;
 }
 
 /* Hovering the Content inside Dropdown */
-.content-box :hover {
+.activity-box :hover {
     background-color: #ddd;
+}
+
+.dd-img {
+    height: 15px;
 }

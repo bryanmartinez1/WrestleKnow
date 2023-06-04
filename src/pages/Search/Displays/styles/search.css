@@ -103,3 +103,7 @@
     flex-wrap: wrap;
     justify-content: left;
 }
+
+.option {
+    cursor: pointer;
+}

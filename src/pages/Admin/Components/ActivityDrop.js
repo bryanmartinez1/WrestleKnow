@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import "./styles/dropdown.css";
+import "./styles/activityDrop.css";
+import dd_open from "./images/dd-open.png";
+import dd_close from "./images/dd-close.png";
 
-export default function Dropdown(props) {
+export default function ActivityDrop(props) {
   const [drop, setDrop] = useState("Active");
+  const [dropImg, setDropImg] = useState(dd_close);
   function changeDrop(value) {
     switch (value) {
       case 0:
@@ -23,13 +26,15 @@ export default function Dropdown(props) {
   var dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
-    document.getElementById("wrestlerdrop").style.display = "block";
+    document.getElementById("activityDrop").style.display = "block";
     dropOpened = true;
+    setDropImg(dd_close);
   }
   //Function to Close Dropdown
   function closeDrop() {
-    document.getElementById("wrestlerdrop").style.display = "none";
+    document.getElementById("activityDrop").style.display = "none";
     dropOpened = false;
+    setDropImg(dd_open);
   }
   //puts the two together
   function dropOpenClose() {
@@ -40,19 +45,20 @@ export default function Dropdown(props) {
     }
   }
   return (
-    <div className="sort-holder">
-      <div className="dropdown">
+    <div className="active-drop-holder">
+      <div className="active-dropdown">
         <button
-          className="dropdown-wrestler-sort-button"
+          className="dropdown-activity-but"
           onClick={() => dropOpenClose()}
         >
           {drop}
+          <img className="dd-img" src={dropImg} />
         </button>
-        <div className="content-box" id="wrestlerdrop">
-          <div className="option" onClick={() => changeDrop(0)}>
+        <div className="activity-box" id="activityDrop">
+          <div className="activity-option" onClick={() => changeDrop(0)}>
             Active
           </div>
-          <div className="option" onClick={() => changeDrop(1)}>
+          <div className="activity-option" onClick={() => changeDrop(1)}>
             Retire
           </div>
         </div>

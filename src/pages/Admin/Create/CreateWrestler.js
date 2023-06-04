@@ -4,14 +4,15 @@ import Sidebar from "../Components/Sidebar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./create.css";
-import Dropdown from "../Components/Dropdown";
+import Dropdown from "../Components/ActivityDrop";
+import ActivityDrop from "../Components/ActivityDrop";
 
 export default function CreateWrestler() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [base64Img, setBase64Img] = useState("");
   const [companyPointer, setCompanyPointer] = useState("");
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Active");
   const [about, setAbout] = useState("");
   const [aka, setAKA] = useState("");
   const [from, setFrom] = useState("");
@@ -72,6 +73,7 @@ export default function CreateWrestler() {
     try {
       const wrestler = await newWrestler.save();
       alert(name + " successfully added to database");
+      window.location.reload(false);
     } catch (error) {
       alert("Error while creating Wrestler" + error);
     }
@@ -93,7 +95,7 @@ export default function CreateWrestler() {
             </div>
             <div>
               <h1 className="header">Activity</h1>
-              <Dropdown setOption={setActive} />
+              <ActivityDrop setOption={setActive} />
             </div>
             <div>
               <h1 className="header">From</h1>
