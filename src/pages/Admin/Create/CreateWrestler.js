@@ -4,7 +4,7 @@ import Sidebar from "../Components/Sidebar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./create.css";
-import Dropdown from "../Components/ActivityDrop";
+import Loading from "../Components/Loading";
 import ActivityDrop from "../Components/ActivityDrop";
 
 export default function CreateWrestler() {
@@ -20,6 +20,7 @@ export default function CreateWrestler() {
   const [twitterLink, setTwitterLink] = useState();
   const [instagramLink, setInstagramLink] = useState();
   const [youtubeLink, setYoutubeLink] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
     if (event.target.files && event.target.files[0]) {
@@ -71,8 +72,10 @@ export default function CreateWrestler() {
     newWrestler.set("instagram", instagramLink);
     newWrestler.set("twitter", twitterLink);
     try {
+      setIsLoading(true);
       const wrestler = await newWrestler.save();
-      alert(name + " successfully added to database");
+      setIsLoading(false);
+      // alert(name + " successfully added to database");
       window.location.reload(false);
     } catch (error) {
       alert("Error while creating Wrestler" + error);
@@ -82,6 +85,7 @@ export default function CreateWrestler() {
   return (
     <div className="createHolder">
       <Sidebar />
+      {isLoading && <Loading />}
       <div className="rowDiv">
         <div className="createWHolder">
           <div className="holderPage">
