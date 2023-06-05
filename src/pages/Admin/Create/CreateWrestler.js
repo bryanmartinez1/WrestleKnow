@@ -11,6 +11,7 @@ import instagramLogo from "../../../images/instagramLogo.png";
 import youtubeLogo from "../../../images/youtubeLogo.png";
 import tiktokLogo from "../../../images/tiktokLogo.png";
 import placeHolderIMG from "../../../images/placeholder-image.png";
+import googleSheetsLogo from "../../../images/googleSheetsLogo.png";
 
 export default function CreateWrestler() {
   const [name, setName] = useState("");
@@ -160,7 +161,10 @@ export default function CreateWrestler() {
           </div>
           <div className="holderPage">
             <div>
-              <h1 className="header">Company Pointer</h1>
+              <h1 className="header">
+                Company Pointer
+                <img className="logoImg" src={googleSheetsLogo} />
+              </h1>
               <input
                 className="inputWidth"
                 type="text"
