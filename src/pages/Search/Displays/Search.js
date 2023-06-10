@@ -105,7 +105,7 @@ export default function Search(props) {
         <ObjectCard
           name={object.get("name")}
           imageSRC={object.get("image")}
-          infoA={object.get("from")}
+          infoA={object.get(props.infoA)}
           date={object.get("date")}
           active={object.get("active")}
           link={props.chosenLink}

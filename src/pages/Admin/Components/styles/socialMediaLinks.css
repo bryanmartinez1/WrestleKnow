@@ -1,0 +1,19 @@
+.holderPage {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.header {
+    font-size: 1rem;
+}
+
+.inputWidth {
+    width: 300px;
+    font-family: Lexend;
+}
+
+.logoImg {
+    width: 20px;
+    cursor: pointer;
+}

@@ -1,17 +1,14 @@
 import { React, useState } from "react";
 import Parse from "parse/dist/parse.min.js";
-import Sidebar from "../Components/Sidebar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./create.css";
 import Loading from "../Components/Loading";
+import Sidebar from "../Components/Sidebar";
 import ActivityDrop from "../Components/ActivityDrop";
-import twitterLogo from "../../../images/twitterLogo.png";
-import instagramLogo from "../../../images/instagramLogo.png";
-import youtubeLogo from "../../../images/youtubeLogo.png";
-import tiktokLogo from "../../../images/tiktokLogo.png";
+import SocialMediaLinks from "../Components/SocialMediaLinks";
 import placeHolderIMG from "../../../images/placeholder-image.png";
-import googleSheetsLogo from "../../../images/googleSheetsLogo.png";
+import Inputs from "../Components/Inputs.js";
 
 export default function CreateWrestler() {
   const [name, setName] = useState("");
@@ -25,7 +22,8 @@ export default function CreateWrestler() {
   const [date, onDateChange] = useState(new Date());
   const [twitterLink, setTwitterLink] = useState();
   const [instagramLink, setInstagramLink] = useState();
-  const [youtubeLink, setYoutubeLink] = useState();
+  const [youtubeVid, setYoutubeVid] = useState();
+  const [youtubeAt, setYoutubeAt] = useState();
   const [tiktokLink, setTiktokLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +48,6 @@ export default function CreateWrestler() {
       alert("Please insert an Image for Wrestler");
       return;
     }
-    console.log(imageDescriber(base64Img));
     const newWrestler = new Parse.Object("Wrestler");
     newWrestler.set("name", name);
     newWrestler.set(
@@ -72,12 +69,8 @@ export default function CreateWrestler() {
     newWrestler.set("from", from);
     newWrestler.set("lower_name", name.toLowerCase());
     newWrestler.set("lower_aka", aka.toLowerCase());
-
-    let ytId = youtubeLink.substring(
-      youtubeLink.indexOf("=") + 1,
-      youtubeLink[-1]
-    );
-    newWrestler.set("youtube", ytId);
+    newWrestler.set("youtube", youtubeVid);
+    newWrestler.set("youtubeAt", youtubeAt);
     newWrestler.set("instagram", instagramLink);
     newWrestler.set("twitter", twitterLink);
     newWrestler.set("tiktok", tiktokLink);
@@ -92,10 +85,6 @@ export default function CreateWrestler() {
     }
   }
 
-  function redirectTo(website) {
-    window.open(website, "_blank");
-  }
-
   return (
     <div className="createHolder">
       <Sidebar />
@@ -103,34 +92,13 @@ export default function CreateWrestler() {
       <div className="rowDiv">
         <div className="createWHolder">
           <div className="holderPage">
-            <div>
-              <h1 className="header">Name</h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setName(event.target.value)}
-              />
-            </div>
+            <Inputs header="Name" setHook={setName} />
             <div>
               <h1 className="header">Activity</h1>
               <ActivityDrop setOption={setActive} />
             </div>
-            <div>
-              <h1 className="header">From</h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setFrom(event.target.value)}
-              />
-            </div>
-            <div>
-              <h1 className="header">AKA</h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setAKA(event.target.value)}
-              />
-            </div>
+            <Inputs header="From" setHook={setFrom} />
+            <Inputs header="AKA" setHook={setAKA} />
             <div>
               <h1 className="header">About</h1>
               <textarea
@@ -161,87 +129,14 @@ export default function CreateWrestler() {
               />
             </div>
           </div>
-          <div className="holderPage">
-            <div>
-              <h1 className="header">
-                Company Pointer
-                <img
-                  className="logoImg"
-                  src={googleSheetsLogo}
-                  onClick={() =>
-                    redirectTo(
-                      "https://docs.google.com/spreadsheets/d/1SddwVXeAJcIRhbj5cSJ5P9s2ZYWljJZCVBeM2E1R_Io/edit?usp=sharing"
-                    )
-                  }
-                />
-              </h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setCompanyPointer(event.target.value)}
-              />
-            </div>
-            <div>
-              <h1 className="header">
-                Twitter
-                <img
-                  className="logoImg"
-                  src={twitterLogo}
-                  onClick={() => redirectTo("https://www.twitter.com/")}
-                />
-              </h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setTwitterLink(event.target.value)}
-              />
-            </div>
-            <div>
-              <h1 className="header">
-                Instagram
-                <img
-                  className="logoImg"
-                  src={instagramLogo}
-                  onClick={() => redirectTo("https://www.instagram.com/")}
-                />
-              </h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setInstagramLink(event.target.value)}
-              />
-            </div>
-            <div>
-              <h1 className="header">
-                Youtube Video
-                <img
-                  className="logoImg"
-                  src={youtubeLogo}
-                  onClick={() => redirectTo("https://www.youtube.com/")}
-                />
-              </h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setYoutubeLink(event.target.value)}
-              />
-            </div>
-            <div>
-              <h1 className="header">
-                Tiktok
-                <img
-                  className="logoImg"
-                  src={tiktokLogo}
-                  onClick={() => redirectTo("https://www.tiktok.com/")}
-                />
-              </h1>
-              <input
-                className="inputWidth"
-                type="text"
-                onChange={(event) => setTiktokLink(event.target.value)}
-              />
-            </div>
-          </div>
+          <SocialMediaLinks
+            setCompanyPointer={setCompanyPointer}
+            setTwitterAt={setTwitterLink}
+            setInstagramAt={setInstagramLink}
+            setYoutubeVid={setYoutubeVid}
+            setYoutubeAt={setYoutubeAt}
+            setTiktokLink={setTiktokLink}
+          />
         </div>
         <button className="submitButton" onClick={() => createWrestler()}>
           Submit

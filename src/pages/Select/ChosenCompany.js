@@ -4,5 +4,5 @@ import { useLocation } from "react-router-dom";
 export default function ChosenCompany() {
   const location = useLocation();
   const id = location.state.id;
-  return <h1>ChosenCompany</h1>;
+  return <h1>{id}</h1>;
 }
