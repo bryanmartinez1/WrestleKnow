@@ -33,12 +33,9 @@ export default function CreateWrestler() {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       setImage(URL.createObjectURL(img));
-
       let result;
 
       const imageFile = event.target.files[0];
-      console.log(imageFile);
-      console.log(image);
       const reader = new FileReader();
       reader.addEventListener("load", (event) => {
         result = event.target.result;
@@ -53,11 +50,12 @@ export default function CreateWrestler() {
       alert("Please insert an Image for Wrestler");
       return;
     }
+    console.log(imageDescriber(base64Img));
     const newWrestler = new Parse.Object("Wrestler");
     newWrestler.set("name", name);
     newWrestler.set(
       "image",
-      new Parse.File("wrestler.png", {
+      new Parse.File(name + ".png", {
         base64: base64Img,
       })
     );
@@ -93,7 +91,11 @@ export default function CreateWrestler() {
       alert("Error while creating Wrestler" + error);
     }
   }
-  const books = ["firstBook", "secondBook", "thirdBook"];
+
+  function redirectTo(website) {
+    window.open(website, "_blank");
+  }
+
   return (
     <div className="createHolder">
       <Sidebar />
@@ -163,7 +165,15 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">
                 Company Pointer
-                <img className="logoImg" src={googleSheetsLogo} />
+                <img
+                  className="logoImg"
+                  src={googleSheetsLogo}
+                  onClick={() =>
+                    redirectTo(
+                      "https://docs.google.com/spreadsheets/d/1SddwVXeAJcIRhbj5cSJ5P9s2ZYWljJZCVBeM2E1R_Io/edit?usp=sharing"
+                    )
+                  }
+                />
               </h1>
               <input
                 className="inputWidth"
@@ -174,7 +184,11 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">
                 Twitter
-                <img className="logoImg" src={twitterLogo} />
+                <img
+                  className="logoImg"
+                  src={twitterLogo}
+                  onClick={() => redirectTo("https://www.twitter.com/")}
+                />
               </h1>
               <input
                 className="inputWidth"
@@ -185,7 +199,11 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">
                 Instagram
-                <img className="logoImg" src={instagramLogo} />
+                <img
+                  className="logoImg"
+                  src={instagramLogo}
+                  onClick={() => redirectTo("https://www.instagram.com/")}
+                />
               </h1>
               <input
                 className="inputWidth"
@@ -196,7 +214,11 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">
                 Youtube Video
-                <img className="logoImg" src={youtubeLogo} />
+                <img
+                  className="logoImg"
+                  src={youtubeLogo}
+                  onClick={() => redirectTo("https://www.youtube.com/")}
+                />
               </h1>
               <input
                 className="inputWidth"
@@ -207,7 +229,11 @@ export default function CreateWrestler() {
             <div>
               <h1 className="header">
                 Tiktok
-                <img className="logoImg" src={tiktokLogo} />
+                <img
+                  className="logoImg"
+                  src={tiktokLogo}
+                  onClick={() => redirectTo("https://www.tiktok.com/")}
+                />
               </h1>
               <input
                 className="inputWidth"
