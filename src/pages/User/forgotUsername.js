@@ -1,36 +1,21 @@
-import { queryAllByAltText } from "@testing-library/react";
 import Parse from "parse/dist/parse.min.js";
 import React, { useState } from "react";
 import "./styles/forgot.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ForgotUserName() {
   const [email, setEmail] = useState("");
   const [num, setNum] = useState(0);
 
+  const navigate = useNavigate();
+
   function reveal() {
     document.getElementById("revealer").style.display = "block";
   }
-  function revealUsername() {
-    let username = "am";
-    return username + email;
+  function navigatePage(link) {
+    navigate(link);
   }
 
-  const findUsername = async function () {
-    // Note that this value come from state variables linked to your text input
-    const emailValue = email;
-
-    try {
-      await Parse.User.requestPasswordReset(emailValue);
-      alert(
-        `Success! Please check ${email}, to view username, and also have the ability to update password`
-      );
-      return true;
-    } catch (error) {
-      // Error can be caused by lack of Internet connection
-      alert(`Error! ${error}`);
-      return false;
-    }
-  };
   return (
     <div className="body">
       <div className="holder">
@@ -50,6 +35,21 @@ export default function ForgotUserName() {
         <div className="div-holder">
           <button className="forgotButton" onClick={() => reveal()}>
             Submit
+          </button>
+        </div>
+        <div className="already-holder">
+          <button
+            className="already-button"
+            onClick={() => navigatePage("/login")}
+          >
+            Remember Username?
+          </button>
+
+          <button
+            className="already-button"
+            onClick={() => navigatePage("/password")}
+          >
+            Forgot Password?
           </button>
         </div>
       </div>

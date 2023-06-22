@@ -6,6 +6,7 @@
 .objectHolder {
     width: 200px;
     height: 300px;
+    background-color: #F8BCBA;
     border-style: solid;
     border-color: #212427;
     border-radius: 25px;
@@ -13,6 +14,16 @@
     flex-direction: column;
     overflow: hidden;
     cursor:pointer;
+}
+
+.objectHolder:hover {
+    box-shadow: 0 4px 18px 0 rgba(0,0,0,0.25);
+    background-color: #EE534F;
+    font-weight: bolder;
+
+    .objectImg {
+        background-color: #EE534F;
+    }
 }
 
 .objectImg {
@@ -24,7 +35,6 @@
 .objectName {
     width: 200px;
     height: 50px;
-    background-color: #F8BCBA;
     border-top: solid;
     border-bottom: solid;
     border-color: #212427;
@@ -38,7 +48,6 @@
 .objectInfo {
     width: 200px;
     height: 50px;
-    background-color: #F8BCBA;
     display: flex;
     flex-direction: row;
 }

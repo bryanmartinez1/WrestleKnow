@@ -8,11 +8,8 @@ export default function ForgotPassword() {
 
   const navigate = useNavigate();
 
-  function logIn() {
-    navigate("/login");
-  }
-  function forgotUsername() {
-    navigate("/username");
+  function navigatePage(link) {
+    navigate(link);
   }
 
   const doRequestPasswordReset = async function () {
@@ -57,11 +54,17 @@ export default function ForgotPassword() {
         </div>
 
         <div className="already-holder">
-          <button className="already-button" onClick={() => logIn()}>
+          <button
+            className="already-button"
+            onClick={() => navigatePage("/login")}
+          >
             Remember Password?
           </button>
 
-          <button className="already-button" onClick={() => forgotUsername()}>
+          <button
+            className="already-button"
+            onClick={() => navigatePage("/username")}
+          >
             Forgot Username?
           </button>
         </div>
