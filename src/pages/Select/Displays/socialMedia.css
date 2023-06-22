@@ -1,0 +1,19 @@
+.socialMediaHolder {
+    border-style: solid;
+    width: fit-content;
+    border-radius: 10px;
+    border-color: black;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.soicalMediaTitle {
+    text-align: center;
+    background-color: #F8BCBA;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.socialMediaBody {
+    font-size: 15px;
+}

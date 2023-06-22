@@ -1,10 +1,10 @@
-import "./styles.css";
+import "./infoDisplay.css";
 
 export default function InfoDisplay(props) {
   return (
-    <div className="smallBox">
-      <h1 className="boxHeader">{props.title}</h1>
-      {props.text}
+    <div className="infoDisplayHolder">
+      <div className="infoDisplayTitle">{props.title}</div>
+      <div className="infoDisplayBody"> {props.text}</div>
     </div>
   );
 }

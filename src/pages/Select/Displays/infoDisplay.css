@@ -1,0 +1,19 @@
+.infoDisplayHolder {
+    border-style: solid;
+    width: fit-content;
+    border-radius: 10px;
+    border-color: black;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.infoDisplayTitle {
+    text-align: center;
+    background-color: #F8BCBA;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.infoDisplayBody {
+    font-size: 15px;
+}

@@ -3,68 +3,28 @@
     src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
 }
 
-.displayBody {
+.selectHolder {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    font-family: Lexend;
 }
 
-.leftInside {
-    width: 730px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.wrestlerNameDiv {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+    background-color: #EF6460;
 }
 
-.leftInsideRight {
+.otherInfo {
+    margin: 0 20px;
+}
+
+.wrestlerSelectedImg {
     width: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-.companyBox {
+    height: 500px;
     border-style: solid;
     border-color: #212427;
     border-radius: 25px;
-    overflow: hidden;
-    padding-bottom: 10px;
-    font-family: Lexend;
-}
-
-.companyHeader {
-    background-color: #F8BCBA;
-    font-size: 2rem;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-.linkButton {
-    height:fit-content;
-    display: flex;
-    justify-content: flex-start;
-    background-color: transparent;
-    align-items: center;
-    border:none;
-    cursor: pointer;
-    font-family: Lexend;
-    text-decoration: none;
-    color: #212427;
-    font-size: 13px;
-    flex-wrap: wrap;
-    padding-left: 3px;
-    padding-top: 3px;
-}
-.compImg {
-    height: 50px;
-    width: 50px;
-    background-color: #212427;
-}
-.rightBody {
-    display: flex;
-    max-width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-style: solid;
+    background-color: #353739;
 }

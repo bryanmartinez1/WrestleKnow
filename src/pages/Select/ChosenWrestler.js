@@ -3,6 +3,9 @@ import { React, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import { type } from "@testing-library/user-event/dist/type";
+import InfoDisplay from "./Displays/InfoDisplay";
+import SocialMedia from "./Displays/SocialMedia";
+import QuickInfo from "./Displays/QuickInfo";
 
 export default function ChosenWrestler() {
   const location = useLocation();
@@ -17,16 +20,10 @@ export default function ChosenWrestler() {
 
   function wrestlerAge(date) {
     let dob = date;
-    //calculate month difference from current date in time
     var month_diff = Date.now() - dob.getTime();
-    //convert the calculated difference in date format
     var age_dt = new Date(month_diff);
-    //extract year from date
     var year = age_dt.getUTCFullYear();
-    //now calculate the age of the user
     return Math.abs(year - 1970);
-
-    // let image = JSON.stringify(props.imageSRC).split('url":"').pop().slice(0, -2);
   }
 
   async function wrestlerQuery() {
@@ -43,6 +40,14 @@ export default function ChosenWrestler() {
           .split('url":"')
           .pop()
           .slice(0, -2),
+        dateOfBirth: wrestlerResults[0]
+          .get("date")
+          .toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+          .toString(),
         active: wrestlerResults[0].get("active"),
         from: wrestlerResults[0].get("from"),
         about: wrestlerResults[0].get("about"),
@@ -66,20 +71,31 @@ export default function ChosenWrestler() {
   return (
     <>
       {showWrestler && (
-        <>
-          <img src={wrestlerInfo.image} />
-          {wrestlerInfo.name}
-          {wrestlerInfo.age}
-          {wrestlerInfo.active}
-          {wrestlerInfo.from}
-          {wrestlerInfo.about}
-          {wrestlerInfo.aka}
-          {wrestlerInfo.instagram}
-          {wrestlerInfo.twitter}
-          {wrestlerInfo.youtube}
-          {wrestlerInfo.tiktok}
-          {wrestlerInfo.youtuberAt}
-        </>
+        <div className="selectHolder">
+          <div className="wrestlerNameDiv">{wrestlerInfo.name}</div>
+          <div className="otherInfo">
+            <QuickInfo
+              imgSrc={wrestlerInfo.image}
+              topLeft={wrestlerInfo.dateOfBirth}
+              topRight={wrestlerInfo.age + " Years Old"}
+              bottomLeft={wrestlerInfo.active}
+              bottomRight={wrestlerInfo.from}
+            />
+            <InfoDisplay title="About" text={wrestlerInfo.about} />
+            <InfoDisplay title="AKA" text={wrestlerInfo.aka} />
+            <SocialMedia
+              title="Social Media"
+              twitter={wrestlerInfo.twitter}
+              instagram={wrestlerInfo.instagram}
+              tiktok={wrestlerInfo.tiktok}
+              youtuberAt={wrestlerInfo.youtuberAt}
+            />
+            <iframe
+              className="ytVid"
+              src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
+            />
+          </div>
+        </div>
       )}
     </>
   );
