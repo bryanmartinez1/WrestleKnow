@@ -6,57 +6,81 @@ import { type } from "@testing-library/user-event/dist/type";
 
 export default function ChosenWrestler() {
   const location = useLocation();
-  let display = false;
-  const wrestlerID = location.state.id;
+  const [showWrestler, setShowWrestler] = useState(false);
+  const [queryResults, setQueryResults] = useState();
   const wrestlerObject = location.state.object;
-  let a = typeof wrestlerObject;
-  const myJSON = JSON.stringify(wrestlerObject);
-  // const [name, setName] = useState();
-  // const [imgURL, setImgURL] = useState();
-  // const [from, setFrom] = useState();
-  // const [companyID, setCompanyID] = useState();
-  // const [date, setDate] = useState();
-  // const [active, setActive] = useState();
-  // const [about, setAbout] = useState();
-  // const [aka, setAKA] = useState();
-  // const [twitter, setTwitter] = useState();
-  // const [instagram, setInstagram] = useState();
-  // const [youtube, setYoutube] = useState();
+  const [wrestlerInfo, setWrestlerInfo] = useState();
 
-  // Query is Started
-  // async function startQuery() {
-  //   const data = new Parse.Query("Wrestler");
-  //   data.equalTo("objectId", wrestlerID);
-  //   try {
-  //     let wrestlerResults = await data.find();
-  //     setName(wrestlerResults[0].get("name"));
+  if (showWrestler === false) {
+    wrestlerQuery();
+  }
 
-  //     let img = wrestlerResults[0].get("image");
-  //     let imgSRC = JSON.stringify(img).split('url":"').pop().slice(0, -2);
-  //     setImgURL(imgSRC);
+  function wrestlerAge(date) {
+    let dob = date;
+    //calculate month difference from current date in time
+    var month_diff = Date.now() - dob.getTime();
+    //convert the calculated difference in date format
+    var age_dt = new Date(month_diff);
+    //extract year from date
+    var year = age_dt.getUTCFullYear();
+    //now calculate the age of the user
+    return Math.abs(year - 1970);
 
-  //     setFrom(wrestlerResults[0].get("from"));
-  //     // setCompanyID(wrestlerResults[0].get("Company"));
-  //     setDate(wrestlerResults[0].get("date"));
-  //     setActive(wrestlerResults[0].get("active"));
-  //     setAbout(wrestlerResults[0].get("about"));
-  //     setAKA(wrestlerResults[0].get("aka"));
-  //     setYoutube(wrestlerResults[0].get("youtube"));
-  //     setInstagram(wrestlerResults[0].get("instagram"));
-  //     setTwitter(wrestlerResults[0].get("twitter"));
-  //     display = true;
-  //   } catch (error) {
-  //     alert("Bruh" + JSON.stringify(error));
-  //   }
-  // }
+    // let image = JSON.stringify(props.imageSRC).split('url":"').pop().slice(0, -2);
+  }
 
-  // function showResults() {
-  //   return (
-  //     <div>
-  //       {wrestlerObject.get("from")}
-  //       <img src={imgURL} />
-  //     </div>
-  //   );
-  // }
-  return <div>{myJSON}</div>;
+  async function wrestlerQuery() {
+    let wrestlerParse = new Parse.Query(wrestlerObject.className);
+    wrestlerParse.equalTo("objectId", wrestlerObject.id);
+
+    try {
+      const wrestlerResults = await wrestlerParse.find();
+      console.log(wrestlerResults);
+      const wrestler = {
+        name: wrestlerResults[0].get("name"),
+        age: wrestlerAge(wrestlerResults[0].get("date")),
+        image: JSON.stringify(wrestlerResults[0].get("image"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2),
+        active: wrestlerResults[0].get("active"),
+        from: wrestlerResults[0].get("from"),
+        about: wrestlerResults[0].get("about"),
+        aka: wrestlerResults[0].get("aka"),
+        instagram: wrestlerResults[0].get("instagram"),
+        twitter: wrestlerResults[0].get("twitter"),
+        youtube: wrestlerResults[0].get("youtube"),
+        tiktok: wrestlerResults[0].get("tiktok"),
+        youtuberAt: wrestlerResults[0].get("youtuberAt"),
+      };
+
+      setWrestlerInfo(wrestler);
+      setShowWrestler(true);
+      return true;
+    } catch (error) {
+      alert(`Error! ${error.message}`);
+      return false;
+    }
+  }
+
+  return (
+    <>
+      {showWrestler && (
+        <>
+          <img src={wrestlerInfo.image} />
+          {wrestlerInfo.name}
+          {wrestlerInfo.age}
+          {wrestlerInfo.active}
+          {wrestlerInfo.from}
+          {wrestlerInfo.about}
+          {wrestlerInfo.aka}
+          {wrestlerInfo.instagram}
+          {wrestlerInfo.twitter}
+          {wrestlerInfo.youtube}
+          {wrestlerInfo.tiktok}
+          {wrestlerInfo.youtuberAt}
+        </>
+      )}
+    </>
+  );
 }
