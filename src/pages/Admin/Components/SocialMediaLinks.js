@@ -37,7 +37,7 @@ export default function SocialMediaLinks(props) {
 
   return (
     <div className="holderPage">
-      <div>
+      <>
         <h1 className="header">
           Company Pointer
           <img
@@ -55,8 +55,8 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingCompanyPointer(event.target.value)}
         />
-      </div>
-      <div>
+      </>
+      <>
         <h1 className="header">
           Twitter At
           <img
@@ -70,8 +70,8 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingTwitterLink(event.target.value)}
         />
-      </div>
-      <div>
+      </>
+      <>
         <h1 className="header">
           Instagram At
           <img
@@ -85,8 +85,8 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingInstagramAt(event.target.value)}
         />
-      </div>
-      <div>
+      </>
+      <>
         <h1 className="header">
           Youtube Video
           <img
@@ -100,8 +100,8 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingYoutubeVid(event.target.value)}
         />
-      </div>
-      <div>
+      </>
+      <>
         <h1 className="header">
           Youtube At
           <img
@@ -115,8 +115,8 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingYoutubeAt(event.target.value)}
         />
-      </div>
-      <div>
+      </>
+      <>
         <h1 className="header">
           Tiktok At
           <img
@@ -130,7 +130,7 @@ export default function SocialMediaLinks(props) {
           type="text"
           onChange={(event) => settingTiktokLink(event.target.value)}
         />
-      </div>
+      </>
     </div>
   );
 }

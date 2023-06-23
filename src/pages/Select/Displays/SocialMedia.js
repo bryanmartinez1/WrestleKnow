@@ -5,10 +5,10 @@ export default function SocialMedia(props) {
     <div className="socialMediaHolder">
       <div className="soicalMediaTitle">{props.title}</div>
       <div className="socialMediaBody"> {props.text}</div>
-      {props.twitter != "" && <div>{props.twitter}</div>}
-      {props.instagram != "" && <div>{props.instagram}</div>}
-      {props.tiktok != "" && <div>{props.tiktok}</div>}
-      {props.youtubeAt != "" && <div>{props.youtubeAt}</div>}
+      {props.twitter !== "" && <>{props.twitter}</>}
+      {props.instagram !== "" && <>{props.instagram}</>}
+      {props.tiktok !== "" && <>{props.tiktok}</>}
+      {props.youtubeAt !== "" && <>{props.youtubeAt}</>}
     </div>
   );
 }

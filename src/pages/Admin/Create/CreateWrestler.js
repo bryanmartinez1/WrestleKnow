@@ -93,20 +93,20 @@ export default function CreateWrestler() {
         <div className="createWHolder">
           <div className="holderPage">
             <Inputs header="Name" setHook={setName} />
-            <div>
+            <>
               <h1 className="header">Activity</h1>
               <ActivityDrop setOption={setActive} />
-            </div>
+            </>
             <Inputs header="From" setHook={setFrom} />
             <Inputs header="AKA" setHook={setAKA} />
-            <div>
+            <>
               <h1 className="header">About</h1>
               <textarea
                 className="textAreaSize"
                 type="text"
                 onChange={(event) => setAbout(event.target.value)}
               />
-            </div>
+            </>
           </div>
           <div className="holderPage">
             <div className="column-div">
@@ -119,7 +119,7 @@ export default function CreateWrestler() {
                 onChange={(event) => onImageChange(event)}
               />
             </div>
-            <div>
+            <>
               <h1 className="header">Pick Birthdate</h1>
               <Calendar
                 className="calendarHeight"
@@ -127,7 +127,7 @@ export default function CreateWrestler() {
                 value={date}
                 defaultView="century"
               />
-            </div>
+            </>
           </div>
           <SocialMediaLinks
             setCompanyPointer={setCompanyPointer}

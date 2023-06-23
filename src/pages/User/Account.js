@@ -31,7 +31,7 @@ export default function Acount() {
   // if user is logged in a proper page is displayed
   function loggedIn() {
     if (currentUser === null) {
-      return <div>You are not logged in</div>;
+      return <>You are not logged in</>;
     }
     return (
       <h1>
@@ -43,5 +43,5 @@ export default function Acount() {
     );
   }
 
-  return <div>{loggedIn()}</div>;
+  return <>{loggedIn()}</>;
 }

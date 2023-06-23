@@ -23,9 +23,8 @@ export default function Leftbar(props) {
       </Link>
       <Link className="link" to="/gp/follow">
         <div className="followHolder">
-          {" "}
-          <div> 10 FOLLOWERS</div>
-          <div> 400 FOLLOWING</div>
+          <> 10 FOLLOWERS</>
+          <> 400 FOLLOWING</>
         </div>
       </Link>
       <div className="bio">{props.bio}</div>
