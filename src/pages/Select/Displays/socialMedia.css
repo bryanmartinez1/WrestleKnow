@@ -1,6 +1,7 @@
 .socialMediaHolder {
     border-style: solid;
-    width: fit-content;
+    width: 300px;
+    height: fit-content;
     border-radius: 10px;
     border-color: black;
     overflow: hidden;
@@ -15,5 +16,23 @@
 }
 
 .socialMediaBody {
+    display: flex;
+    flex-direction: column;
     font-size: 15px;
+}
+
+.socialMediaInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.socialMediaLogo {
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
 }

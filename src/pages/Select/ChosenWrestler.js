@@ -2,7 +2,6 @@ import "./styles/cw.css";
 import { React, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
-import { type } from "@testing-library/user-event/dist/type";
 import InfoDisplay from "./Displays/InfoDisplay";
 import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
@@ -10,7 +9,6 @@ import QuickInfo from "./Displays/QuickInfo";
 export default function ChosenWrestler() {
   const location = useLocation();
   const [showWrestler, setShowWrestler] = useState(false);
-  const [queryResults, setQueryResults] = useState();
   const wrestlerObject = location.state.object;
   const [wrestlerInfo, setWrestlerInfo] = useState();
 
@@ -56,7 +54,7 @@ export default function ChosenWrestler() {
         twitter: wrestlerResults[0].get("twitter"),
         youtube: wrestlerResults[0].get("youtube"),
         tiktok: wrestlerResults[0].get("tiktok"),
-        youtuberAt: wrestlerResults[0].get("youtuberAt"),
+        youtuber: wrestlerResults[0].get("youtubeAt"),
       };
 
       setWrestlerInfo(wrestler);
@@ -88,7 +86,7 @@ export default function ChosenWrestler() {
               twitter={wrestlerInfo.twitter}
               instagram={wrestlerInfo.instagram}
               tiktok={wrestlerInfo.tiktok}
-              youtuberAt={wrestlerInfo.youtuberAt}
+              youtuber={wrestlerInfo.youtuber}
             />
             <iframe
               className="ytVid"
