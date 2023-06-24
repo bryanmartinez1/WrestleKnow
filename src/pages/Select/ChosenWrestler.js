@@ -18,9 +18,9 @@ export default function ChosenWrestler() {
 
   function wrestlerAge(date) {
     let dob = date;
-    var month_diff = Date.now() - dob.getTime();
-    var age_dt = new Date(month_diff);
-    var year = age_dt.getUTCFullYear();
+    let month_diff = Date.now() - dob.getTime();
+    let age_dt = new Date(month_diff);
+    let year = age_dt.getUTCFullYear();
     return Math.abs(year - 1970);
   }
 

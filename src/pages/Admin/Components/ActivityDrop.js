@@ -23,7 +23,7 @@ export default function ActivityDrop(props) {
   // Dropdown Functions
   // Proper Implemnation to be Added
   // Functions to Open and Close Dropdown
-  var dropOpened = false;
+  cosnt dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
     document.getElementById("activityDrop").style.display = "block";

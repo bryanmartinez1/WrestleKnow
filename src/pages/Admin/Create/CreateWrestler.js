@@ -56,7 +56,7 @@ export default function CreateWrestler() {
         base64: base64Img,
       })
     );
-    var Company = new Parse.Object("Company");
+    let Company = new Parse.Object("Company");
     newWrestler.set("Company", {
       __type: "Pointer",
       className: "Company",

@@ -54,7 +54,7 @@ export default function Search(props) {
   // Dropdown Functions
   // Proper Implemnation to be Added
   // Functions to Open and Close Dropdown
-  var dropOpened = false;
+  let dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
     document.getElementById("wrestlerdrop").style.display = "block";
