@@ -1,11 +1,10 @@
 import "./styles/cw.css";
 import { React, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import InfoDisplay from "./Displays/InfoDisplay";
 import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
-import CompanyDisplay from "./Displays/companyDisplay";
 
 export default function ChosenWrestler() {
   const location = useLocation();
@@ -100,6 +99,8 @@ export default function ChosenWrestler() {
           <div className="otherInfo">
             <QuickInfo
               imgSrc={wrestlerInfo.image}
+              companyName={companyInfo.name}
+              companyID={companyInfo.id}
               topLeft={wrestlerInfo.dateOfBirth}
               topRight={wrestlerInfo.age + " Years Old"}
               bottomLeft={wrestlerInfo.active}
@@ -117,11 +118,6 @@ export default function ChosenWrestler() {
             <iframe
               className="ytVid"
               src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
-            />
-            <CompanyDisplay
-              companyName={companyInfo.name}
-              companyImage={companyInfo.image}
-              companyID={companyInfo.id}
             />
           </div>
         </div>
