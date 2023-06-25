@@ -5,6 +5,7 @@ import Parse from "parse/dist/parse.min.js";
 import InfoDisplay from "./Displays/InfoDisplay";
 import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
+import ReignDescription from "./Displays/ReignDescription";
 
 export default function ChosenWrestler() {
   const location = useLocation();
@@ -25,6 +26,9 @@ export default function ChosenWrestler() {
     let age_dt = new Date(month_diff);
     let year = age_dt.getUTCFullYear();
     return Math.abs(year - 1970);
+  }
+  function createBulletPointList(text) {
+    return text.split(",");
   }
 
   async function companyQuery(companyID) {
@@ -71,7 +75,7 @@ export default function ChosenWrestler() {
         active: wrestlerResults[0].get("active"),
         from: wrestlerResults[0].get("from"),
         about: wrestlerResults[0].get("about"),
-        aka: wrestlerResults[0].get("aka"),
+        aka: createBulletPointList(wrestlerResults[0].get("aka")),
         instagram: wrestlerResults[0].get("instagram"),
         twitter: wrestlerResults[0].get("twitter"),
         youtube: wrestlerResults[0].get("youtube"),
@@ -80,7 +84,6 @@ export default function ChosenWrestler() {
         company: wrestlerResults[0].get("Company"),
       };
       const company = await companyQuery(wrestler.company);
-
       setWrestlerInfo(wrestler);
       setCompanyInfo(company);
       setShowWrestler(true);
@@ -97,28 +100,70 @@ export default function ChosenWrestler() {
         <div className="selectHolder">
           <div className="wrestlerNameDiv">{wrestlerInfo.name}</div>
           <div className="otherInfo">
-            <QuickInfo
-              imgSrc={wrestlerInfo.image}
-              companyName={companyInfo.name}
-              companyID={companyInfo.id}
-              topLeft={wrestlerInfo.dateOfBirth}
-              topRight={wrestlerInfo.age + " Years Old"}
-              bottomLeft={wrestlerInfo.active}
-              bottomRight={wrestlerInfo.from}
-            />
-            <InfoDisplay title="About" text={wrestlerInfo.about} />
-            <InfoDisplay title="AKA" text={wrestlerInfo.aka} />
-            <SocialMedia
-              title="Social Media"
-              twitter={wrestlerInfo.twitter}
-              instagram={wrestlerInfo.instagram}
-              tiktok={wrestlerInfo.tiktok}
-              youtuber={wrestlerInfo.youtuber}
-            />
-            <iframe
-              className="ytVid"
-              src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
-            />
+            <div className="leftSide">
+              <div className="leftSideTop">
+                <QuickInfo
+                  imgSrc={wrestlerInfo.image}
+                  companyName={companyInfo.name}
+                  companyID={companyInfo.id}
+                  topLeft={wrestlerInfo.dateOfBirth}
+                  topRight={wrestlerInfo.age + " Years Old"}
+                  bottomLeft={wrestlerInfo.active}
+                  bottomRight={wrestlerInfo.from}
+                />
+                <InfoDisplay
+                  title="About"
+                  text={wrestlerInfo.about}
+                  isList={false}
+                />
+              </div>
+              <iframe
+                className="ytVidChoosen"
+                src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
+              />
+            </div>
+            <div className="leftSide">
+              <div className="leftSideTop">
+                <InfoDisplay
+                  title="AKA"
+                  text={wrestlerInfo.aka}
+                  isList={true}
+                />
+                <SocialMedia
+                  title="Social Media"
+                  twitter={wrestlerInfo.twitter}
+                  instagram={wrestlerInfo.instagram}
+                  tiktok={wrestlerInfo.tiktok}
+                  youtuber={wrestlerInfo.youtuber}
+                />
+              </div>
+              <div className="reignDisplayHolder">
+                <div className="infoDisplayTitle">Reign Description</div>
+                <div className="searchBar"> Search</div>
+                <div className="scrollReignDisplay">
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                  <ReignDescription />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

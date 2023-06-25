@@ -6,12 +6,13 @@
 .selectHolder {
     width: 100%;
     font-family: Lexend;
+    cursor: default;
 }
 
 .wrestlerNameDiv {
     width: 100%;
     text-align: center;
-    font-size: 32px;
+    font-size: 46px;
     font-weight: bolder;
     background-color: #EF6460;
 }
@@ -20,8 +21,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-
 }
 
 .wrestlerSelectedImg {
@@ -31,4 +30,43 @@
     border-color: #212427;
     border-radius: 25px;
     background-color: #353739;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.leftSideTop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ytVidChoosen {
+    max-width: 800px;
+    height: 450px;
+}
+
+.reignDisplayHolder {
+    border-style: solid;
+    max-width: 800px;
+    height: 900px;
+    border-radius: 10px;
+    overflow: hidden;
+    border-color: black;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.scrollReignDisplay {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.scrollReignDisplay::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
