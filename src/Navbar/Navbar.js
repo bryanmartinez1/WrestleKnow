@@ -111,37 +111,49 @@ export default function Navbar() {
     <nav className="nav">
       <Link to="/" className="site-name" onClick={() => closeDrop()}>
         WrestleKnow
-        <img src={boston_crab} className="home-image"></img>
+        <img src={boston_crab} alt="Boston Crab Image" className="home-image" />
       </Link>
       <ul>
         <li>
           <Link to="/wrestler" onClick={() => closeDrop()}>
-            <img src={wrestler} className="home-image"></img>
+            <img
+              src={wrestler}
+              alt="Wrestler Page Logo"
+              className="home-image"
+            />
             <div className="text">Wrestlers</div>
           </Link>
         </li>
         <li>
           <Link to="/title" onClick={() => closeDrop()}>
-            <img src={title} className="home-image"></img>
+            <img src={title} alt="Title Page Logo" className="home-image" />
             <div className="text">Titles</div>
           </Link>
         </li>
         <li>
           <Link to="/company" onClick={() => closeDrop()}>
-            <img src={company} className="home-image"></img>
+            <img
+              src={company}
+              alt="Company Page Logo"
+              className="home-image"
+            ></img>
             <div className="text">Companies</div>
           </Link>
         </li>
         <li>
           <Link to="/faction" onClick={() => closeDrop()}>
-            <img src={faction} className="home-image"></img>
+            <img src={faction} alt="Faction Page Logo" className="home-image" />
             <div className="text">Factions</div>
           </Link>
         </li>
         <li>
           <div className="dropdown">
             <button className="dropdown-button" onClick={() => dropOpenClose()}>
-              <img src={profile} className="dropdown-image"></img>
+              <img
+                src={profile}
+                alt="Profile Dropdown"
+                className="dropdown-image"
+              ></img>
             </button>
 
             {checkLogIn}

@@ -42,6 +42,7 @@ export default function SocialMediaLinks(props) {
           Company Pointer
           <img
             className="logoImg"
+            alt="Google Sheets Logo"
             src={googleSheetsLogo}
             onClick={() =>
               redirectTo(
@@ -62,6 +63,7 @@ export default function SocialMediaLinks(props) {
           <img
             className="logoImg"
             src={twitterLogo}
+            alt="Twitter Logo"
             onClick={() => redirectTo("https://www.twitter.com/")}
           />
         </h1>
@@ -76,6 +78,7 @@ export default function SocialMediaLinks(props) {
           Instagram At
           <img
             className="logoImg"
+            alt="Instgram Logo"
             src={instagramLogo}
             onClick={() => redirectTo("https://www.instagram.com/")}
           />

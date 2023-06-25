@@ -23,7 +23,7 @@ export default function ActivityDrop(props) {
   // Dropdown Functions
   // Proper Implemnation to be Added
   // Functions to Open and Close Dropdown
-  cosnt dropOpened = false;
+  const dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
     document.getElementById("activityDrop").style.display = "block";
@@ -52,7 +52,7 @@ export default function ActivityDrop(props) {
           onClick={() => dropOpenClose()}
         >
           {drop}
-          <img className="dd-img" src={dropImg} />
+          <img className="dd-img" src={dropImg} alt="Dropdown" />
         </button>
         <div className="activity-box" id="activityDrop">
           <div className="activity-option" onClick={() => changeDrop(0)}>

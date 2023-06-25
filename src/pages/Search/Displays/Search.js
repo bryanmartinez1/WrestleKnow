@@ -110,7 +110,6 @@ export default function Search(props) {
           active={object.get("active")}
           link={props.chosenLink}
           objectID={object.id}
-          object={object}
         />
       );
     });

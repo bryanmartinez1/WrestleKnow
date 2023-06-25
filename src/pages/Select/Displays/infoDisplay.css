@@ -18,4 +18,20 @@
 
 .infoDisplayBody {
     font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.companyImage {
+    width: 20px;
+    background-color: #212427;
+}
+
+.companyDisplayBody {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }

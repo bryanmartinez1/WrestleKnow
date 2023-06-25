@@ -19,7 +19,7 @@ export default function ObjectCard(props) {
       <Link
         className="linkDesign"
         to={props.link}
-        state={{ id: props.objectID, object: props.object }}
+        state={{ id: props.objectID }}
       >
         <div className="objectHolder">
           <img src={image} className="objectImg"></img>

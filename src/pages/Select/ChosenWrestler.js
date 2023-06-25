@@ -1,22 +1,26 @@
 import "./styles/cw.css";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import InfoDisplay from "./Displays/InfoDisplay";
 import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
+import CompanyDisplay from "./Displays/companyDisplay";
 
 export default function ChosenWrestler() {
   const location = useLocation();
   const [showWrestler, setShowWrestler] = useState(false);
-  const wrestlerObject = location.state.object;
+  const wrestlerObjectID = location.state.id;
   const [wrestlerInfo, setWrestlerInfo] = useState();
+  const [companyInfo, setCompanyInfo] = useState();
 
-  if (showWrestler === false) {
-    wrestlerQuery();
-  }
+  useEffect(() => {
+    if (!showWrestler) {
+      wrestlerQuery();
+    }
+  });
 
-  function wrestlerAge(date) {
+  function age(date) {
     let dob = date;
     let month_diff = Date.now() - dob.getTime();
     let age_dt = new Date(month_diff);
@@ -24,16 +28,35 @@ export default function ChosenWrestler() {
     return Math.abs(year - 1970);
   }
 
+  async function companyQuery(companyID) {
+    let companyParse = new Parse.Query("Company");
+    companyParse.equalTo("objectId", companyID.id);
+    try {
+      const companyResults = await companyParse.find();
+      const companyInfo = {
+        name: companyResults[0].get("shortName"),
+        image: JSON.stringify(companyResults[0].get("image"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2),
+        id: companyResults[0].id,
+      };
+      return companyInfo;
+    } catch (error) {
+      alert(`Error! ${error.message}`);
+      return false;
+    }
+  }
+
   async function wrestlerQuery() {
-    let wrestlerParse = new Parse.Query(wrestlerObject.className);
-    wrestlerParse.equalTo("objectId", wrestlerObject.id);
+    let wrestlerParse = new Parse.Query("Wrestler");
+    wrestlerParse.equalTo("objectId", wrestlerObjectID);
 
     try {
       const wrestlerResults = await wrestlerParse.find();
-      console.log(wrestlerResults);
       const wrestler = {
         name: wrestlerResults[0].get("name"),
-        age: wrestlerAge(wrestlerResults[0].get("date")),
+        age: age(wrestlerResults[0].get("date")),
         image: JSON.stringify(wrestlerResults[0].get("image"))
           .split('url":"')
           .pop()
@@ -55,9 +78,12 @@ export default function ChosenWrestler() {
         youtube: wrestlerResults[0].get("youtube"),
         tiktok: wrestlerResults[0].get("tiktok"),
         youtuber: wrestlerResults[0].get("youtubeAt"),
+        company: wrestlerResults[0].get("Company"),
       };
+      const company = await companyQuery(wrestler.company);
 
       setWrestlerInfo(wrestler);
+      setCompanyInfo(company);
       setShowWrestler(true);
       return true;
     } catch (error) {
@@ -91,6 +117,11 @@ export default function ChosenWrestler() {
             <iframe
               className="ytVid"
               src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
+            />
+            <CompanyDisplay
+              companyName={companyInfo.name}
+              companyImage={companyInfo.image}
+              companyID={companyInfo.id}
             />
           </div>
         </div>
