@@ -33,7 +33,7 @@ export default function ChosenWrestler() {
     try {
       const companyResults = await companyParse.find();
       const companyInfo = {
-        name: companyResults[0].get("shortName"),
+        name: companyResults[0].get("name"),
         image: JSON.stringify(companyResults[0].get("image"))
           .split('url":"')
           .pop()
