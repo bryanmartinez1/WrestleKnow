@@ -44,7 +44,7 @@ export default function Navbar() {
   };
 
   // Functions to Open and Close Dropdown
-  const dropOpened = false;
+  let dropOpened = false;
   //Function to Open Dropdown
   function openDrop() {
     document.getElementById("drop").style.display = "block";

@@ -20,11 +20,11 @@ export default function CreateWrestler() {
   const [aka, setAKA] = useState("");
   const [from, setFrom] = useState("");
   const [date, onDateChange] = useState(new Date());
-  const [twitterLink, setTwitterLink] = useState();
-  const [instagramLink, setInstagramLink] = useState();
-  const [youtubeVid, setYoutubeVid] = useState();
-  const [youtubeAt, setYoutubeAt] = useState();
-  const [tiktokLink, setTiktokLink] = useState();
+  const [twitterLink, setTwitterLink] = useState("");
+  const [instagramLink, setInstagramLink] = useState("");
+  const [youtubeVid, setYoutubeVid] = useState("");
+  const [youtubeAt, setYoutubeAt] = useState("");
+  const [tiktokLink, setTiktokLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -130,12 +130,20 @@ export default function CreateWrestler() {
             </>
           </div>
           <SocialMediaLinks
+            //  Can Set
+            can_set_company_pointer={true}
+            can_set_twitter_at={true}
+            can_set_instagram_at={true}
+            can_set_tiktok_at={true}
+            can_set_youtube_at={true}
+            can_set_youtube_vid={true}
+            //  Hooks
             setCompanyPointer={setCompanyPointer}
             setTwitterAt={setTwitterLink}
             setInstagramAt={setInstagramLink}
             setYoutubeVid={setYoutubeVid}
             setYoutubeAt={setYoutubeAt}
-            setTiktokLink={setTiktokLink}
+            setTiktokAt={setTiktokLink}
           />
         </div>
         <button className="submitButton" onClick={() => createWrestler()}>
