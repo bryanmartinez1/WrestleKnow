@@ -9,6 +9,8 @@ import wrestler from "./Images/mask_icon.png";
 import title from "./Images/title_icon.png";
 import company from "./Images/company_icon.png";
 import faction from "./Images/faction_icon.png";
+import brand from "./Images/brand_icon.png";
+import ppv from "./Images/ppv_icon.png";
 import profile from "./Images/profile_icon.png";
 
 export default function Navbar() {
@@ -111,9 +113,9 @@ export default function Navbar() {
     <nav className="nav">
       <Link to="/" className="site-name" onClick={() => closeDrop()}>
         WrestleKnow
-        <img src={boston_crab} alt="Boston Crab Image" className="home-image" />
+        <img src={boston_crab} alt="Boston Crab" className="home-image" />
       </Link>
-      <ul>
+      <ul className="linksList">
         <li>
           <Link to="/wrestler" onClick={() => closeDrop()}>
             <img
@@ -144,6 +146,18 @@ export default function Navbar() {
           <Link to="/faction" onClick={() => closeDrop()}>
             <img src={faction} alt="Faction Page Logo" className="home-image" />
             <div className="text">Factions</div>
+          </Link>
+        </li>
+        <li>
+          <Link to="/brand" onClick={() => closeDrop()}>
+            <img src={brand} alt="Brand Page Logo" className="home-image" />
+            <div className="text">Brands</div>
+          </Link>
+        </li>
+        <li>
+          <Link to="/ppv" onClick={() => closeDrop()}>
+            <img src={ppv} alt="PPV Page Logo" className="home-image" />
+            <div className="text">PPVs</div>
           </Link>
         </li>
         <li>

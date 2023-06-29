@@ -23,8 +23,6 @@ export default function Search(props) {
   }
 
   useEffect(() => {
-    console.log("Searched " + search);
-    console.log("Sort " + sort);
     startQuery(search, sort);
   }, [search, sort]);
 
@@ -32,7 +30,7 @@ export default function Search(props) {
   // and query will be updated
   async function changeSort(value) {
     switch (value) {
-      case 0:
+      default:
         setSort("Recommended");
         break;
       case 1:
@@ -119,7 +117,7 @@ export default function Search(props) {
     <div className="wrestler-body">
       <div className="searchbar">
         <div className="bar">
-          <img className="searchIcon" src={search_icon}></img>
+          <img className="searchIcon" src={search_icon} alt="Search"></img>
           <input
             className="searchInput"
             onKeyDown={(key) => newSearch(key)}
@@ -128,7 +126,6 @@ export default function Search(props) {
         </div>
         <div className="sort-holder">
           <div className="dropdown">
-            {" "}
             Sort By:
             <button
               className="dropdown-wrestler-sort-button"
@@ -140,7 +137,7 @@ export default function Search(props) {
               props.queryClass === "Company" ||
               props.queryClass === "Title") && (
               <div className="content-box" id="wrestlerdrop">
-                <div className="option" onClick={() => changeSort(0)}>
+                <div className="option" onClick={() => changeSort()}>
                   Recommended
                 </div>
                 <div className="option" onClick={() => changeSort(1)}>
@@ -173,7 +170,11 @@ export default function Search(props) {
           </div>
         </div>
       </div>
-      {show && <div className="wrestlerHolder">{showResults()}</div>}
+      {show && (
+        <div className="centerHolder">
+          <div className="wrestlerHolder">{showResults()}</div>
+        </div>
+      )}
     </div>
   );
 }

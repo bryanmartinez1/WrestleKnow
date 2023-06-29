@@ -15,6 +15,8 @@ import Wrestler from "./Pages/Search/Wrestler";
 import Company from "./Pages/Search/Company";
 import Title from "./Pages/Search/Title";
 import Faction from "./Pages/Search/Faction";
+import Brand from "./Pages/Search/Brand";
+import PPV from "./Pages/Search/PPV";
 
 // Chosen Pages
 import ChosenWrestler from "./Pages/Select/ChosenWrestler";
@@ -88,17 +90,16 @@ function App() {
           <Route path="/title" element={<Title />} />
           <Route path="/company" element={<Company />} />
           <Route path="/faction" element={<Faction />} />
+          <Route path="/brand" element={<Brand />} />
+          <Route path="/ppv" element={<PPV />} />
 
           {/* Chosen Pages */}
           <Route path="/wrestler/chosenwrestler" element={<ChosenWrestler />} />
           <Route path="/title/chosentitle" element={<ChosenTitle />} />
           <Route path="/company/chosencompany" element={<ChosenCompany />} />
           <Route path="/faction/chosenfaction" element={<ChosenFaction />} />
-          <Route
-            path="/company/chosencompany/brand"
-            element={<ChosenBrand />}
-          />
-          <Route path="/company/chosencompany/ppv" element={<ChosenPPV />} />
+          <Route path="/brand/chosenbrand" element={<ChosenBrand />} />
+          <Route path="/ppv/chosenppv" element={<ChosenPPV />} />
 
           {/* Gorilla Position Pages */}
           <Route path="/gp" element={<Feed />} />

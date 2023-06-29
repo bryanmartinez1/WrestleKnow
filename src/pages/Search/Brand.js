@@ -1,10 +1,10 @@
 import React from "react";
 import Search from "./Displays/Search";
 
-export default function Company() {
+export default function Brand() {
   return (
     <Search
-      queryClass="Company"
+      queryClass="Brand"
       chosenLink="/company/chosencompany"
       infoA="shortName"
     />

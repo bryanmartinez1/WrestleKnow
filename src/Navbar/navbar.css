@@ -21,6 +21,7 @@ body {
     gap: 2rem;
     padding: 0 1rem;
     flex-wrap: wrap;
+    padding-bottom: 5px;
 }
 
 .nav ul {
@@ -36,7 +37,7 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: .25rem;
+    /* padding: .25rem; */
     font-family: Lexend;
 }
 
@@ -87,8 +88,16 @@ body {
     font-family: inherit;
 }
 
+.linksList {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
 /* Hides Text when browser size is 1400px or less */
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
     .text {
         display: none;
     }
