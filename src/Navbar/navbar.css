@@ -97,7 +97,7 @@ body {
 }
 
 /* Hides Text when browser size is 1400px or less */
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
     .text {
         display: none;
     }

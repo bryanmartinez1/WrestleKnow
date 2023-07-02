@@ -3,6 +3,10 @@ import Search from "./Displays/Search";
 
 export default function Title() {
   return (
-    <Search queryClass="Title" chosenLink="/title/chosentitle" infoA="from" />
+    <Search
+      queryClass="Title"
+      chosenLink="/title/chosentitle"
+      infoA="unique_champions"
+    />
   );
 }

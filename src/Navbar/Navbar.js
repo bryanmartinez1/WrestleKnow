@@ -12,6 +12,7 @@ import faction from "./Images/faction_icon.png";
 import brand from "./Images/brand_icon.png";
 import ppv from "./Images/ppv_icon.png";
 import profile from "./Images/profile_icon.png";
+import compare from "./Images/compare.png";
 
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -158,6 +159,12 @@ export default function Navbar() {
           <Link to="/ppv" onClick={() => closeDrop()}>
             <img src={ppv} alt="PPV Page Logo" className="home-image" />
             <div className="text">PPVs</div>
+          </Link>
+        </li>
+        <li>
+          <Link to="/compare" onClick={() => closeDrop()}>
+            <img src={compare} alt="Compare Page Logo" className="home-image" />
+            <div className="text">Compare</div>
           </Link>
         </li>
         <li>
