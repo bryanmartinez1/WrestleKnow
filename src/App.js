@@ -43,6 +43,7 @@ import Admin from "./Pages/Admin/Admin";
 
 //Other Imports
 import { Route, Routes } from "react-router-dom";
+import Compare from "./Pages/Compare/Compare";
 
 // Parse Imports
 import { App_ID, JS_Key, Host_Server } from "./KEYS";
@@ -114,6 +115,9 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/username" element={<ForgotUserName />} />
           <Route path="/password" element={<ForgotPassword />} />
+
+          {/* Other Function Pages */}
+          <Route path="/compare" element={<Compare />} />
         </Routes>
       </div>
     </>
