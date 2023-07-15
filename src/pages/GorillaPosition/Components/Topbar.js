@@ -1,3 +1,4 @@
+import React from "react";
 import create from "./images/create_promo.png";
 import "./styles/topbar.css";
 

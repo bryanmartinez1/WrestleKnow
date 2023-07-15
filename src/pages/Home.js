@@ -7,6 +7,7 @@ Home Page that will display
         - Will be recommened on based on each categories most popular/checked on figures of the last 30 days
     - Smaller News Panel displaying the biggest News of wrestling of the month
 */
+import React from "react";
 import "./home.css";
 export default function Home() {
   let youtube = "https://www.youtube.com/embed/";

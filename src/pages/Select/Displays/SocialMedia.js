@@ -1,3 +1,4 @@
+import React from "react";
 import "./socialMedia.css";
 import twitterImg from "../../../images/twitterLogo.png";
 import instagramImg from "../../../images/instagramLogo.png";
