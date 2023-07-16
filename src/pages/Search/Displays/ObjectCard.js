@@ -24,7 +24,7 @@ export default function ObjectCard(props) {
         }}
       >
         <div className="objectHolder">
-          <img src={image} className="objectImg"></img>
+          <img src={image} className="objectImg" alt={props.queryClass} />
           <div className="objectName">{props.name}</div>
           <div className="objectInfo">
             <div className="objectOther">{props.infoA}</div>

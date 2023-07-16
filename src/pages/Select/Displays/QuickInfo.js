@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function QuickInfo(props) {
   return (
     <div className="quickInfoHolder">
-      <img className="quickInfoIMG" src={props.imgSrc} />
+      <img className="quickInfoIMG" src={props.imgSrc} alt="PFP" />
       <Link
         className="holderBox"
         to={{

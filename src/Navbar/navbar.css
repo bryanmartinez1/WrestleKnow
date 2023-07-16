@@ -51,3 +51,9 @@ body {
 .navBarImage {
     height: 2rem;
 }
+
+#transaction_id_1 :nth-child(1) span.css-7no60z-ButtonBase   {
+    color: #2e2b2b;
+    font-weight: bold;
+    font-size: 16px;
+}

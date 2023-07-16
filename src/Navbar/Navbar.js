@@ -85,44 +85,52 @@ export default function Navbar() {
         </Link>
       )}
       <div className="navBarButtons">
-        <DropdownMenu
-          appearance="default"
-          trigger={({ triggerRef, ...props }) => (
-            <Button
-              appearance="subtle"
-              spacing="default"
-              {...props}
-              iconBefore={
-                <div className="padding">
-                  <img className="navBarImage" src={search_icon} alt="SEARCH" />
-                </div>
-              }
-              ref={triggerRef}
-            />
-          )}
-        >
-          <DropdownItemGroup>
-            <DropdownItem
-              onClick={() => navigateTo("/wrestler")}
-              className="custom"
-            >
-              Wrestlers
-            </DropdownItem>
-            <DropdownItem onClick={() => navigateTo("/company")}>
-              Companies
-            </DropdownItem>
-            <DropdownItem onClick={() => navigateTo("/title")}>
-              Titles
-            </DropdownItem>
-            <DropdownItem onClick={() => navigateTo("/faction")}>
-              Factions
-            </DropdownItem>
-            <DropdownItem onClick={() => navigateTo("/brand")}>
-              Brands
-            </DropdownItem>
-            <DropdownItem onClick={() => navigateTo("/ppv")}>PPVs</DropdownItem>
-          </DropdownItemGroup>
-        </DropdownMenu>
+        <div id="transaction_id_1" className="span.css-7no60z-ButtonBase">
+          <DropdownMenu
+            appearance="default"
+            trigger={({ triggerRef, ...props }) => (
+              <Button
+                appearance="subtle"
+                spacing="default"
+                {...props}
+                iconBefore={
+                  <div className="padding">
+                    <img
+                      className="navBarImage"
+                      src={search_icon}
+                      alt="SEARCH"
+                    />
+                  </div>
+                }
+                ref={triggerRef}
+              />
+            )}
+          >
+            <DropdownItemGroup>
+              <DropdownItem
+                onClick={() => navigateTo("/wrestler")}
+                className="custom"
+              >
+                Wrestlers
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/company")}>
+                Companies
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/title")}>
+                Titles
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/faction")}>
+                Factions
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/brand")}>
+                Brands
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/ppv")}>
+                PPVs
+              </DropdownItem>
+            </DropdownItemGroup>
+          </DropdownMenu>
+        </div>
         <Button
           appearance="subtle"
           spacing="none"

@@ -20,7 +20,7 @@ export default function SocialMedia(props) {
               redirectTo("https://www.twitter.com/" + props.twitter)
             }
           >
-            <img className="socialMediaLogo" src={twitterImg} />
+            <img className="socialMediaLogo" src={twitterImg} alt="Twitter" />
             {props.twitter}
           </div>
         )}
@@ -31,7 +31,11 @@ export default function SocialMedia(props) {
               redirectTo("https://www.instagram.com/" + props.instagram)
             }
           >
-            <img className="socialMediaLogo" src={instagramImg} />
+            <img
+              className="socialMediaLogo"
+              src={instagramImg}
+              alt="Instagram"
+            />
             {props.instagram}
           </div>
         )}
@@ -42,7 +46,7 @@ export default function SocialMedia(props) {
               redirectTo("https://www.tiktok.com/@" + props.tiktok)
             }
           >
-            <img className="socialMediaLogo" src={tiktokImg} />
+            <img className="socialMediaLogo" src={tiktokImg} alt="Tiktok" />
             {props.tiktok}
           </div>
         )}
@@ -53,7 +57,7 @@ export default function SocialMedia(props) {
               redirectTo("https://www.youtube.com/@" + props.youtuber)
             }
           >
-            <img className="socialMediaLogo" src={youtubeImg} />
+            <img className="socialMediaLogo" src={youtubeImg} alt="Youtube" />
             {props.youtuber}
           </div>
         )}

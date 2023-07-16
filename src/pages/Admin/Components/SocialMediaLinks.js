@@ -5,6 +5,7 @@ import instagramLogo from "../../../images/instagramLogo.png";
 import youtubeLogo from "../../../images/youtubeLogo.png";
 import tiktokLogo from "../../../images/tiktokLogo.png";
 import googleSheetsLogo from "../../../images/googleSheetsLogo.png";
+import threadsLogo from "../../../images/Threads.png";
 
 export default function SocialMediaLinks(props) {
   //  add functions to remove whole webpage
@@ -115,6 +116,24 @@ export default function SocialMediaLinks(props) {
             className="inputWidth"
             type="text"
             onChange={(event) => settingTiktokLink(event.target.value)}
+          />
+        </>
+      )}
+      {props.can_set_threads_at && (
+        <>
+          <h1 className="header">
+            Threads At
+            <img
+              className="logoImg"
+              alt="Threads Logo"
+              src={threadsLogo}
+              onClick={() => redirectTo("https://www.threads.net/@")}
+            />
+          </h1>
+          <input
+            className="inputWidth"
+            type="text"
+            onChange={(event) => settingInstagramAt(event.target.value)}
           />
         </>
       )}

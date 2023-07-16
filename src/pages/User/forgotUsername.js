@@ -1,11 +1,9 @@
-import Parse from "parse/dist/parse.min.js";
 import React, { useState } from "react";
 import "./styles/forgot.css";
 import { useNavigate } from "react-router-dom";
 
 export default function ForgotUserName() {
   const [email, setEmail] = useState("");
-  const [num, setNum] = useState(0);
 
   const navigate = useNavigate();
 

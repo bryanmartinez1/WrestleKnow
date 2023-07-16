@@ -120,6 +120,7 @@ const WrestlerSelect = () => {
               <iframe
                 className="ytVidChoosen"
                 src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
+                title="Wrestler Page"
               />
             </div>
             <div className="leftSide">

@@ -135,6 +135,7 @@ const WrestlerCreate = () => {
             can_set_twitter_at={true}
             can_set_instagram_at={true}
             can_set_tiktok_at={true}
+            can_set_threads_at={true}
             can_set_youtube_at={true}
             can_set_youtube_vid={true}
             //  Hooks

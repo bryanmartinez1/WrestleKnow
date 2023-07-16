@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const TitleSelect = () => {
   const { titleId } = useParams(); // Accessing the route parameter

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./styles/reignDescription.css";
 import image from "../../../images/tiktokLogo.png";
 
@@ -14,7 +14,7 @@ export default function ReignDescription(props) {
 
   return (
     <div className="reignDescriptionHolder">
-      <img className="titleImage" src={image} alt="Picture of Title" />
+      <img className="titleImage" src={image} alt="Title" />
       <div className="reignInfoHolder">
         <div className="reignDivider">
           <div className="div titleName">Women’s Royal Rumble</div>

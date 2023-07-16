@@ -11,7 +11,7 @@ export default function Home() {
     <div className="page">
       <h1>On This Day: {dateString} </h1>
       <p>Andrade wins the NXT Championship </p>
-      <iframe className="ytVid" src={youtube + vidID} />
+      <iframe className="ytVid" src={youtube + vidID} title="On This Day" />
     </div>
   );
 }
