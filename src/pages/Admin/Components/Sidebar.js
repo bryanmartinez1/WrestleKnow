@@ -13,7 +13,7 @@ export default function Sidebar() {
       <div className="box" onClick={() => navigateTo("/admin")}>
         Admin
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createwrestler")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/wrestler")}>
         Create Wrestler
       </div>
       <div className="box" onClick={() => navigateTo("/admin/createcompany")}>

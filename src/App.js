@@ -4,12 +4,6 @@ import Home from "./Pages/Home";
 import Settings from "./Pages/User/Settings";
 
 // Create Pages
-import CreateWrestler from "./Pages/Admin/Create/CreateWrestler";
-import CreateTitle from "./Pages/Admin/Create/CreateTitle";
-import CreateBrand from "./Pages/Admin/Create/CreateBrand";
-import CreatePPV from "./Pages/Admin/Create/CreatePPV";
-import CreateCompany from "./Pages/Admin/Create/CreateCompany";
-import CreateFaction from "./Pages/Admin/Create/CreateFaction";
 
 // Results Pages
 import Wrestler from "./Pages/Search/Wrestler";
@@ -51,6 +45,7 @@ import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
+import WrestlerCreate from "./Pages/Admin/Create/WrestlerCreate";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -68,23 +63,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
+
           {/* Admin Pages */}
           <Route path="/admin" element={<Admin />} />
-          <Route
-            path="/admin/createwrestler"
-            element={<CreateWrestler />}
-          ></Route>
-          <Route path="/admin/createtitle" element={<CreateTitle />}></Route>
-          <Route path="/admin/createbrand" element={<CreateBrand />}></Route>
-          <Route path="/admin/createppv" element={<CreatePPV />}></Route>
-          <Route
-            path="/admin/createcompany"
-            element={<CreateCompany />}
-          ></Route>
-          <Route
-            path="/admin/createfaction"
-            element={<CreateFaction />}
-          ></Route>
+          <Route path="/admin/create/wrestler" element={<WrestlerCreate />} />
+
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />

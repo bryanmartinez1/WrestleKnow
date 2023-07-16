@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -10,19 +10,21 @@ import SocialMediaLinks from "../Components/SocialMediaLinks";
 import placeHolderIMG from "../../../images/placeholder-image.png";
 import Inputs from "../Components/Inputs.js";
 
-export default function CreateCompany() {
+const WrestlerCreate = () => {
   const [name, setName] = useState("");
-  const [shortName, setShortName] = useState("");
   const [image, setImage] = useState(placeHolderIMG);
   const [base64Img, setBase64Img] = useState("");
+  const [companyPointer, setCompanyPointer] = useState("");
   const [active, setActive] = useState("Active");
   const [about, setAbout] = useState("");
+  const [aka, setAKA] = useState("");
+  const [from, setFrom] = useState("");
   const [date, onDateChange] = useState(new Date());
-  const [twitterLink, setTwitterLink] = useState();
-  const [instagramLink, setInstagramLink] = useState();
-  const [youtubeVid, setYoutubeVid] = useState();
-  const [youtubeAt, setYoutubeAt] = useState();
-  const [tiktokLink, setTiktokLink] = useState();
+  const [twitterLink, setTwitterLink] = useState("");
+  const [instagramLink, setInstagramLink] = useState("");
+  const [youtubeVid, setYoutubeVid] = useState("");
+  const [youtubeAt, setYoutubeAt] = useState("");
+  const [tiktokLink, setTiktokLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -41,39 +43,45 @@ export default function CreateCompany() {
     }
   }
 
-  async function createCompany() {
+  async function createWrestler() {
     if (image === placeHolderIMG) {
-      alert("Please insert an Image for Company");
+      alert("Please insert an Image for Wrestler");
       return;
     }
-    const newCompany = new Parse.Object("Company");
-    newCompany.set("name", name);
-    newCompany.set(
+    const newWrestler = new Parse.Object("Wrestler");
+    newWrestler.set("name", name);
+    newWrestler.set(
       "image",
       new Parse.File(name + ".png", {
         base64: base64Img,
       })
     );
-    newCompany.set("date", date);
-    newCompany.set("active", active);
-    newCompany.set("about", about);
-    newCompany.set("shortName", shortName);
-    newCompany.set("lower_short_name", shortName.toLowerCase());
-    newCompany.set("lower_name", name.toLowerCase());
-    newCompany.set("youtube_vid", youtubeVid);
-    newCompany.set("youtube_at", youtubeAt);
-    newCompany.set("instagram_at", instagramLink);
-    newCompany.set("twitter_at", twitterLink);
-    newCompany.set("tiktok_at", tiktokLink);
+    let Company = new Parse.Object("Company");
+    newWrestler.set("Company", {
+      __type: "Pointer",
+      className: "Company",
+      objectId: companyPointer,
+    });
+    newWrestler.set("date", date);
+    newWrestler.set("active", active);
+    newWrestler.set("about", about);
+    newWrestler.set("aka", aka);
+    newWrestler.set("from", from);
+    newWrestler.set("lower_name", name.toLowerCase());
+    newWrestler.set("lower_aka", aka.toLowerCase());
+    newWrestler.set("youtube", youtubeVid);
+    newWrestler.set("youtubeAt", youtubeAt);
+    newWrestler.set("instagram", instagramLink);
+    newWrestler.set("twitter", twitterLink);
+    newWrestler.set("tiktok", tiktokLink);
     try {
       setIsLoading(true);
-      const company = await newCompany.save();
+      const wrestler = await newWrestler.save();
       setIsLoading(false);
       // alert(name + " successfully added to database");
       window.location.reload(false);
     } catch (error) {
       alert("Error while creating Wrestler" + error);
-      setIsLoading(false);
     }
   }
 
@@ -89,7 +97,8 @@ export default function CreateCompany() {
               <h1 className="header">Activity</h1>
               <ActivityDrop setOption={setActive} />
             </>
-            <Inputs header="Abbreviated Name" setHook={setShortName} />
+            <Inputs header="From" setHook={setFrom} />
+            <Inputs header="AKA" setHook={setAKA} />
             <>
               <h1 className="header">About</h1>
               <textarea
@@ -122,13 +131,14 @@ export default function CreateCompany() {
           </div>
           <SocialMediaLinks
             //  Can Set
-            can_set_company_pointer={false}
+            can_set_company_pointer={true}
             can_set_twitter_at={true}
             can_set_instagram_at={true}
             can_set_tiktok_at={true}
             can_set_youtube_at={true}
             can_set_youtube_vid={true}
-            //  Set Hooks
+            //  Hooks
+            setCompanyPointer={setCompanyPointer}
             setTwitterAt={setTwitterLink}
             setInstagramAt={setInstagramLink}
             setYoutubeVid={setYoutubeVid}
@@ -136,10 +146,12 @@ export default function CreateCompany() {
             setTiktokAt={setTiktokLink}
           />
         </div>
-        <button className="submitButton" onClick={() => createCompany()}>
+        <button className="submitButton" onClick={() => createWrestler()}>
           Submit
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default WrestlerCreate;
