@@ -22,6 +22,10 @@ import PPV from "./Pages/Search/PPV";
 // Select Pages
 import WrestlerSelect from "./Pages/Select/WrestlerSelect";
 import TitleSelect from "./Pages/Select/TitleSelect";
+import CompanySelect from "./Pages/Select/CompanySelect";
+import FactionSelect from "./Pages/Select/FactionSelect";
+import BrandSelect from "./Pages/Select/BrandSelect";
+import PPVSelect from "./Pages/Select/PPVSelect";
 
 // Gorilla Position Pages
 import Messages from "./Pages/GorillaPosition/Messages";
@@ -89,9 +93,12 @@ function App() {
           <Route path="/brand" element={<Brand />} />
           <Route path="/ppv" element={<PPV />} />
           {/* Select Pages */}
-          TitleSelect
           <Route path="/wrestler/:wrestlerId" element={<WrestlerSelect />} />
           <Route path="/title/:titleId" element={<TitleSelect />} />
+          <Route path="/company/:companyId" element={<CompanySelect />} />
+          <Route path="/faction/:factionId" element={<FactionSelect />} />
+          <Route path="/brand/:brandId" element={<BrandSelect />} />
+          <Route path="/ppv/:ppvId" element={<PPVSelect />} />
           {/* Gorilla Position Pages */}
           <Route path="/gp" element={<Feed />} />
           <Route path="/gp/messages" element={<Messages />} />
