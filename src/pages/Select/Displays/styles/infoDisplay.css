@@ -1,0 +1,47 @@
+.infoDisplayHolder {
+    border-style: solid;
+    width: 400px;
+    max-height: 600px;
+    height: fit-content;
+    border-radius: 10px;
+    overflow: hidden;
+    border-color: black;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.infoDisplayTitle {
+    text-align: center;
+    background-color: #F8BCBA;
+    font-size: 30px;
+    font-weight: bold;
+    height: 35px;
+}
+
+.infoDisplayBody {
+    font-size: 15px;
+    display: flex;
+    max-height: 545px;
+    cursor:grab;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoDisplayBody::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+}
+  
+  /* The progress bar (scroll indicator) */
+.progress-bar {
+    height: 8px;
+    background: #EF6460;
+    width: 0%;
+}

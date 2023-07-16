@@ -1,0 +1,72 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.selectHolder {
+    width: 100%;
+    font-family: Lexend;
+    cursor: default;
+}
+
+.wrestlerNameDiv {
+    width: 100%;
+    text-align: center;
+    font-size: 46px;
+    font-weight: bolder;
+    background-color: #EF6460;
+}
+
+.otherInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.wrestlerSelectedImg {
+    width: 300px;
+    height: 500px;
+    border-style: solid;
+    border-color: #212427;
+    border-radius: 25px;
+    background-color: #353739;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.leftSideTop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ytVidChoosen {
+    max-width: 800px;
+    height: 450px;
+}
+
+.reignDisplayHolder {
+    border-style: solid;
+    max-width: 800px;
+    height: 900px;
+    border-radius: 10px;
+    overflow: hidden;
+    border-color: black;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.scrollReignDisplay {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.scrollReignDisplay::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
