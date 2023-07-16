@@ -19,13 +19,9 @@ import Faction from "./Pages/Search/Faction";
 import Brand from "./Pages/Search/Brand";
 import PPV from "./Pages/Search/PPV";
 
-// Chosen Pages
-import ChosenWrestler from "./Pages/Select/ChosenWrestler";
-import ChosenCompany from "./Pages/Select/ChosenCompany";
-import ChosenTitle from "./Pages/Select/ChosenTitle";
-import ChosenFaction from "./Pages/Select/ChosenFaction";
-import ChosenBrand from "./Pages/Select/ChosenBrand";
-import ChosenPPV from "./Pages/Select/ChosenPPV";
+// Select Pages
+import WrestlerSelect from "./Pages/Select/WrestlerSelect";
+import TitleSelect from "./Pages/Select/TitleSelect";
 
 // Gorilla Position Pages
 import Messages from "./Pages/GorillaPosition/Messages";
@@ -68,7 +64,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
-
           {/* Admin Pages */}
           <Route path="/admin" element={<Admin />} />
           <Route
@@ -86,7 +81,6 @@ function App() {
             path="/admin/createfaction"
             element={<CreateFaction />}
           ></Route>
-
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />
@@ -94,15 +88,10 @@ function App() {
           <Route path="/faction" element={<Faction />} />
           <Route path="/brand" element={<Brand />} />
           <Route path="/ppv" element={<PPV />} />
-
-          {/* Chosen Pages */}
-          <Route path="/wrestler/chosenwrestler" element={<ChosenWrestler />} />
-          <Route path="/title/chosentitle" element={<ChosenTitle />} />
-          <Route path="/company/chosencompany" element={<ChosenCompany />} />
-          <Route path="/faction/chosenfaction" element={<ChosenFaction />} />
-          <Route path="/brand/chosenbrand" element={<ChosenBrand />} />
-          <Route path="/ppv/chosenppv" element={<ChosenPPV />} />
-
+          {/* Select Pages */}
+          TitleSelect
+          <Route path="/wrestler/:wrestlerId" element={<WrestlerSelect />} />
+          <Route path="/title/:titleId" element={<TitleSelect />} />
           {/* Gorilla Position Pages */}
           <Route path="/gp" element={<Feed />} />
           <Route path="/gp/messages" element={<Messages />} />
@@ -110,13 +99,11 @@ function App() {
           <Route path="/gp/searchresults" element={<SearchResults />} />
           <Route path="/gp/user" element={<User />} />
           <Route path="/gp/follow" element={<Follow />} />
-
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/username" element={<ForgotUserName />} />
           <Route path="/password" element={<ForgotPassword />} />
-
           {/* Other Function Pages */}
           <Route path="/compare" element={<Compare />} />
         </Routes>

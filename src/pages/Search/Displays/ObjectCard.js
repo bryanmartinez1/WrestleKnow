@@ -18,8 +18,10 @@ export default function ObjectCard(props) {
     <div className="spacing">
       <Link
         className="linkDesign"
-        to={props.link}
-        state={{ id: props.objectID }}
+        to={{
+          pathname: `${props.link}/${props.objectID}`,
+          search: `?${encodeURIComponent(props.name)}`,
+        }}
       >
         <div className="objectHolder">
           <img src={image} className="objectImg"></img>
