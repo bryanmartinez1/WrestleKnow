@@ -5,6 +5,8 @@ import Parse from "parse/dist/parse.min.js";
 
 import Button from "@atlaskit/button";
 
+import Popup from "@atlaskit/popup";
+
 import DropdownMenu, {
   DropdownItem,
   DropdownItemGroup,
@@ -19,6 +21,10 @@ import GraphBarIcon from "@atlaskit/icon/glyph/graph-bar";
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAdmin, setAdmin] = useState(false);
+  const [isSearchDropdownOpen, setSearchDropdownOpen] = useState(false);
+  const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
   function navigateTo(link) {
     navigate(link);
@@ -85,27 +91,11 @@ export default function Navbar() {
         </Link>
       )}
       <div className="navBarButtons">
-        <div id="transaction_id_1" className="span.css-7no60z-ButtonBase">
-          <DropdownMenu
-            appearance="default"
-            trigger={({ triggerRef, ...props }) => (
-              <Button
-                appearance="subtle"
-                spacing="default"
-                {...props}
-                iconBefore={
-                  <div className="padding">
-                    <img
-                      className="navBarImage"
-                      src={search_icon}
-                      alt="SEARCH"
-                    />
-                  </div>
-                }
-                ref={triggerRef}
-              />
-            )}
-          >
+        <Popup
+          isOpen={isSearchDropdownOpen}
+          onClose={() => setSearchDropdownOpen(false)}
+          placement="bottom-end"
+          content={() => (
             <DropdownItemGroup>
               <DropdownItem
                 onClick={() => navigateTo("/wrestler")}
@@ -129,8 +119,21 @@ export default function Navbar() {
                 PPVs
               </DropdownItem>
             </DropdownItemGroup>
-          </DropdownMenu>
-        </div>
+          )}
+          trigger={(triggerProps) => (
+            <Button
+              {...triggerProps}
+              appearance="subtle"
+              spacing="default"
+              onClick={() => setSearchDropdownOpen(!isSearchDropdownOpen)}
+              iconBefore={
+                <div className="padding">
+                  <img className="navBarImage" src={search_icon} alt="SEARCH" />
+                </div>
+              }
+            />
+          )}
+        />
         <Button
           appearance="subtle"
           spacing="none"
@@ -138,43 +141,54 @@ export default function Navbar() {
         >
           <GraphBarIcon size="xlarge" primaryColor="#000000" />
         </Button>
-        <DropdownMenu
-          appearance="default"
-          trigger={({ triggerRef, ...props }) => (
+        <Popup
+          isOpen={isProfileDropdownOpen}
+          onClose={() => setProfileDropdownOpen(false)}
+          placement="bottom-end"
+          content={() => (
+            <>
+              {currentUser === null ? (
+                <DropdownItemGroup>
+                  <DropdownItem onClick={() => navigateTo("/login")}>
+                    Log In
+                  </DropdownItem>
+                  <DropdownItem onClick={() => navigateTo("/signup")}>
+                    Sign Up
+                  </DropdownItem>
+                </DropdownItemGroup>
+              ) : (
+                <DropdownItemGroup>
+                  {isAdmin && (
+                    <DropdownItem onClick={() => navigateTo("/admin")}>
+                      Admin
+                    </DropdownItem>
+                  )}
+                  <DropdownItem onClick={() => navigateTo("/gp")}>
+                    Gorilla Position
+                  </DropdownItem>
+                  <DropdownItem onClick={() => logOut()}>Log Out</DropdownItem>
+                </DropdownItemGroup>
+              )}
+            </>
+          )}
+          trigger={(triggerProps) => (
             <Button
-              {...props}
+              {...triggerProps}
               appearance="subtle"
-              spacing="none"
+              spacing="default"
+              onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
               iconBefore={
-                <img className="navBarImage" src={profile_icon} alt="PROFILE" />
+                <div className="padding">
+                  <img
+                    className="navBarImage"
+                    src={profile_icon}
+                    alt="PROFILE"
+                  />
+                </div>
               }
-              ref={triggerRef}
             />
           )}
-        >
-          {currentUser === null ? (
-            <DropdownItemGroup>
-              <DropdownItem onClick={() => navigateTo("/login")}>
-                Log In
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/signup")}>
-                Sign Up
-              </DropdownItem>
-            </DropdownItemGroup>
-          ) : (
-            <DropdownItemGroup>
-              {isAdmin && (
-                <DropdownItem onClick={() => navigateTo("/admin")}>
-                  Admin
-                </DropdownItem>
-              )}
-              <DropdownItem onClick={() => navigateTo("/gp")}>
-                Gorilla Position
-              </DropdownItem>
-              <DropdownItem onClick={() => logOut()}>Log Out</DropdownItem>
-            </DropdownItemGroup>
-          )}
-        </DropdownMenu>
+        />
       </div>
     </nav>
   );
