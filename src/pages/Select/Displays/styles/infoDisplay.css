@@ -22,7 +22,7 @@
     font-size: 15px;
     display: flex;
     max-height: 545px;
-    cursor:grab;
+    cursor:text;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
