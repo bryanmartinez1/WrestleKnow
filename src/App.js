@@ -4,6 +4,12 @@ import Home from "./Pages/Home";
 import Settings from "./Pages/User/Settings";
 
 // Create Pages
+import WrestlerCreate from "./Pages/Admin/Create/WrestlerCreate";
+import CompanyCreate from "./Pages/Admin/Create/CompanyCreate";
+import TitleCreate from "./Pages/Admin/Create/TitleCreate";
+import FactionCreate from "./Pages/Admin/Create/FactionCreate";
+import BrandCreate from "./Pages/Admin/Create/BrandCreate";
+import PPVCreate from "./Pages/Admin/Create/PPVCreate";
 
 // Results Pages
 import Wrestler from "./Pages/Search/Wrestler";
@@ -45,7 +51,6 @@ import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
-import WrestlerCreate from "./Pages/Admin/Create/WrestlerCreate";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -67,6 +72,11 @@ function App() {
           {/* Admin Pages */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/create/wrestler" element={<WrestlerCreate />} />
+          <Route path="/admin/create/company" element={<CompanyCreate />} />
+          <Route path="/admin/create/title" element={<TitleCreate />} />
+          <Route path="/admin/create/faction" element={<FactionCreate />} />
+          <Route path="/admin/create/brand" element={<BrandCreate />} />
+          <Route path="/admin/create/ppv" element={<PPVCreate />} />
 
           {/* Selection Pages */}
           <Route path="/wrestler" element={<Wrestler />} />
@@ -75,6 +85,7 @@ function App() {
           <Route path="/faction" element={<Faction />} />
           <Route path="/brand" element={<Brand />} />
           <Route path="/ppv" element={<PPV />} />
+
           {/* Select Pages */}
           <Route path="/wrestler/:wrestlerId" element={<WrestlerSelect />} />
           <Route path="/title/:titleId" element={<TitleSelect />} />
@@ -82,6 +93,7 @@ function App() {
           <Route path="/faction/:factionId" element={<FactionSelect />} />
           <Route path="/brand/:brandId" element={<BrandSelect />} />
           <Route path="/ppv/:ppvId" element={<PPVSelect />} />
+
           {/* Gorilla Position Pages */}
           <Route path="/gp" element={<Feed />} />
           <Route path="/gp/messages" element={<Messages />} />
@@ -89,11 +101,13 @@ function App() {
           <Route path="/gp/searchresults" element={<SearchResults />} />
           <Route path="/gp/user" element={<User />} />
           <Route path="/gp/follow" element={<Follow />} />
+
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/username" element={<ForgotUserName />} />
           <Route path="/password" element={<ForgotPassword />} />
+
           {/* Other Function Pages */}
           <Route path="/compare" element={<Compare />} />
         </Routes>
