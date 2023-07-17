@@ -25,6 +25,7 @@ const WrestlerCreate = () => {
   const [youtubeVid, setYoutubeVid] = useState("");
   const [youtubeAt, setYoutubeAt] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
+  const [threadsLink, setThreadsLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -145,6 +146,7 @@ const WrestlerCreate = () => {
             setYoutubeVid={setYoutubeVid}
             setYoutubeAt={setYoutubeAt}
             setTiktokAt={setTiktokLink}
+            setThreadsLink={setThreadsLink}
           />
         </div>
         <button className="submitButton" onClick={() => createWrestler()}>

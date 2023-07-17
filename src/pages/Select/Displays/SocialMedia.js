@@ -4,6 +4,7 @@ import twitterImg from "../../../images/twitterLogo.png";
 import instagramImg from "../../../images/instagramLogo.png";
 import tiktokImg from "../../../images/tiktokLogo.png";
 import youtubeImg from "../../../images/youtubeLogo.png";
+import threadsLogo from "../../../images/Threads.png";
 
 export default function SocialMedia(props) {
   function redirectTo(website) {
@@ -47,6 +48,17 @@ export default function SocialMedia(props) {
             }
           >
             <img className="socialMediaLogo" src={tiktokImg} alt="Tiktok" />
+            {props.tiktok}
+          </div>
+        )}
+        {props.threads !== "" && (
+          <div
+            className="socialMediaInfo"
+            onClick={() =>
+              redirectTo("https://www.threads.net/@" + props.threads)
+            }
+          >
+            <img className="socialMediaLogo" src={threadsLogo} alt="Tiktok" />
             {props.tiktok}
           </div>
         )}

@@ -80,6 +80,7 @@ const WrestlerSelect = () => {
         twitter: wrestlerResults[0].get("twitter"),
         youtube: wrestlerResults[0].get("youtube"),
         tiktok: wrestlerResults[0].get("tiktok"),
+        threads: wrestlerResults[0].get("threads"),
         youtuber: wrestlerResults[0].get("youtubeAt"),
         company: wrestlerResults[0].get("Company"),
       };
@@ -136,6 +137,7 @@ const WrestlerSelect = () => {
                   instagram={wrestlerInfo.instagram}
                   tiktok={wrestlerInfo.tiktok}
                   youtuber={wrestlerInfo.youtuber}
+                  threads={wrestlerInfo.threads}
                 />
               </div>
               <div className="reignDisplayHolder">

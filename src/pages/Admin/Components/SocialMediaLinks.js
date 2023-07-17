@@ -35,7 +35,9 @@ export default function SocialMediaLinks(props) {
   function settingYoutubeVid(value) {
     props.setYoutubeVid(value);
   }
-
+  function settingThreadsLink(value) {
+    props.setThreadsLink(value);
+  }
   return (
     <div className="holderPage">
       {/* can_set_company_pointer={false}
@@ -127,13 +129,13 @@ export default function SocialMediaLinks(props) {
               className="logoImg"
               alt="Threads Logo"
               src={threadsLogo}
-              onClick={() => redirectTo("https://www.threads.net/@")}
+              onClick={() => redirectTo("https://www.threads.net")}
             />
           </h1>
           <input
             className="inputWidth"
             type="text"
-            onChange={(event) => settingInstagramAt(event.target.value)}
+            onChange={(event) => settingThreadsLink(event.target.value)}
           />
         </>
       )}
