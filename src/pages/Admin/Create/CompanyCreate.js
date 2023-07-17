@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -10,7 +10,7 @@ import SocialMediaLinks from "../Components/SocialMediaLinks";
 import placeHolderIMG from "../../../images/placeholder-image.png";
 import Inputs from "../Components/Inputs.js";
 
-export default function CreateCompany() {
+const CompanyCreate = () => {
   const [name, setName] = useState("");
   const [shortName, setShortName] = useState("");
   const [image, setImage] = useState(placeHolderIMG);
@@ -76,7 +76,6 @@ export default function CreateCompany() {
       setIsLoading(false);
     }
   }
-
   return (
     <div className="createHolder">
       <Sidebar />
@@ -126,6 +125,7 @@ export default function CreateCompany() {
             can_set_twitter_at={true}
             can_set_instagram_at={true}
             can_set_tiktok_at={true}
+            can_set_threads_at={true}
             can_set_youtube_at={true}
             can_set_youtube_vid={true}
             //  Set Hooks
@@ -142,4 +142,6 @@ export default function CreateCompany() {
       </div>
     </div>
   );
-}
+};
+
+export default CompanyCreate;

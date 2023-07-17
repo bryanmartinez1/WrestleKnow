@@ -1,4 +1,4 @@
-import "./infoDisplay.css";
+import "./styles/infoDisplay.css";
 import React, { useEffect } from "react";
 
 export default function InfoDisplay(props) {

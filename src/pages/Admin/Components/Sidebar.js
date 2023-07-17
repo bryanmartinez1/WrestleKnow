@@ -13,22 +13,22 @@ export default function Sidebar() {
       <div className="box" onClick={() => navigateTo("/admin")}>
         Admin
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createwrestler")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/wrestler")}>
         Create Wrestler
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createcompany")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/company")}>
         Create Company
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createtitle")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/title")}>
         Create Title
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createfaction")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/faction")}>
         Create Faction
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createbrand")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/brand")}>
         Create Brand
       </div>
-      <div className="box" onClick={() => navigateTo("/admin/createppv")}>
+      <div className="box" onClick={() => navigateTo("/admin/create/ppv")}>
         Create PPV
       </div>
     </div>

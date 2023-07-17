@@ -1,14 +1,17 @@
-import "./quickInfo.css";
+import React from "react";
+import "./styles/quickInfo.css";
 import { Link } from "react-router-dom";
 
 export default function QuickInfo(props) {
   return (
     <div className="quickInfoHolder">
-      <img className="quickInfoIMG" src={props.imgSrc} />
+      <img className="quickInfoIMG" src={props.imgSrc} alt="PFP" />
       <Link
         className="holderBox"
-        to={"/company/chosencompany"}
-        state={{ id: props.companyID }}
+        to={{
+          pathname: `/company/${props.companyID}`,
+          search: `?${encodeURIComponent(props.companyName)}`,
+        }}
       >
         {props.companyName}
       </Link>

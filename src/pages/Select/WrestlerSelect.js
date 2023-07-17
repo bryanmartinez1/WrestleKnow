@@ -1,16 +1,15 @@
-import "./styles/cw.css";
-import { React, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
-import InfoDisplay from "./Displays/InfoDisplay";
+import InfoDisplay from "./Displays/InfoDisplays";
 import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
 import ReignDescription from "./Displays/ReignDescription";
+import "./selectStyles.css";
 
-export default function ChosenWrestler() {
-  const location = useLocation();
+const WrestlerSelect = () => {
+  const { wrestlerId } = useParams(); // Accessing the route parameter
   const [showWrestler, setShowWrestler] = useState(false);
-  const wrestlerObjectID = location.state.id;
   const [wrestlerInfo, setWrestlerInfo] = useState();
   const [companyInfo, setCompanyInfo] = useState();
 
@@ -27,6 +26,7 @@ export default function ChosenWrestler() {
     let year = age_dt.getUTCFullYear();
     return Math.abs(year - 1970);
   }
+
   function createBulletPointList(text) {
     return text.split(",");
   }
@@ -53,7 +53,7 @@ export default function ChosenWrestler() {
 
   async function wrestlerQuery() {
     let wrestlerParse = new Parse.Query("Wrestler");
-    wrestlerParse.equalTo("objectId", wrestlerObjectID);
+    wrestlerParse.equalTo("objectId", wrestlerId);
 
     try {
       const wrestlerResults = await wrestlerParse.find();
@@ -80,6 +80,7 @@ export default function ChosenWrestler() {
         twitter: wrestlerResults[0].get("twitter"),
         youtube: wrestlerResults[0].get("youtube"),
         tiktok: wrestlerResults[0].get("tiktok"),
+        threads: wrestlerResults[0].get("threads"),
         youtuber: wrestlerResults[0].get("youtubeAt"),
         company: wrestlerResults[0].get("Company"),
       };
@@ -120,6 +121,7 @@ export default function ChosenWrestler() {
               <iframe
                 className="ytVidChoosen"
                 src={"https://www.youtube.com/embed/" + wrestlerInfo.youtube}
+                title="Wrestler Page"
               />
             </div>
             <div className="leftSide">
@@ -135,6 +137,7 @@ export default function ChosenWrestler() {
                   instagram={wrestlerInfo.instagram}
                   tiktok={wrestlerInfo.tiktok}
                   youtuber={wrestlerInfo.youtuber}
+                  threads={wrestlerInfo.threads}
                 />
               </div>
               <div className="reignDisplayHolder">
@@ -169,4 +172,6 @@ export default function ChosenWrestler() {
       )}
     </>
   );
-}
+};
+
+export default WrestlerSelect;

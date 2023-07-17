@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/forgot.css";

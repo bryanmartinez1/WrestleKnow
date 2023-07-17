@@ -1,6 +1,4 @@
-import { useState } from "react";
-import Parse from "parse/dist/parse.min.js";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import Sidebar from "./Components/Sidebar";
 
 export default function Admin() {

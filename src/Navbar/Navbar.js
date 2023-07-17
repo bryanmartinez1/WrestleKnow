@@ -1,33 +1,45 @@
 import "./navbar.css";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
+
+import Button from "@atlaskit/button";
+
+import Popup from "@atlaskit/popup";
+
+import DropdownMenu, {
+  DropdownItem,
+  DropdownItemGroup,
+} from "@atlaskit/dropdown-menu";
 
 // Images for navbar
 import boston_crab from "./Images/boston_crab.png";
-import wrestler from "./Images/mask_icon.png";
-import title from "./Images/title_icon.png";
-import company from "./Images/company_icon.png";
-import faction from "./Images/faction_icon.png";
-import brand from "./Images/brand_icon.png";
-import ppv from "./Images/ppv_icon.png";
-import profile from "./Images/profile_icon.png";
-import compare from "./Images/compare.png";
+import search_icon from "./Images/search_icon.png";
+import profile_icon from "./Images/profile_icon.png";
+import GraphBarIcon from "@atlaskit/icon/glyph/graph-bar";
 
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isAdmin, setAdmin] = useState(false);
+  const [isSearchDropdownOpen, setSearchDropdownOpen] = useState(false);
+  const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
+  function navigateTo(link) {
+    navigate(link);
+  }
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
     // Update state variable holding current user
     setCurrentUser(currentUser);
+    if (currentUser.get("admin")) {
+      setAdmin(true);
+    }
     return currentUser;
   };
 
-  // Gets Current User
-  getCurrentUser();
-
-  // Logs Out Current User
   const logOut = async function () {
     try {
       await Parse.User.logOut();
@@ -38,7 +50,6 @@ export default function Navbar() {
       }
       // Update state variable holding current user
       getCurrentUser();
-      closeDrop();
       return true;
     } catch (error) {
       alert(`Error! ${error.message}`);
@@ -46,141 +57,139 @@ export default function Navbar() {
     }
   };
 
-  // Functions to Open and Close Dropdown
-  let dropOpened = false;
-  //Function to Open Dropdown
-  function openDrop() {
-    document.getElementById("drop").style.display = "block";
-    dropOpened = true;
-  }
-  //Function to Close Dropdown
-  function closeDrop() {
-    document.getElementById("drop").style.display = "none";
-    dropOpened = false;
-  }
-  //puts the two together
-  function dropOpenClose() {
-    if (dropOpened === false) {
-      openDrop();
-    } else {
-      closeDrop();
-    }
-  }
+  // Gets Current User
+  useEffect(() => {
+    getCurrentUser();
+  }, [currentUser, setAdmin]);
 
-  let checkLogIn;
-  if (currentUser === null) {
-    checkLogIn = (
-      <div class="content-box" id="drop">
-        <Link to="/login" onClick={() => closeDrop()}>
-          Log In
-        </Link>
-        <Link to="/signup" onClick={() => closeDrop()}>
-          Sign Up
-        </Link>
-      </div>
-    );
-  } else {
-    // let a = currentUser.id;
-    // console.log("ObjectID: " + a);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    // If the Current User is an Admin
-    // User can do to the Admin Page from the Dropdown
-    let isAdmin;
-    if (currentUser.get("admin") === true) {
-      isAdmin = (
-        <Link to="/admin" onClick={() => closeDrop()}>
-          Admin
-        </Link>
-      );
-    }
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-    checkLogIn = (
-      <div class="content-box" id="drop">
-        {isAdmin}
-        <Link to="/account" onClick={() => closeDrop()}>
-          Account
-        </Link>
-        <Link to="/gp" onClick={() => closeDrop()}>
-          Gorilla Position
-        </Link>
-        <Link to="/" onClick={() => logOut()}>
-          Log Out
-        </Link>
-      </div>
-    );
-  }
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <nav className="nav">
-      <Link to="/" className="site-name" onClick={() => closeDrop()}>
-        WrestleKnow
-        <img src={boston_crab} alt="Boston Crab" className="home-image" />
-      </Link>
-      <ul className="linksList">
-        <li>
-          <Link to="/wrestler" onClick={() => closeDrop()}>
-            <img
-              src={wrestler}
-              alt="Wrestler Page Logo"
-              className="home-image"
+      {windowWidth >= 700 ? (
+        <Link to="/" className="site-name">
+          WrestleKnow
+          <img src={boston_crab} alt="Boston Crab" className="home-image" />
+        </Link>
+      ) : (
+        <Link to="/" className="site-name">
+          WK
+          <img src={boston_crab} alt="Boston Crab" className="home-image" />
+        </Link>
+      )}
+      <div className="navBarButtons">
+        <Popup
+          isOpen={isSearchDropdownOpen}
+          onClose={() => setSearchDropdownOpen(false)}
+          placement="bottom-end"
+          content={() => (
+            <DropdownItemGroup>
+              <DropdownItem
+                onClick={() => navigateTo("/wrestler")}
+                className="custom"
+              >
+                Wrestlers
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/company")}>
+                Companies
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/title")}>
+                Titles
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/faction")}>
+                Factions
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/brand")}>
+                Brands
+              </DropdownItem>
+              <DropdownItem onClick={() => navigateTo("/ppv")}>
+                PPVs
+              </DropdownItem>
+            </DropdownItemGroup>
+          )}
+          trigger={(triggerProps) => (
+            <Button
+              {...triggerProps}
+              appearance="subtle"
+              spacing="default"
+              onClick={() => setSearchDropdownOpen(!isSearchDropdownOpen)}
+              iconBefore={
+                <div className="padding">
+                  <img className="navBarImage" src={search_icon} alt="SEARCH" />
+                </div>
+              }
             />
-            <div className="text">Wrestlers</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/title" onClick={() => closeDrop()}>
-            <img src={title} alt="Title Page Logo" className="home-image" />
-            <div className="text">Titles</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/company" onClick={() => closeDrop()}>
-            <img
-              src={company}
-              alt="Company Page Logo"
-              className="home-image"
-            ></img>
-            <div className="text">Companies</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/faction" onClick={() => closeDrop()}>
-            <img src={faction} alt="Faction Page Logo" className="home-image" />
-            <div className="text">Factions</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/brand" onClick={() => closeDrop()}>
-            <img src={brand} alt="Brand Page Logo" className="home-image" />
-            <div className="text">Brands</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/ppv" onClick={() => closeDrop()}>
-            <img src={ppv} alt="PPV Page Logo" className="home-image" />
-            <div className="text">PPVs</div>
-          </Link>
-        </li>
-        <li>
-          <Link to="/compare" onClick={() => closeDrop()}>
-            <img src={compare} alt="Compare Page Logo" className="home-image" />
-            <div className="text">Compare</div>
-          </Link>
-        </li>
-        <li>
-          <div className="dropdown">
-            <button className="dropdown-button" onClick={() => dropOpenClose()}>
-              <img
-                src={profile}
-                alt="Profile Dropdown"
-                className="dropdown-image"
-              ></img>
-            </button>
-
-            {checkLogIn}
-          </div>
-        </li>
-      </ul>
+          )}
+        />
+        <Button
+          appearance="subtle"
+          spacing="none"
+          onClick={() => navigateTo("/compare")}
+        >
+          <GraphBarIcon size="xlarge" primaryColor="#000000" />
+        </Button>
+        <Popup
+          isOpen={isProfileDropdownOpen}
+          onClose={() => setProfileDropdownOpen(false)}
+          placement="bottom-end"
+          content={() => (
+            <>
+              {currentUser === null ? (
+                <DropdownItemGroup>
+                  <DropdownItem onClick={() => navigateTo("/login")}>
+                    Log In
+                  </DropdownItem>
+                  <DropdownItem onClick={() => navigateTo("/signup")}>
+                    Sign Up
+                  </DropdownItem>
+                </DropdownItemGroup>
+              ) : (
+                <DropdownItemGroup>
+                  {isAdmin && (
+                    <DropdownItem onClick={() => navigateTo("/admin")}>
+                      Admin
+                    </DropdownItem>
+                  )}
+                  <DropdownItem onClick={() => navigateTo("/gp")}>
+                    Gorilla Position
+                  </DropdownItem>
+                  <DropdownItem onClick={() => logOut()}>Log Out</DropdownItem>
+                </DropdownItemGroup>
+              )}
+            </>
+          )}
+          trigger={(triggerProps) => (
+            <Button
+              {...triggerProps}
+              appearance="subtle"
+              spacing="default"
+              onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+              iconBefore={
+                <div className="padding">
+                  <img
+                    className="navBarImage"
+                    src={profile_icon}
+                    alt="PROFILE"
+                  />
+                </div>
+              }
+            />
+          )}
+        />
+      </div>
     </nav>
   );
 }

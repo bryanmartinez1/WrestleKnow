@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -10,7 +10,7 @@ import SocialMediaLinks from "../Components/SocialMediaLinks";
 import placeHolderIMG from "../../../images/placeholder-image.png";
 import Inputs from "../Components/Inputs.js";
 
-export default function CreateWrestler() {
+const WrestlerCreate = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(placeHolderIMG);
   const [base64Img, setBase64Img] = useState("");
@@ -25,6 +25,7 @@ export default function CreateWrestler() {
   const [youtubeVid, setYoutubeVid] = useState("");
   const [youtubeAt, setYoutubeAt] = useState("");
   const [tiktokLink, setTiktokLink] = useState("");
+  const [threadsLink, setThreadsLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -135,6 +136,7 @@ export default function CreateWrestler() {
             can_set_twitter_at={true}
             can_set_instagram_at={true}
             can_set_tiktok_at={true}
+            can_set_threads_at={true}
             can_set_youtube_at={true}
             can_set_youtube_vid={true}
             //  Hooks
@@ -144,6 +146,7 @@ export default function CreateWrestler() {
             setYoutubeVid={setYoutubeVid}
             setYoutubeAt={setYoutubeAt}
             setTiktokAt={setTiktokLink}
+            setThreadsLink={setThreadsLink}
           />
         </div>
         <button className="submitButton" onClick={() => createWrestler()}>
@@ -152,4 +155,6 @@ export default function CreateWrestler() {
       </div>
     </div>
   );
-}
+};
+
+export default WrestlerCreate;

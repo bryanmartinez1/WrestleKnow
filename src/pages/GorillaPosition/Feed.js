@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Leftbar from "./Components/Leftbar";
 import Promo from "./Components/Promo";
 import Rightbar from "./Components/Rightbar";

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
+import React from "react";
 
 export default function Compare() {
-  return <div>Hello</div>;
+  return <div>Compare</div>;
 }
