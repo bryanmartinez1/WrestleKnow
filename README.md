@@ -15,7 +15,7 @@ Links to the web apps documentation and specifications van be found below
 - Documentation: https://docs.google.com/document/d/1phKnq3049Qw1d4TuQ8-9bnhD1D8zUA6hPEfkEBHYNjU/edit#heading=h.rg9rmewteo9b
 
 ## Gif Progress
-- To Be Uploaded
+![](https://github.com/bryanmartinez1/WrestleKnow/blob/master/gifs/July_16_2023.gif)
 
 ## Figma Designs
 https://www.figma.com/file/seSqMKF7QFZ21tfs78QEPm/WrestleKnow-Web-App?node-id=275%3A977&t=nq9GArJZ3fyoufAX-0
