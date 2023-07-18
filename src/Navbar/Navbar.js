@@ -15,6 +15,8 @@ import DropdownMenu, {
 // Images for navbar
 import boston_crab from "./Images/boston_crab.png";
 import search_icon from "./Images/search_icon.png";
+import controller_icon from "./Images/controller.png";
+import compare_icon from "./Images/compare.png";
 import profile_icon from "./Images/profile_icon.png";
 import GraphBarIcon from "@atlaskit/icon/glyph/graph-bar";
 
@@ -79,7 +81,7 @@ export default function Navbar() {
 
   return (
     <nav className="nav">
-      {windowWidth >= 700 ? (
+      {windowWidth >= 900 ? (
         <Link to="/" className="site-name">
           WrestleKnow
           <img src={boston_crab} alt="Boston Crab" className="home-image" />
@@ -124,14 +126,13 @@ export default function Navbar() {
             <Button
               {...triggerProps}
               appearance="subtle"
-              spacing="default"
+              spacing="none"
               onClick={() => setSearchDropdownOpen(!isSearchDropdownOpen)}
-              iconBefore={
-                <div className="padding">
-                  <img className="navBarImage" src={search_icon} alt="SEARCH" />
-                </div>
-              }
-            />
+            >
+              <div className="margin">
+                <img className="navBarImage" src={search_icon} alt="SEARCH" />
+              </div>
+            </Button>
           )}
         />
         <Button
@@ -140,6 +141,24 @@ export default function Navbar() {
           onClick={() => navigateTo("/compare")}
         >
           <GraphBarIcon size="xlarge" primaryColor="#000000" />
+        </Button>
+        <Button
+          appearance="subtle"
+          spacing="none"
+          onClick={() => navigateTo("/chart")}
+        >
+          <div className="margin">
+            <img className="navBarImage" src={compare_icon} alt="COMPARE" />
+          </div>
+        </Button>
+        <Button
+          appearance="subtle"
+          spacing="none"
+          onClick={() => navigateTo("/games")}
+        >
+          <div className="margin">
+            <img className="navBarImage" src={controller_icon} alt="Games" />
+          </div>
         </Button>
         <Popup
           isOpen={isProfileDropdownOpen}
@@ -175,18 +194,13 @@ export default function Navbar() {
             <Button
               {...triggerProps}
               appearance="subtle"
-              spacing="default"
+              spacing="none"
               onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
-              iconBefore={
-                <div className="padding">
-                  <img
-                    className="navBarImage"
-                    src={profile_icon}
-                    alt="PROFILE"
-                  />
-                </div>
-              }
-            />
+            >
+              <div className="margin">
+                <img className="navBarImage" src={profile_icon} alt="PROFILE" />
+              </div>
+            </Button>
           )}
         />
       </div>

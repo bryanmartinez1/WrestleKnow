@@ -9,7 +9,12 @@ export default function Topbar(props) {
   return (
     <div className="topbarColor">
       <div className="nameBar">{props.name}</div>
-      <img className="create" src={create} onClick={() => createPromo()}></img>
+      <img
+        className="create"
+        src={create}
+        onClick={() => createPromo()}
+        alt="Create Promo"
+      ></img>
     </div>
   );
 }

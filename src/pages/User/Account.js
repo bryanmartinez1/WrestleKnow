@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/account.css";
-import { useNavigate } from "react-router-dom";
 
 export default function Acount() {
   const [objectID, setObjectID] = useState("");
@@ -11,8 +10,6 @@ export default function Acount() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [img, setImg] = useState();
-
-  const navigate = useNavigate();
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
@@ -39,7 +36,7 @@ export default function Acount() {
         {userId}
         {firstName}
         {lastName}
-        <img className="pfpImage" src={img} />
+        <img className="pfpImage" src={img} alt="PFP" />
       </h1>
     );
   }

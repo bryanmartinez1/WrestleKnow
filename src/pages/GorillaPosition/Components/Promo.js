@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles/promos.css";
-import pfp from "./images/profile_icon.png";
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
 import cheered from "./images/cheered.png";
@@ -45,11 +44,15 @@ export default function Promo(props) {
   206 210 214 218 222 226 230 234 238 242 246 250 254. */
   return (
     <div className="whole">
-      <img className="promoImg" src={props.pfp} onClick={() => toUser()}></img>
+      <img
+        className="promoImg"
+        src={props.pfp}
+        onClick={() => toUser()}
+        alt="PFP"
+      ></img>
       <div className="content">
         <div className="topBar">
           <div className="userName" onClick={() => toUser()}>
-            {" "}
             {props.username}
           </div>
           <div className="datePosted">{props.uploadDate}</div>
@@ -61,6 +64,7 @@ export default function Promo(props) {
               id="cheers"
               className="imgButton"
               src={props.cheers ? cheered : cheer}
+              alt="cheers"
             ></img>
           </button>
           <button onClick={() => Boo()}>
@@ -68,19 +72,21 @@ export default function Promo(props) {
               id="boos"
               className="imgButton"
               src={props.boos ? booed : boo}
+              alt="boos"
             ></img>
           </button>
           <button onClick={() => Reply()}>
-            <img className="imgButton" src={reply}></img>
+            <img className="imgButton" src={reply} alt="reply"></img>
           </button>
           <button onClick={() => Comments()}>
-            <img className="imgButton" src={comment}></img>
+            <img className="imgButton" src={comment} alt="comments"></img>
           </button>
           <button onClick={() => Bookmark()}>
             <img
               id="saves"
               className="imgButton"
               src={props.bookmarked ? saved : notSaved}
+              alt="saves"
             ></img>
           </button>
         </div>

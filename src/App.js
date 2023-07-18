@@ -45,12 +45,14 @@ import Admin from "./Pages/Admin/Admin";
 //Other Imports
 import { Route, Routes } from "react-router-dom";
 import Compare from "./Pages/Compare/Compare";
+import Chart from "./Pages/Chart/Chart";
 
 // Parse Imports
 import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
+import Games from "./Pages/Games/Games";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -110,6 +112,7 @@ function App() {
 
           {/* Other Function Pages */}
           <Route path="/compare" element={<Compare />} />
+          <Route path="/games" element={<Games />} />
         </Routes>
       </div>
     </>
