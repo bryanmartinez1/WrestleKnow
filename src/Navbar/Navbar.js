@@ -2,15 +2,13 @@ import "./navbar.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
+import styled from "styled-components";
 
 import Button from "@atlaskit/button";
-
+import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Popup from "@atlaskit/popup";
 
-import DropdownMenu, {
-  DropdownItem,
-  DropdownItemGroup,
-} from "@atlaskit/dropdown-menu";
+import { DropdownItem, DropdownItemGroup } from "@atlaskit/dropdown-menu";
 
 // Images for navbar
 import boston_crab from "./Images/boston_crab.png";
@@ -123,43 +121,67 @@ export default function Navbar() {
             </DropdownItemGroup>
           )}
           trigger={(triggerProps) => (
-            <Button
-              {...triggerProps}
-              appearance="subtle"
-              spacing="none"
-              onClick={() => setSearchDropdownOpen(!isSearchDropdownOpen)}
+            <Tooltip
+              component={TooltipPrimitive}
+              content={<div className="tooltipContent">Search...</div>}
+              hideTooltipOnMouseDown
             >
-              <div className="margin">
-                <img className="navBarImage" src={search_icon} alt="SEARCH" />
-              </div>
-            </Button>
+              <Button
+                {...triggerProps}
+                appearance="subtle"
+                spacing="none"
+                onClick={() => setSearchDropdownOpen(!isSearchDropdownOpen)}
+              >
+                <div className="margin">
+                  <img className="navBarImage" src={search_icon} alt="SEARCH" />
+                </div>
+              </Button>
+            </Tooltip>
           )}
         />
-        <Button
-          appearance="subtle"
-          spacing="none"
-          onClick={() => navigateTo("/compare")}
+        <Tooltip
+          component={TooltipPrimitive}
+          content={<div className="tooltipContent">Charts</div>}
+          hideTooltipOnMouseDown
         >
-          <GraphBarIcon size="xlarge" primaryColor="#000000" />
-        </Button>
-        <Button
-          appearance="subtle"
-          spacing="none"
-          onClick={() => navigateTo("/chart")}
+          <Button
+            appearance="subtle"
+            spacing="none"
+            onClick={() => navigateTo("/charts")}
+          >
+            <GraphBarIcon size="xlarge" primaryColor="#000000" />
+          </Button>
+        </Tooltip>
+        <Tooltip
+          component={TooltipPrimitive}
+          content={<div className="tooltipContent">Compare</div>}
+          hideTooltipOnMouseDown
         >
-          <div className="margin">
-            <img className="navBarImage" src={compare_icon} alt="COMPARE" />
-          </div>
-        </Button>
-        <Button
-          appearance="subtle"
-          spacing="none"
-          onClick={() => navigateTo("/games")}
+          <Button
+            appearance="subtle"
+            spacing="none"
+            onClick={() => navigateTo("/compare")}
+          >
+            <div className="margin">
+              <img className="navBarImage" src={compare_icon} alt="COMPARE" />
+            </div>
+          </Button>
+        </Tooltip>
+        <Tooltip
+          component={TooltipPrimitive}
+          content={<div className="tooltipContent">Games</div>}
+          hideTooltipOnMouseDown
         >
-          <div className="margin">
-            <img className="navBarImage" src={controller_icon} alt="Games" />
-          </div>
-        </Button>
+          <Button
+            appearance="subtle"
+            spacing="none"
+            onClick={() => navigateTo("/games")}
+          >
+            <div className="margin">
+              <img className="navBarImage" src={controller_icon} alt="Games" />
+            </div>
+          </Button>
+        </Tooltip>
         <Popup
           isOpen={isProfileDropdownOpen}
           onClose={() => setProfileDropdownOpen(false)}
@@ -191,16 +213,26 @@ export default function Navbar() {
             </>
           )}
           trigger={(triggerProps) => (
-            <Button
-              {...triggerProps}
-              appearance="subtle"
-              spacing="none"
-              onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+            <Tooltip
+              component={TooltipPrimitive}
+              content={<div className="tooltipContent">Profile</div>}
+              hideTooltipOnMouseDown
             >
-              <div className="margin">
-                <img className="navBarImage" src={profile_icon} alt="PROFILE" />
-              </div>
-            </Button>
+              <Button
+                {...triggerProps}
+                appearance="subtle"
+                spacing="none"
+                onClick={() => setProfileDropdownOpen(!isProfileDropdownOpen)}
+              >
+                <div className="margin">
+                  <img
+                    className="navBarImage"
+                    src={profile_icon}
+                    alt="PROFILE"
+                  />
+                </div>
+              </Button>
+            </Tooltip>
           )}
         />
       </div>

@@ -112,6 +112,7 @@ function App() {
 
           {/* Other Function Pages */}
           <Route path="/compare" element={<Compare />} />
+          <Route path="/charts" element={<Chart />} />
           <Route path="/games" element={<Games />} />
         </Routes>
       </div>
