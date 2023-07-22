@@ -18,12 +18,14 @@ const CompanyCreate = () => {
   const [active, setActive] = useState("Active");
   const [about, setAbout] = useState("");
   const [date, onDateChange] = useState(new Date());
-  const [twitterLink, setTwitterLink] = useState();
-  const [instagramLink, setInstagramLink] = useState();
-  const [youtubeVid, setYoutubeVid] = useState();
-  const [youtubeAt, setYoutubeAt] = useState();
-  const [tiktokLink, setTiktokLink] = useState();
-  const [threadsLink, setThreadsLink] = useState();
+  const [endDate, onEndDateChange] = useState(new Date());
+  const [twitterLink, setTwitterLink] = useState("");
+  const [instagramLink, setInstagramLink] = useState("");
+  const [youtubeVid, setYoutubeVid] = useState("");
+  const [youtubeAt, setYoutubeAt] = useState("");
+  const [tiktokLink, setTiktokLink] = useState("");
+  const [threadsLink, setThreadsLink] = useState("");
+  const [aka, setAKA] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -67,6 +69,11 @@ const CompanyCreate = () => {
     newCompany.set("twitter_at", twitterLink);
     newCompany.set("tiktok_at", tiktokLink);
     newCompany.set("threads_at", threadsLink);
+    newCompany.set("aka", aka);
+    newCompany.set("lower_aka", aka.toLowerCase());
+    if (active === "Defunct") {
+      newCompany.set("end_date", endDate);
+    }
     try {
       setIsLoading(true);
       const company = await newCompany.save();
@@ -88,17 +95,27 @@ const CompanyCreate = () => {
             <Inputs header="Name" setHook={setName} />
             <>
               <h1 className="header">Activity</h1>
-              <ActivityDrop setOption={setActive} />
+              <ActivityDrop setOption={setActive} retireOrDefunct="Defunct" />
             </>
             <Inputs header="Abbreviated Name" setHook={setShortName} />
-            <>
-              <h1 className="header">About</h1>
-              <textarea
-                className="textAreaSize"
-                type="text"
-                onChange={(event) => setAbout(event.target.value)}
-              />
-            </>
+            <Inputs header="AKA" setHook={setAKA} />
+            <SocialMediaLinks
+              //  Can Set
+              can_set_company_pointer={false}
+              can_set_twitter_at={true}
+              can_set_instagram_at={true}
+              can_set_tiktok_at={true}
+              can_set_threads_at={true}
+              can_set_youtube_at={true}
+              can_set_youtube_vid={true}
+              //  Set Hooks
+              setTwitterAt={setTwitterLink}
+              setInstagramAt={setInstagramLink}
+              setYoutubeVid={setYoutubeVid}
+              setYoutubeAt={setYoutubeAt}
+              setTiktokAt={setTiktokLink}
+              setThreadsLink={setThreadsLink}
+            />
           </div>
           <div className="holderPage">
             <div className="column-div">
@@ -110,34 +127,34 @@ const CompanyCreate = () => {
                 name=""
                 onChange={(event) => onImageChange(event)}
               />
-            </div>
-            <>
-              <h1 className="header">Pick Birthdate</h1>
-              <Calendar
-                className="calendarHeight"
-                onChange={onDateChange}
-                value={date}
-                defaultView="century"
+              <h1 className="header">About</h1>
+              <textarea
+                className="textAreaSize"
+                type="text"
+                onChange={(event) => setAbout(event.target.value)}
               />
-            </>
+            </div>
           </div>
-          <SocialMediaLinks
-            //  Can Set
-            can_set_company_pointer={false}
-            can_set_twitter_at={true}
-            can_set_instagram_at={true}
-            can_set_tiktok_at={true}
-            can_set_threads_at={true}
-            can_set_youtube_at={true}
-            can_set_youtube_vid={true}
-            //  Set Hooks
-            setTwitterAt={setTwitterLink}
-            setInstagramAt={setInstagramLink}
-            setYoutubeVid={setYoutubeVid}
-            setYoutubeAt={setYoutubeAt}
-            setTiktokAt={setTiktokLink}
-            setThreadsLink={setThreadsLink}
-          />
+          <div className="holderPage">
+            <h1 className="header">Pick Found Date</h1>
+            <Calendar
+              className="calendarHeight"
+              onChange={onDateChange}
+              value={date}
+              defaultView="century"
+            />
+            {active === "Defunct" && (
+              <>
+                <h1 className="header">Pick End Date</h1>
+                <Calendar
+                  className="calendarHeight"
+                  onChange={onEndDateChange}
+                  value={endDate}
+                  defaultView="century"
+                />
+              </>
+            )}
+          </div>
         </div>
         <button className="submitButton" onClick={() => createCompany()}>
           Submit

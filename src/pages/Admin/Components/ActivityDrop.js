@@ -13,8 +13,8 @@ export default function ActivityDrop(props) {
         props.setOption("Active");
         break;
       case 1:
-        setDrop("Retire");
-        props.setOption("Retire");
+        setDrop(props.retireOrDefunct);
+        props.setOption(props.retireOrDefunct);
         break;
     }
     closeDrop();
@@ -59,7 +59,7 @@ export default function ActivityDrop(props) {
             Active
           </div>
           <div className="activity-option" onClick={() => changeDrop(1)}>
-            Retire
+            {props.retireOrDefunct}
           </div>
         </div>
       </div>

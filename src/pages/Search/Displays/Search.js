@@ -105,6 +105,8 @@ export default function Search(props) {
           imageSRC={object.get("image")}
           infoA={object.get(props.infoA)}
           date={object.get("date")}
+          hasEndDate={object.get("active") === "Defunct"}
+          endDate={object.get("end_date")}
           active={object.get("active")}
           link={props.chosenLink}
           objectID={object.id}
