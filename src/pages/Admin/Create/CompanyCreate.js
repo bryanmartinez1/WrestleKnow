@@ -23,6 +23,7 @@ const CompanyCreate = () => {
   const [youtubeVid, setYoutubeVid] = useState();
   const [youtubeAt, setYoutubeAt] = useState();
   const [tiktokLink, setTiktokLink] = useState();
+  const [threadsLink, setThreadsLink] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   function onImageChange(event) {
@@ -65,6 +66,7 @@ const CompanyCreate = () => {
     newCompany.set("instagram_at", instagramLink);
     newCompany.set("twitter_at", twitterLink);
     newCompany.set("tiktok_at", tiktokLink);
+    newCompany.set("threads_at", threadsLink);
     try {
       setIsLoading(true);
       const company = await newCompany.save();
@@ -134,6 +136,7 @@ const CompanyCreate = () => {
             setYoutubeVid={setYoutubeVid}
             setYoutubeAt={setYoutubeAt}
             setTiktokAt={setTiktokLink}
+            setThreadsLink={setThreadsLink}
           />
         </div>
         <button className="submitButton" onClick={() => createCompany()}>

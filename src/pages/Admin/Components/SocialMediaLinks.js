@@ -8,11 +8,6 @@ import googleSheetsLogo from "../../../images/googleSheetsLogo.png";
 import threadsLogo from "../../../images/Threads.png";
 
 export default function SocialMediaLinks(props) {
-  //  add functions to remove whole webpage
-  //  Possibly Shortne it More Later
-  //  Use Inputs Component Here
-  //  Add Boolean to Inputs to see if an image who display next to header
-
   function redirectTo(website) {
     window.open(website, "_blank");
   }

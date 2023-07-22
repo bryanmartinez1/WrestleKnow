@@ -80,7 +80,7 @@ export default function Navbar() {
             <DropdownItemGroup>
               <Dropdownitems link="wrestler" content="Wrestler" isLink />
               <Dropdownitems link="company" content="Company" isLink />
-              <Dropdownitems link="title" content="Tile" isLink />
+              <Dropdownitems link="title" content="Title" isLink />
               <Dropdownitems link="faction" content="Faction" isLink />
               <Dropdownitems link="brand" content="Brand" isLink />
               <Dropdownitems link="ppv" content="PPV" isLink />
