@@ -40,12 +40,6 @@ export default function SocialMediaLinks(props) {
   }
   return (
     <div className="holderPage">
-      {/* can_set_company_pointer={false}
-            can_set_twitter_at={false}
-            can_set_instagram_at={false}
-            can_set_tiktok_at={false}
-            can_set_youtube_at={false}
-            can_set_youtube_vid={true} */}
       {props.can_set_company_pointer && (
         <>
           <h1 className="header">

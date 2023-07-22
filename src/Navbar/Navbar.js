@@ -2,13 +2,13 @@ import "./navbar.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
-import styled from "styled-components";
 
 import Button from "@atlaskit/button";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Popup from "@atlaskit/popup";
 
-import { DropdownItem, DropdownItemGroup } from "@atlaskit/dropdown-menu";
+import { DropdownItemGroup } from "@atlaskit/dropdown-menu";
+import Dropdownitems from "./Components/Dropdownitems";
 
 // Images for navbar
 import boston_crab from "./Images/boston_crab.png";
@@ -23,7 +23,7 @@ export default function Navbar() {
   const [isAdmin, setAdmin] = useState(false);
   const [isSearchDropdownOpen, setSearchDropdownOpen] = useState(false);
   const [isProfileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const navigate = useNavigate();
   function navigateTo(link) {
@@ -40,29 +40,10 @@ export default function Navbar() {
     return currentUser;
   };
 
-  const logOut = async function () {
-    try {
-      await Parse.User.logOut();
-      // To verify that current user is now empty, currentAsync can be used
-      const currentUser = await Parse.User.current();
-      if (currentUser === null) {
-        console.log("Log Out: No user is logged in anymore!");
-      }
-      // Update state variable holding current user
-      getCurrentUser();
-      return true;
-    } catch (error) {
-      alert(`Error! ${error.message}`);
-      return false;
-    }
-  };
-
   // Gets Current User
   useEffect(() => {
     getCurrentUser();
   }, [currentUser, setAdmin]);
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -97,27 +78,12 @@ export default function Navbar() {
           placement="bottom-end"
           content={() => (
             <DropdownItemGroup>
-              <DropdownItem
-                onClick={() => navigateTo("/wrestler")}
-                className="custom"
-              >
-                Wrestlers
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/company")}>
-                Companies
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/title")}>
-                Titles
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/faction")}>
-                Factions
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/brand")}>
-                Brands
-              </DropdownItem>
-              <DropdownItem onClick={() => navigateTo("/ppv")}>
-                PPVs
-              </DropdownItem>
+              <Dropdownitems link="wrestler" content="Wrestler" isLink />
+              <Dropdownitems link="company" content="Company" isLink />
+              <Dropdownitems link="title" content="Tile" isLink />
+              <Dropdownitems link="faction" content="Faction" isLink />
+              <Dropdownitems link="brand" content="Brand" isLink />
+              <Dropdownitems link="ppv" content="PPV" isLink />
             </DropdownItemGroup>
           )}
           trigger={(triggerProps) => (
@@ -190,24 +156,16 @@ export default function Navbar() {
             <>
               {currentUser === null ? (
                 <DropdownItemGroup>
-                  <DropdownItem onClick={() => navigateTo("/login")}>
-                    Log In
-                  </DropdownItem>
-                  <DropdownItem onClick={() => navigateTo("/signup")}>
-                    Sign Up
-                  </DropdownItem>
+                  <Dropdownitems link="login" content="Log In" isLink />
+                  <Dropdownitems link="signup" content="Sign Up" isLink />
                 </DropdownItemGroup>
               ) : (
                 <DropdownItemGroup>
                   {isAdmin && (
-                    <DropdownItem onClick={() => navigateTo("/admin")}>
-                      Admin
-                    </DropdownItem>
+                    <Dropdownitems link="admin" content="Admin" isLink />
                   )}
-                  <DropdownItem onClick={() => navigateTo("/gp")}>
-                    Gorilla Position
-                  </DropdownItem>
-                  <DropdownItem onClick={() => logOut()}>Log Out</DropdownItem>
+                  <Dropdownitems link="gp" content="Gorilla Position" isLink />
+                  <Dropdownitems content="Log Out" setUser={setCurrentUser} />
                 </DropdownItemGroup>
               )}
             </>

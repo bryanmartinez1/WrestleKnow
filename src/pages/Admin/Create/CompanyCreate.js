@@ -72,7 +72,7 @@ const CompanyCreate = () => {
       // alert(name + " successfully added to database");
       window.location.reload(false);
     } catch (error) {
-      alert("Error while creating Wrestler" + error);
+      alert("Error while creating Company" + error);
       setIsLoading(false);
     }
   }

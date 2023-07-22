@@ -1,0 +1,20 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.dropdownItems {
+    width:90px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-family: Lexend;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.dropdownItems:hover {
+    background-color: #D3D3D3;
+}

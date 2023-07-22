@@ -75,6 +75,7 @@ const WrestlerCreate = () => {
     newWrestler.set("instagram", instagramLink);
     newWrestler.set("twitter", twitterLink);
     newWrestler.set("tiktok", tiktokLink);
+    newWrestler.set("threads", threadsLink);
     try {
       setIsLoading(true);
       const wrestler = await newWrestler.save();
