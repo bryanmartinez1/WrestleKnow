@@ -53,6 +53,7 @@ import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
 import Games from "./Pages/Games/Games";
+import FLAGS from "./FLAGS";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -61,6 +62,7 @@ Parse.initialize(App_ID, JS_Key);
 Parse.serverURL = Host_Server;
 
 function App() {
+  console.log("FLAGS:", FLAGS);
   return (
     <>
       <Navbar />
@@ -97,12 +99,16 @@ function App() {
           <Route path="/ppv/:ppvId" element={<PPVSelect />} />
 
           {/* Gorilla Position Pages */}
-          <Route path="/gp" element={<Feed />} />
-          <Route path="/gp/messages" element={<Messages />} />
-          <Route path="/gp/bookmarks" element={<Bookmarks />} />
-          <Route path="/gp/searchresults" element={<SearchResults />} />
-          <Route path="/gp/user" element={<User />} />
-          <Route path="/gp/follow" element={<Follow />} />
+          {FLAGS.canUseGP.live && (
+            <>
+              <Route path="/gp" element={<Feed />} />
+              <Route path="/gp/messages" element={<Messages />} />
+              <Route path="/gp/bookmarks" element={<Bookmarks />} />
+              <Route path="/gp/searchresults" element={<SearchResults />} />
+              <Route path="/gp/user" element={<User />} />
+              <Route path="/gp/follow" element={<Follow />} />
+            </>
+          )}
 
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
@@ -111,9 +117,15 @@ function App() {
           <Route path="/password" element={<ForgotPassword />} />
 
           {/* Other Function Pages */}
-          <Route path="/compare" element={<Compare />} />
-          <Route path="/charts" element={<Chart />} />
-          <Route path="/games" element={<Games />} />
+          {FLAGS.canCompare.live && (
+            <Route path="/compare" element={<Compare />} />
+          )}
+          {FLAGS.canUseCharts.live && (
+            <Route path="/charts" element={<Chart />} />
+          )}
+          {FLAGS.canPlayGames.live && (
+            <Route path="/games" element={<Games />} />
+          )}
         </Routes>
       </div>
     </>
