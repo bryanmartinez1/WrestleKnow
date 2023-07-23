@@ -18,6 +18,8 @@ import compare_icon from "./Images/compare.png";
 import profile_icon from "./Images/profile_icon.png";
 import GraphBarIcon from "@atlaskit/icon/glyph/graph-bar";
 
+import FLAGS from "../FLAGS";
+
 export default function Navbar() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAdmin, setAdmin] = useState(false);
@@ -105,49 +107,59 @@ export default function Navbar() {
             </Tooltip>
           )}
         />
-        <Tooltip
-          component={TooltipPrimitive}
-          content={<div className="tooltipContent">Charts</div>}
-          hideTooltipOnMouseDown
-        >
-          <Button
-            appearance="subtle"
-            spacing="none"
-            onClick={() => navigateTo("/charts")}
+        {FLAGS.canUseCharts.live && (
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Charts</div>}
+            hideTooltipOnMouseDown
           >
-            <GraphBarIcon size="xlarge" primaryColor="#000000" />
-          </Button>
-        </Tooltip>
-        <Tooltip
-          component={TooltipPrimitive}
-          content={<div className="tooltipContent">Compare</div>}
-          hideTooltipOnMouseDown
-        >
-          <Button
-            appearance="subtle"
-            spacing="none"
-            onClick={() => navigateTo("/compare")}
+            <Button
+              appearance="subtle"
+              spacing="none"
+              onClick={() => navigateTo("/charts")}
+            >
+              <GraphBarIcon size="xlarge" primaryColor="#000000" />
+            </Button>
+          </Tooltip>
+        )}
+        {FLAGS.canCompare.live && (
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Compare</div>}
+            hideTooltipOnMouseDown
           >
-            <div className="margin">
-              <img className="navBarImage" src={compare_icon} alt="COMPARE" />
-            </div>
-          </Button>
-        </Tooltip>
-        <Tooltip
-          component={TooltipPrimitive}
-          content={<div className="tooltipContent">Games</div>}
-          hideTooltipOnMouseDown
-        >
-          <Button
-            appearance="subtle"
-            spacing="none"
-            onClick={() => navigateTo("/games")}
+            <Button
+              appearance="subtle"
+              spacing="none"
+              onClick={() => navigateTo("/compare")}
+            >
+              <div className="margin">
+                <img className="navBarImage" src={compare_icon} alt="COMPARE" />
+              </div>
+            </Button>
+          </Tooltip>
+        )}
+        {FLAGS.canPlayGames.live && (
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Games</div>}
+            hideTooltipOnMouseDown
           >
-            <div className="margin">
-              <img className="navBarImage" src={controller_icon} alt="Games" />
-            </div>
-          </Button>
-        </Tooltip>
+            <Button
+              appearance="subtle"
+              spacing="none"
+              onClick={() => navigateTo("/games")}
+            >
+              <div className="margin">
+                <img
+                  className="navBarImage"
+                  src={controller_icon}
+                  alt="Games"
+                />
+              </div>
+            </Button>
+          </Tooltip>
+        )}
         <Popup
           isOpen={isProfileDropdownOpen}
           onClose={() => setProfileDropdownOpen(false)}
@@ -164,7 +176,13 @@ export default function Navbar() {
                   {isAdmin && (
                     <Dropdownitems link="admin" content="Admin" isLink />
                   )}
-                  <Dropdownitems link="gp" content="Gorilla Position" isLink />
+                  {FLAGS.canUseGP.live && (
+                    <Dropdownitems
+                      link="gp"
+                      content="Gorilla Position"
+                      isLink
+                    />
+                  )}
                   <Dropdownitems content="Log Out" setUser={setCurrentUser} />
                 </DropdownItemGroup>
               )}

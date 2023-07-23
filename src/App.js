@@ -1,4 +1,5 @@
 import React from "react";
+import FLAGS from "./FLAGS";
 import Navbar from "./Navbar/Navbar";
 import Home from "./Pages/Home";
 import Settings from "./Pages/User/Settings";
@@ -42,6 +43,15 @@ import ForgotPassword from "./Pages/User/forgotPassword";
 import Account from "./Pages/User/Account";
 import Admin from "./Pages/Admin/Admin";
 
+//  Game Pages
+import Games from "./Pages/Games/Games";
+import StoneRockCactus from "./Pages/Games/Stone_Rock_Cactus/StoneRockCactus";
+import WrestlEconomy from "./Pages/Games/Wrestle_Economy/WrestlEconomy";
+import KairiShipSails from "./Pages/Games/Kairi_Ship_Sails/KairiShipSails";
+import Damien from "./Pages/Games/Damien/Damien";
+import ChasingTheDragon from "./Pages/Games/Chasing_The_Dragon/ChasingTheDragon";
+import RingBreaker from "./Pages/Games/Ring_Breaker/RingBreaker";
+
 //Other Imports
 import { Route, Routes } from "react-router-dom";
 import Compare from "./Pages/Compare/Compare";
@@ -52,7 +62,6 @@ import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
-import Games from "./Pages/Games/Games";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -61,6 +70,7 @@ Parse.initialize(App_ID, JS_Key);
 Parse.serverURL = Host_Server;
 
 function App() {
+  console.log("FLAGS:", FLAGS);
   return (
     <>
       <Navbar />
@@ -97,12 +107,16 @@ function App() {
           <Route path="/ppv/:ppvId" element={<PPVSelect />} />
 
           {/* Gorilla Position Pages */}
-          <Route path="/gp" element={<Feed />} />
-          <Route path="/gp/messages" element={<Messages />} />
-          <Route path="/gp/bookmarks" element={<Bookmarks />} />
-          <Route path="/gp/searchresults" element={<SearchResults />} />
-          <Route path="/gp/user" element={<User />} />
-          <Route path="/gp/follow" element={<Follow />} />
+          {FLAGS.canUseGP.live && (
+            <>
+              <Route path="/gp" element={<Feed />} />
+              <Route path="/gp/messages" element={<Messages />} />
+              <Route path="/gp/bookmarks" element={<Bookmarks />} />
+              <Route path="/gp/searchresults" element={<SearchResults />} />
+              <Route path="/gp/user" element={<User />} />
+              <Route path="/gp/follow" element={<Follow />} />
+            </>
+          )}
 
           {/* User Function Pages */}
           <Route path="/login" element={<LogIn />} />
@@ -111,9 +125,35 @@ function App() {
           <Route path="/password" element={<ForgotPassword />} />
 
           {/* Other Function Pages */}
-          <Route path="/compare" element={<Compare />} />
-          <Route path="/charts" element={<Chart />} />
-          <Route path="/games" element={<Games />} />
+          {FLAGS.canCompare.live && (
+            <Route path="/compare" element={<Compare />} />
+          )}
+          {FLAGS.canUseCharts.live && (
+            <Route path="/charts" element={<Chart />} />
+          )}
+          {FLAGS.canPlayGames.live && (
+            <>
+              <Route path="/games" element={<Games />} />
+              <Route
+                path="/games/stone_rock_cactus"
+                element={<StoneRockCactus />}
+              />
+              <Route
+                path="/games/wrestle_economy"
+                element={<WrestlEconomy />}
+              />
+              <Route
+                path="/games/kairi_ship_sails"
+                element={<KairiShipSails />}
+              />
+              <Route path="/games/damien" element={<Damien />} />
+              <Route
+                path="/games/chasing_the_dragon"
+                element={<ChasingTheDragon />}
+              />
+              <Route path="/games/ring_breaker" element={<RingBreaker />} />
+            </>
+          )}
         </Routes>
       </div>
     </>
