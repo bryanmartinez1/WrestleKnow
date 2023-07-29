@@ -15,6 +15,7 @@ const TitleCreate = () => {
   const [base64Img, setBase64Img] = useState("");
   const [active, setActive] = useState("Active");
   const [date, onDateChange] = useState(new Date());
+  const [endDate, onEndDateChange] = useState(new Date());
   const [companyPointer, setCompanyPointer] = useState("");
   const [about, setAbout] = useState("");
   const [aka, setAKA] = useState("");
@@ -58,6 +59,7 @@ const TitleCreate = () => {
       objectId: companyPointer,
     });
     newTitle.set("date", date);
+    newTitle.set("end_date", endDate);
     newTitle.set("active", active);
     newTitle.set("aka", aka);
     newTitle.set("about", about);
@@ -87,11 +89,17 @@ const TitleCreate = () => {
             <Inputs header="Name" setHook={setName} />
             <>
               <h1 className="header">Activity</h1>
-              <ActivityDrop setOption={setActive} />
+              <ActivityDrop setOption={setActive} retireOrDefunct="Retire" />
             </>
             <Inputs header="Unique Champions" setHook={setUniqueChampions} />
             <Inputs header="Company Pointer" setHook={setCompanyPointer} />
             <Inputs header="Youtube Video" setHook={setYoutubeVideo} />
+            <h1 className="header">AKA</h1>
+            <textarea
+              className="textAreaSize"
+              type="text"
+              onChange={(event) => setAKA(event.target.value)}
+            />
           </div>
           <div className="holderPage">
             <div className="column-div">
@@ -104,8 +112,16 @@ const TitleCreate = () => {
                 onChange={(event) => onImageChange(event)}
               />
             </div>
+            <h1 className="header">About</h1>
+            <textarea
+              className="textAreaSize"
+              type="text"
+              onChange={(event) => setAbout(event.target.value)}
+            />
+          </div>
+          <div className="holderPage">
             <>
-              <h1 className="header">Pick Title Introduction</h1>
+              <h1 className="header">Pick Title Introduction Date</h1>
               <Calendar
                 className="calendarHeight"
                 onChange={onDateChange}
@@ -113,20 +129,17 @@ const TitleCreate = () => {
                 defaultView="century"
               />
             </>
-          </div>
-          <div className="holderPage">
-            <h1 className="header">AKA</h1>
-            <textarea
-              className="textAreaSize"
-              type="text"
-              onChange={(event) => setAKA(event.target.value)}
-            />
-            <h1 className="header">About</h1>
-            <textarea
-              className="textAreaSize"
-              type="text"
-              onChange={(event) => setAbout(event.target.value)}
-            />
+            {active === "Retire" && (
+              <>
+                <h1 className="header">Pick Title Retire Date</h1>
+                <Calendar
+                  className="calendarHeight"
+                  onChange={onEndDateChange}
+                  value={endDate}
+                  defaultView="century"
+                />
+              </>
+            )}
           </div>
         </div>
         <button className="submitButton" onClick={() => createTitle()}>

@@ -1,7 +1,7 @@
 import React from "react";
 import FLAGS from "./FLAGS";
 import Navbar from "./Navbar/Navbar";
-import Home from "./Pages/Home";
+import Home from "./Pages/Home/Home";
 import Settings from "./Pages/User/Settings";
 
 // Create Pages

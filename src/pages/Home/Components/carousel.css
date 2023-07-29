@@ -1,0 +1,23 @@
+.carouselHolder {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 300px;
+    border-style: solid;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.arrowButton {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+}
+
+.arrowImg {
+    width: 10px;
+    height: 30px;
+}

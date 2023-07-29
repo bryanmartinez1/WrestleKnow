@@ -19,6 +19,11 @@ const FLAGS = {
     live: false,
     description: "Access Gorilla Position Link and its features",
   },
+  canUseCarousel: {
+    id: "can_use_carousel",
+    live: true,
+    description: "Use the carousel featured on home page",
+  },
 };
 
 export default FLAGS;

@@ -14,3 +14,11 @@
 .page p {
     font-size: 1rem;
 }
+
+.carouselDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
