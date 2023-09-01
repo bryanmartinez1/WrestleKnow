@@ -62,6 +62,7 @@ import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Follow from "./Pages/GorillaPosition/Follow";
+import TicTacToe from "./Pages/Games/Tic Tac Toe/TicTacToe";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -152,6 +153,7 @@ function App() {
                 element={<ChasingTheDragon />}
               />
               <Route path="/games/ring_breaker" element={<RingBreaker />} />
+              <Route path="/games/tic_tac_toe" element={<TicTacToe />} />
             </>
           )}
         </Routes>

@@ -1,7 +1,7 @@
 const FLAGS = {
   canPlayGames: {
     id: "can_play_games",
-    live: false,
+    live: true,
     description: "Access Games Link and its features",
   },
   canUseCharts: {

@@ -1,5 +1,11 @@
 import React from "react";
+import GamesSideBar from "../Components/GamesSideBar";
 
 export default function RingBreaker() {
-  return <div>RingBreaker</div>;
+  return (
+    <div>
+      {" "}
+      <GamesSideBar /> RingBreaker
+    </div>
+  );
 }

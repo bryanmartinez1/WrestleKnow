@@ -1,5 +1,10 @@
 import React from "react";
+import GamesSideBar from "../Components/GamesSideBar";
 
 export default function KairiShipSails() {
-  return <div>Kairi Ship Sails</div>;
+  return (
+    <div>
+      <GamesSideBar /> Kairi Ship Sails
+    </div>
+  );
 }

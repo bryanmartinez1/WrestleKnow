@@ -1,0 +1,31 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.sidebar {
+    font-family: Lexend;
+    width: 100px;
+    min-height: 92.7vh;
+    background-color: #f2807e;
+}
+
+.box {
+    width: inherit;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.box:hover {
+    background-color: #EE534F;
+}
+.box:not(:last-child) {
+    border-block-end: solid 2px black;
+}
