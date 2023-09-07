@@ -1,12 +1,12 @@
 const FLAGS = {
   canPlayGames: {
     id: "can_play_games",
-    live: true,
+    live: false,
     description: "Access Games Link and its features",
   },
   canUseCharts: {
     id: "can_use_charts",
-    live: false,
+    live: true,
     description: "Access Chart Link and its features",
   },
   canCompare: {
