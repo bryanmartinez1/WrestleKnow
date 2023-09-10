@@ -6,6 +6,7 @@ import SocialMedia from "./Displays/SocialMedia";
 import QuickInfo from "./Displays/QuickInfo";
 import ReignDescription from "./Displays/ReignDescription";
 import "./selectStyles.css";
+import { getAge } from "../../Functions/functions.js";
 
 const WrestlerSelect = () => {
   const { wrestlerId } = useParams(); // Accessing the route parameter
@@ -18,14 +19,6 @@ const WrestlerSelect = () => {
       wrestlerQuery();
     }
   });
-
-  function age(date) {
-    let dob = date;
-    let month_diff = Date.now() - dob.getTime();
-    let age_dt = new Date(month_diff);
-    let year = age_dt.getUTCFullYear();
-    return Math.abs(year - 1970);
-  }
 
   function createBulletPointList(text) {
     return text.split(",");
@@ -59,7 +52,7 @@ const WrestlerSelect = () => {
       const wrestlerResults = await wrestlerParse.find();
       const wrestler = {
         name: wrestlerResults[0].get("name"),
-        age: age(wrestlerResults[0].get("date")),
+        age: getAge(wrestlerResults[0].get("date")),
         image: JSON.stringify(wrestlerResults[0].get("image"))
           .split('url":"')
           .pop()

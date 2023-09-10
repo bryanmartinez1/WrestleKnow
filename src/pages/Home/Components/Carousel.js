@@ -28,15 +28,18 @@ export default function Carousel(props) {
     <div className="carouselHolder">
       <CarouselItems
         image={props.resultsJSON.image[page]}
+        id={props.resultsJSON.id[page]}
+        link={props.link}
       />
-      <div className="arrowHolder">      
+      <div className="arrowHolder">
         <button onClick={() => MovingLeft()} className="arrowButton">
           <img src={previous} className="arrowImg" alt="Previous" />
         </button>
         <div>{page + 1} of 5</div>
         <button onClick={() => MovingRight()} className="arrowButton">
           <img src={next} className="arrowImg" alt="Next" />
-        </button></div>
+        </button>
+      </div>
     </div>
   );
 }

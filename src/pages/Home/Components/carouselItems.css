@@ -3,7 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #353739;
 }
+.itemsHolder:hover {
+    background-color: #EE534F;
+    cursor: pointer;
+}
+
 .carosuelItemName {
     width: 100%;
     display: flex;
@@ -15,5 +21,4 @@
 .carosuelItemImage {
     height: 250px;
     width: 100%;
-    background-color: #353739;
 }

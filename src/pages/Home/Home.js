@@ -221,18 +221,26 @@ export default function Home() {
       <h1>On This Day: {dateString} </h1>
       <p>Andrade wins the NXT Championship </p>
       <iframe className="ytVid" src={youtube + vidID} title="On This Day" />
-      {FLAGS.canUseCarousel.live ? (
-        <div className="carouselDiv">
-          {showWrestlerCarousel ? (
-            <Carousel resultsJSON={wrestlerJSON} />
-          ) : null}
-          {showCompanyCarousel ? <Carousel resultsJSON={companyJSON} /> : null}
-          {showTitleCarousel ? <Carousel resultsJSON={titleJSON} /> : null}
-          {showFactionCarousel ? <Carousel resultsJSON={factionJSON} /> : null}
-          {showBrandCarousel ? <Carousel resultsJSON={brandJSON} /> : null}
-          {showPpvCarousel ? <Carousel resultsJSON={ppvJSON} /> : null}
-        </div>
-      ) : null}
+      <div className="carouselDiv">
+        {showWrestlerCarousel ? (
+          <Carousel resultsJSON={wrestlerJSON} link="/wrestler/" />
+        ) : null}
+        {showCompanyCarousel ? (
+          <Carousel resultsJSON={companyJSON} link="/company/" />
+        ) : null}
+        {showTitleCarousel ? (
+          <Carousel resultsJSON={titleJSON} link="/title/" />
+        ) : null}
+        {showFactionCarousel ? (
+          <Carousel resultsJSON={factionJSON} link="/faction/" />
+        ) : null}
+        {showBrandCarousel ? (
+          <Carousel resultsJSON={brandJSON} link="/brand/" />
+        ) : null}
+        {showPpvCarousel ? (
+          <Carousel resultsJSON={ppvJSON} link="/ppv/" />
+        ) : null}
+      </div>
     </div>
   );
 }

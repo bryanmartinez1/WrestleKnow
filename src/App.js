@@ -56,13 +56,14 @@ import RingBreaker from "./Pages/Games/Ring_Breaker/RingBreaker";
 import { Route, Routes } from "react-router-dom";
 import Compare from "./Pages/Compare/Compare";
 import Chart from "./Pages/Chart/Chart";
+import Follow from "./Pages/GorillaPosition/Follow";
+import TicTacToe from "./Pages/Games/Tic Tac Toe/TicTacToe";
+import Profile from "./Pages/Select/Profile/Profile";
 
 // Parse Imports
 import { App_ID, JS_Key, Host_Server } from "./KEYS";
 import Parse from "parse/dist/parse.min.js";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Follow from "./Pages/GorillaPosition/Follow";
-import TicTacToe from "./Pages/Games/Tic Tac Toe/TicTacToe";
 
 //Initializing the SDK
 Parse.setAsyncStorage(AsyncStorage);
@@ -81,6 +82,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/profile/:profileId" element={<Profile />} />
 
           {/* Admin Pages */}
           <Route path="/admin" element={<Admin />} />

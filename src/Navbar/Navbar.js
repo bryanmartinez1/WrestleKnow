@@ -173,6 +173,7 @@ export default function Navbar() {
                 </DropdownItemGroup>
               ) : (
                 <DropdownItemGroup>
+                  <Dropdownitems link="profile" content="Profile" isLink />
                   {isAdmin && (
                     <Dropdownitems link="admin" content="Admin" isLink />
                   )}
@@ -183,6 +184,7 @@ export default function Navbar() {
                       isLink
                     />
                   )}
+
                   <Dropdownitems content="Log Out" setUser={setCurrentUser} />
                 </DropdownItemGroup>
               )}

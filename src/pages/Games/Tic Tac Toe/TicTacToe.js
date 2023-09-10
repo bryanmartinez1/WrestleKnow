@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ticTacToe.css";
 
 export default function TicTacToe() {
-  const [playerTurn, setPlayerTurn] = useState(1);
+  const [playerTurn, setPlayerTurn] = useState("X");
   const [cellValues, setCellValues] = useState([
     ["", "", ""],
     ["", "", ""],
@@ -10,10 +10,10 @@ export default function TicTacToe() {
   ]);
   const [isWinner, setWinner] = useState(0);
   function switchingPlayersTurn() {
-    if (playerTurn === 1) {
-      setPlayerTurn(2);
+    if (playerTurn === "X") {
+      setPlayerTurn("O");
     } else {
-      setPlayerTurn(1);
+      setPlayerTurn("X");
     }
   }
 
@@ -69,7 +69,7 @@ export default function TicTacToe() {
       ["", "", ""],
       ["", "", ""],
     ]);
-    setPlayerTurn(1);
+    setPlayerTurn("X");
   }
 
   return (

@@ -7,6 +7,9 @@
     align-items: center;
     justify-content: space-between;
     margin: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .arrowHolder {
@@ -14,7 +17,7 @@
     flex-direction: row;
     width:100%;
     justify-content: center;
-    background-color: #353739;
+    background-color: #b7babd;
 }
 
 .arrowButton {
