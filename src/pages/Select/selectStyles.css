@@ -49,13 +49,14 @@
 }
 
 .ytVidChoosen {
-    max-width: 800px;
+    width: 100%;
+    min-width: 300px;
     height: 450px;
 }
 
 .reignDisplayHolder {
     border-style: solid;
-    max-width: 800px;
+    width: 700px;
     height: 900px;
     border-radius: 10px;
     overflow: hidden;
