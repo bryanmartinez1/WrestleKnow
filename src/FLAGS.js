@@ -1,7 +1,7 @@
 const FLAGS = {
   canPlayGames: {
     id: "can_play_games",
-    live: false,
+    live: true,
     description: "Access Games Link and its features",
   },
   canUseCharts: {
@@ -11,12 +11,12 @@ const FLAGS = {
   },
   canCompare: {
     id: "can_compare",
-    live: false,
+    live: true,
     description: "Access Compare Link and its features",
   },
   canUseGP: {
     id: "can_use_gp",
-    live: false,
+    live: true,
     description: "Access Gorilla Position Link and its features",
   },
   canUseCarousel: {

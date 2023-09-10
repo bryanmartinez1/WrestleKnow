@@ -2,6 +2,15 @@
     font-family: Lexend;
     src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
 }
+
+.tictactoePage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #tttCellContainer {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -9,6 +18,14 @@
     margin: auto;
     font-family: Lexend;
     font-size: 2rem;
+}
+
+.gameTitle {
+    width: 100%;
+    font-family: Lexend;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
 }
 
 .cell {
@@ -19,4 +36,25 @@
     line-height: 75px;
     text-align: center;
     cursor: pointer;
+    background-color: transparent;
+    font-family: Lexend;
+    font-size: 2rem;
+}
+
+.statusText {
+    height: 3rem;
+    width: 100%;
+    font-family: Lexend;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#restartButton {
+    background-color: transparent;
+    border-style: none;
+    background-color: #F8BCBA;
+    font-family: Lexend;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 20px;
 }

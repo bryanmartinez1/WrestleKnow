@@ -8,7 +8,7 @@ export default function TicTacToe() {
     ["", "", ""],
     ["", "", ""],
   ]);
-  const [isWinner, setWinner] = useState(0);
+  const [isWinner, setWinner] = useState("");
   function switchingPlayersTurn() {
     if (playerTurn === "X") {
       setPlayerTurn("O");
@@ -35,14 +35,16 @@ export default function TicTacToe() {
     for (let i = 0; i < 3; i++) {
       if (array[i][0] === "") continue;
       if (array[i][0] === array[i][1] && array[i][0] === array[i][2]) {
-        alert(array[i][0] + " is the winner");
+        setWinner("Player " + array[i][0] + " is the winner");
+        disableGameAfterWinner();
         break;
       }
     }
     for (let i = 0; i < 3; i++) {
       if (array[0][i] === "") continue;
       if (array[0][i] === array[1][i] && array[0][i] === array[2][i]) {
-        alert(array[0][i] + " is the winner");
+        setWinner("Player " + array[0][i] + " is the winner");
+        disableGameAfterWinner();
         break;
       }
     }
@@ -52,14 +54,16 @@ export default function TicTacToe() {
       array[0][0] === array[2][2] &&
       array[0][0] !== ""
     ) {
-      alert(array[0][0] + " is the winner");
+      setWinner("Player " + array[0][0] + " is the winner");
+      disableGameAfterWinner();
     }
     if (
       array[0][2] === array[1][1] &&
       array[0][2] === array[2][0] &&
       array[0][2] !== ""
     ) {
-      alert(array[0][2] + " is the winner");
+      setWinner("Player " + array[0][2] + " is the winner");
+      disableGameAfterWinner();
     }
   }
 
@@ -70,41 +74,55 @@ export default function TicTacToe() {
       ["", "", ""],
     ]);
     setPlayerTurn("X");
+    setWinner("");
+    var buttons = document.querySelectorAll("#tttCellContainer .cell");
+    buttons.forEach(function (button) {
+      button.disabled = false;
+    });
+  }
+
+  function disableGameAfterWinner() {
+    var buttons = document.querySelectorAll("#tttCellContainer .cell");
+    buttons.forEach(function (button) {
+      button.disabled = true;
+    });
   }
 
   return (
-    <div id="tttContainer">
-      <h1>Tic Tac Toe</h1>
-      <div id="tttCellContainer">
-        <div class="cell" onClick={() => game(0, 0)}>
-          {cellValues[0][0]}
-        </div>
-        <div class="cell" onClick={() => game(0, 1)}>
-          {cellValues[0][1]}
-        </div>
-        <div class="cell" onClick={() => game(0, 2)}>
-          {cellValues[0][2]}
-        </div>
-        <div class="cell" onClick={() => game(1, 0)}>
-          {cellValues[1][0]}
-        </div>
-        <div class="cell" onClick={() => game(1, 1)}>
-          {cellValues[1][1]}
-        </div>
-        <div class="cell" onClick={() => game(1, 2)}>
-          {cellValues[1][2]}
-        </div>
-        <div class="cell" onClick={() => game(2, 0)}>
-          {cellValues[2][0]}
-        </div>
-        <div class="cell" onClick={() => game(2, 1)}>
-          {cellValues[2][1]}
-        </div>
-        <div class="cell" onClick={() => game(2, 2)}>
-          {cellValues[2][2]}
+    <div className="tictactoePage">
+      <div id="tttContainer">
+        <div className="gameTitle">Tic Tac Toe</div>
+        <div className="statusText">{isWinner}</div>
+        <div id="tttCellContainer">
+          <button class="cell" onClick={() => game(0, 0)}>
+            {cellValues[0][0]}
+          </button>
+          <button class="cell" onClick={() => game(0, 1)}>
+            {cellValues[0][1]}
+          </button>
+          <button class="cell" onClick={() => game(0, 2)}>
+            {cellValues[0][2]}
+          </button>
+          <button class="cell" onClick={() => game(1, 0)}>
+            {cellValues[1][0]}
+          </button>
+          <button class="cell" onClick={() => game(1, 1)}>
+            {cellValues[1][1]}
+          </button>
+          <button class="cell" onClick={() => game(1, 2)}>
+            {cellValues[1][2]}
+          </button>
+          <button class="cell" onClick={() => game(2, 0)}>
+            {cellValues[2][0]}
+          </button>
+          <button class="cell" onClick={() => game(2, 1)}>
+            {cellValues[2][1]}
+          </button>
+          <button class="cell" onClick={() => game(2, 2)}>
+            {cellValues[2][2]}
+          </button>
         </div>
       </div>
-      <h2 id="statusText"></h2>
       <button id="restartButton" onClick={() => clearBoard()}>
         Restart
       </button>
