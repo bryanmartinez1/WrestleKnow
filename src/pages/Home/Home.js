@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Parse from "parse/dist/parse.min.js";
 import "./home.css";
 import Carousel from "./Components/Carousel";
+import VideoPlayer from "./Components/VideoPlayer.js";
 import FLAGS from "../../FLAGS";
 
 export default function Home() {
@@ -217,10 +218,8 @@ export default function Home() {
   });
 
   return (
-    <div className="page">
-      <h1>On This Day: {dateString} </h1>
-      <p>Andrade wins the NXT Championship </p>
-      <iframe className="ytVid" src={youtube + vidID} title="On This Day" />
+    <div className="homePage">
+      <VideoPlayer vidID={vidID} />
       <div className="carouselDiv">
         {showWrestlerCarousel ? (
           <Carousel resultsJSON={wrestlerJSON} link="/wrestler/" />

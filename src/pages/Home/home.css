@@ -1,12 +1,9 @@
-.ytVid {
-    min-width: 500px;
-    min-height: 300px;
-    width: 50vw;
-    height:30vw;
-}
-
-.page {
+.homePage {
     font-family: Lexend;
+    display: flex;
+    flex: row;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .page h1 {
     font-size: 1.5rem;
@@ -18,7 +15,6 @@
 .carouselDiv {
     display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: space-around;
     flex-wrap: wrap;
 }

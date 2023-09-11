@@ -1,0 +1,14 @@
+.videoContainer {
+    width:fit-content;
+    height:fit-content;
+    padding: 15px;
+    background-color: #f2807e;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+.ytVid {
+    width: 50vw;
+    height:calc(50vw * 9 / 16);
+    border-style: solid;
+}
