@@ -40,7 +40,7 @@
     background-color: #FDF0EF;
 }
 
-.link {
+.linkLeftBar {
     width: 100%;
     text-decoration: none;
     background-color: #EF6460;
@@ -56,4 +56,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 11px;
+    text-decoration: none;
+    color: #353739;
+    border: #353739;
 }

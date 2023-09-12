@@ -19,26 +19,26 @@ export default function Leftbar(props) {
       <div className="names" onClick={() => toUser()}>
         {props.userName}
       </div>
-      <Link className="link" to="/gp/user">
+      <Link className="linkLeftBar" to="/gp/user">
         10 Promos
       </Link>
-      <Link className="link" to="/gp/follow">
+      <Link className="linkLeftBar" to="/gp/follow">
         <div className="followHolder">
           <> 10 FOLLOWERS</>
           <> 400 FOLLOWING</>
         </div>
       </Link>
       <div className="bio">{props.bio}</div>
-      <Link className="link" to="/gp">
+      <Link className="linkLeftBar" to="/gp">
         Feed
       </Link>
-      <Link className="link" to="/gp/messages">
+      <Link className="linkLeftBar" to="/gp/messages">
         View Messages
       </Link>
-      <Link className="link" to="/gp/bookmarks">
+      <Link className="linkLeftBar" to="/gp/bookmarks">
         View Bookmarks
       </Link>
-      <Link className="link" to="/gp/searchresults">
+      <Link className="linkLeftBar" to="/gp/searchresults">
         Search
       </Link>
     </div>

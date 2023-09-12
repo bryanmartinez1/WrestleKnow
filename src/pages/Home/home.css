@@ -5,9 +5,17 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+@media screen and (max-width:980px) {
+    .homePage {
+      flex-wrap: wrap;
+    }
+  }
+
 .page h1 {
     font-size: 1.5rem;
 }
+
 .page p {
     font-size: 1rem;
 }
