@@ -45,7 +45,7 @@ import Admin from "./Pages/Admin/Admin";
 
 //  Game Pages
 import Games from "./Pages/Games/Games";
-import StoneRockCactus from "./Pages/Games/Stone_Rock_Cactus/StoneRockCactus";
+import RockPaperScissors from "./Pages/Games/Rock_Paper_Scissors/Rock_Paper_Scissors.js";
 import WrestlEconomy from "./Pages/Games/Wrestle_Economy/WrestlEconomy";
 import KairiShipSails from "./Pages/Games/Kairi_Ship_Sails/KairiShipSails";
 import Damien from "./Pages/Games/Damien/Damien";
@@ -138,8 +138,8 @@ function App() {
             <>
               <Route path="/games" element={<Games />} />
               <Route
-                path="/games/stone_rock_cactus"
-                element={<StoneRockCactus />}
+                path="/games/rock_paper_scissors"
+                element={<RockPaperScissors />}
               />
               <Route
                 path="/games/wrestle_economy"

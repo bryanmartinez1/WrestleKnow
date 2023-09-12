@@ -18,7 +18,7 @@ export default function GamesSideBar() {
       </div>
       <div
         className="box"
-        onClick={() => navigateTo("/games/stone_rock_cactus")}
+        onClick={() => navigateTo("/games/rock_paper_scissors")}
       >
         Stone Rock Cactus
       </div>

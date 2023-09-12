@@ -1,0 +1,17 @@
+.rpsPage {
+    background-color: aqua;
+}
+
+.rpsImages {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.rpsChoicesDiv {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
