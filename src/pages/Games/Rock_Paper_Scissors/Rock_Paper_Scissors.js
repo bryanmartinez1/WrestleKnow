@@ -13,10 +13,30 @@ export default function RockPaperScissors() {
   function rpsGame() {
     let randomIndex = Math.floor(Math.random() * rpsChoices.length);
     setCompChoice(rpsChoices[randomIndex]);
+    let winner = winner(player1Choice, compChoice);
     setResults(
       stringResults +
-        `Player chooses ${player1Choice}\nComputer chooses ${compChoice}\n`
+        `Player chooses ${player1Choice}\nComputer chooses ${compChoice}\n` + {winner}
     );
+  }
+
+  const winConditions = {
+    rock : 'scissors',
+    paper : 'rock',
+    scissors : 'paper',
+  }
+
+  function winner(p1, p2){
+    if(p1 === p2) {
+      return "It's a tie";
+    }
+
+    else if(winConditions[p1] === p2) {
+      return "Player 1 wins";
+    }
+
+    return "Computer Wins";
+
   }
   return (
     <div className="rpsPage">
