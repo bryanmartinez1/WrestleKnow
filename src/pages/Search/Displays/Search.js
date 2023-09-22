@@ -9,6 +9,7 @@ export default function Search(props) {
   const [sort, setSort] = useState("Recommended");
   const [query, setQuery] = useState();
   const [show, setShow] = useState(false);
+  const [testingJSON, setJSON] = useState();
 
   // When User hits enter in searchbar,search hook is updated
   // and query is also updated
@@ -90,6 +91,7 @@ export default function Search(props) {
 
     try {
       let wrestlerResults = await data.find();
+      setJSON(JSON.stringify(wrestlerResults[19]));
       setQuery(wrestlerResults);
       setShow(true);
     } catch (error) {
@@ -178,6 +180,7 @@ export default function Search(props) {
           <div className="wrestlerHolder">{showResults()}</div>
         </div>
       )}
+      {testingJSON}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Parse from "parse/dist/parse.min.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -9,6 +9,8 @@ import ActivityDrop from "../Components/ActivityDrop";
 import SocialMediaLinks from "../Components/SocialMediaLinks";
 import placeHolderIMG from "../../../images/placeholder-image.png";
 import Inputs from "../Components/Inputs.js";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 const WrestlerCreate = () => {
   const [name, setName] = useState("");
@@ -27,6 +29,43 @@ const WrestlerCreate = () => {
   const [tiktokLink, setTiktokLink] = useState("");
   const [threadsLink, setThreadsLink] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const [companyNameArray, setCompanyNameArray] = useState(null);
+  const [companyIdArray, setCompanyIdArray] = useState(null);
+  async function companyQuery() {
+    try {
+      let doParse = new Parse.Query("Company");
+      const results = await doParse.find();
+      let queryJSON = {
+        name: [],
+        image: [],
+        id: [],
+      };
+      for (let i = 0; i < 5; i++) {
+        queryJSON.name.push(results[i].get("shortName"));
+        queryJSON.image.push(
+          JSON.stringify(results[i].get("image"))
+            .split('url":"')
+            .pop()
+            .slice(0, -2)
+        );
+        queryJSON.id.push(results[i].id);
+      }
+      setCompanyNameArray(queryJSON.name);
+      setCompanyIdArray(queryJSON.id);
+      return true;
+    } catch (error) {
+      alert(`Company Error! ${error.message} `);
+      return false;
+    }
+  }
+
+  useEffect(() => {
+    if (companyNameArray === null) {
+      companyQuery();
+      //console.log(companyIdArray.name);
+    }
+  });
 
   function onImageChange(event) {
     if (event.target.files && event.target.files[0]) {
