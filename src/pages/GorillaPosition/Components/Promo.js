@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/promos.css";
+import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
+
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
 import cheered from "./images/cheered.png";
@@ -53,36 +55,66 @@ export default function Promo(props) {
         </div>
         <div className="promo">{props.promo}</div>
         <div className="bottomBar">
-          <button onClick={() => Cheer()}>
-            <img
-              id="cheers"
-              className="imgButton"
-              src={props.cheers ? cheered : cheer}
-              alt="cheers"
-            ></img>
-          </button>
-          <button onClick={() => Boo()}>
-            <img
-              id="boos"
-              className="imgButton"
-              src={props.useState ? booed : boo}
-              alt="boos"
-            ></img>
-          </button>
-          <button onClick={() => Reply()}>
-            <img className="imgButton" src={reply} alt="reply"></img>
-          </button>
-          <button onClick={() => Comments()}>
-            <img className="imgButton" src={comment} alt="comments"></img>
-          </button>
-          <button onClick={() => Bookmark()}>
-            <img
-              id="saves"
-              className="imgButton"
-              src={props.bookmarked ? saved : notSaved}
-              alt="saves"
-            ></img>
-          </button>
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Cheer</div>}
+            hideTooltipOnMouseDown
+          >
+            <button onClick={() => Cheer()}>
+              <img
+                id="cheers"
+                className="imgButton"
+                src={props.cheers ? cheered : cheer}
+                alt="cheers"
+              ></img>
+            </button>
+          </Tooltip>
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Boo</div>}
+            hideTooltipOnMouseDown
+          >
+            <button onClick={() => Boo()}>
+              <img
+                id="boos"
+                className="imgButton"
+                src={props.useState ? booed : boo}
+                alt="boos"
+              ></img>
+            </button>
+          </Tooltip>
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Reply</div>}
+            hideTooltipOnMouseDown
+          >
+            <button onClick={() => Reply()}>
+              <img className="imgButton" src={reply} alt="reply"></img>
+            </button>
+          </Tooltip>
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">View Comments</div>}
+            hideTooltipOnMouseDown
+          >
+            <button onClick={() => Comments()}>
+              <img className="imgButton" src={comment} alt="comments"></img>
+            </button>
+          </Tooltip>
+          <Tooltip
+            component={TooltipPrimitive}
+            content={<div className="tooltipContent">Bookmark</div>}
+            hideTooltipOnMouseDown
+          >
+            <button onClick={() => Bookmark()}>
+              <img
+                id="saves"
+                className="imgButton"
+                src={props.bookmarked ? saved : notSaved}
+                alt="saves"
+              ></img>
+            </button>
+          </Tooltip>
         </div>
       </div>
     </div>
