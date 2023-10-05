@@ -1,152 +1,86 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Parse from "parse/dist/parse.min.js";
+import { initializeParse, useParseQuery } from "@parse/react";
+
+//  Images
 import Leftbar from "./Components/Leftbar";
 import Promo from "./Components/Promo";
 import Rightbar from "./Components/Rightbar";
 import Topbar from "./Components/Topbar";
-import "./styles/gp.css";
 import pfpImage from "./Components/images/profile_icon.png";
 
 export default function Feed() {
-  // Promo Hooks
   let pfp = pfpImage;
-  let userName = "UserNameUserNameUserName";
-  let uploadDate = "SEPTEMBER 31, 2023 12:59 PM";
-  let promo =
-    "This is just to show the max amount for characters allowed. User can have a post with up to a max of 256 characters. This post has 256 characters. The false date posted is September 31, 2023 at 12:59 PM. 206 210 214 218 222 226 230 234 238 242 246 250 254.";
+
+  const [showFeed, setShowFeed] = useState(false);
+  const [query, setQuery] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const getCurrentUser = async function () {
+    const currentUser = await Parse.User.current();
+    // Update state variable holding current user
+    setCurrentUser(currentUser);
+    console.log(currentUser.get("firstName"));
+    return currentUser;
+  };
+
+  useEffect(() => {
+    if (!showFeed) {
+      feedQuery();
+      getCurrentUser();
+    }
+  }, [showFeed]);
+  async function feedQuery() {
+    const promoQuery = new Parse.Query("Promos");
+    promoQuery.descending("createdAt");
+    try {
+      let promoResults = await promoQuery.find();
+      setQuery(promoResults);
+      setShowFeed(true);
+    } catch (error) {
+      alert(JSON.stringify(error));
+    }
+  }
+
+  function showResults() {
+    console.log(JSON.stringify(query[0].get("talker")));
+    return query.map((object) => {
+      let uploadDate = object
+        .get("createdAt")
+        .toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        })
+        .toString();
+
+      return (
+        <Promo
+          pfp={pfp}
+          username={object.get("talker").get("username")}
+          uploadDate={uploadDate}
+          promo={object.get("content")}
+          uploaderId={object.get("talker").id}
+        />
+      );
+    });
+  }
+
   return (
     <div className="divider">
       <Leftbar
         pfp={pfpImage}
-        firstName="Bryan"
-        lastName="Bryan"
+        firstName="a"
+        lastName="m"
         userName="am"
         bio="Random stuff bio idk man"
       />
       <div className="middle">
         <Topbar name="Gorilla Position" />
         <div className="middleBottom">
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={true}
-            boos={true}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            cheers={true}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={false}
-          />
-          <Promo
-            pfp={pfp}
-            username={userName}
-            uploadDate={uploadDate}
-            promo={promo}
-            bookmarked={true}
-          />
-          <div className="space"></div>
+          {showFeed && <>{showResults()}</>}
+          <div className="space" />
         </div>
       </div>
       <Rightbar />

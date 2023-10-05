@@ -9,6 +9,7 @@
     "@atlaskit/dropdown-menu": "^11.10.5",
     "@atlaskit/flag": "^15.2.15",
     "@atlaskit/icon": "^21.12.6",
+    "@atlaskit/modal-dialog": "^12.7.1",
     "@atlaskit/popup": "^1.8.3",
     "@atlaskit/section-message": "^6.4.10",
     "@atlaskit/select": "^16.5.7",

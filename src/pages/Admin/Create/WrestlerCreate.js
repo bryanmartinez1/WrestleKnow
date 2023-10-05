@@ -57,7 +57,6 @@ const WrestlerCreate = () => {
         base64: base64Img,
       })
     );
-    let Company = new Parse.Object("Company");
     newWrestler.set("Company", {
       __type: "Pointer",
       className: "Company",

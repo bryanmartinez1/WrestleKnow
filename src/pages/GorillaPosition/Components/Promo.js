@@ -36,12 +36,6 @@ export default function Promo(props) {
     alert("Bookmarking this promo");
   }
 
-  // UserNameUserNameUserName
-  // SEPTEMBER 31, 2023 12:59 PM
-  /* This is just to show the max amount for characters allowed. User can
-  have a post with up to a max of 256 characters. This post has 256
-  characters. The false date posted is September 31, 2023 at 12:59 PM.
-  206 210 214 218 222 226 230 234 238 242 246 250 254. */
   return (
     <div className="whole">
       <img
@@ -71,7 +65,7 @@ export default function Promo(props) {
             <img
               id="boos"
               className="imgButton"
-              src={props.boos ? booed : boo}
+              src={props.useState ? booed : boo}
               alt="boos"
             ></img>
           </button>

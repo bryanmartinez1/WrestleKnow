@@ -93,7 +93,7 @@ export default function Search(props) {
       setQuery(wrestlerResults);
       setShow(true);
     } catch (error) {
-      alert(JSON.stringify(error));
+      console.error(JSON.stringify(error));
     }
   }
 
