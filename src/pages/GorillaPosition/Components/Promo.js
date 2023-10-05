@@ -11,6 +11,7 @@ import comment from "./images/comment.png";
 import notSaved from "./images/bookmark.png";
 import saved from "./images/bookmarked.png";
 import reply from "./images/reply.png";
+import moreOptions from "../../../images/3dots.png";
 
 export default function Promo(props) {
   const navigate = useNavigate();
@@ -38,6 +39,10 @@ export default function Promo(props) {
     alert("Bookmarking this promo");
   }
 
+  function openMoreFeauturesActionMenu() {
+    alert("Action Menu for more features opens");
+  }
+
   return (
     <div className="whole">
       <img
@@ -51,7 +56,16 @@ export default function Promo(props) {
           <div className="userName" onClick={() => toUser()}>
             {props.username}
           </div>
-          <div className="datePosted">{props.uploadDate}</div>
+          <div className="rowAlign">
+            <div className="datePosted">{props.uploadDate}</div>
+            <div className="spaceBetween" />
+            <img
+              src={moreOptions}
+              alt="Open Action Menu"
+              className="imgButton"
+              onClick={() => openMoreFeauturesActionMenu()}
+            />
+          </div>
         </div>
         <div className="promo">{props.promo}</div>
         <div className="bottomBar">
@@ -109,7 +123,7 @@ export default function Promo(props) {
             <button onClick={() => Bookmark()}>
               <img
                 id="saves"
-                className="imgButton"
+                className="bookmarkButton"
                 src={props.bookmarked ? saved : notSaved}
                 alt="saves"
               ></img>

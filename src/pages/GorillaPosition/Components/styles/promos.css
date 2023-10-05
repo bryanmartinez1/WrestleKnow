@@ -12,6 +12,8 @@
 }
 .content {
   width: 100%;
+  height: 100%;
+  font-size: 10px;
 }
 .promoImg {
   width: 50px;
@@ -29,9 +31,12 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-size: 15px;
 }
 .datePosted {
-  text-align: right;
+  height: 100%;
+  display: flex;
+  align-items: center;
   min-width: 170px;
   font-size: 12px;
 }
@@ -55,6 +60,7 @@
 
 .imgButton {
   width: 20px;
+  cursor: pointer;
 }
 .tooltipContent {
   font-family: Lexend;
@@ -65,4 +71,17 @@
   color: #000000;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+.rowAlign {
+  display: flex;
+  flex-direction: row;
+}
+
+.spaceBetween {
+  width: 5px;
+}
+
+.bookmarkButton {
+  height: 20px;
 }

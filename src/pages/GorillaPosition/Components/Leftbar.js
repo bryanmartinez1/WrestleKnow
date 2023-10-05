@@ -1,4 +1,4 @@
-import React, {useState }from "react";
+import React, { useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles/leftbar.css";
