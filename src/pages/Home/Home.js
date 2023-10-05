@@ -3,13 +3,9 @@ import Parse from "parse/dist/parse.min.js";
 import "./home.css";
 import Carousel from "./Components/Carousel";
 import VideoPlayer from "./Components/VideoPlayer.js";
-import FLAGS from "../../FLAGS";
 
 export default function Home() {
-  let youtube = "https://www.youtube.com/embed/";
   let vidID = "b8C5JzzkIU8";
-  const today = new Date();
-  const dateString = today.toISOString().substring(0, 10);
   const [showWrestlerCarousel, setShowWrestlerCarousel] = useState(false);
   const [showCompanyCarousel, setShowCompanyCarousel] = useState(false);
   const [showTitleCarousel, setShowTitleCarousel] = useState(false);

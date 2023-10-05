@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./rockPaperScissors.css";
 import paper from "../../../images/paper.png";
 import rock from "../../../images/rock.png";
@@ -8,35 +8,40 @@ export default function RockPaperScissors() {
   const rpsChoices = ["rock", "paper", "scissors"];
   const [player1Choice, setPlayer1Choice] = useState("");
   const [compChoice, setCompChoice] = useState("");
-  const [stringResults, setResults] = useState("");
+  const [allResults, setResults] = useState("");
 
   function rpsGame() {
     let randomIndex = Math.floor(Math.random() * rpsChoices.length);
     setCompChoice(rpsChoices[randomIndex]);
-    let winner = winner(player1Choice, compChoice);
-    setResults(
-      stringResults +
-        `Player chooses ${player1Choice}\nComputer chooses ${compChoice}\n` + {winner}
-    );
   }
+
+  useEffect(() => {
+    if (player1Choice !== "" && compChoice !== "") {
+      const winner = calculateWinner(player1Choice, compChoice);
+      const currentResults =
+        "Player chooses " +
+        player1Choice +
+        "Computer chooses " +
+        compChoice +
+        winner;
+      setResults(allResults + currentResults);
+    }
+  }, [compChoice]);
 
   const winConditions = {
-    rock : 'scissors',
-    paper : 'rock',
-    scissors : 'paper',
-  }
+    rock: "scissors",
+    paper: "rock",
+    scissors: "paper",
+  };
 
-  function winner(p1, p2){
-    if(p1 === p2) {
+  function calculateWinner(p1, p2) {
+    if (p1 === p2) {
       return "It's a tie";
-    }
-
-    else if(winConditions[p1] === p2) {
+    } else if (winConditions[p1] === p2) {
       return "Player 1 wins";
     }
 
     return "Computer Wins";
-
   }
   return (
     <div className="rpsPage">
@@ -61,8 +66,8 @@ export default function RockPaperScissors() {
         />
       </div>
       <button onClick={() => rpsGame()}>Confirm Choice</button>
-      {stringResults != "" && <div>Results</div>}
-      <div> {stringResults}</div>
+      {allResults !== "" && <div>Results</div>}
+      <div> {allResults}</div>
       <div> Player chooses {player1Choice}</div>
       <div> Computer chooses {compChoice}</div>
     </div>
