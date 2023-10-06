@@ -53,7 +53,7 @@ export default function SignUp() {
     const usernameValue = username;
     const passwordValue = password;
     const firstNameValue = firstName;
-    const laststNameValue = lastName;
+    const lastNameValue = lastName;
     const emailValue = email;
 
     try {
@@ -62,21 +62,26 @@ export default function SignUp() {
       user.set("email", emailValue);
       user.set("password", passwordValue);
       user.set("firstName", firstNameValue);
-      user.set("lastName", laststNameValue);
+      user.set("lastName", lastNameValue);
 
       const createdUser = await user.signUp();
+
+      const setGPProfile = new Parse.Object("GP_Profile");
+      setGPProfile.set("username", usernameValue);
+      setGPProfile.set("first_name", firstNameValue);
+      setGPProfile.set("last_name", lastNameValue);
+      setGPProfile.set("bio", " ");
+      try {
+        const gpProfile = await setGPProfile.save();
+      } catch (error) {
+        alert("Error while creating GP Profile: " + error);
+      }
+
       console.log(
         `Sign Up: User, ${createdUser.getUsername()} was successfully created and added to backend`
       );
 
       await Parse.User.logOut();
-
-      // Clear input fields
-      setUsername("");
-      setEmail("");
-      setFirstName("");
-      setLastName("");
-      setPassword("");
 
       //Navigates back to Home after Log In
       navigate("/");

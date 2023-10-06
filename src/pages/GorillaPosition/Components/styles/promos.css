@@ -86,3 +86,14 @@
 .bookmarkButton {
   height: 20px;
 }
+
+.actionMenuButton {
+  font-family: Lexend;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.actionMenuButton:hover {
+  background-color: #D3D3D3;
+}

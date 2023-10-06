@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
+
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
+import Button from "@atlaskit/button";
+import Popup from "@atlaskit/popup";
+import { DropdownItemGroup } from "@atlaskit/dropdown-menu";
 
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
@@ -18,7 +23,15 @@ export default function Promo(props) {
   // get Current User Function
   // Query into Bookmarks
   // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
+  const [currentUser, setCurrentUser] = useState(null);
+  const [actionMenuOpen, setActionMenu] = useState(false);
 
+  const getCurrentUser = async function () {
+    const currentUser = await Parse.User.current();
+    // Update state variable holding current user
+    setCurrentUser(currentUser);
+    return currentUser;
+  };
   function toUser() {
     navigate("/gp/user");
   }
@@ -38,9 +51,33 @@ export default function Promo(props) {
   function Bookmark() {
     alert("Bookmarking this promo");
   }
-
-  function openMoreFeauturesActionMenu() {
-    alert("Action Menu for more features opens");
+  function editPromo() {
+    alert("Edit Promo");
+  }
+  async function deletePromo() {
+    const promo = new Parse.Object("Promos");
+    promo.set("objectId", props.promoId);
+    try {
+      await promo.destroy();
+      window.location.reload(false);
+      return true;
+    } catch (error) {
+      // Error can be caused by lack of Internet connection
+      alert(`Error ${error.message}`);
+      return false;
+    }
+  }
+  function downloadPromo() {
+    alert("Download Promo");
+  }
+  function analyzePromo() {
+    alert("Delete Promo");
+  }
+  function blockUser() {
+    alert("Block User");
+  }
+  function reportPromo() {
+    alert("Report Promo");
   }
 
   return (
@@ -59,11 +96,79 @@ export default function Promo(props) {
           <div className="rowAlign">
             <div className="datePosted">{props.uploadDate}</div>
             <div className="spaceBetween" />
-            <img
-              src={moreOptions}
-              alt="Open Action Menu"
-              className="imgButton"
-              onClick={() => openMoreFeauturesActionMenu()}
+            <Popup
+              isOpen={actionMenuOpen}
+              onClose={() => setActionMenu(false)}
+              placement="bottom-end"
+              content={() => (
+                <>
+                  {props.currentUserPromo ? (
+                    <DropdownItemGroup>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => editPromo()}
+                      >
+                        Edit
+                      </div>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => deletePromo()}
+                      >
+                        Delete
+                      </div>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => analyzePromo()}
+                      >
+                        Analytics
+                      </div>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => downloadPromo()}
+                      >
+                        Download
+                      </div>
+                    </DropdownItemGroup>
+                  ) : (
+                    <DropdownItemGroup>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => blockUser()}
+                      >
+                        Block
+                      </div>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => reportPromo()}
+                      >
+                        Report
+                      </div>
+                      <div
+                        className="actionMenuButton"
+                        onClick={() => downloadPromo()}
+                      >
+                        Download
+                      </div>
+                    </DropdownItemGroup>
+                  )}
+                </>
+              )}
+              trigger={(triggerProps) => (
+                <Button
+                  {...triggerProps}
+                  appearance="subtle"
+                  spacing="none"
+                  onClick={() => setActionMenu(!actionMenuOpen)}
+                >
+                  <div className="margin">
+                    <img
+                      className="imgButton"
+                      src={moreOptions}
+                      alt="Open Action Menu"
+                    />
+                  </div>
+                </Button>
+              )}
             />
           </div>
         </div>

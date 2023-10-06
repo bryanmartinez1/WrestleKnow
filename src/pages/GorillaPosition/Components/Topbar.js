@@ -19,12 +19,7 @@ export default function Topbar(props) {
   async function createPromo() {
     const newPromo = new Parse.Object("Promos");
     newPromo.set("content", content);
-
-    newPromo.set("talker", {
-      __type: "Pointer",
-      className: "_User",
-      objectId: currentUser.id,
-    });
+    newPromo.set("talker", currentUser.get("username"));
     try {
       const promo = await newPromo.save();
       window.location.reload(false);

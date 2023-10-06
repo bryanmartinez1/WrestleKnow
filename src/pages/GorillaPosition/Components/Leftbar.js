@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Parse from "parse/dist/parse.min.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles/leftbar.css";
@@ -6,6 +6,44 @@ import pfp from "./images/profile_icon.png";
 
 export default function Leftbar(props) {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userFirstName, setFirtName] = useState("");
+  const [userLastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userPFP, setUserPFP] = useState(pfp);
+  const [userBio, setUserBio] = useState("");
+
+  const getCurrentUser = async function () {
+    const currentUser = await Parse.User.current();
+    // Update state variable holding current user
+    setCurrentUser(currentUser);
+    console.log(JSON.stringify(currentUser));
+    if (currentUser !== null) {
+      userInfo();
+    }
+    return currentUser;
+  };
+
+  async function userInfo() {
+    const gpUserQuery = new Parse.Query("GP_Profile");
+    let currentUserName = currentUser.get("username");
+    console.log("CURRENT USER" + currentUserName);
+    gpUserQuery.equalTo("username", currentUserName);
+    try {
+      let gpUserResults = await gpUserQuery.find();
+      setFirtName(gpUserResults[0].get("first_name"));
+      setLastName(gpUserResults[0].get("last_name"));
+      setUserName(gpUserResults[0].get("username"));
+      setUserBio(gpUserResults[0].get("bio"));
+      //setUserPFP();
+    } catch (error) {
+      console.log("Location: LeftBar User Info," + JSON.stringify(error));
+    }
+  }
+
+  useEffect(() => {
+    getCurrentUser();
+  }, [currentUser]);
 
   function toUser() {
     navigate("/gp/user");
@@ -13,12 +51,12 @@ export default function Leftbar(props) {
 
   return (
     <div className="leftside">
-      <img className="pfp" src={props.pfp} onClick={() => toUser()} />
+      <img className="pfp" src={userPFP} onClick={() => toUser()} />
       <div className="names" onClick={() => toUser()}>
-        {props.firstName} {props.lastName}
+        {userFirstName} {userLastName}
       </div>
       <div className="names" onClick={() => toUser()}>
-        {props.userName}
+        {userName}
       </div>
       <Link className="linkLeftBar" to="/gp/user">
         10 Promos
@@ -29,7 +67,7 @@ export default function Leftbar(props) {
           <> 400 FOLLOWING</>
         </div>
       </Link>
-      <div className="bio">{props.bio}</div>
+      <div className="bio">{userBio}</div>
       <Link className="linkLeftBar" to="/gp">
         Feed
       </Link>

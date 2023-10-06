@@ -18,11 +18,13 @@ export default function Feed() {
   const [showFeed, setShowFeed] = useState(false);
   const [query, setQuery] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
     // Update state variable holding current user
     setCurrentUser(currentUser);
-    console.log(currentUser.get("firstName"));
+    console.log(JSON.stringify(currentUser.get("username")));
+
     return currentUser;
   };
 
@@ -32,9 +34,7 @@ export default function Feed() {
       getCurrentUser();
     }
   }, [showFeed]);
-  const promoQuery = new Parse.Query("Promos");
-  //const { isLive, isLoading, isSyncing, count, reload } =
-  //  useParseQuery(promoQuery);
+
   async function feedQuery() {
     const promoQuery = new Parse.Query("Promos");
     promoQuery.descending("createdAt");
@@ -48,7 +48,6 @@ export default function Feed() {
   }
 
   function showResults() {
-    console.log(JSON.stringify(query[0].get("talker")));
     return query.map((object) => {
       let uploadDate = object
         .get("createdAt")
@@ -61,13 +60,17 @@ export default function Feed() {
         })
         .toString();
 
+      let promoByCurrentUser =
+        object.get("talker") === currentUser.get("username");
+
       return (
         <Promo
           pfp={pfp}
-          username={object.get("talker").get("username")}
+          username={object.get("talker")}
           uploadDate={uploadDate}
           promo={object.get("content")}
-          uploaderId={object.get("talker").id}
+          currentUserPromo={promoByCurrentUser}
+          promoId={object.id}
         />
       );
     });
@@ -75,13 +78,7 @@ export default function Feed() {
 
   return (
     <div className="divider">
-      <Leftbar
-        pfp={pfpImage}
-        firstName="a"
-        lastName="m"
-        userName="am"
-        bio="Random stuff bio idk man"
-      />
+      <Leftbar />
       <div className="middle">
         <Topbar name="Gorilla Position" />
         <div className="middleBottom">
