@@ -1,14 +1,14 @@
 .whole {
   display: flex;
-  min-width: 200px;
+  width: inherit;
   flex-direction: row;
-  min-width: 550px;
   background-color: #fdf0ef;
   border-style: solid;
   border-radius: 10px;
   border-width: 2px;
   margin-bottom: 4px;
   overflow: hidden;
+  padding: 3px;
 }
 .content {
   width: 100%;
@@ -25,8 +25,9 @@
   text-align: left;
   margin-bottom: 10px;
   margin-top: 4px;
-  width: 100%;
+  width: inherit;
   overflow-wrap: break-word;
+  white-space: pre-line;
 }
 .userName {
   display: flex;
@@ -38,12 +39,11 @@
   height: 100%;
   display: flex;
   align-items: center;
-  min-width: 170px;
   font-size: 12px;
 }
 .topBar {
   display: flex;
-  width: inherit;
+  /* width: inherit; */
   flex-direction: row;
   justify-content: space-between;
   
