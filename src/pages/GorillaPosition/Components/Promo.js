@@ -71,7 +71,7 @@ export default function Promo(props) {
         <div className="bottomBar">
           <Tooltip
             component={TooltipPrimitive}
-            content={<div className="tooltipContent">Cheer</div>}
+            content={<div className="tooltipPromoReactions">Cheer</div>}
             hideTooltipOnMouseDown
           >
             <button onClick={() => Cheer()}>
@@ -85,7 +85,7 @@ export default function Promo(props) {
           </Tooltip>
           <Tooltip
             component={TooltipPrimitive}
-            content={<div className="tooltipContent">Boo</div>}
+            content={<div className="tooltipPromoReactions">Boo</div>}
             hideTooltipOnMouseDown
           >
             <button onClick={() => Boo()}>
@@ -99,7 +99,7 @@ export default function Promo(props) {
           </Tooltip>
           <Tooltip
             component={TooltipPrimitive}
-            content={<div className="tooltipContent">Reply</div>}
+            content={<div className="tooltipPromoReactions">Reply</div>}
             hideTooltipOnMouseDown
           >
             <button onClick={() => Reply()}>
@@ -108,7 +108,7 @@ export default function Promo(props) {
           </Tooltip>
           <Tooltip
             component={TooltipPrimitive}
-            content={<div className="tooltipContent">View Comments</div>}
+            content={<div className="tooltipPromoReactions">View Comments</div>}
             hideTooltipOnMouseDown
           >
             <button onClick={() => Comments()}>
@@ -117,7 +117,7 @@ export default function Promo(props) {
           </Tooltip>
           <Tooltip
             component={TooltipPrimitive}
-            content={<div className="tooltipContent">Bookmark</div>}
+            content={<div className="tooltipPromoReactions">Bookmark</div>}
             hideTooltipOnMouseDown
           >
             <button onClick={() => Bookmark()}>

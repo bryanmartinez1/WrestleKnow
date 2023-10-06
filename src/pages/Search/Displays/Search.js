@@ -180,7 +180,6 @@ export default function Search(props) {
           <div className="wrestlerHolder">{showResults()}</div>
         </div>
       )}
-      {testingJSON}
     </div>
   );
 }

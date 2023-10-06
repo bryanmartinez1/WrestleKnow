@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Parse from "parse/dist/parse.min.js";
 import { initializeParse, useParseQuery } from "@parse/react";
+import { JS_Key, App_ID, Back4App_SubDomain } from "../../KEYS";
 
 //  Images
 import Leftbar from "./Components/Leftbar";
@@ -8,6 +9,8 @@ import Promo from "./Components/Promo";
 import Rightbar from "./Components/Rightbar";
 import Topbar from "./Components/Topbar";
 import pfpImage from "./Components/images/profile_icon.png";
+
+//initializeParse(Back4App_SubDomain, App_ID, JS_Key);
 
 export default function Feed() {
   let pfp = pfpImage;
@@ -29,6 +32,9 @@ export default function Feed() {
       getCurrentUser();
     }
   }, [showFeed]);
+  const promoQuery = new Parse.Query("Promos");
+  //const { isLive, isLoading, isSyncing, count, reload } =
+  //  useParseQuery(promoQuery);
   async function feedQuery() {
     const promoQuery = new Parse.Query("Promos");
     promoQuery.descending("createdAt");
