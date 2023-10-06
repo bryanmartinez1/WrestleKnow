@@ -35,6 +35,12 @@ export default function Leftbar(props) {
       setLastName(gpUserResults[0].get("last_name"));
       setUserName(gpUserResults[0].get("username"));
       setUserBio(gpUserResults[0].get("bio"));
+      setUserPFP(
+        JSON.stringify(gpUserResults[0].get("pfp"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2)
+      );
       //setUserPFP();
     } catch (error) {
       console.log("Location: LeftBar User Info," + JSON.stringify(error));
@@ -46,7 +52,7 @@ export default function Leftbar(props) {
   }, [currentUser]);
 
   function toUser() {
-    navigate("/gp/user");
+    navigate(`/gp/user/${userName}`);
   }
 
   return (
@@ -58,7 +64,7 @@ export default function Leftbar(props) {
       <div className="names" onClick={() => toUser()}>
         {userName}
       </div>
-      <Link className="linkLeftBar" to="/gp/user">
+      <Link className="linkLeftBar" to={`/user/${userName}`}>
         10 Promos
       </Link>
       <Link className="linkLeftBar" to="/gp/follow">

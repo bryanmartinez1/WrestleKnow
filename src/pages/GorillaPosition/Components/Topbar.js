@@ -9,6 +9,8 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
+import close_button from "./images/close.png";
+import add_button from "./images/add.png";
 
 export default function Topbar(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,19 +54,30 @@ export default function Topbar(props) {
       ></img>
       <ModalTransition>
         {isOpen && (
-          <Modal onClose={closeModal} width={"50%"} height={"50%"}>
-            <ModalHeader>
-              <ModalTitle>Create Promo</ModalTitle>
-            </ModalHeader>
-            <ModalBody>
+          <Modal onClose={closeModal} width={"50%"} height={"75%"}>
+            <div className="createPromoModalHeader">
+              <h1>Cut a Promo</h1>
+              <img
+                className="closeModalButton"
+                src={close_button}
+                onClick={closeModal}
+              />
+            </div>
+            <div className="createPromoModalBody">
               <textarea
+                placeholder="enter promo here"
                 className="createPromoTextBox"
                 type="text"
                 onChange={(event) => setContent(event.target.value)}
               />
-            </ModalBody>
+            </div>
             <ModalFooter>
-              <button onClick={() => createPromo()}>Create</button>
+              <img
+                className="addModalButton"
+                src={add_button}
+                alt="Add Promo"
+                onClick={() => createPromo()}
+              />
             </ModalFooter>
           </Modal>
         )}

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Parse from "parse/dist/parse.min.js";
-import { initializeParse, useParseQuery } from "@parse/react";
-import { JS_Key, App_ID, Back4App_SubDomain } from "../../KEYS";
 
 //  Images
 import Leftbar from "./Components/Leftbar";
@@ -18,13 +16,11 @@ export default function Feed() {
   const [showFeed, setShowFeed] = useState(false);
   const [query, setQuery] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [userQueryImagesJSON, setUserQueryImagesJSON] = useState({});
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
-    // Update state variable holding current user
     setCurrentUser(currentUser);
-    console.log(JSON.stringify(currentUser.get("username")));
-
     return currentUser;
   };
 
@@ -32,8 +28,28 @@ export default function Feed() {
     if (!showFeed) {
       feedQuery();
       getCurrentUser();
+      userQueryImages();
     }
   }, [showFeed]);
+
+  async function userQueryImages() {
+    const userQuery = new Parse.Query("GP_Profile");
+    try {
+      let userResults = await userQuery.find();
+      const userNameToPFP = {};
+      for (let usersPFP of userResults) {
+        const username = usersPFP.get("username");
+        const pfpURL = JSON.stringify(usersPFP.get("pfp"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2);
+        userNameToPFP[username] = pfpURL;
+      }
+      setUserQueryImagesJSON(userNameToPFP);
+    } catch (error) {
+      console.log("USER QUERY" + JSON.stringify(error));
+    }
+  }
 
   async function feedQuery() {
     const promoQuery = new Parse.Query("Promos");
@@ -43,7 +59,7 @@ export default function Feed() {
       setQuery(promoResults);
       setShowFeed(true);
     } catch (error) {
-      alert(JSON.stringify(error));
+      console.log(JSON.stringify(error));
     }
   }
 
@@ -65,7 +81,7 @@ export default function Feed() {
 
       return (
         <Promo
-          pfp={pfp}
+          pfp={userQueryImagesJSON[object.get("talker")]}
           username={object.get("talker")}
           uploadDate={uploadDate}
           promo={object.get("content")}

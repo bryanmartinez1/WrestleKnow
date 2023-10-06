@@ -6,8 +6,7 @@
     font-family: Lexend;
     display: flex;
     flex-direction: column;
-    min-width: 200px;
-    max-width: 250px;
+    width: 200px;
     margin-right: 15px;
 }
 
@@ -40,12 +39,14 @@
     background-color: #FDF0EF;
 }
 
-.linkLeftBar {
+.leftside a {
     width: 100%;
     text-decoration: none;
     background-color: #EF6460;
     padding: 5px;
     border-style: solid;
+    border-color: black;
+    color: black;
     margin-bottom: 2px;
     border-radius: 5px;
     text-align: center;

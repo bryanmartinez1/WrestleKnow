@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
@@ -33,7 +33,7 @@ export default function Promo(props) {
     return currentUser;
   };
   function toUser() {
-    navigate("/gp/user");
+    navigate(`/gp/user/${props.username}`);
   }
 
   function Cheer() {
