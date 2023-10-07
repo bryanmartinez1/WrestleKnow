@@ -120,31 +120,6 @@ export default function Promo(props) {
     });
   };
 
-  function analyzePromo() {
-    const labels = ["Likes", "Dislikes", "Comments", "Bookmarks"];
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: "This Promo Analytics",
-          data: [
-            "likesCount",
-            "dislikesCount",
-            "commentsCount",
-            "bookmarksCount",
-          ],
-          backgroundColor: [
-            "rgba(255, 99, 132)",
-            "rgba(54, 162, 235)",
-            "rgba(255, 205, 86)",
-            "rgba(75, 192, 192)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    };
-    alert("Anaylze Promo");
-  }
   function blockUser() {
     alert("Block User");
   }
@@ -211,12 +186,6 @@ export default function Promo(props) {
                         onClick={() => deletePromo()}
                       >
                         Delete
-                      </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => analyzePromo()}
-                      >
-                        Analytics
                       </div>
                     </DropdownItemGroup>
                   ) : (
