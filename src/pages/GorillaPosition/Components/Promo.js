@@ -1,9 +1,9 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
-import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
+import Modal, { ModalBody, ModalFooter } from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
 import Popup from "@atlaskit/popup";
@@ -37,6 +37,23 @@ export default function Promo(props) {
   const [isReportModalOpen, openCloseReportModal] = useState();
   const openReportModal = useCallback(() => openCloseReportModal(true), []);
   const closeReportModal = useCallback(() => openCloseReportModal(false), []);
+
+  const [isExpandModalOpen, openCloseExpandModal] = useState();
+  const openExpandModal = useCallback(() => openCloseExpandModal(true), []);
+  const closeExpandModal = useCallback(() => openCloseExpandModal(false), []);
+
+  const promoHeightRef = useRef(null);
+  const [promoHeight, setPromoHeight] = useState(0);
+  const measurePromoHeight = () => {
+    if (promoHeightRef.current) {
+      const height = promoHeightRef.current.offsetHeight;
+      setPromoHeight(height);
+    }
+  };
+
+  useEffect(() => {
+    measurePromoHeight();
+  }, []);
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
@@ -93,7 +110,30 @@ export default function Promo(props) {
   function downloadPromo() {
     alert("Download Promo");
   }
+
   function analyzePromo() {
+    const labels = ["Likes", "Dislikes", "Comments", "Bookmarks"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "This Promo Analytics",
+          data: [
+            "likesCount",
+            "dislikesCount",
+            "commentsCount",
+            "bookmarksCount",
+          ],
+          backgroundColor: [
+            "rgba(255, 99, 132)",
+            "rgba(54, 162, 235)",
+            "rgba(255, 205, 86)",
+            "rgba(75, 192, 192)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
     alert("Anaylze Promo");
   }
   function blockUser() {
@@ -131,7 +171,7 @@ export default function Promo(props) {
         src={props.pfp}
         onClick={() => toUser()}
         alt="PFP"
-      ></img>
+      />
       <div className="content">
         <div className="topBar">
           <div className="userName" onClick={() => toUser()}>
@@ -148,6 +188,12 @@ export default function Promo(props) {
                 <>
                   {props.currentUserPromo ? (
                     <DropdownItemGroup>
+                      <div
+                        className="actionMenuButton"
+                        onClick={openExpandModal}
+                      >
+                        Expand
+                      </div>
                       <div className="actionMenuButton" onClick={openEditModal}>
                         Edit
                       </div>
@@ -163,15 +209,15 @@ export default function Promo(props) {
                       >
                         Analytics
                       </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => downloadPromo()}
-                      >
-                        Download
-                      </div>
                     </DropdownItemGroup>
                   ) : (
                     <DropdownItemGroup>
+                      <div
+                        className="actionMenuButton"
+                        onClick={openExpandModal}
+                      >
+                        Expand
+                      </div>
                       <div
                         className="actionMenuButton"
                         onClick={() => blockUser()}
@@ -183,12 +229,6 @@ export default function Promo(props) {
                         onClick={openReportModal}
                       >
                         Report
-                      </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => downloadPromo()}
-                      >
-                        Download
                       </div>
                     </DropdownItemGroup>
                   )}
@@ -213,7 +253,14 @@ export default function Promo(props) {
             />
           </div>
         </div>
-        <div className="promo">{props.promo}</div>
+        <div className="promo" ref={promoHeightRef}>
+          {props.promo}
+        </div>
+        {promoHeight >= 150 && (
+          <div className="expandPromoButton" onClick={openExpandModal}>
+            Click to Expand Promo
+          </div>
+        )}
         <div className="bottomBar">
           <Tooltip
             component={TooltipPrimitive}
@@ -278,7 +325,7 @@ export default function Promo(props) {
         </div>
       </div>
       {isEditModalOpen && (
-        <Modal onClose={closeEditModal} width={"50%"} height={"75%"}>
+        <Modal onClose={closeEditModal} width={"75%"} height={"75%"}>
           <div className="createPromoModalHeader">
             <h1>Cut a Promo</h1>
             <img
@@ -306,7 +353,7 @@ export default function Promo(props) {
         </Modal>
       )}
       {isReportModalOpen && (
-        <Modal onClose={closeReportModal} width={"50%"} height={"75%"}>
+        <Modal onClose={closeReportModal} width={"75%"} height={"75%"}>
           <div className="createPromoModalHeader">
             <h1>Reporting {props.username}</h1>
             <img
@@ -331,6 +378,29 @@ export default function Promo(props) {
               onClick={() => reportPromo()}
             />
           </ModalFooter>
+        </Modal>
+      )}
+      {isExpandModalOpen && (
+        <Modal onClose={closeExpandModal} width={"100%"} height={"100%"}>
+          <div className="createPromoModalHeader">
+            <img
+              className="promoExpandImg"
+              src={props.pfp}
+              onClick={() => toUser()}
+              alt="PFP"
+            />
+            <h1>{props.username}</h1>
+            <img
+              className="closeModalButton"
+              src={close_button}
+              onClick={closeExpandModal}
+            />
+          </div>
+          <ModalBody>
+            <div className="expandPromoBody">{props.promo}</div>
+            {props.promo}
+          </ModalBody>
+          <ModalFooter>{props.uploadDate}</ModalFooter>
         </Modal>
       )}
     </div>

@@ -1,6 +1,7 @@
 .whole {
   display: flex;
   width: inherit;
+  height: fit-content;
   flex-direction: row;
   background-color: #fdf0ef;
   border-style: solid;
@@ -28,6 +29,9 @@
   width: inherit;
   overflow-wrap: break-word;
   white-space: pre-line;
+  height:100%;
+  overflow: hidden;
+  max-height: 150px;
 }
 .userName {
   display: flex;
@@ -97,4 +101,23 @@
 
 .actionMenuButton:hover {
   background-color: #D3D3D3;
+}
+
+.promoExpandImg {
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
+}
+
+.expandPromoButton {
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  color: #36A2EB;
+}
+
+.expandPromoBody {
+  overflow-wrap: break-word;
+  white-space: pre-line;
 }
