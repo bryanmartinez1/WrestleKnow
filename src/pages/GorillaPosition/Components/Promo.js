@@ -4,7 +4,7 @@ import html2canvas from "html2canvas";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
-import Modal, { ModalBody, ModalFooter } from "@atlaskit/modal-dialog";
+import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
 import Popup from "@atlaskit/popup";
@@ -393,7 +393,6 @@ export default function Promo(props) {
         <Modal onClose={closeExpandModal} width={"100%"}>
           <div className="expandPromoModal" id="promoModal">
             <div className="createPromoModalHeader">
-              <img className="promoExpandImg" src={props.pfp} alt="PFP" />
               <h1>{props.username}</h1>
               <img
                 className="closeModalButton"
