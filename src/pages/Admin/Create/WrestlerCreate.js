@@ -63,7 +63,6 @@ const WrestlerCreate = () => {
   useEffect(() => {
     if (companyNameArray === null) {
       companyQuery();
-      //console.log(companyIdArray.name);
     }
   });
 

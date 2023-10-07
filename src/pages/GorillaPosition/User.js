@@ -10,7 +10,6 @@ import pfpImage from "./Components/images/profile_icon.png";
 
 export default function User() {
   const { username } = useParams(); // Accessing the route parameter
-  let pfp = pfpImage;
 
   const [showFeed, setShowFeed] = useState(false);
   const [query, setQuery] = useState([]);
@@ -21,17 +20,17 @@ export default function User() {
     const currentUser = await Parse.User.current();
     // Update state variable holding current user
     setCurrentUser(currentUser);
-    console.log(JSON.stringify(currentUser.get("username")));
 
     return currentUser;
   };
   useEffect(() => {
+    feedQuery();
     if (!showFeed) {
-      feedQuery();
       getCurrentUser();
       userQueryImages();
     }
-  }, [showFeed]);
+    console.log("HELLO" + username);
+  }, [showFeed, username]);
   async function userQueryImages() {
     const userQuery = new Parse.Query("GP_Profile");
     try {
@@ -52,6 +51,7 @@ export default function User() {
   }
 
   async function feedQuery() {
+    console.log("HOW MANY TIMES");
     const promoQuery = new Parse.Query("Promos");
     promoQuery.equalTo("talker", username);
     promoQuery.descending("createdAt");
