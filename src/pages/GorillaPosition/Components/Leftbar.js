@@ -20,7 +20,6 @@ export default function Leftbar(props) {
     if (!currentUser) {
       toHome();
     }
-    console.log(JSON.stringify(currentUser));
     if (currentUser !== null) {
       userInfo();
     }
@@ -45,7 +44,7 @@ export default function Leftbar(props) {
       );
       //setUserPFP();
     } catch (error) {
-      console.log("Location: LeftBar User Info," + JSON.stringify(error));
+      console.log(JSON.stringify(error));
     }
   }
 
