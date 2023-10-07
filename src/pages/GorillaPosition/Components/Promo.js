@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import html2canvas from "html2canvas";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
@@ -20,6 +21,7 @@ import reply from "./images/reply.png";
 import moreOptions from "../../../images/3dots.png";
 import close_button from "./images/close.png";
 import add_button from "./images/add.png";
+import download_button from "./images/download.png";
 
 export default function Promo(props) {
   const navigate = useNavigate();
@@ -107,9 +109,16 @@ export default function Promo(props) {
       return false;
     }
   }
-  function downloadPromo() {
-    alert("Download Promo");
-  }
+  const downloadPromo = () => {
+    const table = document.getElementById("promoModal");
+
+    html2canvas(table).then(function (canvas) {
+      const link = document.createElement("a");
+      link.download = "promo.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  };
 
   function analyzePromo() {
     const labels = ["Likes", "Dislikes", "Comments", "Bookmarks"];
@@ -381,26 +390,28 @@ export default function Promo(props) {
         </Modal>
       )}
       {isExpandModalOpen && (
-        <Modal onClose={closeExpandModal} width={"100%"} height={"100%"}>
-          <div className="createPromoModalHeader">
-            <img
-              className="promoExpandImg"
-              src={props.pfp}
-              onClick={() => toUser()}
-              alt="PFP"
-            />
-            <h1>{props.username}</h1>
-            <img
-              className="closeModalButton"
-              src={close_button}
-              onClick={closeExpandModal}
-            />
-          </div>
-          <ModalBody>
+        <Modal onClose={closeExpandModal} width={"100%"}>
+          <div className="expandPromoModal" id="promoModal">
+            <div className="createPromoModalHeader">
+              <img className="promoExpandImg" src={props.pfp} alt="PFP" />
+              <h1>{props.username}</h1>
+              <img
+                className="closeModalButton"
+                src={close_button}
+                onClick={closeExpandModal}
+              />
+            </div>
             <div className="expandPromoBody">{props.promo}</div>
-            {props.promo}
-          </ModalBody>
-          <ModalFooter>{props.uploadDate}</ModalFooter>
+            <div className="expandModalFooter">
+              {props.uploadDate}
+              <img
+                className="downloadButton"
+                src={download_button}
+                alt="Download Button"
+                onClick={downloadPromo}
+              />
+            </div>
+          </div>
         </Modal>
       )}
     </div>

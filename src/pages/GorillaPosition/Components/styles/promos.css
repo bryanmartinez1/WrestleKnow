@@ -104,8 +104,8 @@
 }
 
 .promoExpandImg {
-  width: 75px;
-  height: 75px;
+  width: 35px;
+  height: 35px;
   border-radius: 5px;
 }
 
@@ -120,4 +120,30 @@
 .expandPromoBody {
   overflow-wrap: break-word;
   white-space: pre-line;
+}
+
+.downloadButton {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+.downloadButton:hover {
+  background-color: #D3D3D3;
+}
+
+.expandModalFooter {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  padding: 5px;
+  font-style: italic;
+}
+.expandPromoModal {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 5px;
 }
