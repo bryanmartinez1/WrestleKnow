@@ -47,7 +47,7 @@ export default function Topbar(props) {
         alt="Create Promo"
       ></img>
       {isOpen && (
-        <Modal onClose={closeModal} width={"50%"} height={"75%"}>
+        <Modal onClose={closeModal} width={"75%"} height={"75%"}>
           <div className="createPromoModalHeader">
             <h1>Cut a Promo</h1>
             <img

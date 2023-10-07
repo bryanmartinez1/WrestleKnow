@@ -114,7 +114,8 @@ export default function Promo(props) {
     try {
       await reportObject.save();
       // Success
-      alert("Report was successfully submitted");
+      console.log("Report was successfully submitted");
+      closeReportModal();
       return true;
     } catch (error) {
       // Error can be caused by lack of Internet connection
