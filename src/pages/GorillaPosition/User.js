@@ -29,7 +29,6 @@ export default function User() {
       getCurrentUser();
       userQueryImages();
     }
-    console.log("HELLO" + username);
   }, [showFeed, username]);
   async function userQueryImages() {
     const userQuery = new Parse.Query("GP_Profile");
@@ -51,7 +50,6 @@ export default function User() {
   }
 
   async function feedQuery() {
-    console.log("HOW MANY TIMES");
     const promoQuery = new Parse.Query("Promos");
     promoQuery.equalTo("talker", username);
     promoQuery.descending("createdAt");
