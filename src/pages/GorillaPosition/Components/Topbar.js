@@ -2,13 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import Parse from "parse/dist/parse.min.js";
 import create from "./images/create_promo.png";
 import "./styles/topbar.css";
-import Modal, {
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-  ModalTransition,
-} from "@atlaskit/modal-dialog";
+import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import close_button from "./images/close.png";
 import add_button from "./images/add.png";
 
@@ -52,36 +46,34 @@ export default function Topbar(props) {
         onClick={openModal}
         alt="Create Promo"
       ></img>
-      <ModalTransition>
-        {isOpen && (
-          <Modal onClose={closeModal} width={"50%"} height={"75%"}>
-            <div className="createPromoModalHeader">
-              <h1>Cut a Promo</h1>
-              <img
-                className="closeModalButton"
-                src={close_button}
-                onClick={closeModal}
-              />
-            </div>
-            <div className="createPromoModalBody">
-              <textarea
-                placeholder="enter promo here"
-                className="createPromoTextBox"
-                type="text"
-                onChange={(event) => setContent(event.target.value)}
-              />
-            </div>
-            <ModalFooter>
-              <img
-                className="addModalButton"
-                src={add_button}
-                alt="Add Promo"
-                onClick={() => createPromo()}
-              />
-            </ModalFooter>
-          </Modal>
-        )}
-      </ModalTransition>
+      {isOpen && (
+        <Modal onClose={closeModal} width={"50%"} height={"75%"}>
+          <div className="createPromoModalHeader">
+            <h1>Cut a Promo</h1>
+            <img
+              className="closeModalButton"
+              src={close_button}
+              onClick={closeModal}
+            />
+          </div>
+          <div className="createPromoModalBody">
+            <textarea
+              placeholder="enter promo here"
+              className="createPromoTextBox"
+              type="text"
+              onChange={(event) => setContent(event.target.value)}
+            />
+          </div>
+          <ModalFooter>
+            <img
+              className="addModalButton"
+              src={add_button}
+              alt="Add Promo"
+              onClick={() => createPromo()}
+            />
+          </ModalFooter>
+        </Modal>
+      )}
     </div>
   );
 }

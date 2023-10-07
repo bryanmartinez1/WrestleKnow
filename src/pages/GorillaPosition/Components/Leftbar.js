@@ -27,7 +27,6 @@ export default function Leftbar(props) {
   async function userInfo() {
     const gpUserQuery = new Parse.Query("GP_Profile");
     let currentUserName = currentUser.get("username");
-    console.log("CURRENT USER" + currentUserName);
     gpUserQuery.equalTo("username", currentUserName);
     try {
       let gpUserResults = await gpUserQuery.find();

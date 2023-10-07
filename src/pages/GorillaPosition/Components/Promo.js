@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useCallback, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
+import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
 import Popup from "@atlaskit/popup";
@@ -17,18 +18,23 @@ import notSaved from "./images/bookmark.png";
 import saved from "./images/bookmarked.png";
 import reply from "./images/reply.png";
 import moreOptions from "../../../images/3dots.png";
+import close_button from "./images/close.png";
+import add_button from "./images/add.png";
 
 export default function Promo(props) {
   const navigate = useNavigate();
-  // get Current User Function
-  // Query into Bookmarks
-  // Query with Current Promo Id and Current User ID if query is empty then it is not bookmarked so will not have different font
   const [currentUser, setCurrentUser] = useState(null);
   const [actionMenuOpen, setActionMenu] = useState(false);
+  const [isEditModalOpen, openCloseEditModal] = useState();
+  const openEditModal = useCallback(() => openCloseEditModal(true), []);
+  const closeEditModal = useCallback(() => {
+    openCloseEditModal(false);
+    setContent(props.promo);
+  }, []);
+  const [content, setContent] = useState(props.promo);
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
-    // Update state variable holding current user
     setCurrentUser(currentUser);
     return currentUser;
   };
@@ -51,8 +57,19 @@ export default function Promo(props) {
   function Bookmark() {
     alert("Bookmarking this promo");
   }
-  function editPromo() {
-    alert("Edit Promo");
+  async function editPromo() {
+    let editPromo = new Parse.Object("Promos");
+    editPromo.set("objectId", props.promoId);
+    editPromo.set("content", content);
+    try {
+      await editPromo.save();
+      window.location.reload(false);
+      return true;
+    } catch (error) {
+      // Error can be caused by lack of Internet connection
+      alert(`Error ${error.message}`);
+      return false;
+    }
   }
   async function deletePromo() {
     const promo = new Parse.Object("Promos");
@@ -104,10 +121,7 @@ export default function Promo(props) {
                 <>
                   {props.currentUserPromo ? (
                     <DropdownItemGroup>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => editPromo()}
-                      >
+                      <div className="actionMenuButton" onClick={openEditModal}>
                         Edit
                       </div>
                       <div
@@ -170,6 +184,34 @@ export default function Promo(props) {
                 </Button>
               )}
             />
+            {isEditModalOpen && (
+              <Modal onClose={closeEditModal} width={"50%"} height={"75%"}>
+                <div className="createPromoModalHeader">
+                  <h1>Cut a Promo</h1>
+                  <img
+                    className="closeModalButton"
+                    src={close_button}
+                    onClick={closeEditModal}
+                  />
+                </div>
+                <div className="createPromoModalBody">
+                  <textarea
+                    value={content}
+                    className="createPromoTextBox"
+                    type="text"
+                    onChange={(event) => setContent(event.target.value)}
+                  />
+                </div>
+                <ModalFooter>
+                  <img
+                    className="addModalButton"
+                    src={add_button}
+                    alt="Add Promo"
+                    onClick={() => editPromo()}
+                  />
+                </ModalFooter>
+              </Modal>
+            )}
           </div>
         </div>
         <div className="promo">{props.promo}</div>
