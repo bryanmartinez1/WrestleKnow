@@ -25,19 +25,25 @@ export default function Promo(props) {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [actionMenuOpen, setActionMenu] = useState(false);
-  const [isEditModalOpen, openCloseEditModal] = useState();
+  const [isEditModalOpen, openCloseEditModal] = useState(false);
   const openEditModal = useCallback(() => openCloseEditModal(true), []);
   const closeEditModal = useCallback(() => {
     openCloseEditModal(false);
     setContent(props.promo);
   }, []);
   const [content, setContent] = useState(props.promo);
+  const [reportReason, setReportReason] = useState("");
+
+  const [isReportModalOpen, openCloseReportModal] = useState();
+  const openReportModal = useCallback(() => openCloseReportModal(true), []);
+  const closeReportModal = useCallback(() => openCloseReportModal(false), []);
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
     setCurrentUser(currentUser);
     return currentUser;
   };
+
   function toUser() {
     navigate(`/gp/user/${props.username}`);
   }
@@ -88,13 +94,33 @@ export default function Promo(props) {
     alert("Download Promo");
   }
   function analyzePromo() {
-    alert("Delete Promo");
+    alert("Anaylze Promo");
   }
   function blockUser() {
     alert("Block User");
   }
-  function reportPromo() {
-    alert("Report Promo");
+  async function reportPromo() {
+    if (reportReason.length < 20) {
+      alert(
+        "If you wish to report, please give a more indepth reason as to why you are reporting (20 characters min"
+      );
+      return false;
+    }
+    const reportObject = new Parse.Object("Reports");
+    reportObject.set("userReporting", props.currentUserName);
+    reportObject.set("reportedUser", props.username);
+    reportObject.set("promoReported", props.promo);
+    reportObject.set("reasonReported", reportReason);
+    try {
+      await reportObject.save();
+      // Success
+      alert("Report was successfully submitted");
+      return true;
+    } catch (error) {
+      // Error can be caused by lack of Internet connection
+      alert(`Error! ${error.message}`);
+      return false;
+    }
   }
 
   return (
@@ -153,7 +179,7 @@ export default function Promo(props) {
                       </div>
                       <div
                         className="actionMenuButton"
-                        onClick={() => reportPromo()}
+                        onClick={openReportModal}
                       >
                         Report
                       </div>
@@ -184,34 +210,6 @@ export default function Promo(props) {
                 </Button>
               )}
             />
-            {isEditModalOpen && (
-              <Modal onClose={closeEditModal} width={"50%"} height={"75%"}>
-                <div className="createPromoModalHeader">
-                  <h1>Cut a Promo</h1>
-                  <img
-                    className="closeModalButton"
-                    src={close_button}
-                    onClick={closeEditModal}
-                  />
-                </div>
-                <div className="createPromoModalBody">
-                  <textarea
-                    value={content}
-                    className="createPromoTextBox"
-                    type="text"
-                    onChange={(event) => setContent(event.target.value)}
-                  />
-                </div>
-                <ModalFooter>
-                  <img
-                    className="addModalButton"
-                    src={add_button}
-                    alt="Add Promo"
-                    onClick={() => editPromo()}
-                  />
-                </ModalFooter>
-              </Modal>
-            )}
           </div>
         </div>
         <div className="promo">{props.promo}</div>
@@ -278,6 +276,62 @@ export default function Promo(props) {
           </Tooltip>
         </div>
       </div>
+      {isEditModalOpen && (
+        <Modal onClose={closeEditModal} width={"50%"} height={"75%"}>
+          <div className="createPromoModalHeader">
+            <h1>Cut a Promo</h1>
+            <img
+              className="closeModalButton"
+              src={close_button}
+              onClick={closeEditModal}
+            />
+          </div>
+          <div className="createPromoModalBody">
+            <textarea
+              value={content}
+              className="createPromoTextBox"
+              type="text"
+              onChange={(event) => setContent(event.target.value)}
+            />
+          </div>
+          <ModalFooter>
+            <img
+              className="addModalButton"
+              src={add_button}
+              alt="Add Promo"
+              onClick={() => editPromo()}
+            />
+          </ModalFooter>
+        </Modal>
+      )}
+      {isReportModalOpen && (
+        <Modal onClose={closeReportModal} width={"50%"} height={"75%"}>
+          <div className="createPromoModalHeader">
+            <h1>Reporting {props.username}</h1>
+            <img
+              className="closeModalButton"
+              src={close_button}
+              onClick={closeReportModal}
+            />
+          </div>
+          <div className="createPromoModalBody">
+            <textarea
+              placeholder="Please place report reason here (20 character min)"
+              className="createPromoTextBox"
+              type="text"
+              onChange={(event) => setReportReason(event.target.value)}
+            />
+          </div>
+          <ModalFooter>
+            <img
+              className="addModalButton"
+              src={add_button}
+              alt="Add Promo"
+              onClick={() => reportPromo()}
+            />
+          </ModalFooter>
+        </Modal>
+      )}
     </div>
   );
 }

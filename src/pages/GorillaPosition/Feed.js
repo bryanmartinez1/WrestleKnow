@@ -11,8 +11,6 @@ import pfpImage from "./Components/images/profile_icon.png";
 //initializeParse(Back4App_SubDomain, App_ID, JS_Key);
 
 export default function Feed() {
-  let pfp = pfpImage;
-
   const [showFeed, setShowFeed] = useState(false);
   const [query, setQuery] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
@@ -76,8 +74,8 @@ export default function Feed() {
         })
         .toString();
 
-      let promoByCurrentUser =
-        object.get("talker") === currentUser.get("username");
+      let currentUserName = currentUser.get("username");
+      let promoByCurrentUser = object.get("talker") === currentUserName;
 
       return (
         <Promo
@@ -87,6 +85,7 @@ export default function Feed() {
           promo={object.get("content")}
           currentUserPromo={promoByCurrentUser}
           promoId={object.id}
+          currentUserName={currentUserName}
         />
       );
     });
