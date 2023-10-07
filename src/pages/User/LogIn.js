@@ -39,7 +39,6 @@ export default function LogIn() {
       );
       // To verify that this is in fact the current user, `current` can be used
       const currentUser = await Parse.User.current();
-      console.log(loggedInUser === currentUser);
       // Clear input fields
       setUsername("");
       setPassword("");

@@ -15,6 +15,7 @@ export default function User() {
   const [showFeed, setShowFeed] = useState(false);
   const [query, setQuery] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [userQueryImagesJSON, setUserQueryImagesJSON] = useState({});
 
   const getCurrentUser = async function () {
     const currentUser = await Parse.User.current();
@@ -28,8 +29,27 @@ export default function User() {
     if (!showFeed) {
       feedQuery();
       getCurrentUser();
+      userQueryImages();
     }
   }, [showFeed]);
+  async function userQueryImages() {
+    const userQuery = new Parse.Query("GP_Profile");
+    try {
+      let userResults = await userQuery.find();
+      const userNameToPFP = {};
+      for (let usersPFP of userResults) {
+        const username = usersPFP.get("username");
+        const pfpURL = JSON.stringify(usersPFP.get("pfp"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2);
+        userNameToPFP[username] = pfpURL;
+      }
+      setUserQueryImagesJSON(userNameToPFP);
+    } catch (error) {
+      console.log("USER QUERY" + JSON.stringify(error));
+    }
+  }
 
   async function feedQuery() {
     const promoQuery = new Parse.Query("Promos");
@@ -56,18 +76,19 @@ export default function User() {
           minute: "numeric",
         })
         .toString();
-
-      let promoByCurrentUser =
-        object.get("talker") === currentUser.get("username");
+      let talker = object.get("talker");
+      let currentUserName = currentUser.get("username");
+      let promoByCurrentUser = object.get("talker") === currentUserName;
 
       return (
         <Promo
-          pfp={pfp}
-          username={object.get("talker")}
+          pfp={userQueryImagesJSON[talker]}
+          username={talker}
           uploadDate={uploadDate}
           promo={object.get("content")}
           currentUserPromo={promoByCurrentUser}
           promoId={object.id}
+          currentUserName={currentUserName}
         />
       );
     });

@@ -74,13 +74,14 @@ export default function Feed() {
         })
         .toString();
 
+      let talker = object.get("talker");
       let currentUserName = currentUser.get("username");
-      let promoByCurrentUser = object.get("talker") === currentUserName;
+      let promoByCurrentUser = talker === currentUserName;
 
       return (
         <Promo
-          pfp={userQueryImagesJSON[object.get("talker")]}
-          username={object.get("talker")}
+          pfp={userQueryImagesJSON[talker]}
+          username={talker}
           uploadDate={uploadDate}
           promo={object.get("content")}
           currentUserPromo={promoByCurrentUser}

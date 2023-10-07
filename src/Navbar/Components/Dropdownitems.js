@@ -25,6 +25,10 @@ export default function Dropdownitems(props) {
       const currentUser = await Parse.User.current();
       if (currentUser === null) {
         console.log("Log Out: No user is logged in anymore!");
+        const currentURL = window.location.href;
+        if (currentURL.includes("/gp")) {
+          navigate("/");
+        }
       }
       // Update state variable holding current user
       getCurrentUser();

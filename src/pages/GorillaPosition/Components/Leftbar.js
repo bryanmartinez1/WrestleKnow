@@ -17,6 +17,9 @@ export default function Leftbar(props) {
     const currentUser = await Parse.User.current();
     // Update state variable holding current user
     setCurrentUser(currentUser);
+    if (!currentUser) {
+      toHome();
+    }
     console.log(JSON.stringify(currentUser));
     if (currentUser !== null) {
       userInfo();
@@ -49,6 +52,11 @@ export default function Leftbar(props) {
   useEffect(() => {
     getCurrentUser();
   }, [currentUser]);
+
+  const toHome = () => {
+    navigate("/");
+    alert("You need to be logged in to access Gorilla Position");
+  };
 
   function toUser() {
     navigate(`/gp/user/${userName}`);

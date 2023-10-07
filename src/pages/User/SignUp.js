@@ -29,6 +29,10 @@ export default function SignUp() {
     navigate("/login");
   }
   const signUp = async function () {
+    if (username.includes("/")) {
+      alert("Cannot have / in your username");
+      return false;
+    }
     if (password !== confirmPassword) {
       alert("Password do not match");
       return false;
