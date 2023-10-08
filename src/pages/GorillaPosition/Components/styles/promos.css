@@ -121,6 +121,9 @@
 .expandPromoBody {
   overflow-wrap: break-word;
   white-space: pre-line;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .downloadButton {

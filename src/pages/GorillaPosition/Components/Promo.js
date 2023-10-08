@@ -40,9 +40,17 @@ export default function Promo(props) {
   const openReportModal = useCallback(() => openCloseReportModal(true), []);
   const closeReportModal = useCallback(() => openCloseReportModal(false), []);
 
+  const [isReplyModalOpen, openCloseReplyModal] = useState();
+  const openReplyModal = useCallback(() => openCloseReplyModal(true), []);
+  const closeReplyModal = useCallback(() => openCloseReplyModal(false), []);
+
   const [isExpandModalOpen, openCloseExpandModal] = useState();
   const openExpandModal = useCallback(() => openCloseExpandModal(true), []);
   const closeExpandModal = useCallback(() => openCloseExpandModal(false), []);
+
+  const [isCommentModalOpen, openCloseCommentModal] = useState();
+  const openCommentModal = useCallback(() => openCloseCommentModal(true), []);
+  const closeCommentModal = useCallback(() => openCloseCommentModal(false), []);
 
   const promoHeightRef = useRef(null);
   const [promoHeight, setPromoHeight] = useState(0);
@@ -68,16 +76,11 @@ export default function Promo(props) {
   }
 
   function Cheer() {
+    console.log(props.allPromos);
     alert("Cheer");
   }
   function Boo() {
     alert("Boo");
-  }
-  function Reply() {
-    alert("Create Reply");
-  }
-  function Comments() {
-    alert("View Comments");
   }
   function Bookmark() {
     alert("Bookmarking this promo");
@@ -120,6 +123,21 @@ export default function Promo(props) {
     });
   };
 
+  const [replyContent, setReplyContent] = useState("");
+  async function replyPromo() {
+    const newReply = new Parse.Object("Promos");
+    newReply.set("content", replyContent);
+    newReply.set("talker", props.currentUserName);
+    newReply.set("Reply", props.promoId);
+    try {
+      const promo = await newReply.save();
+      closeReplyModal();
+    } catch (error) {
+      alert("Error while creating Promo" + error);
+    }
+    window.location.reload(true);
+  }
+
   function blockUser() {
     alert("Block User");
   }
@@ -146,6 +164,46 @@ export default function Promo(props) {
       alert(`Error! ${error.message}`);
       return false;
     }
+  }
+
+  function showResults() {
+    let commentsQuery = props.allPromos;
+    let pfpQuery = props.pfpQuery;
+
+    return commentsQuery.map((object) => {
+      let uploadDate = object
+        .get("createdAt")
+        .toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        })
+        .toString();
+
+      let talker = object.get("talker");
+      let currentUserName = props.currentUserName;
+      let promoByCurrentUser = talker === currentUserName;
+      if (props.promoId === object.get("Reply")) {
+        console.log("This is a reply to this tweet");
+        return (
+          <Promo
+            pfp={pfpQuery[talker]}
+            username={talker}
+            uploadDate={uploadDate}
+            promo={object.get("content")}
+            currentUserPromo={promoByCurrentUser}
+            promoId={object.id}
+            currentUserName={currentUserName}
+            allPromos={commentsQuery}
+            replyTo={object.get("Reply")}
+            pfpQuery={pfpQuery}
+          />
+        );
+      }
+      return null;
+    });
   }
 
   return (
@@ -273,7 +331,7 @@ export default function Promo(props) {
             content={<div className="tooltipPromoReactions">Reply</div>}
             hideTooltipOnMouseDown
           >
-            <button onClick={() => Reply()}>
+            <button onClick={openReplyModal}>
               <img className="imgButton" src={reply} alt="reply"></img>
             </button>
           </Tooltip>
@@ -282,7 +340,7 @@ export default function Promo(props) {
             content={<div className="tooltipPromoReactions">View Comments</div>}
             hideTooltipOnMouseDown
           >
-            <button onClick={() => Comments()}>
+            <button onClick={openCommentModal}>
               <img className="imgButton" src={comment} alt="comments"></img>
             </button>
           </Tooltip>
@@ -378,6 +436,62 @@ export default function Promo(props) {
                 alt="Download Button"
                 onClick={downloadPromo}
               />
+            </div>
+          </div>
+        </Modal>
+      )}
+      {isReplyModalOpen && (
+        <Modal onClose={closeReplyModal} width={"100%"}>
+          <div className="expandPromoModal" id="promoModal">
+            <div className="createPromoModalHeader">
+              <h1>Create Reply</h1>
+              <img
+                className="closeModalButton"
+                src={close_button}
+                onClick={closeReplyModal}
+              />
+            </div>
+            <div className="expandPromoBody">
+              <textarea
+                placeholder="enter promo here"
+                className="createPromoTextBox"
+                type="text"
+                onChange={(event) => setReplyContent(event.target.value)}
+              />
+            </div>
+            <div className="expandModalFooter">
+              <img
+                className="addModalButton"
+                src={add_button}
+                alt="Add Promo"
+                onClick={() => replyPromo()}
+              />
+            </div>
+          </div>
+        </Modal>
+      )}
+      {isCommentModalOpen && (
+        <Modal onClose={closeCommentModal} width={"100%"}>
+          <div className="expandPromoModal" id="promoModal">
+            <div className="createPromoModalHeader">
+              <h1>All Replies</h1>
+              <img
+                className="closeModalButton"
+                src={close_button}
+                onClick={closeCommentModal}
+              />
+            </div>
+            <div className="expandPromoBody">
+              <Promo
+                pfp={props.pfp}
+                username={props.username}
+                uploadDate={props.uploadDate}
+                promo={props.promo}
+                currentUserPromo={props.currentUserPromo}
+                promoId={props.promoId}
+                currentUserName={props.currentUserName}
+              />
+              {showResults()}
             </div>
           </div>
         </Modal>

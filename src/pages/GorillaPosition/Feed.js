@@ -6,7 +6,6 @@ import Leftbar from "./Components/Leftbar";
 import Promo from "./Components/Promo";
 import Rightbar from "./Components/Rightbar";
 import Topbar from "./Components/Topbar";
-import pfpImage from "./Components/images/profile_icon.png";
 
 //initializeParse(Back4App_SubDomain, App_ID, JS_Key);
 
@@ -87,6 +86,9 @@ export default function Feed() {
           currentUserPromo={promoByCurrentUser}
           promoId={object.id}
           currentUserName={currentUserName}
+          allPromos={query}
+          replyTo={object.get("Reply")}
+          pfpQuery={userQueryImagesJSON}
         />
       );
     });
