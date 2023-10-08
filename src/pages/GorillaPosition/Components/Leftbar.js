@@ -70,7 +70,7 @@ export default function Leftbar(props) {
       <div className="names" onClick={() => toUser()}>
         {userName}
       </div>
-      <Link className="linkLeftBar" to={`/user/${userName}`}>
+      <Link className="linkLeftBar" to={`/gp/user/${userName}`}>
         10 Promos
       </Link>
       <Link className="linkLeftBar" to="/gp/follow">
