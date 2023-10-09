@@ -126,6 +126,7 @@ export default function Leftbar(props) {
         <div className="followNumber">
           {followersCountHook} <div className="followText">Followers</div>
         </div>
+        <div className="followDivider" />
         <div className="followNumber">
           {followingCountHook} <div className="followText">Following</div>
         </div>
