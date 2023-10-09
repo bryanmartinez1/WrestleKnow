@@ -129,7 +129,7 @@
   white-space: pre-line;
   display: flex;
   flex-direction: column;
-  
+  height: fit-content;
 }
 
 .downloadButton {
@@ -152,8 +152,16 @@
   padding: 5px;
   font-style: italic;
 }
+
 .expandPromoModal {
   height: 100%;
   overflow-y: scroll;
   padding: 5px;
+}
+
+.createPromoTextBox {
+  height: 100%;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
 }

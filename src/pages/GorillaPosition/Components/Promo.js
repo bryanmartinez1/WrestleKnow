@@ -4,7 +4,11 @@ import html2canvas from "html2canvas";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
-import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
+import Modal, {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+} from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
 import Popup from "@atlaskit/popup";
@@ -418,7 +422,7 @@ export default function Promo(props) {
         </Modal>
       )}
       {isExpandModalOpen && (
-        <Modal onClose={closeExpandModal} width={"75%"}>
+        <Modal onClose={closeExpandModal} width={"75%"} height={"100%"}>
           <div className="expandPromoModal" id="promoModal">
             <div className="createPromoModalHeader">
               <h1>{props.username}</h1>
@@ -443,24 +447,20 @@ export default function Promo(props) {
       )}
       {isReplyModalOpen && (
         <Modal onClose={closeReplyModal} width={"75%"} height={"75%"}>
-          <div className="expandPromoModal" id="promoModal">
-            <div className="createPromoModalHeader">
-              <h1>Create Reply</h1>
-              <img
-                className="closeModalButton"
-                src={close_button}
-                onClick={closeReplyModal}
-              />
-            </div>
-            <div className="expandPromoBody">
-              <textarea
-                placeholder="enter promo here"
-                className="createPromoTextBox"
-                type="text"
-                onChange={(event) => setReplyContent(event.target.value)}
-              />
-            </div>
+          <div className="createPromoModalHeader">
+            <h1>Create Reply</h1>
+            <img
+              className="closeModalButton"
+              src={close_button}
+              onClick={closeReplyModal}
+            />
           </div>
+          <textarea
+            placeholder="enter promo here"
+            className="createPromoTextBox"
+            type="text"
+            onChange={(event) => setReplyContent(event.target.value)}
+          />
           <ModalFooter>
             <img
               className="addModalButton"
