@@ -4,15 +4,11 @@ import html2canvas from "html2canvas";
 import Parse from "parse/dist/parse.min.js";
 import "./styles/promos.css";
 
-import Modal, {
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-} from "@atlaskit/modal-dialog";
+import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
 import Popup from "@atlaskit/popup";
-import { DropdownItemGroup } from "@atlaskit/dropdown-menu";
+import DropdownMenu, { DropdownItemGroup } from "@atlaskit/dropdown-menu";
 
 import cheer from "./images/cheers.png";
 import boo from "./images/boo.png";
@@ -227,60 +223,13 @@ export default function Promo(props) {
           <div className="rowAlign">
             <div className="datePosted">{props.uploadDate}</div>
             <div className="spaceBetween" />
-            <Popup
-              isOpen={actionMenuOpen}
-              onClose={() => setActionMenu(false)}
-              placement="bottom-end"
-              content={() => (
-                <>
-                  {props.currentUserPromo ? (
-                    <DropdownItemGroup>
-                      <div
-                        className="actionMenuButton"
-                        onClick={openExpandModal}
-                      >
-                        Expand
-                      </div>
-                      <div className="actionMenuButton" onClick={openEditModal}>
-                        Edit
-                      </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => deletePromo()}
-                      >
-                        Delete
-                      </div>
-                    </DropdownItemGroup>
-                  ) : (
-                    <DropdownItemGroup>
-                      <div
-                        className="actionMenuButton"
-                        onClick={openExpandModal}
-                      >
-                        Expand
-                      </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={() => blockUser()}
-                      >
-                        Block
-                      </div>
-                      <div
-                        className="actionMenuButton"
-                        onClick={openReportModal}
-                      >
-                        Report
-                      </div>
-                    </DropdownItemGroup>
-                  )}
-                </>
-              )}
-              trigger={(triggerProps) => (
+            <DropdownMenu
+              trigger={({ triggerRef, ...props }) => (
                 <Button
-                  {...triggerProps}
+                  {...props}
                   appearance="subtle"
                   spacing="none"
-                  onClick={() => setActionMenu(!actionMenuOpen)}
+                  ref={triggerRef}
                 >
                   <div className="margin">
                     <img
@@ -291,7 +240,41 @@ export default function Promo(props) {
                   </div>
                 </Button>
               )}
-            />
+            >
+              <>
+                {props.currentUserPromo ? (
+                  <DropdownItemGroup>
+                    <div className="actionMenuButton" onClick={openExpandModal}>
+                      Expand
+                    </div>
+                    <div className="actionMenuButton" onClick={openEditModal}>
+                      Edit
+                    </div>
+                    <div
+                      className="actionMenuButton"
+                      onClick={() => deletePromo()}
+                    >
+                      Delete
+                    </div>
+                  </DropdownItemGroup>
+                ) : (
+                  <DropdownItemGroup>
+                    <div className="actionMenuButton" onClick={openExpandModal}>
+                      Expand
+                    </div>
+                    <div
+                      className="actionMenuButton"
+                      onClick={() => blockUser()}
+                    >
+                      Block
+                    </div>
+                    <div className="actionMenuButton" onClick={openReportModal}>
+                      Report
+                    </div>
+                  </DropdownItemGroup>
+                )}
+              </>
+            </DropdownMenu>
           </div>
         </div>
         <div className="promo" ref={promoHeightRef}>
