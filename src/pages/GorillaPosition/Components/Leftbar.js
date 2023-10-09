@@ -33,7 +33,7 @@ export default function Leftbar(props) {
   const openFollowModal = useCallback(() => openCloseFollowModal(true), []);
   const closeFollowModal = useCallback(() => openCloseFollowModal(false), []);
 
-  const followCount = async () => {
+  const followQuery = async () => {
     const followQuery = new Parse.Query("Follow");
     try {
       let followResults = await followQuery.find();
@@ -69,7 +69,7 @@ export default function Leftbar(props) {
 
   useEffect(() => {
     getCurrentUser();
-    followCount();
+    followQuery();
   }, [currentUser]);
 
   const toHome = () => {
@@ -107,6 +107,9 @@ export default function Leftbar(props) {
     });
   }
 
+  const [followersCountHook, setFollowersCountHook] = useState(0);
+  const [followingCountHook, setFollowingCountHook] = useState(0);
+
   return (
     <div className="leftside">
       <img className="pfp" src={userPFP} onClick={() => toUser()} />
@@ -121,10 +124,10 @@ export default function Leftbar(props) {
       </Link>
       <div className="followHolder" onClick={openFollowModal}>
         <div className="followNumber">
-          10 <div className="followText">Followers</div>
+          {followersCountHook} <div className="followText">Followers</div>
         </div>
         <div className="followNumber">
-          400 <div className="followText">Following</div>
+          {followingCountHook} <div className="followText">Following</div>
         </div>
       </div>
       <div className="bio">{userBio}</div>
