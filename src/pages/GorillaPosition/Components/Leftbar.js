@@ -81,9 +81,31 @@ export default function Leftbar(props) {
     navigate(`/gp/user/${userName}`);
   }
 
-  function showFollowing() {}
+  function showFollowers() {
+    if (!followResult) return null;
+    let imageJSON = props.pfpQuery;
+    return followResult.map((object) => {
+      let following = object.get("Following");
+      let follower = object.get("Follower");
+      if (following === currentUser.get("username")) {
+        return <UserLink pfp={imageJSON[follower]} username={follower} />;
+      }
+      return null;
+    });
+  }
 
-  function showFollowers() {}
+  function showFollowing() {
+    if (!followResult) return null;
+    let imageJSON = props.pfpQuery;
+    return followResult.map((object) => {
+      let following = object.get("Following");
+      let follower = object.get("Follower");
+      if (follower === currentUser.get("username")) {
+        return <UserLink pfp={imageJSON[following]} username={following} />;
+      }
+      return null;
+    });
+  }
 
   return (
     <div className="leftside">
@@ -123,16 +145,12 @@ export default function Leftbar(props) {
           <div className="followModal">
             <div className="followDivs">
               Followers
-              <div className="followContent">
-                <UserLink username="am" pfp={pfp} />
-              </div>
+              <div className="followContent">{showFollowers()}</div>
             </div>
             <div className="followDivider" />
             <div className="followDivs">
-              Follwing
-              <div className="followContent">
-                <UserLink username="am" pfp={pfp} />
-              </div>
+              Following
+              <div className="followContent">{showFollowing()}</div>
             </div>
           </div>
         </Modal>

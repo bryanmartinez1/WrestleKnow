@@ -4,7 +4,7 @@
 }
 
 .userLink {
-    height: 20px;
+    height: 50px;
     width: 100%;
     font-family: Lexend;
     display: flex;
@@ -16,8 +16,8 @@
 }
 
 .pfpFollowImage {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
