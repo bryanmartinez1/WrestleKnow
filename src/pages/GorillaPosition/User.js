@@ -87,6 +87,9 @@ export default function User() {
           currentUserPromo={promoByCurrentUser}
           promoId={object.id}
           currentUserName={currentUserName}
+          allPromos={query}
+          replyTo={object.get("Reply")}
+          pfpQuery={userQueryImagesJSON}
         />
       );
     });

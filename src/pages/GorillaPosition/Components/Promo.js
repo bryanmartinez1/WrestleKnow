@@ -418,7 +418,7 @@ export default function Promo(props) {
         </Modal>
       )}
       {isExpandModalOpen && (
-        <Modal onClose={closeExpandModal} width={"100%"}>
+        <Modal onClose={closeExpandModal} width={"75%"}>
           <div className="expandPromoModal" id="promoModal">
             <div className="createPromoModalHeader">
               <h1>{props.username}</h1>
@@ -442,7 +442,7 @@ export default function Promo(props) {
         </Modal>
       )}
       {isReplyModalOpen && (
-        <Modal onClose={closeReplyModal} width={"100%"}>
+        <Modal onClose={closeReplyModal} width={"75%"} height={"75%"}>
           <div className="expandPromoModal" id="promoModal">
             <div className="createPromoModalHeader">
               <h1>Create Reply</h1>
@@ -460,19 +460,19 @@ export default function Promo(props) {
                 onChange={(event) => setReplyContent(event.target.value)}
               />
             </div>
-            <div className="expandModalFooter">
-              <img
-                className="addModalButton"
-                src={add_button}
-                alt="Add Promo"
-                onClick={() => replyPromo()}
-              />
-            </div>
           </div>
+          <ModalFooter>
+            <img
+              className="addModalButton"
+              src={add_button}
+              alt="Add Promo"
+              onClick={() => replyPromo()}
+            />
+          </ModalFooter>
         </Modal>
       )}
       {isCommentModalOpen && (
-        <Modal onClose={closeCommentModal} width={"100%"}>
+        <Modal onClose={closeCommentModal} width={"75%"}>
           <div className="expandPromoModal" id="promoModal">
             <div className="createPromoModalHeader">
               <h1>All Replies</h1>

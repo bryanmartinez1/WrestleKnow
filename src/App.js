@@ -56,7 +56,6 @@ import RingBreaker from "./Pages/Games/Ring_Breaker/RingBreaker";
 import { Route, Routes } from "react-router-dom";
 import Compare from "./Pages/Compare/Compare";
 import Chart from "./Pages/Chart/Chart";
-import Follow from "./Pages/GorillaPosition/Follow";
 import TicTacToe from "./Pages/Games/Tic Tac Toe/TicTacToe";
 import Profile from "./Pages/Select/Profile/Profile";
 
@@ -117,7 +116,6 @@ function App() {
               <Route path="/gp/bookmarks" element={<Bookmarks />} />
               <Route path="/gp/searchresults" element={<SearchResults />} />
               <Route path="/gp/user/:username" element={<User />} />
-              <Route path="/gp/follow" element={<Follow />} />
             </>
           )}
 
