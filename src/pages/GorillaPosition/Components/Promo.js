@@ -7,7 +7,6 @@ import "./styles/promos.css";
 import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import Tooltip, { TooltipPrimitive } from "@atlaskit/tooltip";
 import Button from "@atlaskit/button";
-import Popup from "@atlaskit/popup";
 import DropdownMenu, { DropdownItemGroup } from "@atlaskit/dropdown-menu";
 
 import cheer from "./images/cheers.png";
@@ -26,7 +25,6 @@ import download_button from "./images/download.png";
 export default function Promo(props) {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
-  const [actionMenuOpen, setActionMenu] = useState(false);
 
   const [isEditModalOpen, openCloseEditModal] = useState(false);
   const openEditModal = useCallback(() => openCloseEditModal(true), []);
@@ -65,6 +63,8 @@ export default function Promo(props) {
 
   useEffect(() => {
     measurePromoHeight();
+    reactionsQuery();
+    bookmarkQuery();
   }, []);
 
   const getCurrentUser = async function () {
@@ -101,6 +101,7 @@ export default function Promo(props) {
       return false;
     }
   }
+
   async function deletePromo() {
     const promo = new Parse.Object("Promos");
     promo.set("objectId", props.promoId);
@@ -140,9 +141,50 @@ export default function Promo(props) {
     window.location.reload(true);
   }
 
+  const [cheerReaction, setCheerReaction] = useState(false);
+  const [booReaction, setBooReaction] = useState(false);
+
+  const reactionsQuery = async () => {
+    const reactionsQuery = new Parse.Query("Reactions");
+    reactionsQuery.equalTo("Promo", props.promoId);
+    reactionsQuery.equalTo("Reacter", props.currentUserName);
+    try {
+      let reactionResult = await reactionsQuery.first();
+      if (reactionResult === null) {
+        return true;
+      }
+      let reaction = reactionResult.get("Reaction");
+      if (reaction == "Cheer") {
+        setCheerReaction(true);
+      } else {
+        setBooReaction(true);
+      }
+      return true;
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  };
+
+  const [bookmark, setBookmark] = useState(false);
+  const bookmarkQuery = async () => {
+    const bookmarkQuery = new Parse.Query("Bookmarks");
+    bookmarkQuery.equalTo("promo", props.promoId);
+    bookmarkQuery.equalTo("username", props.currentUserName);
+    try {
+      let bookmarkResult = await bookmarkQuery.first();
+      if (bookmarkResult !== null && bookmarkResult !== undefined) {
+        setBookmark(true);
+        return true;
+      }
+    } catch (error) {
+      console.log(JSON.stringify(error));
+    }
+  };
+
   function blockUser() {
     alert("Block User");
   }
+
   async function reportPromo() {
     if (reportReason.length < 20) {
       alert(
@@ -224,6 +266,7 @@ export default function Promo(props) {
             <div className="datePosted">{props.uploadDate}</div>
             <div className="spaceBetween" />
             <DropdownMenu
+              placement="bottom-end"
               trigger={({ triggerRef, ...props }) => (
                 <Button
                   {...props}
@@ -295,7 +338,7 @@ export default function Promo(props) {
               <img
                 id="cheers"
                 className="imgButton"
-                src={props.cheers ? cheered : cheer}
+                src={cheerReaction ? cheered : cheer}
                 alt="cheers"
               ></img>
             </button>
@@ -309,7 +352,7 @@ export default function Promo(props) {
               <img
                 id="boos"
                 className="imgButton"
-                src={props.useState ? booed : boo}
+                src={booReaction ? booed : boo}
                 alt="boos"
               ></img>
             </button>
@@ -341,7 +384,7 @@ export default function Promo(props) {
               <img
                 id="saves"
                 className="bookmarkButton"
-                src={props.bookmarked ? saved : notSaved}
+                src={bookmark ? saved : notSaved}
                 alt="saves"
               ></img>
             </button>
@@ -351,7 +394,7 @@ export default function Promo(props) {
       {isEditModalOpen && (
         <Modal onClose={closeEditModal} width={"75%"} height={"75%"}>
           <div className="createPromoModalHeader">
-            <h1>Cut a Promo</h1>
+            <h1>Edit Promo</h1>
             <img
               className="closeModalButton"
               src={close_button}
