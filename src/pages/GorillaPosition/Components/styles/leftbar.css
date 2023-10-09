@@ -55,9 +55,48 @@
 .followHolder {
     display: flex;
     flex-direction: row;
+    background-color: #EF6460;
+    margin-bottom: 2px;
     justify-content: space-between;
     font-size: 11px;
     text-decoration: none;
     color: #353739;
-    border: #353739;
+    border-style: solid;
+    border-radius: 5px;
+    cursor: pointer;
 }
+.followNumber {
+    font-weight: bold;
+    font-size: 20px;
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+}
+.followText {
+    font-weight: normal;
+    font-size: 10px;
+}
+
+.followModal {
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.followDivs {
+    font-family: Lexend;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.followDivider {
+    height: 100%;
+    width: 2px;
+    background-color: #353739;
+}
+

@@ -96,7 +96,7 @@ export default function Feed() {
 
   return (
     <div className="divider">
-      <Leftbar />
+      <Leftbar pfpQuery={userQueryImagesJSON} />
       <div className="middle">
         <Topbar name="Gorilla Position" />
         <div className="middleBottom">

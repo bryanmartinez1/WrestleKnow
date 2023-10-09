@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Lexend;
+    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+}
+
+.userLink {
+    height: 20px;
+    width: 100%;
+    font-family: Lexend;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.pfpFollowImage {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.followUsername {
+    padding-left: 5px;
+    font-family: Lexend;
+    font-size: 15px;
+}

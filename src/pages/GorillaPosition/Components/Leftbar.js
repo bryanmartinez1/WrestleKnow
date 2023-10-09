@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Parse from "parse/dist/parse.min.js";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles/leftbar.css";
 import pfp from "./images/profile_icon.png";
+import Modal from "@atlaskit/modal-dialog";
+import UserLink from "./UserLink";
 
 export default function Leftbar(props) {
   const navigate = useNavigate();
+  const [followResult, setFollowResult] = useState();
   const [currentUser, setCurrentUser] = useState(null);
   const [userFirstName, setFirtName] = useState("");
   const [userLastName, setLastName] = useState("");
@@ -24,6 +27,22 @@ export default function Leftbar(props) {
       userInfo();
     }
     return currentUser;
+  };
+
+  const [isFollowModalOpen, openCloseFollowModal] = useState();
+  const openFollowModal = useCallback(() => openCloseFollowModal(true), []);
+  const closeFollowModal = useCallback(() => openCloseFollowModal(false), []);
+
+  const followCount = async () => {
+    const followQuery = new Parse.Query("Follow");
+    try {
+      let followResults = await followQuery.find();
+      setFollowResult(followResults);
+      return true;
+    } catch (error) {
+      alert(`Error! ${error.message}`);
+      return false;
+    }
   };
 
   async function userInfo() {
@@ -50,6 +69,7 @@ export default function Leftbar(props) {
 
   useEffect(() => {
     getCurrentUser();
+    followCount();
   }, [currentUser]);
 
   const toHome = () => {
@@ -60,6 +80,10 @@ export default function Leftbar(props) {
   function toUser() {
     navigate(`/gp/user/${userName}`);
   }
+
+  function showFollowing() {}
+
+  function showFollowers() {}
 
   return (
     <div className="leftside">
@@ -73,12 +97,14 @@ export default function Leftbar(props) {
       <Link className="linkLeftBar" to={`/gp/user/${userName}`}>
         10 Promos
       </Link>
-      <Link className="linkLeftBar" to="/gp/follow">
-        <div className="followHolder">
-          <> 10 FOLLOWERS</>
-          <> 400 FOLLOWING</>
+      <div className="followHolder" onClick={openFollowModal}>
+        <div className="followNumber">
+          10 <div className="followText">Followers</div>
         </div>
-      </Link>
+        <div className="followNumber">
+          400 <div className="followText">Following</div>
+        </div>
+      </div>
       <div className="bio">{userBio}</div>
       <Link className="linkLeftBar" to="/gp">
         Feed
@@ -92,6 +118,25 @@ export default function Leftbar(props) {
       <Link className="linkLeftBar" to="/gp/searchresults">
         Search
       </Link>
+      {isFollowModalOpen && (
+        <Modal onClose={closeFollowModal} width={"100%"} height={"90%"}>
+          <div className="followModal">
+            <div className="followDivs">
+              Followers
+              <div className="followContent">
+                <UserLink username="am" pfp={pfp} />
+              </div>
+            </div>
+            <div className="followDivider" />
+            <div className="followDivs">
+              Follwing
+              <div className="followContent">
+                <UserLink username="am" pfp={pfp} />
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

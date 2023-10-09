@@ -27,12 +27,14 @@ export default function Promo(props) {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [actionMenuOpen, setActionMenu] = useState(false);
+
   const [isEditModalOpen, openCloseEditModal] = useState(false);
   const openEditModal = useCallback(() => openCloseEditModal(true), []);
   const closeEditModal = useCallback(() => {
     openCloseEditModal(false);
     setContent(props.promo);
   }, []);
+
   const [content, setContent] = useState(props.promo);
   const [reportReason, setReportReason] = useState("");
 
@@ -186,7 +188,6 @@ export default function Promo(props) {
       let currentUserName = props.currentUserName;
       let promoByCurrentUser = talker === currentUserName;
       if (props.promoId === object.get("Reply")) {
-        console.log("This is a reply to this tweet");
         return (
           <Promo
             pfp={pfpQuery[talker]}
