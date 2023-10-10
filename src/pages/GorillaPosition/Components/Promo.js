@@ -24,7 +24,6 @@ import download_button from "./images/download.png";
 
 export default function Promo(props) {
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState(null);
 
   const [isEditModalOpen, openCloseEditModal] = useState(false);
   const openEditModal = useCallback(() => openCloseEditModal(true), []);
@@ -52,6 +51,11 @@ export default function Promo(props) {
   const openCommentModal = useCallback(() => openCloseCommentModal(true), []);
   const closeCommentModal = useCallback(() => openCloseCommentModal(false), []);
 
+  const [cheerReaction, setCheerReaction] = useState(false);
+  const [cheerReactionID, setCheerReactionID] = useState(null);
+  const [booReaction, setBooReaction] = useState(false);
+  const [booReactionID, setBooReactionID] = useState(null);
+
   const promoHeightRef = useRef(null);
   const [promoHeight, setPromoHeight] = useState(0);
   const measurePromoHeight = () => {
@@ -65,25 +69,110 @@ export default function Promo(props) {
     measurePromoHeight();
     reactionsQuery();
     bookmarkQuery();
-  }, []);
-
-  const getCurrentUser = async function () {
-    const currentUser = await Parse.User.current();
-    setCurrentUser(currentUser);
-    return currentUser;
-  };
+  }, [cheerReaction, booReaction]);
 
   function toUser() {
     navigate(`/gp/user/${props.username}`);
   }
 
-  function Cheer() {
-    console.log(props.allPromos);
-    alert("Cheer");
+  async function Cheer() {
+    // Destroys
+    if (cheerReaction) {
+      const cheerObject = new Parse.Object("Reactions");
+      cheerObject.set("Promo", props.promoId);
+      cheerObject.set("Reacter", props.currentUserName);
+      try {
+        await cheerObject.destroy();
+        // Change the hooks here
+        console.log(cheerReactionID);
+        setCheerReaction(false);
+        return true;
+      } catch (error) {
+        console.error(JSON.stringify(error));
+        return false;
+      }
+    }
+
+    // Edits
+    if (booReaction) {
+      const bootoCheerObject = new Parse.Object("Reactions");
+      bootoCheerObject.set("objectId", cheerReactionID);
+      bootoCheerObject.set("Reaction", "Cheer");
+      bootoCheerObject.set("Reacter", props.currentUserName);
+      try {
+        await bootoCheerObject.save();
+        setCheerReaction(true);
+        setBooReaction(false);
+        return true;
+      } catch (error) {
+        console.error(JSON.stringify(error));
+        return false;
+      }
+    }
+
+    //Creates
+    const newReaction = new Parse.Object("Reactions");
+    newReaction.set("Reacter", props.currentUserName);
+    newReaction.set("Reaction", "Cheer");
+    newReaction.set("Promo", props.promoId);
+    try {
+      await newReaction.save();
+      setCheerReaction(true);
+      return true;
+    } catch (error) {
+      console.error(JSON.stringify(error));
+      return false;
+    }
   }
-  function Boo() {
-    alert("Boo");
+  async function Boo() {
+    // Destroys
+    if (booReaction) {
+      const booObject = new Parse.Object("Reactions");
+      booObject.set("Promo", props.promoId);
+      booObject.set("Reacter", props.currentUserName);
+      try {
+        await booObject.destroy();
+        // Change the hooks here
+        setCheerReaction(false);
+        return true;
+      } catch (error) {
+        console.error(JSON.stringify(error));
+        return false;
+      }
+    }
+
+    // Edits
+    if (cheerReaction) {
+      const cheerToBooObject = new Parse.Object("Reactions");
+      cheerToBooObject.set("objectId", cheerReactionID);
+      cheerToBooObject.set("Reaction", "Cheer");
+      cheerToBooObject.set("Reacter", props.currentUserName);
+      try {
+        await cheerToBooObject.save();
+        setCheerReaction(false);
+        setBooReaction(true);
+        return true;
+      } catch (error) {
+        console.error(JSON.stringify(error));
+        return false;
+      }
+    }
+
+    //Creates
+    const newReaction = new Parse.Object("Reactions");
+    newReaction.set("Reacter", props.currentUserName);
+    newReaction.set("Reaction", "Boo");
+    newReaction.set("Promo", props.promoId);
+    try {
+      await newReaction.save();
+      setBooReaction(true);
+      return true;
+    } catch (error) {
+      console.error(JSON.stringify(error));
+      return false;
+    }
   }
+
   function Bookmark() {
     alert("Bookmarking this promo");
   }
@@ -136,13 +225,10 @@ export default function Promo(props) {
       const promo = await newReply.save();
       closeReplyModal();
     } catch (error) {
-      alert("Error while creating Promo" + error);
+      alert("Error while creating Reply" + error);
     }
     window.location.reload(true);
   }
-
-  const [cheerReaction, setCheerReaction] = useState(false);
-  const [booReaction, setBooReaction] = useState(false);
 
   const reactionsQuery = async () => {
     const reactionsQuery = new Parse.Query("Reactions");
@@ -156,8 +242,10 @@ export default function Promo(props) {
       let reaction = reactionResult.get("Reaction");
       if (reaction == "Cheer") {
         setCheerReaction(true);
+        setCheerReactionID(reactionResult.id);
       } else {
         setBooReaction(true);
+        setBooReactionID(reactionResult.id);
       }
       return true;
     } catch (error) {
