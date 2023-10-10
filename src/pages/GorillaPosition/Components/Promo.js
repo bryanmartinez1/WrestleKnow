@@ -173,9 +173,6 @@ export default function Promo(props) {
     }
   }
 
-  function Bookmark() {
-    alert("Bookmarking this promo");
-  }
   async function editPromo() {
     let editPromo = new Parse.Object("Promos");
     editPromo.set("objectId", props.promoId);
@@ -468,7 +465,7 @@ export default function Promo(props) {
             content={<div className="tooltipPromoReactions">Bookmark</div>}
             hideTooltipOnMouseDown
           >
-            <button onClick={() => Bookmark()}>
+            <button>
               <img
                 id="saves"
                 className="bookmarkButton"
