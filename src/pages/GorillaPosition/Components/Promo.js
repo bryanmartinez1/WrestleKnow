@@ -259,7 +259,10 @@ export default function Promo(props) {
       }
       return true;
     } catch (error) {
-      console.log(JSON.stringify(error));
+      let errorJSON = JSON.stringify(error);
+      if (errorJSON !== "{}") {
+        console.log(JSON.stringify(error));
+      }
     }
   };
 

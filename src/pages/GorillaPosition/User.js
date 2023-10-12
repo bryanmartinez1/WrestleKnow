@@ -96,13 +96,7 @@ export default function User() {
   }
   return (
     <div className="divider">
-      <Leftbar
-        pfp={pfpImage}
-        firstName="Other"
-        lastName="User"
-        userName="Other User"
-        bio="Random stuff bio idk man"
-      />
+      <Leftbar pfpQuery={userQueryImagesJSON} />
       <div className="middle">
         <Topbar name="Gorilla Position" />
         <div className="middleBottom">
