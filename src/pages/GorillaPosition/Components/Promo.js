@@ -67,9 +67,17 @@ export default function Promo(props) {
 
   useEffect(() => {
     measurePromoHeight();
+  }, []);
+
+  //Deals with Reaction Updates
+  useEffect(() => {
     reactionsQuery();
+  }, [booReactionID, cheerReactionID]);
+
+  // Deals with Bookmark updates
+  useEffect(() => {
     bookmarkQuery();
-  }, [cheerReaction, booReaction]);
+  }, [cheerReaction, booReaction, booReactionID, cheerReactionID]);
 
   function toUser() {
     navigate(`/gp/user/${props.username}`);
@@ -79,13 +87,13 @@ export default function Promo(props) {
     // Destroys
     if (cheerReaction) {
       const cheerObject = new Parse.Object("Reactions");
-      cheerObject.set("Promo", props.promoId);
-      cheerObject.set("Reacter", props.currentUserName);
+      cheerObject.set("objectId", cheerReactionID);
       try {
         await cheerObject.destroy();
         // Change the hooks here
         console.log(cheerReactionID);
         setCheerReaction(false);
+        setCheerReactionID(null);
         return true;
       } catch (error) {
         console.error(JSON.stringify(error));
@@ -96,13 +104,15 @@ export default function Promo(props) {
     // Edits
     if (booReaction) {
       const bootoCheerObject = new Parse.Object("Reactions");
-      bootoCheerObject.set("objectId", cheerReactionID);
+      bootoCheerObject.set("objectId", booReactionID);
       bootoCheerObject.set("Reaction", "Cheer");
       bootoCheerObject.set("Reacter", props.currentUserName);
       try {
         await bootoCheerObject.save();
         setCheerReaction(true);
         setBooReaction(false);
+        setCheerReactionID(booReactionID);
+        setBooReactionID(null);
         return true;
       } catch (error) {
         console.error(JSON.stringify(error));
@@ -118,6 +128,7 @@ export default function Promo(props) {
     try {
       await newReaction.save();
       setCheerReaction(true);
+      reactionsQuery();
       return true;
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -128,12 +139,12 @@ export default function Promo(props) {
     // Destroys
     if (booReaction) {
       const booObject = new Parse.Object("Reactions");
-      booObject.set("Promo", props.promoId);
-      booObject.set("Reacter", props.currentUserName);
+      booObject.set("objectId", booReactionID);
       try {
         await booObject.destroy();
         // Change the hooks here
         setCheerReaction(false);
+        setBooReactionID(null);
         return true;
       } catch (error) {
         console.error(JSON.stringify(error));
@@ -151,6 +162,7 @@ export default function Promo(props) {
         await cheerToBooObject.save();
         setCheerReaction(false);
         setBooReaction(true);
+        setBooReactionID(cheerReactionID);
         return true;
       } catch (error) {
         console.error(JSON.stringify(error));
@@ -166,6 +178,7 @@ export default function Promo(props) {
     try {
       await newReaction.save();
       setBooReaction(true);
+      reactionsQuery();
       return true;
     } catch (error) {
       console.error(JSON.stringify(error));
@@ -285,12 +298,11 @@ export default function Promo(props) {
     try {
       await reportObject.save();
       // Success
-      console.log("Report was successfully submitted");
       closeReportModal();
       return true;
     } catch (error) {
       // Error can be caused by lack of Internet connection
-      alert(`Error! ${error.message}`);
+      console.error(`Error! ${error.message}`);
       return false;
     }
   }

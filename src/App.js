@@ -1,63 +1,63 @@
 import React from "react";
 import FLAGS from "./FLAGS";
 import Navbar from "./Navbar/Navbar";
-import Home from "./Pages/Home/Home";
-import Settings from "./Pages/User/Settings";
+import Home from "./pages/Home/Home";
+import Settings from "./pages/User/Settings";
 
-// Create Pages
-import WrestlerCreate from "./Pages/Admin/Create/WrestlerCreate";
-import CompanyCreate from "./Pages/Admin/Create/CompanyCreate";
-import TitleCreate from "./Pages/Admin/Create/TitleCreate";
-import FactionCreate from "./Pages/Admin/Create/FactionCreate";
-import BrandCreate from "./Pages/Admin/Create/BrandCreate";
-import PPVCreate from "./Pages/Admin/Create/PPVCreate";
+// Create pages
+import WrestlerCreate from "./pages/Admin/Create/WrestlerCreate";
+import CompanyCreate from "./pages/Admin/Create/CompanyCreate";
+import TitleCreate from "./pages/Admin/Create/TitleCreate";
+import FactionCreate from "./pages/Admin/Create/FactionCreate";
+import BrandCreate from "./pages/Admin/Create/BrandCreate";
+import PPVCreate from "./pages/Admin/Create/PPVCreate";
 
-// Results Pages
-import Wrestler from "./Pages/Search/Wrestler";
-import Company from "./Pages/Search/Company";
-import Title from "./Pages/Search/Title";
-import Faction from "./Pages/Search/Faction";
-import Brand from "./Pages/Search/Brand";
-import PPV from "./Pages/Search/PPV";
+// Results pages
+import Wrestler from "./pages/Search/Wrestler";
+import Company from "./pages/Search/Company";
+import Title from "./pages/Search/Title";
+import Faction from "./pages/Search/Faction";
+import Brand from "./pages/Search/Brand";
+import PPV from "./pages/Search/PPV";
 
-// Select Pages
-import WrestlerSelect from "./Pages/Select/WrestlerSelect";
-import TitleSelect from "./Pages/Select/TitleSelect";
-import CompanySelect from "./Pages/Select/CompanySelect";
-import FactionSelect from "./Pages/Select/FactionSelect";
-import BrandSelect from "./Pages/Select/BrandSelect";
-import PPVSelect from "./Pages/Select/PPVSelect";
+// Select pages
+import WrestlerSelect from "./pages/Select/WrestlerSelect";
+import TitleSelect from "./pages/Select/TitleSelect";
+import CompanySelect from "./pages/Select/CompanySelect";
+import FactionSelect from "./pages/Select/FactionSelect";
+import BrandSelect from "./pages/Select/BrandSelect";
+import PPVSelect from "./pages/Select/PPVSelect";
 
-// Gorilla Position Pages
-import Messages from "./Pages/GorillaPosition/Messages";
-import Bookmarks from "./Pages/GorillaPosition/Bookmarks";
-import SearchResults from "./Pages/GorillaPosition/SearchResults";
-import Feed from "./Pages/GorillaPosition/Feed";
-import User from "./Pages/GorillaPosition/User";
+// Gorilla Position pages
+import Messages from "./pages/GorillaPosition/Messages";
+import Bookmarks from "./pages/GorillaPosition/Bookmarks";
+import SearchResults from "./pages/GorillaPosition/SearchResults";
+import Feed from "./pages/GorillaPosition/Feed";
+import User from "./pages/GorillaPosition/User";
 
-//User Pages
-import LogIn from "./Pages/User/LogIn";
-import SignUp from "./Pages/User/SignUp";
-import ForgotUserName from "./Pages/User/forgotUsername";
-import ForgotPassword from "./Pages/User/forgotPassword";
-import Account from "./Pages/User/Account";
-import Admin from "./Pages/Admin/Admin";
+//User pages
+import LogIn from "./pages/User/LogIn";
+import SignUp from "./pages/User/SignUp";
+import ForgotUserName from "./pages/User/forgotUsername";
+import ForgotPassword from "./pages/User/forgotPassword";
+import Account from "./pages/User/Account";
+import Admin from "./pages/Admin/Admin";
 
-//  Game Pages
-import Games from "./Pages/Games/Games";
-import RockPaperScissors from "./Pages/Games/Rock_Paper_Scissors/Rock_Paper_Scissors.js";
-import WrestlEconomy from "./Pages/Games/Wrestle_Economy/WrestlEconomy";
-import KairiShipSails from "./Pages/Games/Kairi_Ship_Sails/KairiShipSails";
-import Damien from "./Pages/Games/Damien/Damien";
-import ChasingTheDragon from "./Pages/Games/Chasing_The_Dragon/ChasingTheDragon";
-import RingBreaker from "./Pages/Games/Ring_Breaker/RingBreaker";
+//  Game pages
+import Games from "./pages/Games/Games";
+import RockPaperScissors from "./pages/Games/Rock_Paper_Scissors/Rock_Paper_Scissors.js";
+import WrestlEconomy from "./pages/Games/Wrestle_Economy/WrestlEconomy";
+import KairiShipSails from "./pages/Games/Kairi_Ship_Sails/KairiShipSails";
+import Damien from "./pages/Games/Damien/Damien";
+import ChasingTheDragon from "./pages/Games/Chasing_The_Dragon/ChasingTheDragon";
+import RingBreaker from "./pages/Games/Ring_Breaker/RingBreaker";
 
 //Other Imports
 import { Route, Routes } from "react-router-dom";
-import Compare from "./Pages/Compare/Compare";
-import Chart from "./Pages/Chart/Chart";
-import TicTacToe from "./Pages/Games/Tic Tac Toe/TicTacToe";
-import Profile from "./Pages/Select/Profile/Profile";
+import Compare from "./pages/Compare/Compare";
+import Chart from "./pages/Chart/Chart";
+import TicTacToe from "./pages/Games/Tic Tac Toe/TicTacToe";
+import Profile from "./pages/Select/Profile/Profile";
 
 // Parse Imports
 import { App_ID, JS_Key, Host_Server } from "./KEYS";
@@ -77,13 +77,13 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          {/* User Features Pages */}
+          {/* User Features pages */}
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/account" element={<Account />} />
           <Route path="/profile/:profileId" element={<Profile />} />
 
-          {/* Admin Pages */}
+          {/* Admin pages */}
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/create/wrestler" element={<WrestlerCreate />} />
           <Route path="/admin/create/company" element={<CompanyCreate />} />
@@ -92,7 +92,7 @@ function App() {
           <Route path="/admin/create/brand" element={<BrandCreate />} />
           <Route path="/admin/create/ppv" element={<PPVCreate />} />
 
-          {/* Selection Pages */}
+          {/* Selection pages */}
           <Route path="/wrestler" element={<Wrestler />} />
           <Route path="/title" element={<Title />} />
           <Route path="/company" element={<Company />} />
@@ -100,7 +100,7 @@ function App() {
           <Route path="/brand" element={<Brand />} />
           <Route path="/ppv" element={<PPV />} />
 
-          {/* Select Pages */}
+          {/* Select pages */}
           <Route path="/wrestler/:wrestlerId" element={<WrestlerSelect />} />
           <Route path="/title/:titleId" element={<TitleSelect />} />
           <Route path="/company/:companyId" element={<CompanySelect />} />
@@ -108,7 +108,7 @@ function App() {
           <Route path="/brand/:brandId" element={<BrandSelect />} />
           <Route path="/ppv/:ppvId" element={<PPVSelect />} />
 
-          {/* Gorilla Position Pages */}
+          {/* Gorilla Position pages */}
           {FLAGS.canUseGP.live && (
             <>
               <Route path="/gp" element={<Feed />} />
@@ -119,13 +119,13 @@ function App() {
             </>
           )}
 
-          {/* User Function Pages */}
+          {/* User Function pages */}
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/username" element={<ForgotUserName />} />
           <Route path="/password" element={<ForgotPassword />} />
 
-          {/* Other Function Pages */}
+          {/* Other Function pages */}
           {FLAGS.canCompare.live && (
             <Route path="/compare" element={<Compare />} />
           )}
