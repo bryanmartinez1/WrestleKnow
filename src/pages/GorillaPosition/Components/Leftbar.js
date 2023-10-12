@@ -45,6 +45,14 @@ export default function Leftbar(props) {
     }
   };
 
+  const [promoCount, setPromoCount] = useState(0);
+  const getPromoCount = async (currentUserName) => {
+    const promoCountQuery = new Parse.Query("Promos");
+    promoCountQuery.equalTo("talker", currentUserName);
+    let count = await promoCountQuery.count();
+    setPromoCount(count);
+  };
+
   async function userInfo() {
     const gpUserQuery = new Parse.Query("GP_Profile");
     let currentUserName = currentUser.get("username");
@@ -61,6 +69,7 @@ export default function Leftbar(props) {
           .pop()
           .slice(0, -2)
       );
+      getPromoCount(currentUserName);
       //setUserPFP();
     } catch (error) {
       console.log(JSON.stringify(error));
@@ -120,7 +129,7 @@ export default function Leftbar(props) {
         {userName}
       </div>
       <Link className="linkLeftBar" to={`/gp/user/${userName}`}>
-        10 Promos
+        {promoCount} Promos
       </Link>
       <div className="followHolder" onClick={openFollowModal}>
         <div className="followNumber">
