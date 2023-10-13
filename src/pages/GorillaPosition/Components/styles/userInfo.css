@@ -1,0 +1,18 @@
+.userInfoDiv {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.userPFP {
+    height: 150px;
+    width: 150px;
+}
+
+.userNamesDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

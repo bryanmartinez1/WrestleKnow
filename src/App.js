@@ -112,10 +112,10 @@ function App() {
           {FLAGS.canUseGP.live && (
             <>
               <Route path="/gp" element={<Feed />} />
-              <Route path="/gp/messages" element={<Messages />} />
+              <Route path="/gp/user/:username" element={<User />} />
+              <Route path="/gp/messages/:username" element={<Messages />} />
               <Route path="/gp/bookmarks" element={<Bookmarks />} />
               <Route path="/gp/searchresults" element={<SearchResults />} />
-              <Route path="/gp/user/:username" element={<User />} />
             </>
           )}
 

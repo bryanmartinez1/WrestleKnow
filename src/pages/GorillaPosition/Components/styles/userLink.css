@@ -26,3 +26,22 @@
     font-family: Lexend;
     font-size: 15px;
 }
+
+.followClose {
+    height: 20px;
+    width: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.followClose:hover {
+    background-color: #D3D3D3;
+}
+
+.closeButtonPlacement {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+}

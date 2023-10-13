@@ -6,6 +6,7 @@ import Leftbar from "./Components/Leftbar";
 import Rightbar from "./Components/Rightbar";
 import Topbar from "./Components/Topbar";
 import "./styles/gp.css";
+import UserInfo from "./Components/UserInfo";
 import pfpImage from "./Components/images/profile_icon.png";
 
 export default function User() {
@@ -100,6 +101,7 @@ export default function User() {
       <div className="middle">
         <Topbar name="Gorilla Position" />
         <div className="middleBottom">
+          <UserInfo />
           {showFeed && <>{showResults()}</>}
           <div className="space" />
         </div>
