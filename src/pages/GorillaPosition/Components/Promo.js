@@ -420,6 +420,8 @@ export default function Promo(props) {
             </DropdownMenu>
           </div>
         </div>
+        {props.vid && <video className="promoVid" src={props.vid} controls />}
+        {props.image && <img className="promoExtraImg" src={props.image} />}
         <div className="promo" ref={promoHeightRef}>
           {props.promo}
         </div>
