@@ -75,9 +75,7 @@ export default function Topbar(props) {
     setBase64Img(undefined);
     document.getElementById("imageInputID").value = "";
   }
-  useEffect(() => {
-    console.log(image);
-  }, [image, base64Img]);
+  useEffect(() => {}, [image, base64Img]);
 
   const [videoURL, setVideoURL] = useState(undefined);
   const [base64Video, setBase64Video] = useState(undefined);
@@ -102,9 +100,7 @@ export default function Topbar(props) {
     document.getElementById("vidInputID").value = "";
   }
 
-  useEffect(() => {
-    console.log("VIDEO BASE64" + base64Video);
-  }, [videoURL, base64Video]);
+  useEffect(() => {}, [videoURL, base64Video]);
 
   return (
     <div className="topbarColor">
@@ -128,7 +124,7 @@ export default function Topbar(props) {
           <div className="createPromoModalBody">
             {videoURL !== undefined && (
               <div>
-                <video src={videoURL} width="100%" controls />
+                <video src={videoURL} width="300" controls />
                 <button onClick={() => clearVideo()}>Clear Video</button>
               </div>
             )}
