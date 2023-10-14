@@ -78,3 +78,8 @@
   background-color: #D3D3D3;
   border-radius: 5px;
 }
+
+.inputImage {
+  width: 200px;
+  height: 200px;
+}

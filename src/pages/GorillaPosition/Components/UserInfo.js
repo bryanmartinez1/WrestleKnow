@@ -29,7 +29,6 @@ export default function UserInfo() {
           .pop()
           .slice(0, -2)
       );
-      console.log(username);
       return true;
     } catch (error) {
       console.error(JSON.stringify(error));

@@ -11,11 +11,29 @@ export default function Topbar(props) {
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
   const [content, setContent] = useState("");
+  const [image, setImage] = useState(undefined);
+  const [base64Img, setBase64Img] = useState(undefined);
   //  Create currentUser user id
   async function createPromo() {
     const newPromo = new Parse.Object("Promos");
     newPromo.set("content", content);
     newPromo.set("talker", currentUser.get("username"));
+    if (base64Img !== undefined) {
+      newPromo.set(
+        "image",
+        new Parse.File("img" + ".png", {
+          base64: base64Img,
+        })
+      );
+    }
+    if (videoURL !== undefined) {
+      newPromo.set(
+        "vid",
+        new Parse.File("vid" + ".mp4", {
+          base64: base64Video,
+        })
+      );
+    }
     try {
       const promo = await newPromo.save();
       window.location.reload(false);
@@ -37,6 +55,57 @@ export default function Topbar(props) {
     getCurrentUser();
   }, [currentUser]);
 
+  function onImageChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      setImage(URL.createObjectURL(img));
+      let result;
+
+      const imageFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.addEventListener("load", (event) => {
+        result = event.target.result;
+        setBase64Img(event.target.result.split("base64,").pop());
+      });
+      reader.readAsDataURL(imageFile);
+    }
+  }
+  function clearImage() {
+    setImage(undefined);
+    setBase64Img(undefined);
+    document.getElementById("imageInputID").value = "";
+  }
+  useEffect(() => {
+    console.log(image);
+  }, [image, base64Img]);
+
+  const [videoURL, setVideoURL] = useState(undefined);
+  const [base64Video, setBase64Video] = useState(undefined);
+  function onVideoChange(e) {
+    let videofile = e.target.files[0];
+    if (videofile) {
+      setVideoURL(URL.createObjectURL(videofile));
+      let result;
+
+      const reader = new FileReader();
+      reader.addEventListener("load", (event) => {
+        result = event.target.result;
+        setBase64Video(event.target.result.split("base64,").pop());
+      });
+      reader.readAsDataURL(videofile);
+    }
+  }
+
+  function clearVideo() {
+    setVideoURL(undefined);
+    setBase64Video(undefined);
+    document.getElementById("vidInputID").value = "";
+  }
+
+  useEffect(() => {
+    console.log("VIDEO BASE64" + base64Video);
+  }, [videoURL, base64Video]);
+
   return (
     <div className="topbarColor">
       <div className="nameBar">{props.name}</div>
@@ -57,6 +126,18 @@ export default function Topbar(props) {
             />
           </div>
           <div className="createPromoModalBody">
+            {videoURL !== undefined && (
+              <div>
+                <video src={videoURL} width="100%" controls />
+                <button onClick={() => clearVideo()}>Clear Video</button>
+              </div>
+            )}
+            {image !== undefined && (
+              <div>
+                <img src={image} className="inputImage" />
+                <button onClick={() => clearImage()}>Clear Image</button>
+              </div>
+            )}
             <textarea
               placeholder="enter promo here"
               className="createPromoTextBox"
@@ -65,6 +146,24 @@ export default function Topbar(props) {
             />
           </div>
           <ModalFooter>
+            <div className="whattoInsert">
+              <h1>Insert Image</h1>
+              <input
+                id="imageInputID"
+                type="file"
+                accept=".png, .jpg, .jpeg"
+                onChange={(event) => onImageChange(event)}
+              />
+            </div>
+            <div className="whattoInsert">
+              <h1>Insert Video</h1>
+              <input
+                id="vidInputID"
+                type="file"
+                accept="video/mp4"
+                onChange={(event) => onVideoChange(event)}
+              />
+            </div>
             <img
               className="addModalButton"
               src={add_button}

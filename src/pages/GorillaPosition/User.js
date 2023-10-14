@@ -78,6 +78,20 @@ export default function User() {
       let talker = object.get("talker");
       let currentUserName = currentUser.get("username");
       let promoByCurrentUser = object.get("talker") === currentUserName;
+      let extraImage = undefined;
+      if (object.get("image") !== undefined) {
+        extraImage = JSON.stringify(object.get("image"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2);
+      }
+      let vidURL = undefined;
+      if (object.get("vid") !== undefined) {
+        vidURL = JSON.stringify(object.get("vid"))
+          .split('url":"')
+          .pop()
+          .slice(0, -2);
+      }
 
       return (
         <Promo
@@ -91,6 +105,8 @@ export default function User() {
           allPromos={query}
           replyTo={object.get("Reply")}
           pfpQuery={userQueryImagesJSON}
+          image={extraImage}
+          vid={vidURL}
         />
       );
     });
