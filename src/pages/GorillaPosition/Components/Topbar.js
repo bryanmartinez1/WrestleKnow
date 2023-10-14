@@ -5,6 +5,7 @@ import "./styles/topbar.css";
 import Modal, { ModalFooter } from "@atlaskit/modal-dialog";
 import close_button from "./images/close.png";
 import add_button from "./images/add.png";
+import Loading from "../../Components/Loading";
 
 export default function Topbar(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,7 @@ export default function Topbar(props) {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(undefined);
   const [base64Img, setBase64Img] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
   //  Create currentUser user id
   async function createPromo() {
     const newPromo = new Parse.Object("Promos");
@@ -35,7 +37,9 @@ export default function Topbar(props) {
       );
     }
     try {
+      setIsLoading(true);
       const promo = await newPromo.save();
+      setIsLoading(false);
       window.location.reload(false);
     } catch (error) {
       alert("Error while creating Promo" + error);
@@ -113,6 +117,7 @@ export default function Topbar(props) {
       ></img>
       {isOpen && (
         <Modal onClose={closeModal} width={"75%"} height={"75%"}>
+          {isLoading && <Loading />}
           <div className="createPromoModalHeader">
             <h1>Cut a Promo</h1>
             <img

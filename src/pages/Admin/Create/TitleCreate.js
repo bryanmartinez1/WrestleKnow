@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Loading from "../Components/Loading";
+import Loading from "../../Components/Loading";
 import Inputs from "../Components/Inputs.js";
 import Sidebar from "../Components/Sidebar";
 import ActivityDrop from "../Components/ActivityDrop";

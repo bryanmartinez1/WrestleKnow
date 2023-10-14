@@ -3,7 +3,7 @@ import Parse from "parse/dist/parse.min.js";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./create.css";
-import Loading from "../Components/Loading";
+import Loading from "../../Components/Loading";
 import Sidebar from "../Components/Sidebar";
 import ActivityDrop from "../Components/ActivityDrop";
 import SocialMediaLinks from "../Components/SocialMediaLinks";
