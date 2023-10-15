@@ -17,6 +17,14 @@ export default function Topbar(props) {
   const [isLoading, setIsLoading] = useState(false);
   //  Create currentUser user id
   async function createPromo() {
+    if (
+      content === "" &&
+      base64Img === undefined &&
+      base64Video === undefined
+    ) {
+      alert("promo must contain content(text, video, or image");
+      return false;
+    }
     const newPromo = new Parse.Object("Promos");
     newPromo.set("content", content);
     newPromo.set("talker", currentUser.get("username"));
@@ -41,10 +49,11 @@ export default function Topbar(props) {
       const promo = await newPromo.save();
       setIsLoading(false);
       window.location.reload(false);
+      return true;
     } catch (error) {
-      alert("Error while creating Promo" + error);
+      alert("Error while creating Promo: " + error);
+      return false;
     }
-    window.location.reload(true);
   }
 
   const [currentUser, setCurrentUser] = useState(null);
