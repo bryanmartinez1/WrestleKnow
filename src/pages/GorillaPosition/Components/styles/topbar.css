@@ -55,7 +55,7 @@
 }
 
 .closeModalButton:hover {
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   border-radius: 5px;
 }
 
@@ -75,11 +75,20 @@
 }
 
 .addModalButton:hover {
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
   border-radius: 5px;
 }
 
 .inputImage {
   width: 200px;
   height: 200px;
+}
+
+.whattoInsert {
+  width: 100%;
+}
+
+.inputFile {
+  width: 90px;
+  background-color: #ee534f;
 }

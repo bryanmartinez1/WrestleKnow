@@ -159,6 +159,7 @@ export default function Topbar(props) {
             <div className="whattoInsert">
               <h1>Insert Image</h1>
               <input
+                className="inputFile"
                 id="imageInputID"
                 type="file"
                 accept=".png, .jpg, .jpeg"
@@ -168,6 +169,7 @@ export default function Topbar(props) {
             <div className="whattoInsert">
               <h1>Insert Video</h1>
               <input
+                className="inputFile"
                 id="vidInputID"
                 type="file"
                 accept="video/mp4"
