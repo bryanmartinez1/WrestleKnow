@@ -51,6 +51,14 @@ export default function Promo(props) {
   const openCommentModal = useCallback(() => openCloseCommentModal(true), []);
   const closeCommentModal = useCallback(() => openCloseCommentModal(false), []);
 
+  const commentOperation = () => {
+    if (isCommentModalOpen === true) {
+      closeCommentModal();
+    } else {
+      openCommentModal();
+    }
+  };
+
   const [cheerReaction, setCheerReaction] = useState(false);
   const [cheerReactionID, setCheerReactionID] = useState(null);
   const [booReaction, setBooReaction] = useState(false);
@@ -473,7 +481,7 @@ export default function Promo(props) {
             content={<div className="tooltipPromoReactions">View Comments</div>}
             hideTooltipOnMouseDown
           >
-            <button onClick={openCommentModal}>
+            <button onClick={commentOperation}>
               <img className="imgButton" src={comment} alt="comments"></img>
             </button>
           </Tooltip>
@@ -492,6 +500,9 @@ export default function Promo(props) {
             </button>
           </Tooltip>
         </div>
+        {isCommentModalOpen && (
+          <div className="repliesDiv">{showResults()}</div>
+        )}
       </div>
       {isEditModalOpen && (
         <Modal onClose={closeEditModal} width={"75%"} height={"75%"}>
@@ -597,32 +608,6 @@ export default function Promo(props) {
               onClick={() => replyPromo()}
             />
           </ModalFooter>
-        </Modal>
-      )}
-      {isCommentModalOpen && (
-        <Modal onClose={closeCommentModal} width={"75%"}>
-          <div className="expandPromoModal" id="promoModal">
-            <div className="createPromoModalHeader">
-              <h1>All Replies</h1>
-              <img
-                className="closeModalButton"
-                src={close_button}
-                onClick={closeCommentModal}
-              />
-            </div>
-            <div className="expandPromoBody">
-              <Promo
-                pfp={props.pfp}
-                username={props.username}
-                uploadDate={props.uploadDate}
-                promo={props.promo}
-                currentUserPromo={props.currentUserPromo}
-                promoId={props.promoId}
-                currentUserName={props.currentUserName}
-              />
-              {showResults()}
-            </div>
-          </div>
         </Modal>
       )}
     </div>
