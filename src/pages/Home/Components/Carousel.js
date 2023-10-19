@@ -35,7 +35,7 @@ export default function Carousel(props) {
         <button onClick={() => MovingLeft()} className="arrowButton">
           <img src={previous} className="arrowImg" alt="Previous" />
         </button>
-        <div>{page + 1} of 5</div>
+        <>{page + 1} of 5</>
         <button onClick={() => MovingRight()} className="arrowButton">
           <img src={next} className="arrowImg" alt="Next" />
         </button>

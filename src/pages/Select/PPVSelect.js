@@ -5,7 +5,7 @@ import { getAge } from "../../Functions/functions.js";
 const PPVSelect = () => {
   const { ppvId } = useParams(); // Accessing the route parameter
 
-  return <div>Hello, {ppvId}</div>;
+  return <>Hello, {ppvId}</>;
 };
 
 export default PPVSelect;

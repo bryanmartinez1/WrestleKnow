@@ -5,7 +5,7 @@ import { getAge } from "../../Functions/functions.js";
 const BrandSelect = () => {
   const { brandId } = useParams(); // Accessing the route parameter
 
-  return <div>Hello, {brandId}</div>;
+  return <>Hello, {brandId}</>;
 };
 
 export default BrandSelect;

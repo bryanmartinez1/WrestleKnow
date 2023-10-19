@@ -66,10 +66,10 @@ export default function RockPaperScissors() {
         />
       </div>
       <button onClick={() => rpsGame()}>Confirm Choice</button>
-      {allResults !== "" && <div>Results</div>}
-      <div> {allResults}</div>
-      <div> Player chooses {player1Choice}</div>
-      <div> Computer chooses {compChoice}</div>
+      {allResults !== "" && <>Results</>}
+      <> {allResults}</>
+      <> Player chooses {player1Choice}</>
+      <> Computer chooses {compChoice}</>
     </div>
   );
 }

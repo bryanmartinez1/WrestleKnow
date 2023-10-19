@@ -59,7 +59,7 @@ export const data2 = {
 };
 export default function Chart() {
   return (
-    <div>
+    <>
       <div className="chartContent">
         <div className="chartHeader"></div>
         <Pie data={data2} />
@@ -67,6 +67,6 @@ export default function Chart() {
       <div className="chartContent">
         <PolarArea data={data1} />
       </div>
-    </div>
+    </>
   );
 }

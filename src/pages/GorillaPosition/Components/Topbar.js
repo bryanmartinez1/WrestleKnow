@@ -137,16 +137,16 @@ export default function Topbar(props) {
           </div>
           <div className="createPromoModalBody">
             {videoURL !== undefined && (
-              <div>
+              <>
                 <video src={videoURL} width="300" controls />
                 <button onClick={() => clearVideo()}>Clear Video</button>
-              </div>
+              </>
             )}
             {image !== undefined && (
-              <div>
+              <>
                 <img src={image} className="inputImage" />
                 <button onClick={() => clearImage()}>Clear Image</button>
-              </div>
+              </>
             )}
             <textarea
               placeholder="enter promo here"

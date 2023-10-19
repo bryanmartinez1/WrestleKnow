@@ -5,7 +5,7 @@ import { getAge } from "../../Functions/functions.js";
 const TitleSelect = () => {
   const { titleId } = useParams(); // Accessing the route parameter
 
-  return <div>Hello, {titleId}</div>;
+  return <>Hello, {titleId}</>;
 };
 
 export default TitleSelect;
