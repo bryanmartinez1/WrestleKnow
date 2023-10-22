@@ -137,26 +137,24 @@ const WrestlerSelect = () => {
                 <div className="infoDisplayTitle">Reign Description</div>
                 <div className="searchBar"> Search</div>
                 <div className="scrollReignDisplay">
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
-                  <ReignDescription />
+                  <ReignDescription
+                    name="Women's Royal Rumble"
+                    firstInfo="January 27, 2019"
+                    secondInfo="January 27, 2019"
+                    thirdInfo="0 Days"
+                  />
+                  <ReignDescription
+                    name="Women's Royal Rumble"
+                    firstInfo="January 27, 2019"
+                    secondInfo="January 27, 2019"
+                    thirdInfo="0 Days"
+                  />
+                  <ReignDescription
+                    name="Women's Royal Rumble"
+                    firstInfo="January 27, 2019"
+                    secondInfo="January 27, 2019"
+                    thirdInfo="0 Days"
+                  />
                 </div>
               </div>
             </div>
