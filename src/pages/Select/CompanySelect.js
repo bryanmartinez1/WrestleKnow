@@ -3,11 +3,17 @@ import { useParams } from "react-router-dom";
 import { getAge } from "../../Functions/functions.js";
 import Parse from "parse/dist/parse.min.js";
 import QuickInfo from "./Displays/QuickInfo.js";
+import InfoDisplay from "./Displays/InfoDisplays.js";
+import SocialMedia from "./Displays/SocialMedia.js";
 
 const CompanySelect = () => {
   const { companyId } = useParams(); // Accessing the route parameter
   const [companyInfo, setCompanyInfo] = useState();
   const [showCompany, setShowCompany] = useState(false);
+
+  function createBulletPointList(text) {
+    return text.split(",");
+  }
 
   useEffect(() => {
     if (!showCompany) {
@@ -29,7 +35,8 @@ const CompanySelect = () => {
           .pop()
           .slice(0, -2),
         active: companyResults[0].get("active"),
-        aka: companyResults[0].get("aka"),
+        about: companyResults[0].get("about"),
+        aka: createBulletPointList(companyResults[0].get("aka")),
         start_date: start_date
           .toLocaleDateString("en-US", {
             month: "long",
@@ -39,11 +46,13 @@ const CompanySelect = () => {
           .toString(),
         end_date: companyResults[0].get("end_date"),
         instagram: companyResults[0].get("instagram_at"),
-        youtube: companyResults[0].get("youtube_at"),
+        youtuber: companyResults[0].get("youtube_at"),
         tiktok: companyResults[0].get("tiktok_at"),
         threads: companyResults[0].get("threads_at"),
         twitter: companyResults[0].get("twitter_at"),
-        video: companyResults[0].get("youtube_vid"),
+        video:
+          "https://www.youtube.com/embed/" +
+          companyResults[0].get("youtube_vid"),
       };
       let age;
       if (companyInfoJSON.end_date) {
@@ -68,15 +77,44 @@ const CompanySelect = () => {
       {showCompany && (
         <div className="selectHolder">
           <div className="wrestlerNameDiv">{companyInfo.name}</div>
-          <QuickInfo
-            imgSrc={companyInfo.image}
-            companyName={companyInfo.name}
-            companyID={companyId}
-            topLeft={companyInfo.shortName}
-            topRight={companyInfo.active}
-            bottomLeft={companyInfo.start_date}
-            bottomRight={companyInfo.age}
-          />
+          <div className="otherInfo">
+            <div className="leftSide">
+              <div className="leftSideTop">
+                <QuickInfo
+                  imgSrc={companyInfo.image}
+                  companyName={companyInfo.name}
+                  companyID={companyId}
+                  topLeft={companyInfo.shortName}
+                  topRight={companyInfo.active}
+                  bottomLeft={companyInfo.start_date}
+                  bottomRight={companyInfo.age}
+                />
+                <InfoDisplay
+                  title="About"
+                  text={companyInfo.about}
+                  isList={false}
+                />
+              </div>
+              <iframe
+                className="ytVidChoosen"
+                src={companyInfo.video}
+                title="Company Page"
+              />
+            </div>
+            <div className="leftSide">
+              <div className="leftSideTop">
+                <InfoDisplay title="AKA" text={companyInfo.aka} isList={true} />
+                <SocialMedia
+                  title="Social Media"
+                  twitter={companyInfo.twitter}
+                  instagram={companyInfo.instagram}
+                  tiktok={companyInfo.tiktok}
+                  youtuber={companyInfo.youtuber}
+                  threads={companyInfo.threads}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>
