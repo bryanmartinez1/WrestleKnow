@@ -26,6 +26,8 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    overflow-wrap: break-word;
+    white-space: pre-line;
 }
 
 .infoDisplayBody::-webkit-scrollbar {
