@@ -17,10 +17,10 @@ export default function ReignDescription(props) {
       <img className="titleImage" src={image} alt="Title" />
       <div className="reignInfoHolder">
         <div className="reignDivider">
-          <div className="div titleName">Women’s Royal Rumble</div>
-          <div className="div titleWon">January 27, 2019</div>
-          <div className="div titleLost">January 27, 2019</div>
-          <div className="div titleTotalDays">0 Days</div>
+          <div className="div titleName">{props.name}</div>
+          <div className="div titleWon">{props.firstInfo}</div>
+          <div className="div titleLost">{props.secondInfo}</div>
+          <div className="div titleTotalDays">{props.thridInfo}</div>
         </div>
       </div>
     </div>
