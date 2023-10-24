@@ -121,7 +121,7 @@ export default function Feed() {
           <div className="space" />
         </div>
       </div>
-      <Rightbar />
+      {/* //<Rightbar /> */}
     </div>
   );
 }
