@@ -1,102 +1,100 @@
 @font-face {
-    font-family: Lexend;
-    src:url(/src/Font/LexendGiga-VariableFont_wght.ttf);
+  font-family: Lexend;
+  src: url(/src/Font/LexendGiga-VariableFont_wght.ttf);
 }
 .leftside {
-    font-family: Lexend;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    margin-right: 15px;
+  font-family: Lexend;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-right: 15px;
 }
 
 .names {
-    width: 100%;
-    background-color: #EF6460;
-    border-style: solid;
-    margin-bottom: 2px;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
+  width: 100%;
+  background-color: #ef6460;
+  border-style: solid;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .pfp {
-    width: 100%;
-    border-style: solid;
-    margin-bottom: 2px;
-    border-radius: 5px;
-    background-color: #353739;
-    cursor: pointer;
+  width: 100%;
+  border-style: solid;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  background-color: #353739;
+  cursor: pointer;
 }
 
 .bio {
-    width: 100%;
-    min-height: 100px;
-    border-style: solid;
-    margin-bottom: 2px;
-    border-radius: 5px;
-    text-align: center;
-    background-color: #FDF0EF;
+  width: 100%;
+  min-height: 100px;
+  border-style: solid;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #fdf0ef;
 }
 
 .leftside a {
-    width: 100%;
-    text-decoration: none;
-    background-color: #EF6460;
-    padding: 5px;
-    border-style: solid;
-    border-color: black;
-    color: black;
-    margin-bottom: 2px;
-    border-radius: 5px;
-    text-align: center;
+  width: 100%;
+  text-decoration: none;
+  background-color: #ef6460;
+  padding: 5px;
+  border-style: solid;
+  border-color: black;
+  color: black;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .followHolder {
-    display: flex;
-    flex-direction: row;
-    background-color: #EF6460;
-    margin-bottom: 2px;
-    justify-content: space-between;
-    font-size: 11px;
-    text-decoration: none;
-    color: #353739;
-    border-style: solid;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  background-color: #ef6460;
+  margin-bottom: 2px;
+  justify-content: space-between;
+  font-size: 11px;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .followNumber {
-    font-weight: bold;
-    font-size: 20px;
-    width: 50%;
-    overflow: hidden;
-    text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  width: 50%;
+  overflow: hidden;
+  text-align: center;
 }
 .followText {
-    font-weight: normal;
-    font-size: 10px;
+  font-weight: normal;
+  font-size: 10px;
 }
 
 .followModal {
-    width: 100%;
-    height: 100%;
-    padding: 2px;
-    display: flex;
-    flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
 }
 
 .followDivs {
-    font-family: Lexend;
-    height: 100%;
-    width: 50%;
-    text-align: center;
-    font-size: x-large;
-    font-weight: bold;
+  font-family: Lexend;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .followDivider {
-    height: 100%;
-    width: 2px;
-    background-color: #353739;
+  height: 100%;
+  width: 2px;
+  background-color: black;
 }
-
