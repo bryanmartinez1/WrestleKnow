@@ -151,7 +151,7 @@ export default function Promo(props) {
       try {
         await booObject.destroy();
         // Change the hooks here
-        setCheerReaction(false);
+        setBooReaction(false);
         setBooReactionID(null);
         return true;
       } catch (error) {
@@ -164,7 +164,7 @@ export default function Promo(props) {
     if (cheerReaction) {
       const cheerToBooObject = new Parse.Object("Reactions");
       cheerToBooObject.set("objectId", cheerReactionID);
-      cheerToBooObject.set("Reaction", "Cheer");
+      cheerToBooObject.set("Reaction", "Boo");
       cheerToBooObject.set("Reacter", props.currentUserName);
       try {
         await cheerToBooObject.save();
